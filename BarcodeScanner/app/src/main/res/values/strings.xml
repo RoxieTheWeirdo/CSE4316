@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Barcode Scanner</string>
+    <string name="scan">Scan Barcode</string>
+    <string name="item_desc"><b>Item Description</b></string>
+    <string name="calories">Calories: 210</string>
+    <string name="fats">Fats: 16</string>
+    <string name="carbs">Carbs: 40</string>
+    <string name="sodium">Sodium: 16</string>
+    <string name="scan_another">Scan Another Barcode</string>
+    <string name="image"><b>Barcode Image</b></string>
+    <string name="more_info">More Info</string>
+</resources>
