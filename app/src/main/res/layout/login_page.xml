@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ADD8E6"
+
+    >
+
+    <TextView
+        android:id="@+id/ProjectName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MacroBit"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:layout_gravity="top|center"
+        android:textColor="#E9967A"
+
+        />
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="enter your email"
+        android:textStyle="bold"
+        android:textSize="21sp"
+        android:inputType="textEmailAddress"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:textColor="#A9A9A9"
+        android:background="@android:drawable/edit_text"
+        android:backgroundTint="#F0FFF0"
+        />
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="enter your password"
+        android:textStyle="bold"
+        android:textSize="21sp"
+        android:inputType="textEmailAddress"
+        android:layout_gravity="center"
+        android:layout_marginTop="2dp"
+        android:textColor="#A9A9A9"
+        android:background="@android:drawable/edit_text"
+        android:backgroundTint="#F0FFF0"
+        />
+
+
+    <Button
+        android:id="@+id/loginAccount"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:text="Login"
+        android:textSize="21sp"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/oval_button_background"
+        android:backgroundTint="@null"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/createAccount"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:text="Create Account"
+        android:textSize="21sp"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/oval_button_background"
+        android:backgroundTint="#F0FFF0"
+        android:gravity="center" />
+
+
+</LinearLayout>
