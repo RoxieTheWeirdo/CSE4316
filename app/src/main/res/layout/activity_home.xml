@@ -503,6 +503,7 @@
             android:foregroundGravity="center">
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/centerButton"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:clickable="true"

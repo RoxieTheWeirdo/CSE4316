@@ -1,11 +1,18 @@
 package com.example.fitbite;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.Toast;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.card.MaterialCardView;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -56,5 +63,49 @@ public class HomeActivity extends AppCompatActivity {
         ivMealThumb.setOnClickListener(v ->
                 Toast.makeText(HomeActivity.this, "Opening food log...", Toast.LENGTH_SHORT).show()
         );
+
+        // --- Center + Button Popup Functionality ---
+        MaterialCardView centerButton = findViewById(R.id.centerButton);
+        centerButton.setOnClickListener(this::showPopupMenu);
+    }
+
+    // Method to show popup menu
+    private void showPopupMenu(View anchorView) {
+        // Inflate popup layout
+        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_options, null);
+
+        // Create popup window
+        PopupWindow popupWindow = new PopupWindow(
+                popupView,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                true
+        );
+
+        popupWindow.setElevation(10);
+
+        // Set button actions
+        popupView.findViewById(R.id.btnSearchFood).setOnClickListener(v -> {
+            Toast.makeText(this, "Search Food clicked", Toast.LENGTH_SHORT).show();
+            popupWindow.dismiss();
+        });
+
+        popupView.findViewById(R.id.btnBarcodeScan).setOnClickListener(v -> {
+            Toast.makeText(this, "Barcode Scan clicked", Toast.LENGTH_SHORT).show();
+            popupWindow.dismiss();
+        });
+
+        popupView.findViewById(R.id.btnMealScan).setOnClickListener(v -> {
+            Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
+            popupWindow.dismiss();
+        });
+
+        popupView.findViewById(R.id.btnWeight).setOnClickListener(v -> {
+            Toast.makeText(this, "Weight clicked", Toast.LENGTH_SHORT).show();
+            popupWindow.dismiss();
+        });
+
+        // Show popup centered on screen
+        popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0, 550);
     }
 }

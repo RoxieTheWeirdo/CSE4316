@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@drawable/popup_background"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:rowCount="2"
+        android:columnCount="2"
+        android:alignmentMode="alignBounds"
+        android:useDefaultMargins="true"
+        android:columnOrderPreserved="false"
+        android:rowOrderPreserved="false">
+
+        <Button
+            android:id="@+id/btnSearchFood"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:backgroundTint="#111318"
+            android:text="Search Food" />
+
+        <Button
+            android:id="@+id/btnBarcodeScan"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:backgroundTint="#111318"
+            android:textColor="@color/white"
+            android:text="Barcode Scan" />
+
+        <Button
+            android:id="@+id/btnMealScan"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:backgroundTint="#111318"
+            android:textColor="@color/white"
+            android:text="Meal Scan" />
+
+        <Button
+            android:id="@+id/btnWeight"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:backgroundTint="#111318"
+            android:textColor="@color/white"
+            android:text="Weight" />
+
+    </GridLayout>
+
+</LinearLayout>
