@@ -95,6 +95,8 @@ public class HomeActivity extends AppCompatActivity {
 
         popupView.findViewById(R.id.btnBarcodeScan).setOnClickListener(v -> {
             Toast.makeText(this, "Barcode Scan clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, BarcodeScanner.class);
+            startActivity(intent);
             popupWindow.dismiss();
         });
 
