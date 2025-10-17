@@ -14,8 +14,6 @@ public class EditFoodActivity extends AppCompatActivity {
         Button backButton = findViewById(R.id.saveButton);
 
         backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(EditFoodActivity.this, MainActivity.class);
-            startActivity(intent);
             finish();
         });
     }

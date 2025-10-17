@@ -1,5 +1,6 @@
 package com.example.fitbite;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -87,6 +88,8 @@ public class HomeActivity extends AppCompatActivity {
         // Set button actions
         popupView.findViewById(R.id.btnSearchFood).setOnClickListener(v -> {
             Toast.makeText(this, "Search Food clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, SearchFoodActivity.class);
+            startActivity(intent);
             popupWindow.dismiss();
         });
 
