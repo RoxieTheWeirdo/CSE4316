@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B266FF"
+    android:padding="20dp">
+
+    <!-- Camera Preview -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="410dp"/>
+
+    <!-- Bubble + Button container -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_marginTop="420dp">
+        <!--320dp -->
+
+        <!-- White rounded bubble -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/rounded_white_bubble"
+            android:padding="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!-- padding 20dp -->
+
+            <TextView
+                android:id="@+id/mealLabel"
+                android:text="@string/suggested_meal"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <!-- textSize 22sp -->
+
+            <TextView
+                android:text="@string/ingredients_label"
+                android:textSize="22sp"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <!-- textSize 18sp-->
+
+            <TextView
+                android:id="@+id/ingredientList"
+                android:text="@string/ingredients"
+                android:textSize="22sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Pill-shaped button -->
+        <Button
+            android:id="@+id/newSuggestionButton"
+            android:text="@string/new_suggestion"
+            android:background="@drawable/pill_button"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="40dp"/>
+        <!-- 24sp 80dp 60dp -->
+    </LinearLayout>
+
+    <!-- Blinking overlay text -->
+    <TextView
+        android:id="@+id/blinkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scanning_pantry"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:textColor="#B3FFFFFF"
+        android:layout_gravity="center"
+        android:layout_marginTop="-240dp"
+        android:elevation="10dp"/>
+</FrameLayout>
