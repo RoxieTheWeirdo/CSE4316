@@ -1,5 +1,6 @@
 package com.example.fitbite;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -68,6 +69,13 @@ public class HomeActivity extends AppCompatActivity {
         // --- Center + Button Popup Functionality ---
         MaterialCardView centerButton = findViewById(R.id.centerButton);
         centerButton.setOnClickListener(this::showPopupMenu);
+
+        //ADDED MEAL PLAN section 
+        LinearLayout planSection = findViewById(R.id.plan_section);
+        planSection.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, MealPlanActivity.class);
+            startActivity(intent);
+        });
     }
 
     // Method to show popup menu
