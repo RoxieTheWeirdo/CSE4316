@@ -76,6 +76,12 @@ public class HomeActivity extends AppCompatActivity {
             Intent intent = new Intent(HomeActivity.this, MealPlanActivity.class);
             startActivity(intent);
         });
+
+        LinearLayout diarySection = findViewById(R.id.diary_section);
+        diarySection.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, FoodDiaryActivity.class);
+            startActivity(intent);
+        });
     }
 
     // Method to show popup menu
