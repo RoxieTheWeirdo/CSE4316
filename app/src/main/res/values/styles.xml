@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Custom style for NumberPicker -->
+    <style name="NumberPickerTheme" parent="android:Widget">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#FFFFFF</item>
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="android:background">#1C1C1C</item>
+    </style>
+</resources>
