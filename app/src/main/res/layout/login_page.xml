@@ -1,81 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ADD8E6"
-
-    >
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#FFFFFF"
+    android:padding="24dp">
 
     <TextView
-        android:id="@+id/ProjectName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MacroBit"
-        android:textSize="50dp"
+        android:text="FitBite"
+        android:textColor="#6200EE"
+        android:textSize="36sp"
         android:textStyle="bold"
-        android:layout_gravity="top|center"
-        android:textColor="#E9967A"
+        android:layout_marginBottom="50dp" />
 
-        />
     <EditText
-        android:id="@+id/userName"
-        android:layout_width="300dp"
+        android:id="@+id/username_input"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="enter your email"
-        android:textStyle="bold"
-        android:textSize="21sp"
-        android:inputType="textEmailAddress"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp"
-        android:textColor="#A9A9A9"
+        android:hint="Username"
+        android:inputType="text"
+        android:padding="12dp"
         android:background="@android:drawable/edit_text"
-        android:backgroundTint="#F0FFF0"
-        />
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:hint="enter your password"
-        android:textStyle="bold"
-        android:textSize="21sp"
-        android:inputType="textEmailAddress"
-        android:layout_gravity="center"
-        android:layout_marginTop="2dp"
-        android:textColor="#A9A9A9"
-        android:background="@android:drawable/edit_text"
-        android:backgroundTint="#F0FFF0"
-        />
+        android:textColor="#000000"
+        android:textSize="16sp" />
 
+    <EditText
+        android:id="@+id/password_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text"
+        android:textColor="#000000"
+        android:textSize="16sp" />
 
     <Button
-        android:id="@+id/loginAccount"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="Login"
-        android:textSize="21sp"
+        android:textSize="18sp"
         android:textColor="#FFFFFF"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/oval_button_background"
-        android:backgroundTint="@null"
-        android:gravity="center" />
+        android:backgroundTint="#6200EE" />
 
     <Button
-        android:id="@+id/createAccount"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:text="Create Account"
-        android:textSize="21sp"
-        android:textColor="#FFFFFF"
-        android:layout_gravity="center"
+        android:id="@+id/create_account_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:background="@drawable/oval_button_background"
-        android:backgroundTint="#F0FFF0"
-        android:gravity="center" />
-
+        android:text="Create Account"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#9C27B0" />
 
 </LinearLayout>
