@@ -2,8 +2,10 @@ package com.example.fitbite;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,13 +21,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
-
     private static final String TAG = "LoginActivity";
     private static final int RC_SIGN_IN = 9001;
     private EditText usernameInput, passwordInput;
     private Button loginButton, createAccountButton, googleSignInButton;
     private TextView toast;
-
+    private View loadingOverlay;
     private FirebaseAuth auth;
     private GoogleSignInClient googleSignInClient;
     @Override
@@ -40,6 +41,14 @@ public class LoginActivity extends AppCompatActivity {
         createAccountButton = findViewById(R.id.create_account_button);
         //The buttons from LoginTEST.java, added a Google SignIn button but we can refine that later
         googleSignInButton = findViewById(R.id.GoogleSignIn);
+
+        loadingOverlay = getLayoutInflater().inflate(R.layout.loading, null);
+        FrameLayout root = (FrameLayout) getWindow().getDecorView().findViewById(android.R.id.content);
+        root.addView(loadingOverlay, new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+        ));
+
         toast = findViewById(R.id.toast);
         auth = FirebaseAuth.getInstance();
         googleSignInButton.setOnClickListener(v -> signInWithGoogle());
@@ -56,8 +65,10 @@ public class LoginActivity extends AppCompatActivity {
             if (username.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             } else {
+                loadingScreen(true);
                 auth.signInWithEmailAndPassword(username, password)
                         .addOnCompleteListener(task -> {
+                            loadingScreen(false);
                             if (task.isSuccessful()) {
                                 showMessage("Login successful!", true);
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -112,10 +123,11 @@ public class LoginActivity extends AppCompatActivity {
             showMessage("No ID token returned", false);
             return;
         }
-
+        loadingScreen(true);
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
+                    loadingScreen(false);
                     if (task.isSuccessful()) {
                         showMessage("Google login successful!", true);
                         Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -134,5 +146,10 @@ public class LoginActivity extends AppCompatActivity {
         toast.setTextColor(getResources().getColor(success
                 ? android.R.color.holo_green_dark
                 : android.R.color.holo_red_dark));
+    }
+    private void loadingScreen(boolean show) {
+        if (loadingOverlay != null) {
+            loadingOverlay.setVisibility(show ? View.VISIBLE : View.GONE);
+        }
     }
 }
