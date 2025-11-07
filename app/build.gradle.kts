@@ -74,4 +74,5 @@ dependencies {
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 }
