@@ -43,6 +43,7 @@
         <activity android:name=".EditFoodActivity" />
         <activity android:name=".BarcodeScanner"
             android:stateNotNeeded="true"/>
+        <activity android:name=".CaptureAct" />
         <activity android:name=".BarcodeScannerAfter" />
         <activity android:name=".PantryScanner" />
         <activity android:name=".MealPlanActivity" />
