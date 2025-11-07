@@ -1,12 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
     <uses-permission android:name="android.permission.CAMERA"/>
-
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <application
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -21,9 +19,9 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
 
-        <!-- Your new launcher activity -->
+        <!-- 🔹 Login page launches first -->
         <activity
-            android:name=".HomeActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,17 +29,26 @@
             </intent-filter>
         </activity>
 
-        <!-- Other activities -->
+        <activity android:name=".CreateAccount" />
+
+        <activity android:name=".activity_basics_sex" />
+        <activity android:name=".activity_basics_birthday" />
+        <activity android:name=".activity_basics_height" />
+        <activity android:name=".activity_basics_weight" />
+        <activity android:name=".activity_basics_exercise" />
+
+        <!-- 🔹 Home screens -->
+        <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SearchFoodActivity" />
         <activity android:name=".EditFoodActivity" />
         <activity android:name=".BarcodeScanner"
             android:stateNotNeeded="true"/>
-        <activity android:name=".CaptureAct" />
         <activity android:name=".BarcodeScannerAfter" />
-        <activity android:name=".MealPlanActivity"/>
+        <activity android:name=".PantryScanner" />
+        <activity android:name=".MealPlanActivity" />
         <activity android:name=".MealDetailActivity" />
-
+        <activity android:name=".FoodDiaryActivity" />
     </application>
 
 

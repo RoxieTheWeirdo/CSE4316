@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PantryScanner</string>
+    <string name="scanning_pantry">Scanning Pantry...</string>
+    <string name="suggested_meal">Suggested meal: Tuna Salad</string>
+    <string name="ingredients_label">Ingredients:</string>
+    <string name="ingredients">• Tuna\n• Low-fat mayo\n• Pickles\n• Raisins</string>
+    <string name="new_suggestion">New Suggestion</string>
+</resources>

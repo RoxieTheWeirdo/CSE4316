@@ -475,6 +475,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/diary_section"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -544,6 +545,7 @@
         </LinearLayout>
 
         <LinearLayout
+	    android:id="@+id/more_section"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
