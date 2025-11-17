@@ -29,7 +29,7 @@ public class FoodDiaryActivity extends AppCompatActivity {
     private MealAdapter mealAdapter;
     private List<Meal> diaryMeals;
     private FirebaseFirestore db;
-    private FirebaseAuth mAuth;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +45,11 @@ public class FoodDiaryActivity extends AppCompatActivity {
         diaryRecyclerView.setAdapter(mealAdapter);
 
         // Initialize Firebase Auth and Firestore
-        mAuth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
         // Check if user is signed in and set up listener
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {
             setupFirestoreListener(currentUser.getUid());
         } else {
@@ -88,7 +88,7 @@ public class FoodDiaryActivity extends AppCompatActivity {
     }
 
     private void showAddMealDialog() {
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) {
             Toast.makeText(this, "You must be logged in to add a meal.", Toast.LENGTH_SHORT).show();
             return;

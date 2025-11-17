@@ -1,7 +1,8 @@
 package com.example.fitbite;
-import android.app.PendingIntent;
+ import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,8 +18,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -29,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     private View loadingOverlay;
     private FirebaseAuth auth;
     private GoogleSignInClient googleSignInClient;
+    private FirebaseFirestore db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
         toast = findViewById(R.id.toast);
         auth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         googleSignInButton.setOnClickListener(v -> signInWithGoogle());
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("799401116375-mq7i87vusumib87i8194g17cd7t5fcjh.apps.googleusercontent.com")
@@ -83,17 +93,47 @@ public class LoginActivity extends AppCompatActivity {
 
         // Handle create account → go to CreateAccount.java
         createAccountButton.setOnClickListener(v -> {
-            String username = usernameInput.getText().toString().trim();
+            String email = usernameInput.getText().toString().trim();
             String password = passwordInput.getText().toString().trim();
 
-            if (username.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                return;
             }
-            else {
-                Intent intent = new Intent(LoginActivity.this, CreateAccount.class);
-                startActivity(intent);
-                finish();
-            }
+
+            loadingScreen(true);
+            auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = auth.getCurrentUser();
+                            if (user != null) {
+                                // Create a new user with a first and last name
+                                Map<String, Object> userDoc = new HashMap<>();
+                                userDoc.put("uid", user.getUid());
+                                userDoc.put("email", user.getEmail());
+
+                                // Add a new document with a generated ID
+                                db.collection("users").document(user.getUid())
+                                        .set(userDoc)
+                                        .addOnSuccessListener(aVoid -> {
+                                            loadingScreen(false);
+                                            Log.d(TAG, "User successfully written!");
+                                            Intent intent = new Intent(LoginActivity.this, CreateAccount.class);
+                                            startActivity(intent);
+                                            finish();
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            loadingScreen(false);
+                                            Log.w(TAG, "Error writing document", e);
+                                            showMessage("Error saving user data.", false);
+                                        });
+
+                            }
+                        } else {
+                            loadingScreen(false);
+                            showMessage("Authentication failed: " + task.getException().getMessage(), false);
+                        }
+                    });
         });
     }
     private void signInWithGoogle() {
