@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:text="Select App Theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"/>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/themeToggleGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:singleSelection="true"
+        app:selectionRequired="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Light"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dark"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSystem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="System Default"/>
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+<TextView
+    android:text="Unit Preference"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="8dp"/>
+
+<com.google.android.material.button.MaterialButtonToggleGroup
+    android:id="@+id/unitToggleGroup"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:singleSelection="true"
+    app:selectionRequired="true">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnMetric"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Metric"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnImperial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Imperial"/>
+</com.google.android.material.button.MaterialButtonToggleGroup>
+</LinearLayout>

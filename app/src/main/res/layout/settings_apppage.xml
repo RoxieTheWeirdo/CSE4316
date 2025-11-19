@@ -1,0 +1,37 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- App Theme Overview -->
+    <TextView
+        android:text="App Theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/appThemeStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="System (Default)"
+        android:layout_marginBottom="16dp"/>
+    <!-- Unit Preference -->
+    <TextView
+        android:text="Unit Preference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/appUnitStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Metric"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="start|top">
+
+        <!-- Birthday -->
+        <TextView
+            android:id="@+id/curBirthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Birthday"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            android:id="@+id/btnChangeBirthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Birthday"
+            android:textAllCaps="false"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Height -->
+        <TextView
+            android:id="@+id/curHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Height"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            android:id="@+id/btnChangeHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Height"
+            android:textAllCaps="false"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Weight -->
+        <TextView
+            android:id="@+id/curWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            android:id="@+id/btnChangeWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Weight"
+            android:textAllCaps="false"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Sex -->
+        <TextView
+            android:id="@+id/curSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sex"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            android:id="@+id/btnChangeSex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Sex"
+            android:textAllCaps="false"
+            android:layout_marginBottom="24dp" />
+        <TextView
+            android:id="@+id/curExercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exercise Level"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            android:id="@+id/btnChangeExercise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Exercise Level"
+            android:textAllCaps="false"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</ScrollView>
