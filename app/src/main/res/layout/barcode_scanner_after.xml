@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="290dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="216dp"
         android:background="@drawable/oval_button_background"
         android:gravity="center_horizontal"
         android:text="Item Description"
@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="216dp"
+        android:layout_marginBottom="280dp"
         android:gravity="center_horizontal"
         android:text="Fats: 16"
         android:textSize="30sp"
@@ -32,7 +32,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="176dp"
+        android:layout_marginBottom="320dp"
         android:gravity="center_horizontal"
         android:text="Carbs: 40"
         android:textSize="30sp"
@@ -42,7 +42,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="260dp"
+        android:layout_marginBottom="360dp"
         android:gravity="center_horizontal"
         android:text="Sodium: 210"
         android:textSize="30sp"
@@ -52,7 +52,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="400dp"
         android:gravity="center_horizontal"
         android:text="Calories: 210"
         android:textSize="30sp"
@@ -64,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="420dp"
+        android:layout_marginBottom="520dp"
         android:background="@drawable/oval_button_background"
         android:gravity="center"
         android:textSize="35sp"
@@ -92,6 +92,17 @@
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+    <Button
+        android:id="@+id/addToDiaryButton"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/purple_200"
+        android:text="Add to Food Diary"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toTopOf="@id/moreInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
