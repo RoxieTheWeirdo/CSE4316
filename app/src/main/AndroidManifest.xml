@@ -45,6 +45,7 @@
             android:stateNotNeeded="true"/>
         <activity android:name=".CaptureAct" />
         <activity android:name=".BarcodeScannerAfter" />
+        <activity android:name=".BarcodeMoreInfo" />
         <activity android:name=".PantryScanner" />
         <activity android:name=".MealPlanActivity" />
         <activity android:name=".MealDetailActivity" />

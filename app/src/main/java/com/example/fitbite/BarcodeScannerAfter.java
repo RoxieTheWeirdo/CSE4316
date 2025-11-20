@@ -24,19 +24,42 @@ public class BarcodeScannerAfter extends AppCompatActivity {
         String data = bundle.getString("data");
 
         TextView textView = (TextView) findViewById(R.id.textView);
-
         textView.setText(data);
+
+        TextView caloriesView = (TextView) findViewById(R.id.caloriesTextView);
+        String calories = "180";
+        caloriesView.setText("Calories: " + calories);
+
+        TextView sodiumView = (TextView) findViewById(R.id.sodiumTextView);
+        String sodium = "210";
+        sodiumView.setText("Sodium: " + sodium);
+
+        TextView fatsView = (TextView) findViewById(R.id.fatsTextView);
+        String fats = "16";
+        fatsView.setText("Fats: " + fats);
+
+        TextView carbsView = (TextView) findViewById(R.id.carbsTextView);
+        String carbs = "40";
+        carbsView.setText("Carbs: " + carbs);
 
         Button barcodeScan = findViewById(R.id.scanAnotherButton);
 
         barcodeScan.setOnClickListener(v -> {
             scanCode();
         });
+
+        Button moreInfo = findViewById(R.id.moreInfo);
+
+        moreInfo.setOnClickListener(v -> {
+            Intent intent = new Intent(this, BarcodeMoreInfo.class);
+            startActivity(intent);
+        });
+
     }
 
     private void scanCode() {
         ScanOptions options = new ScanOptions();
-        options.setPrompt("Press volume up to enable flash");
+        options.setPrompt("Press volume up button to enable flash");
         options.setBeepEnabled(true);
         options.setOrientationLocked(true);
         options.setCaptureActivity(CaptureAct.class);
@@ -56,6 +79,5 @@ public class BarcodeScannerAfter extends AppCompatActivity {
                 Log.e("BarcodeScannerAfter", "An error occurred", e);
             }
         }
-    });      
-    
+    });
 }

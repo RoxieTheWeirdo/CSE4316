@@ -27,7 +27,7 @@ public class BarcodeScanner extends AppCompatActivity {
 
     private void scanCode() {
         ScanOptions options = new ScanOptions();
-        options.setPrompt("Press volume up to enable flash");
+        options.setPrompt("Press volume up button to enable flash");
         options.setBeepEnabled(true);
         options.setOrientationLocked(true);
         options.setCaptureActivity(CaptureAct.class);
@@ -41,6 +41,7 @@ public class BarcodeScanner extends AppCompatActivity {
             try {
                 intent.putExtra("data", result.getContents());
                 startActivity(intent);
+                finish();
             }
             catch (Exception e) {
                 Log.e("BarcodeScanner", "An error occurred", e);
