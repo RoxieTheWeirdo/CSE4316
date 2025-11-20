@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="start|top">
+
+    <TextView
+        android:id="@+id/curUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Username"
+        android:textSize="16sp"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/curEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Email@Email"
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp"/>
+<Button
+    android:id="@+id/ChangeUsername"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Change Username"
+    android:textAllCaps="false"
+    android:layout_marginBottom="24dp"/>
+    <Button
+        android:id="@+id/ChangeEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Email"
+        android:textAllCaps="false"
+        android:layout_marginBottom="24dp"/>
+    <Button
+        android:id="@+id/ChangePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Change Password"
+        android:textAllCaps="false"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/DeleteAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Account"
+        android:textAllCaps="false"
+	android:backgroundTint="#FF0000"
+        android:layout_marginBottom="24dp"/>
+</LinearLayout>

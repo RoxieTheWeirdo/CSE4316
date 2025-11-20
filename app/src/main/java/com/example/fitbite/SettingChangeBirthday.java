@@ -1,7 +1,6 @@
 package com.example.fitbite;
 
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -17,86 +16,111 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
+import android.icu.util.Calendar;
 
-public class activity_basics_birthday extends AppCompatActivity {
+public class SettingChangeBirthday extends AppCompatActivity {
 
-    private static final String TAG = "BasicsBirthdayActivity";
+    private static final String TAG = "SettingsChangeBirthday";
     private NumberPicker monthPicker, dayPicker, yearPicker;
-    private Button btnNext;
+    private Button btnSave;
     private FirebaseFirestore db;
     private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_basics_birthday);
+        setContentView(R.layout.settings_changebirthday);
 
         monthPicker = findViewById(R.id.monthPicker);
         dayPicker = findViewById(R.id.dayPicker);
         yearPicker = findViewById(R.id.yearPicker);
-        btnNext = findViewById(R.id.btnNext);
+        btnSave = findViewById(R.id.btnNext); // Reuse Next button as Save
 
-        // Initialize Firebase
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
+        setupPickers();
+        btnSave.setOnClickListener(v -> saveBirthday());
+    }
+
+    private void setupPickers() {
         String[] months = {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
         monthPicker.setMinValue(0);
-        monthPicker.setMaxValue(11);
+        monthPicker.setMaxValue(months.length - 1);
         monthPicker.setDisplayedValues(months);
-        monthPicker.setValue(5);
 
         dayPicker.setMinValue(1);
         dayPicker.setMaxValue(31);
-        dayPicker.setValue(15);
 
         yearPicker.setMinValue(1950);
         yearPicker.setMaxValue(2010);
-        yearPicker.setValue(1995);
 
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
-
-        btnNext.setOnClickListener(v -> saveBirthdayAndProceed());
+        // Optional: prefill with current user data
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null) {
+            db.collection("users").document(user.getUid()).get().addOnSuccessListener(snap -> {
+                if (snap.exists()) {
+                    String month = snap.getString("birthMonth");
+                    Long day = snap.getLong("birthDay");
+                    Long year = snap.getLong("birthYear");
+                    if (month != null && day != null && year != null) {
+                        for (int i = 0; i < months.length; i++) {
+                            if (months[i].equals(month)) {
+                                monthPicker.setValue(i);
+                                break;
+                            }
+                        }
+                        dayPicker.setValue(day.intValue());
+                        yearPicker.setValue(year.intValue());
+                    }
+                }
+            });
+        }
     }
 
-    private void saveBirthdayAndProceed() {
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser == null) {
+    private void saveBirthday() {
+        FirebaseUser user = auth.getCurrentUser();
+        if (user == null) {
             Toast.makeText(this, "You must be logged in to save your data.", Toast.LENGTH_SHORT).show();
             return;
         }
-        String userId = currentUser.getUid();
 
         String[] months = monthPicker.getDisplayedValues();
         String month = months[monthPicker.getValue()];
         int day = dayPicker.getValue();
         int year = yearPicker.getValue();
 
-        // Create a map to hold the birthday data
-        Map<String, Object> userBirthday = new HashMap<>();
-        userBirthday.put("birthMonth", month);
-        userBirthday.put("birthDay", day);
-        userBirthday.put("birthYear", year);
-        calculateAge(month,day,year, db, userId);
-        // Save the data to Firestore, merging with existing data
-        db.collection("users").document(userId)
-                .set(userBirthday, SetOptions.merge())
-                .addOnSuccessListener(aVoid -> {
-                    Log.d(TAG, "Birthday successfully written to Firestore.");
-                    Toast.makeText(activity_basics_birthday.this, "Birthday saved!", Toast.LENGTH_SHORT).show();
+        Map<String, Object> birthdayData = new HashMap<>();
+        birthdayData.put("birthMonth", month);
+        birthdayData.put("birthDay", day);
+        birthdayData.put("birthYear", year);
 
-                    // Proceed to the next activity
-                    Intent intent = new Intent(activity_basics_birthday.this, activity_basics_height.class);
-                    startActivity(intent);
-                    finish();
+        SettingEditPersonalCalculateAge(month, day, year, db, user.getUid());
+
+        db.collection("users").document(user.getUid())
+                .set(birthdayData, SetOptions.merge())
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Birthday updated!", Toast.LENGTH_SHORT).show();
+
+                    // Return result to previous activity
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("birthMonth", month);
+                    resultIntent.putExtra("birthDay", day);
+                    resultIntent.putExtra("birthYear", year);
+                    setResult(RESULT_OK, resultIntent);
+
+                    finish(); // Close this activity
                 })
                 .addOnFailureListener(e -> {
-                    Log.w(TAG, "Error writing birthday document", e);
-                    Toast.makeText(activity_basics_birthday.this, "Error saving birthday.", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Error saving birthday", e);
+                    Toast.makeText(this, "Failed to update birthday.", Toast.LENGTH_SHORT).show();
                 });
     }
-    public static void calculateAge(String month, int day, int year, FirebaseFirestore db, String userId) {
+
+    private void SettingEditPersonalCalculateAge(String month, int day, int year, FirebaseFirestore db, String userId) {
         Calendar today = Calendar.getInstance();
         int age = today.get(Calendar.YEAR) - year;
+
         int monthInt = 0;
         switch (month) {
             case "Jan": monthInt = 1; break;
@@ -112,13 +136,15 @@ public class activity_basics_birthday extends AppCompatActivity {
             case "Nov": monthInt = 11; break;
             case "Dec": monthInt = 12; break;
             default:
-                Log.d(TAG,"Failed to calculate age for some reason!");
+                Log.w(TAG, "Invalid month for age calculation!");
                 return;
         }
+
         if (today.get(Calendar.MONTH) + 1 < monthInt ||
                 (today.get(Calendar.MONTH) + 1 == monthInt && today.get(Calendar.DAY_OF_MONTH) < day)) {
             age--;
         }
+
         Map<String, Object> ageMap = new HashMap<>();
         ageMap.put("age", age);
         db.collection("users").document(userId)

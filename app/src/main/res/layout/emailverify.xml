@@ -1,0 +1,57 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@drawable/rounded_white_bubble"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <!-- Email icon -->
+        <ImageView
+            android:id="@+id/emailIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_email"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/verifyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verification Email Sent!"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:textColor="@android:color/black"
+            android:gravity="center"/>
+
+        <!-- Message -->
+        <TextView
+            android:id="@+id/verifyMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please check your inbox for a verification email. Your new email address will not be changed until you follow the instructions in the verification email!\nIf you do not see the email, check your Junk &amp; Spam folder."
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/verifyMessage2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"/>
+    </LinearLayout>
+</FrameLayout>

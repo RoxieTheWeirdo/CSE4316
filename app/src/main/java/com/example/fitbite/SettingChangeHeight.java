@@ -1,6 +1,5 @@
 package com.example.fitbite;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -17,10 +16,11 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class activity_basics_height extends AppCompatActivity {
+public class SettingChangeHeight extends AppCompatActivity {
 
-    private static final String TAG = "BasicsHeightActivity";
-    private Button btnFeetInches, btnCentimeters, btnNext;
+    private static final String TAG = "SettingChangeHeight";
+
+    private Button btnFeetInches, btnCentimeters, btnSave;
     private NumberPicker heightPicker;
     private boolean isFeetInches = true;
 
@@ -35,15 +35,14 @@ public class activity_basics_height extends AppCompatActivity {
         btnFeetInches = findViewById(R.id.btnFeetInches);
         btnCentimeters = findViewById(R.id.btnCentimeters);
         heightPicker = findViewById(R.id.heightPicker);
-        btnNext = findViewById(R.id.btnNext);
+        btnSave = findViewById(R.id.btnNext); // Reuse Next button as Save
 
-        // Initialize Firebase
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
         setupFeetInches(); // default view
 
-        // ✅ Back
+        // Back button
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         btnFeetInches.setOnClickListener(v -> {
@@ -60,10 +59,10 @@ public class activity_basics_height extends AppCompatActivity {
             }
         });
 
-        btnNext.setOnClickListener(v -> saveHeightAndProceed());
+        btnSave.setOnClickListener(v -> saveHeight());
     }
 
-    private void saveHeightAndProceed() {
+    private void saveHeight() {
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser == null) {
             Toast.makeText(this, "You must be logged in to save your data.", Toast.LENGTH_SHORT).show();
@@ -77,31 +76,27 @@ public class activity_basics_height extends AppCompatActivity {
             String[] parts = selectedHeight.replace(" ft", "").replace(" in", "").split(" ");
             int feet = Integer.parseInt(parts[0]);
             int inches = Integer.parseInt(parts[1]);
-            double totalInches = (feet * 12) + inches;
-            heightInCm = totalInches * 2.54;
+            heightInCm = (feet * 12 + inches) * 2.54;
         } else {
             heightInCm = 100 + heightPicker.getValue();
         }
 
         Map<String, Object> userData = new HashMap<>();
-        userData.put("heightInCm", heightInCm);
+        userData.put("heightInCm", heightInCm); // optional numeric value
 
         db.collection("users").document(userId)
                 .set(userData, SetOptions.merge())
                 .addOnSuccessListener(aVoid -> {
-                    Log.d(TAG, "Height successful");
-                    Intent intent = new Intent(activity_basics_height.this, activity_basics_weight.class);
-                    startActivity(intent);
-                    finish();
+                    Toast.makeText(this, "Height updated!", Toast.LENGTH_SHORT).show();
+                    finish(); // close and return to settings
                 })
                 .addOnFailureListener(e -> {
-                    Log.w(TAG, "Error writing height", e);
-                    Toast.makeText(activity_basics_height.this, "Failed to save height.", Toast.LENGTH_SHORT).show();
+                    Log.w(TAG, "Error saving height", e);
+                    Toast.makeText(this, "Failed to save height.", Toast.LENGTH_SHORT).show();
                 });
     }
 
     private void setupFeetInches() {
-        // Count total entries first
         int count = 0;
         for (int feet = 4; feet <= 7; feet++) {
             for (int inches = 0; inches < 12; inches++) {
@@ -110,7 +105,6 @@ public class activity_basics_height extends AppCompatActivity {
             }
         }
 
-        // Create array with exact size
         String[] heights = new String[count];
         int index = 0;
         for (int feet = 4; feet <= 7; feet++) {
@@ -123,15 +117,16 @@ public class activity_basics_height extends AppCompatActivity {
         heightPicker.setMinValue(0);
         heightPicker.setMaxValue(count - 1);
         heightPicker.setDisplayedValues(heights);
-        heightPicker.setValue(19);
+        heightPicker.setValue(19); // default ~5 ft 7 in
     }
 
     private void setupCentimeters() {
-        String[] heights = new String[151];
+        String[] heights = new String[151]; // 100 cm to 250 cm
         for (int i = 0; i < 151; i++) heights[i] = (100 + i) + " cm";
+
         heightPicker.setMinValue(0);
         heightPicker.setMaxValue(150);
         heightPicker.setDisplayedValues(heights);
-        heightPicker.setValue(70);
+        heightPicker.setValue(70); // default ~170 cm
     }
 }

@@ -1,8 +1,6 @@
 package com.example.fitbite;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -18,10 +16,9 @@ import com.google.firebase.firestore.SetOptions;
 import java.util.HashMap;
 import java.util.Map;
 
-public class activity_basics_weight extends AppCompatActivity {
+public class SettingChangeWeight extends AppCompatActivity {
 
-    private static final String TAG = "BasicsWeightActivity";
-    private Button btnPounds, btnKilograms, btnNext;
+    private Button btnPounds, btnKilograms, btnSave;
     private SeekBar weightSeekBar;
     private TextView tvWeightValue;
     private boolean isPounds = true;
@@ -33,22 +30,18 @@ public class activity_basics_weight extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_basics_weight);
+        setContentView(R.layout.settings_changeweight);
 
         btnPounds = findViewById(R.id.btnPounds);
         btnKilograms = findViewById(R.id.btnKilograms);
         weightSeekBar = findViewById(R.id.weightSeekBar);
         tvWeightValue = findViewById(R.id.tvWeightValue);
-        btnNext = findViewById(R.id.btnNext);
+        btnSave = findViewById(R.id.btnNext);
 
-        // Initialize Firebase
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
         setupPounds();
-
-        // ✅ Back
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         btnPounds.setOnClickListener(v -> {
             if (!isPounds) {
@@ -74,45 +67,13 @@ public class activity_basics_weight extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) { }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) { }
         });
 
-        btnNext.setOnClickListener(v -> saveWeightAndProceed());
-    }
-
-    private void saveWeightAndProceed() {
-        FirebaseUser currentUser = auth.getCurrentUser();
-        if (currentUser == null) {
-            Toast.makeText(this, "You must be logged in to save your data.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        String userId = currentUser.getUid();
-        double weightInPounds = isPounds ? currentWeight : currentWeight * 2.205;
-
-        Map<String, Object> userData = new HashMap<>();
-        userData.put("weightInPounds", weightInPounds);
-
-        db.collection("users").document(userId)
-                .set(userData, SetOptions.merge())
-                .addOnSuccessListener(aVoid -> {
-                    Log.d(TAG, "Weight successfully written!");
-                    // Proceed to the next activity
-                    Intent intent = new Intent(activity_basics_weight.this, activity_basics_exercise.class);
-                    intent.putExtra("weight", currentWeight);
-                    intent.putExtra("isPounds", isPounds);
-                    startActivity(intent);
-                    finish();
-                })
-                .addOnFailureListener(e -> {
-                    Log.w(TAG, "Error writing weight", e);
-                    Toast.makeText(activity_basics_weight.this, "Failed to save weight.", Toast.LENGTH_SHORT).show();
-                });
+        btnSave.setOnClickListener(v -> saveWeight());
     }
 
     private void setupPounds() {
@@ -129,5 +90,28 @@ public class activity_basics_weight extends AppCompatActivity {
 
     private void updateWeightDisplay() {
         tvWeightValue.setText(currentWeight + (isPounds ? " lbs" : " kg"));
+    }
+
+    private void saveWeight() {
+        FirebaseUser user = auth.getCurrentUser();
+        if (user == null) {
+            Toast.makeText(this, "You must be logged in to save your data.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double weightInPounds = isPounds ? currentWeight : currentWeight * 2.205;
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("weightInPounds", weightInPounds);
+
+        db.collection("users").document(user.getUid())
+                .set(data, SetOptions.merge())
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Weight updated!", Toast.LENGTH_SHORT).show();
+                    finish(); // Return to SettingEditPersonal
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Failed to save weight.", Toast.LENGTH_SHORT).show();
+                });
     }
 }

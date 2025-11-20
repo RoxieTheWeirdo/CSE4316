@@ -10,6 +10,8 @@ import android.widget.Toast;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -18,7 +20,14 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -29,11 +38,25 @@ public class LoginActivity extends AppCompatActivity {
     private View loadingOverlay;
     private FirebaseAuth auth;
     private GoogleSignInClient googleSignInClient;
+    private FirebaseFirestore firestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LocalSettings settings = new LocalSettings(this);
+        String theme = settings.getTheme();
+        switch (theme) {
+            case "Light":
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                break;
+            case "Dark":
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                break;
+            default:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+                break;
+        }
         setContentView(R.layout.login_page); // connects to login_page.xml
-
+        firestore = FirebaseFirestore.getInstance();
         // Connect XML elements
         usernameInput = findViewById(R.id.username_input);
         passwordInput = findViewById(R.id.password_input);
@@ -51,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
         toast = findViewById(R.id.toast);
         auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
         googleSignInButton.setOnClickListener(v -> signInWithGoogle());
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("799401116375-mq7i87vusumib87i8194g17cd7t5fcjh.apps.googleusercontent.com")
@@ -71,9 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                             loadingScreen(false);
                             if (task.isSuccessful()) {
                                 showMessage("Login successful!", true);
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                startActivity(intent);
-                                finish();
+                                checkUserFirestore();
                             } else {
                                 showMessage("Login failed! Invalid Username/Email or Password!", false);
                             }
@@ -90,9 +112,29 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             }
             else {
-                Intent intent = new Intent(LoginActivity.this, CreateAccount.class);
-                startActivity(intent);
-                finish();
+                loadingScreen(true);
+                auth.createUserWithEmailAndPassword(username, password)
+                        .addOnCompleteListener(task -> {
+                            loadingScreen(false);
+                            if (task.isSuccessful()) {
+                                FirebaseUser user = auth.getCurrentUser();
+                                Map<String, Object> userData = new HashMap<>();
+                                userData.put("email", user.getEmail());
+                                userData.put("uid", user.getUid());
+                                userData.put("username", null);
+                                firestore.collection("users")
+                                        .document(user.getUid())
+                                        .set(userData)
+                                        .addOnSuccessListener(unused -> {
+                                            showMessage("Account created!", true);
+                                            startActivity(new Intent(LoginActivity.this, CreateAccount.class));
+                                            finish();
+                                        })
+                                        .addOnFailureListener(e ->
+                                                showMessage("Failed to create profile: " + e.getMessage(), false)
+                                        );
+                            }
+                        });
             }
         });
     }
@@ -115,7 +157,38 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
-//Currently, if you sign in with Google it bypasses the create account
+    private void checkUserFirestore() {
+        String uid = auth.getCurrentUser().getUid();
+        DocumentReference userDoc = firestore.collection("users").document(uid);
+
+        userDoc.get().addOnSuccessListener(snapshot -> {
+            if (snapshot.exists()) {
+                // User already exists → go to Home
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                finish();
+            } else {
+                // User does NOT exist → create a simple default profile
+                Map<String, Object> defaultUser = new HashMap<>();
+                defaultUser.put("email", auth.getCurrentUser().getEmail());
+                defaultUser.put("uid", auth.getCurrentUser().getUid());
+                defaultUser.put("username", auth.getCurrentUser().getDisplayName());
+                userDoc.set(defaultUser)
+                        .addOnSuccessListener(unused -> {
+                            showMessage("User profile created", true);
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            finish();
+                        })
+                        .addOnFailureListener(e ->
+                                showMessage("Failed to create profile: " + e.getMessage(), false)
+                        );
+            }
+        }).addOnFailureListener(e ->
+                showMessage("Firestore error: " + e.getMessage(), false)
+        );
+    }
+
+
+    //Currently, if you sign in with Google it bypasses the create account
 //When we implement a database, if user data is null, then we can take it to the CreateAccount.java, where fields will be filled in appropriately.
 //Think of this as more of a placeholder for right now
     private void firebaseAuthWithGoogle(String idToken) {
@@ -130,9 +203,7 @@ public class LoginActivity extends AppCompatActivity {
                     loadingScreen(false);
                     if (task.isSuccessful()) {
                         showMessage("Google login successful!", true);
-                        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                        finish();
+                        checkUserFirestore();
                     }
                     else {
                         showMessage("Firebase sign-in failed: " + task.getException().getMessage(), false);
