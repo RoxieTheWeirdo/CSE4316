@@ -58,10 +58,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
-    // Declare the dependency for the Cloud Firestore library
-    // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-firestore")
     implementation("androidx.activity:activity-compose:1.9.3")
     implementation("androidx.compose.ui:ui")
@@ -80,4 +77,7 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.google.code.gson:gson:2.10.1")
 }

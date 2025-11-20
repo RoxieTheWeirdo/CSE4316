@@ -2,6 +2,7 @@ package com.example.fitbite;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.example.fitbite.network.ProxyClient;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -23,7 +25,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private GoogleSignInClient googleSignInClient;
     private FirebaseFirestore firestore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,14 +57,17 @@ public class LoginActivity extends AppCompatActivity {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
                 break;
         }
+
         setContentView(R.layout.login_page); // connects to login_page.xml
+        testFatsecret();  // <-- TEST RUNS HERE
+
         firestore = FirebaseFirestore.getInstance();
+
         // Connect XML elements
         usernameInput = findViewById(R.id.username_input);
         passwordInput = findViewById(R.id.password_input);
         loginButton = findViewById(R.id.login_button);
         createAccountButton = findViewById(R.id.create_account_button);
-        //The buttons from LoginTEST.java, added a Google SignIn button but we can refine that later
         googleSignInButton = findViewById(R.id.GoogleSignIn);
 
         loadingOverlay = getLayoutInflater().inflate(R.layout.loading, null);
@@ -76,11 +81,13 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         googleSignInButton.setOnClickListener(v -> signInWithGoogle());
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("799401116375-mq7i87vusumib87i8194g17cd7t5fcjh.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this, gso);
+
         // Handle login button → go to Home
         loginButton.setOnClickListener(v -> {
             String username = usernameInput.getText().toString().trim();
@@ -138,16 +145,19 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     private void signInWithGoogle() {
         Intent signInIntent = googleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            Task<GoogleSignInAccount> task =
+                    GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account.getIdToken());
@@ -157,21 +167,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
     private void checkUserFirestore() {
         String uid = auth.getCurrentUser().getUid();
         DocumentReference userDoc = firestore.collection("users").document(uid);
 
         userDoc.get().addOnSuccessListener(snapshot -> {
             if (snapshot.exists()) {
-                // User already exists → go to Home
                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 finish();
             } else {
-                // User does NOT exist → create a simple default profile
                 Map<String, Object> defaultUser = new HashMap<>();
                 defaultUser.put("email", auth.getCurrentUser().getEmail());
                 defaultUser.put("uid", auth.getCurrentUser().getUid());
                 defaultUser.put("username", auth.getCurrentUser().getDisplayName());
+
                 userDoc.set(defaultUser)
                         .addOnSuccessListener(unused -> {
                             showMessage("User profile created", true);
@@ -187,16 +197,14 @@ public class LoginActivity extends AppCompatActivity {
         );
     }
 
-
-    //Currently, if you sign in with Google it bypasses the create account
-//When we implement a database, if user data is null, then we can take it to the CreateAccount.java, where fields will be filled in appropriately.
-//Think of this as more of a placeholder for right now
     private void firebaseAuthWithGoogle(String idToken) {
         if (idToken == null) {
             showMessage("No ID token returned", false);
             return;
         }
+
         loadingScreen(true);
+
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
@@ -206,21 +214,35 @@ public class LoginActivity extends AppCompatActivity {
                         checkUserFirestore();
                     }
                     else {
-                        showMessage("Firebase sign-in failed: " + task.getException().getMessage(), false);
+                        showMessage("Firebase sign-in failed: " +
+                                task.getException().getMessage(), false);
                     }
                 });
     }
 
-    //Sometimes the text is a bit too fast for the toast, so I put this here just to help me a little bit extra
     private void showMessage(String message, boolean success) {
         toast.setText(message);
-        toast.setTextColor(getResources().getColor(success
-                ? android.R.color.holo_green_dark
-                : android.R.color.holo_red_dark));
+        toast.setTextColor(getResources().getColor(
+                success ? android.R.color.holo_green_dark : android.R.color.holo_red_dark
+        ));
     }
+
     private void loadingScreen(boolean show) {
         if (loadingOverlay != null) {
             loadingOverlay.setVisibility(show ? View.VISIBLE : View.GONE);
         }
+    }
+
+
+    private void testFatsecret() {
+        new Thread(() -> {
+            try {
+                ProxyClient proxy = new ProxyClient();
+                String json = proxy.searchFood("apple");
+                Log.d("FATSECRET_TEST", json);
+            } catch (Exception e) {
+                Log.e("FATSECRET_TEST", "Error", e);
+            }
+        }).start();
     }
 }
