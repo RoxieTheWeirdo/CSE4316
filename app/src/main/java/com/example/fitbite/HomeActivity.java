@@ -86,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
         LinearLayout moreSection = findViewById(R.id.more_section);
         moreSection.setOnClickListener(v -> {
             Toast.makeText(this, "Diary clicked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(HomeActivity.this, PantryScanner.class);
+            Intent intent = new Intent(HomeActivity.this, SettingsOverview.class);
             startActivity(intent);
         });
     }
@@ -123,6 +123,8 @@ public class HomeActivity extends AppCompatActivity {
 
         popupView.findViewById(R.id.btnMealScan).setOnClickListener(v -> {
             Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, PantryScanner.class);
+            startActivity(intent);
             popupWindow.dismiss();
         });
 

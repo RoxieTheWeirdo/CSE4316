@@ -58,6 +58,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
+    implementation("com.google.firebase:firebase-firestore")
     implementation("androidx.activity:activity-compose:1.9.3")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.material3:material3")
@@ -74,6 +76,10 @@ dependencies {
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.google.code.gson:gson:2.10.1")
     //new
     implementation("com.google.android.material:material:1.12.0")
     implementation("nl.dionsegijn:konfetti-xml:2.0.4")
