@@ -74,4 +74,12 @@ dependencies {
     implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
     debugImplementation("androidx.compose.ui:ui-tooling")
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
+    //new
+    implementation("com.google.android.material:material:1.12.0")
+    implementation("nl.dionsegijn:konfetti-xml:2.0.4")
+    implementation("nl.dionsegijn:konfetti-compose:2.0.4")
+    implementation("nl.dionsegijn:konfetti-core:2.0.4")
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+
 }

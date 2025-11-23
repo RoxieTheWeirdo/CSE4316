@@ -128,6 +128,8 @@ public class HomeActivity extends AppCompatActivity {
 
         popupView.findViewById(R.id.btnWeight).setOnClickListener(v -> {
             Toast.makeText(this, "Weight clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, WeightActivity.class);
+            startActivity(intent);
             popupWindow.dismiss();
         });
 

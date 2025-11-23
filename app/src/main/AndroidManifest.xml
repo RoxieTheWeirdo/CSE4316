@@ -25,6 +25,7 @@
         </activity>
 
 
+
         <activity android:name=".CreateAccount" />
 
 
@@ -45,5 +46,6 @@
         <activity android:name=".MealPlanActivity" />
         <activity android:name=".MealDetailActivity" />
         <activity android:name=".FoodDiaryActivity" />
+        <activity android:name=".WeightActivity" />
     </application>
 </manifest>
