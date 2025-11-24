@@ -70,6 +70,9 @@ public class LoginActivity extends AppCompatActivity {
         createAccountButton = findViewById(R.id.create_account_button);
         googleSignInButton = findViewById(R.id.GoogleSignIn);
 
+        // ✅ ADDED LINE
+        Button forgotPasswordButton = findViewById(R.id.forgotPasswordButton);
+
         loadingOverlay = getLayoutInflater().inflate(R.layout.loading, null);
         FrameLayout root = (FrameLayout) getWindow().getDecorView().findViewById(android.R.id.content);
         root.addView(loadingOverlay, new FrameLayout.LayoutParams(
@@ -143,6 +146,12 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         });
             }
+        });
+
+        // ✅ ADDED CLICK LISTENER — takes user to Forgot Password screen
+        forgotPasswordButton.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+            startActivity(intent);
         });
     }
 
