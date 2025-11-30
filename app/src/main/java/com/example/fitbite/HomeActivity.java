@@ -2,6 +2,8 @@ package com.example.fitbite;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -22,7 +24,18 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Notifications.createChannel(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
 
+                requestPermissions(
+                        new String[]{ android.Manifest.permission.POST_NOTIFICATIONS },
+                        100
+                );
+            }
+        }
+        Notifications.showNotification(this, 1, "A Notification!", "Test Notification", Notifications.MinimalNotifs);
         // Calories Section
         TextView tvCaloriesRemaining = findViewById(R.id.tv_calories_remaining);
         TextView tvBaseGoal = findViewById(R.id.tv_base_goal);

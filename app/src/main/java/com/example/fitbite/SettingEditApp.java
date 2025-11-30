@@ -1,10 +1,15 @@
 package com.example.fitbite;
 
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.NotificationManagerCompat;
 
 public class SettingEditApp extends AppCompatActivity {
 
@@ -75,6 +80,45 @@ public class SettingEditApp extends AppCompatActivity {
             if (checkedId == R.id.btnImperial) selectedUnit = "Imperial";
 
             localSettings.setUnitPreference(selectedUnit);
+        });
+        MaterialButtonToggleGroup notifGroup = findViewById(R.id.notificationToggleGroup);
+        MaterialButton btnOff = findViewById(R.id.btnNotifyOff);
+        MaterialButton btnMinimal = findViewById(R.id.btnNotifyMinimal);
+        MaterialButton btnAll = findViewById(R.id.btnNotifyAll);
+
+        String mode = localSettings.getNotificationMode();
+        switch (mode) {
+            case "Minimal": notifGroup.check(R.id.btnNotifyMinimal); break;
+            case "All": notifGroup.check(R.id.btnNotifyAll); break;
+            default: notifGroup.check(R.id.btnNotifyOff); break;
+        }
+        notifGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (!isChecked) return;
+
+            String selected = "Off";
+            if (checkedId == R.id.btnNotifyMinimal) selected = "Minimal";
+            if (checkedId == R.id.btnNotifyAll) selected = "All";
+
+            NotificationManagerCompat manager = NotificationManagerCompat.from(this);
+            boolean systemEnabled = manager.areNotificationsEnabled();
+            boolean permissionGranted = true;
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                permissionGranted = checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                        == PackageManager.PERMISSION_GRANTED;
+            }
+
+            if (!systemEnabled || !permissionGranted) {
+                Toast.makeText(this,
+                        "Enable notifications in FitBite's settings to show notifications!",
+                        Toast.LENGTH_LONG).show();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && !permissionGranted) {
+                    requestPermissions(new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 100);
+                }
+            }
+
+            // Save setting locally anyway
+            localSettings.setNotificationMode(selected);
         });
     }
 }

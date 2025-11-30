@@ -64,4 +64,35 @@
         android:layout_height="wrap_content"
         android:text="Imperial"/>
 </com.google.android.material.button.MaterialButtonToggleGroup>
+<TextView
+    android:text="Notification Preference"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="8dp"/>
+<com.google.android.material.button.MaterialButtonToggleGroup
+    android:id="@+id/notificationToggleGroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:singleSelection="true">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNotifyOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Off" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNotifyMinimal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Minimal" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNotifyAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All" />
+</com.google.android.material.button.MaterialButtonToggleGroup>
+
 </LinearLayout>

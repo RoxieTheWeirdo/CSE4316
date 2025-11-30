@@ -8,6 +8,8 @@ public class LocalSettings {
     private static final String PREFS_NAME = "app_settings";
     private static final String KEY_THEME = "theme";
     private static final String UnitPreference = "UnitPreference";
+    private static final String NotificationFreq = "notification_mode";
+
     final private SharedPreferences prefs;
 
     public LocalSettings(Context context) {
@@ -20,9 +22,10 @@ public class LocalSettings {
     public String getUnitPreference() {
         return prefs.getString(UnitPreference, "System");
     }
+    public String getNotificationMode() { return prefs.getString(NotificationFreq, "Off");}
     public void setTheme(String theme) {
         prefs.edit().putString(KEY_THEME, theme).apply();
     }
-    public void setUnitPreference(String unit) { prefs.edit().putString(UnitPreference, unit).apply();
-    }
+    public void setUnitPreference(String unit) { prefs.edit().putString(UnitPreference, unit).apply();}
+    public void setNotificationMode(String mode) { prefs.edit().putString(NotificationFreq, mode).apply();}
 }

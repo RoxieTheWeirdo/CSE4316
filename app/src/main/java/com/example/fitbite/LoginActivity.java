@@ -1,9 +1,11 @@
 package com.example.fitbite;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -132,6 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                                 userData.put("email", user.getEmail());
                                 userData.put("uid", user.getUid());
                                 userData.put("username", null);
+                                userData.put("initialized", false);
                                 firestore.collection("users")
                                         .document(user.getUid())
                                         .set(userData)
@@ -183,8 +186,16 @@ public class LoginActivity extends AppCompatActivity {
 
         userDoc.get().addOnSuccessListener(snapshot -> {
             if (snapshot.exists()) {
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                finish();
+                //Incomplete account setup
+                Boolean initialized = snapshot.getBoolean("initialized");
+                if (initialized != null && initialized) {
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    finish();
+                }
+                else {
+                    startActivity(new Intent(LoginActivity.this, CreateAccount.class));
+                    finish();
+                }
             } else {
                 Map<String, Object> defaultUser = new HashMap<>();
                 defaultUser.put("email", auth.getCurrentUser().getEmail());
@@ -237,6 +248,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loadingScreen(boolean show) {
+        if (show) {
+            View view = this.getCurrentFocus();
+            if (view != null) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        }
         if (loadingOverlay != null) {
             loadingOverlay.setVisibility(show ? View.VISIBLE : View.GONE);
         }

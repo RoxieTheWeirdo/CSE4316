@@ -82,7 +82,7 @@ public class activity_basics_exercise extends AppCompatActivity {
 
         Map<String, Object> userData = new HashMap<>();
         userData.put("exerciseLevel", selectedExercise);
-
+        userData.put("initialized", true);
         db.collection("users").document(userId)
                 .set(userData, SetOptions.merge())
                 .addOnSuccessListener(aVoid -> {

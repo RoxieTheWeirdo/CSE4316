@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <application
 
@@ -41,6 +42,7 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SearchFoodActivity" />
+        <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".EditFoodActivity" />
         <activity android:name=".BarcodeScanner"
             android:stateNotNeeded="true"/>

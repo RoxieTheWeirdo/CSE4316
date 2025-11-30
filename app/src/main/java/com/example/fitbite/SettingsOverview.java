@@ -3,6 +3,7 @@ package com.example.fitbite;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -69,6 +70,7 @@ public class SettingsOverview extends AppCompatActivity {
     }
 
     private void showTab(String tab) {
+
         currentTab = tab; // update active tab
         contentContainer.removeAllViews();
 
@@ -189,7 +191,6 @@ public class SettingsOverview extends AppCompatActivity {
                 view = getLayoutInflater().inflate(R.layout.settings_apppage, contentContainer, false);
                 tabAppText.setTextColor(Color.parseColor("#4DA6FF"));
 
-                // NEW CODE — Update the displayed theme
                 TextView appThemeStatus = view.findViewById(R.id.appThemeStatus);
                 LocalSettings localSettings = new LocalSettings(this);
 
@@ -215,6 +216,9 @@ public class SettingsOverview extends AppCompatActivity {
                 } else {
                     unitStatus.setText("Imperial");
                 }
+                TextView notifStatus = view.findViewById(R.id.appNotificationStatus);
+                String currentNotif = localSettings.getNotificationMode(); // "Off", "Minimal", or "All"
+                notifStatus.setText(currentNotif);
                 break;
         }
         if (view != null) contentContainer.addView(view);
