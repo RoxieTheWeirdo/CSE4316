@@ -29,13 +29,19 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import nl.dionsegijn.konfetti.core.PartyFactory;
@@ -54,7 +60,7 @@ public class WeightActivity extends AppCompatActivity {
     private LineChart weekChart, monthChart, yearChart;
 
     //Sample data for now
-    private float currentWeight = 164.2f;
+    private float currentWeight = 0f;
     private float goalWeight = 150f;
 
     //User entered weight history
@@ -74,6 +80,7 @@ public class WeightActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weight);
 
@@ -88,6 +95,8 @@ public class WeightActivity extends AppCompatActivity {
         yearChart = findViewById(R.id.yearChart);
 
         Button logWeightButton = findViewById(R.id.logWeightButton);
+
+        loadSavedWeightAndDate();
 
         //Setup Tabs
         TabLayout weightTabs = findViewById(R.id.weightTabs);
@@ -144,6 +153,9 @@ public class WeightActivity extends AppCompatActivity {
         Button historyButton = findViewById(R.id.historyButton);
         historyButton.setOnClickListener(v -> showHistoryPopup());
 
+        loadHistoryFromFirebase();
+
+
         //Load UI and charts
         loadWeeklyData();
         updateUI();
@@ -154,6 +166,35 @@ public class WeightActivity extends AppCompatActivity {
         //Set new goal weight button
         Button setGoalButton = findViewById(R.id.setGoalButton);
         setGoalButton.setOnClickListener(v -> showSetGoalDialog());
+    }
+
+    private void loadSavedWeightAndDate() {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        if (currentUser != null) {
+            db.collection("users").document(currentUser.getUid())
+                    .get()
+                    .addOnSuccessListener(doc -> {
+                        if (doc.exists()) {
+
+                            if (doc.contains("weightInPounds")) {
+                                currentWeight = doc.getDouble("weightInPounds").floatValue();
+                            }
+
+                            if (doc.contains("lastUpdatedDate") && doc.contains("lastUpdatedTime")) {
+                                String d = doc.getString("lastUpdatedDate");
+                                String t = doc.getString("lastUpdatedTime");
+                                lastUpdatedText.setText("Last updated: " + d + " • " + t);
+                            }
+
+                            updateUI();
+                        }
+                    })
+                    .addOnFailureListener(e ->
+                            Toast.makeText(this, "Failed to load weight", Toast.LENGTH_SHORT).show()
+                    );
+        }
     }
 
     //UI UPDATE
@@ -234,6 +275,21 @@ public class WeightActivity extends AppCompatActivity {
         );
     }
 
+    private void saveToFirebase(float weight, String date, String time) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("weightInPounds", weight);
+        data.put("lastUpdatedDate", date);
+        data.put("lastUpdatedTime", time);
+
+        db.collection("users").document(user.getUid())
+                .set(data, SetOptions.merge());
+    }
+
     //DIALOG: LOG WEIGHT
     private void showLogWeightDialog() {
         View dialogView = LayoutInflater.from(this)
@@ -302,6 +358,12 @@ public class WeightActivity extends AppCompatActivity {
                     //Update current weight
                     currentWeight = Float.parseFloat(w);
                     updateUI();
+                    // Save to Firebase
+                    saveToFirebase(
+                            currentWeight,
+                            etDate.getText().toString(),
+                            etTime.getText().toString()
+                    );
 
                     //Add entry to history
                     historyList.add(0, new WeightEntry(
@@ -309,6 +371,29 @@ public class WeightActivity extends AppCompatActivity {
                             etDate.getText().toString(),
                             etTime.getText().toString()
                     ));
+                    //SAVE HISTORY ENTRY TO FIREBASE SUBCOLLECTION
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user != null) {
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                        Map<String, Object> historyEntry = new HashMap<>();
+                        historyEntry.put("weight", currentWeight);
+                        historyEntry.put("date", etDate.getText().toString());
+                        historyEntry.put("time", etTime.getText().toString());
+
+                        db.collection("users")
+                                .document(user.getUid())
+                                .collection("weightHistory")
+                                .add(historyEntry)
+                                .addOnSuccessListener(ref -> {
+                                    Toast.makeText(this, "History saved!", Toast.LENGTH_SHORT).show();
+                                    loadHistoryFromFirebase();
+                                })
+                                .addOnFailureListener(e -> {
+                                    Toast.makeText(this, "FAILED: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                });
+                    }
+
 
                     historyAdapter.notifyDataSetChanged();
 
@@ -441,6 +526,37 @@ public class WeightActivity extends AppCompatActivity {
             yearChart.moveViewToX(values.length - 1);
         });
     }
+    private void loadHistoryFromFirebase() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) return;
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("users")
+                .document(user.getUid())
+                .collection("weightHistory")
+                .get()
+                .addOnSuccessListener(query -> {
+
+                    historyList.clear();
+
+                    for (var doc : query.getDocuments()) {
+                        float w = doc.getDouble("weight").floatValue();
+                        String d = doc.getString("date");
+                        String t = doc.getString("time");
+
+                        historyList.add(new WeightEntry(w, d, t));
+                    }
+
+                    // Sort newest first
+                    historyList.sort((a, b) ->
+                            b.getDateTime().compareTo(a.getDateTime())
+                    );
+
+                    historyAdapter.notifyDataSetChanged();
+                });
+    }
+
 
     //Chart styling
     private void configureYearChart() {
@@ -655,6 +771,19 @@ public class WeightActivity extends AppCompatActivity {
                     .setTitle("Clear History")
                     .setMessage("Are you sure you want to delete all logged weights?")
                     .setPositiveButton("Clear", (d, i) -> {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        if (user != null) {
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            db.collection("users")
+                                    .document(user.getUid())
+                                    .collection("weightHistory")
+                                    .get()
+                                    .addOnSuccessListener(query -> {
+                                        for (var doc : query.getDocuments()) {
+                                            doc.getReference().delete();
+                                        }
+                                    });
+                        }
                         historyList.clear();
                         historyAdapter.notifyDataSetChanged();
                         Toast.makeText(this, "History cleared",
