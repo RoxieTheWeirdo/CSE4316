@@ -1,7 +1,16 @@
+import java.util.Properties
+import java.io.FileInputStream
+
+val camerax_version = "1.3.4"
+
+val properties = Properties()
+val fatsecretConsumerKey = "d93a1c71a19841cfbbef59d49370fe3e"
+val fatsecretConsumerSecret = "685ad09e5b5942ba9c6764ad750825a7"
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0"
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {
@@ -16,10 +25,19 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "FATSECRET_CONSUMER_KEY", "\"${fatsecretConsumerKey.trim()}\"")
+        buildConfigField("String", "FATSECRET_CONSUMER_SECRET", "\"${fatsecretConsumerSecret.trim()}\"")
+        buildConfigField("String", "CLARIFAI_API_KEY", "\"3254255dfab8489dbb2c2b552481f600\"")
+        buildConfigField("String", "CLARIFAI_WORKFLOW_ID", "\"FoodImageModel\"")
+        buildConfigField("String", "CLARIFAI_WORKFLOW_VERSION", "\"034d2b10314c4e30892e6ffcbe9af4c0\"")
+
     }
 
     buildFeatures {
         compose = true
+        viewBinding = true
+        buildConfig = true
     }
 
     composeOptions {
@@ -37,25 +55,39 @@ android {
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2024.09.01")
+    val composeBom = platform(libs.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
-    // Core Compose libraries
-    implementation("androidx.activity:activity-compose:1.9.3")
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation(libs.activity.compose)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.material3)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.glance.appwidget)
+    implementation(libs.glance.material3)
 
-    // Debug tools
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 
-    // Existing dependencies
+    implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.core.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+    implementation("androidx.camera:camera-core:$camerax_version")
+    implementation("androidx.camera:camera-camera2:$camerax_version")
+    implementation("androidx.camera:camera-lifecycle:$camerax_version")
+    implementation("androidx.camera:camera-view:$camerax_version")
+    implementation("androidx.camera:camera-video:$camerax_version")
+
+    implementation("androidx.navigation:navigation-fragment-ktx:2.8.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.8.3")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }

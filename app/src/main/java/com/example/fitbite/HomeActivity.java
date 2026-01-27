@@ -1,19 +1,20 @@
 package com.example.fitbite;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.Toast;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.fragment.app.Fragment;
+import com.example.nutritionalappplanner.page.ScanResultFragment;
+import com.example.nutritionalappplanner.page.FoodDetailFragment;
 import com.google.android.material.card.MaterialCardView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -23,25 +24,30 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Calories Section
+        setupHomeViews();
+        setupCenterButton();
+        setupSections();
+        setupFragmentBackStackListener();
+    }
+
+    // --- Setup the home screen views and sample data ---
+    private void setupHomeViews() {
         TextView tvCaloriesRemaining = findViewById(R.id.tv_calories_remaining);
         TextView tvBaseGoal = findViewById(R.id.tv_base_goal);
         TextView tvFoodTotal = findViewById(R.id.tv_food_total);
         TextView tvExerciseTotal = findViewById(R.id.tv_exercise_total);
 
-        // Food Log
         TextView tvMealName = findViewById(R.id.tv_meal_name);
         TextView tvMealCal = findViewById(R.id.tv_meal_cal);
         TextView tvMealTime = findViewById(R.id.tv_food_time);
         ImageView ivMealThumb = findViewById(R.id.iv_meal_thumb);
 
-        // Steps and Exercise
         TextView tvStepsCount = findViewById(R.id.tv_steps_count);
         TextView tvStepsGoal = findViewById(R.id.tv_steps_goal);
         TextView tvExerciseCal = findViewById(R.id.tv_ex_cal);
         TextView tvExerciseTime = findViewById(R.id.tv_ex_time);
 
-        // --- Example data ---
+        // Example data
         int calorieGoal = 1900;
         int foodConsumed = 1225;
         int exerciseBurned = 200;
@@ -65,31 +71,26 @@ public class HomeActivity extends AppCompatActivity {
         ivMealThumb.setOnClickListener(v ->
                 Toast.makeText(HomeActivity.this, "Opening food log...", Toast.LENGTH_SHORT).show()
         );
-
-        // --- Center + Button Popup Functionality ---
-        MaterialCardView centerButton = findViewById(R.id.centerButton);
-        centerButton.setOnClickListener(this::showPopupMenu);
-
-        //ADDED MEAL PLAN section 
-        LinearLayout planSection = findViewById(R.id.plan_section);
-        planSection.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, MealPlanActivity.class);
-            startActivity(intent);
-        });
-
-        LinearLayout diarySection = findViewById(R.id.diary_section);
-        diarySection.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, FoodDiaryActivity.class);
-            startActivity(intent);
-        });
     }
 
-    // Method to show popup menu
-    private void showPopupMenu(View anchorView) {
-        // Inflate popup layout
-        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_options, null);
+    // --- Setup center + button popup ---
+    private void setupCenterButton() {
+        MaterialCardView centerButton = findViewById(R.id.centerButton);
+        centerButton.setOnClickListener(this::showPopupMenu);
+    }
 
-        // Create popup window
+    // --- Setup plan & diary sections ---
+    private void setupSections() {
+        LinearLayout planSection = findViewById(R.id.plan_section);
+        planSection.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, MealPlanActivity.class)));
+
+        LinearLayout diarySection = findViewById(R.id.diary_section);
+        diarySection.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class)));
+    }
+
+    // --- Show popup menu ---
+    private void showPopupMenu(View anchorView) {
+        View popupView = LayoutInflater.from(this).inflate(R.layout.popup_options, null);
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -99,23 +100,29 @@ public class HomeActivity extends AppCompatActivity {
 
         popupWindow.setElevation(10);
 
-        // Set button actions
         popupView.findViewById(R.id.btnSearchFood).setOnClickListener(v -> {
             Toast.makeText(this, "Search Food clicked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(HomeActivity.this, SearchFoodActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(HomeActivity.this, SearchFoodActivity.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnBarcodeScan).setOnClickListener(v -> {
             Toast.makeText(this, "Barcode Scan clicked", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(HomeActivity.this, BarcodeScanner.class);
-            startActivity(intent);
+            startActivity(new Intent(HomeActivity.this, BarcodeScanner.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnMealScan).setOnClickListener(v -> {
             Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
+
+            hideHomeViews();
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new ScanCameraFragment())
+                    .addToBackStack(null) // no name needed
+                    .commit();
+
             popupWindow.dismiss();
         });
 
@@ -124,7 +131,35 @@ public class HomeActivity extends AppCompatActivity {
             popupWindow.dismiss();
         });
 
-        // Show popup centered on screen
         popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0, 550);
     }
+
+    // --- Hide/show home views helpers ---
+    private void hideHomeViews() {
+        View contentRoot = findViewById(R.id.content_root);
+        View scroll = findViewById(R.id.scroll);
+        if (contentRoot != null) contentRoot.setVisibility(View.GONE);
+        if (scroll != null) scroll.setVisibility(View.GONE);
+    }
+
+    private void showHomeViews() {
+        View contentRoot = findViewById(R.id.content_root);
+        View scroll = findViewById(R.id.scroll);
+        if (contentRoot != null) contentRoot.setVisibility(View.VISIBLE);
+        if (scroll != null) scroll.setVisibility(View.VISIBLE);
+    }
+
+    // --- Handle fragment back stack changes to restore/hide home views ---
+    private void setupFragmentBackStackListener() {
+        getSupportFragmentManager().addOnBackStackChangedListener(() -> {
+            Fragment topFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+            if (topFragment instanceof ScanCameraFragment || topFragment instanceof ScanResultFragment || topFragment instanceof FoodDetailFragment) {
+                hideHomeViews();
+            } else {
+                showHomeViews();
+            }
+        });
+    }
 }
+
