@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <!-- Age (Calculated from Birthday) -->
+    <TextView
+        android:text="Age (Calculated from Birthday)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="69"
+        android:layout_marginBottom="16dp"/>
+    <!-- Birthday -->
+    <TextView
+        android:text="Birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/personalBirthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not set"
+        android:layout_marginBottom="16dp"/>
+    <!-- Weight -->
+    <TextView
+        android:text="Weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/personalWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not set"
+        android:layout_marginBottom="16dp"/>
+    <!-- Height -->
+    <TextView
+        android:text="Height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/personalHeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not set"
+        android:layout_marginBottom="16dp"/>
+    <TextView
+        android:text="Sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not set"
+        android:layout_marginBottom="16dp"/>
+    <!-- Exercise Level -->
+    <TextView
+        android:text="Exercise Level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/exerciselevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not set"
+        android:layout_marginBottom="16dp"/>
+</LinearLayout>

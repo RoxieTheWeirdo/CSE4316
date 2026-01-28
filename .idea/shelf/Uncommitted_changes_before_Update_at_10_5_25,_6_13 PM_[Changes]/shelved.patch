@@ -1,0 +1,2594 @@
+Index: BarcodeScanner/app/src/main/res/drawable/ic_launcher_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/drawable/ic_launcher_background.xml b/BarcodeScanner/app/src/main/res/drawable/ic_launcher_background.xml
+new file mode 100644
+--- /dev/null	(date 1759698430075)
++++ b/BarcodeScanner/app/src/main/res/drawable/ic_launcher_background.xml	(date 1759698430075)
+@@ -0,0 +1,170 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path
++        android:fillColor="#3DDC84"
++        android:pathData="M0,0h108v108h-108z" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M9,0L9,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,0L19,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,0L29,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,0L39,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,0L49,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,0L59,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,0L69,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,0L79,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M89,0L89,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M99,0L99,108"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,9L108,9"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,19L108,19"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,29L108,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,39L108,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,49L108,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,59L108,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,69L108,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,79L108,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,89L108,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M0,99L108,99"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,29L89,29"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,39L89,39"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,49L89,49"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,59L89,59"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,69L89,69"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M19,79L89,79"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M29,19L29,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M39,19L39,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M49,19L49,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M59,19L59,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M69,19L69,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++    <path
++        android:fillColor="#00000000"
++        android:pathData="M79,19L79,89"
++        android:strokeWidth="0.8"
++        android:strokeColor="#33FFFFFF" />
++</vector>
+Index: app/src/main/res/drawable/ic_launcher_foreground.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_launcher_foreground.xml b/app/src/main/res/drawable/ic_launcher_foreground.xml
+new file mode 100644
+--- /dev/null	(date 1759698430108)
++++ b/app/src/main/res/drawable/ic_launcher_foreground.xml	(date 1759698430108)
+@@ -0,0 +1,30 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:aapt="http://schemas.android.com/aapt"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
++        <aapt:attr name="android:fillColor">
++            <gradient
++                android:endX="85.84757"
++                android:endY="92.4963"
++                android:startX="42.9492"
++                android:startY="49.59793"
++                android:type="linear">
++                <item
++                    android:color="#44000000"
++                    android:offset="0.0" />
++                <item
++                    android:color="#00000000"
++                    android:offset="1.0" />
++            </gradient>
++        </aapt:attr>
++    </path>
++    <path
++        android:fillColor="#FFFFFF"
++        android:fillType="nonZero"
++        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
++        android:strokeWidth="1"
++        android:strokeColor="#00000000" />
++</vector>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/drawable/ic_launcher_foreground.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/drawable/ic_launcher_foreground.xml b/BarcodeScanner/app/src/main/res/drawable/ic_launcher_foreground.xml
+new file mode 100644
+--- /dev/null	(date 1759698430076)
++++ b/BarcodeScanner/app/src/main/res/drawable/ic_launcher_foreground.xml	(date 1759698430076)
+@@ -0,0 +1,30 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:aapt="http://schemas.android.com/aapt"
++    android:width="108dp"
++    android:height="108dp"
++    android:viewportWidth="108"
++    android:viewportHeight="108">
++    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
++        <aapt:attr name="android:fillColor">
++            <gradient
++                android:endX="85.84757"
++                android:endY="92.4963"
++                android:startX="42.9492"
++                android:startY="49.59793"
++                android:type="linear">
++                <item
++                    android:color="#44000000"
++                    android:offset="0.0" />
++                <item
++                    android:color="#00000000"
++                    android:offset="1.0" />
++            </gradient>
++        </aapt:attr>
++    </path>
++    <path
++        android:fillColor="#FFFFFF"
++        android:fillType="nonZero"
++        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
++        android:strokeWidth="1"
++        android:strokeColor="#00000000" />
++</vector>
+\ No newline at end of file
+Index: gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/gradle/libs.versions.toml b/gradle/libs.versions.toml
+new file mode 100644
+--- /dev/null	(date 1759699235650)
++++ b/gradle/libs.versions.toml	(date 1759699235650)
+@@ -0,0 +1,18 @@
++[versions]
++agp = "8.13.0"
++junit = "4.13.2"
++junitVersion = "1.3.0"
++espressoCore = "3.7.0"
++appcompat = "1.7.1"
++material = "1.13.0"
++
++[libraries]
++junit = { group = "junit", name = "junit", version.ref = "junit" }
++ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
++espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
++appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
++material = { group = "com.google.android.material", name = "material", version.ref = "material" }
++
++[plugins]
++android-application = { id = "com.android.application", version.ref = "agp" }
++
+Index: app/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/.gitignore b/app/.gitignore
+new file mode 100644
+--- /dev/null	(date 1759698430097)
++++ b/app/.gitignore	(date 1759698430097)
+@@ -0,0 +1,1 @@
++/build
+\ No newline at end of file
+Index: app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+new file mode 100644
+--- /dev/null	(date 1759698430110)
++++ b/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(date 1759698430110)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background"/>
++    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
++</adaptive-icon>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml b/BarcodeScanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+new file mode 100644
+--- /dev/null	(date 1759698430079)
++++ b/BarcodeScanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml	(date 1759698430079)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
+Index: BarcodeScanner/.idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/.gitignore b/BarcodeScanner/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1759698430058)
++++ b/BarcodeScanner/.idea/.gitignore	(date 1759698430058)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: BarcodeScanner/gradle/libs.versions.toml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/gradle/libs.versions.toml b/BarcodeScanner/gradle/libs.versions.toml
+new file mode 100644
+--- /dev/null	(date 1759698430092)
++++ b/BarcodeScanner/gradle/libs.versions.toml	(date 1759698430092)
+@@ -0,0 +1,26 @@
++[versions]
++agp = "8.13.0"
++kotlin = "2.0.21"
++coreKtx = "1.17.0"
++junit = "4.13.2"
++junitVersion = "1.3.0"
++espressoCore = "3.7.0"
++appcompat = "1.7.1"
++material = "1.13.0"
++activity = "1.11.0"
++constraintlayout = "2.2.1"
++
++[libraries]
++androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
++junit = { group = "junit", name = "junit", version.ref = "junit" }
++androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
++androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
++androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
++material = { group = "com.google.android.material", name = "material", version.ref = "material" }
++androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
++androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
++
++[plugins]
++android-application = { id = "com.android.application", version.ref = "agp" }
++kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
++
+Index: app/src/main/java/com/example/fitbite/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/fitbite/MainActivity.java b/app/src/main/java/com/example/fitbite/MainActivity.java
+new file mode 100644
+--- /dev/null	(date 1759698430105)
++++ b/app/src/main/java/com/example/fitbite/MainActivity.java	(date 1759698430105)
+@@ -0,0 +1,43 @@
++package com.example.fitbite;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.widget.EditText;
++import androidx.appcompat.app.AppCompatActivity;
++import androidx.recyclerview.widget.RecyclerView;
++import java.util.List;
++import java.util.ArrayList;
++import androidx.recyclerview.widget.LinearLayoutManager;
++
++public class MainActivity extends AppCompatActivity {
++    private EditText searchBox;
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.searchfoodscreen);
++        RecyclerView recyclerView = findViewById(R.id.foodRecyclerView);
++        List<FoodItem> foodList = new ArrayList<>();
++        //This is just an example array from the discord picture
++        //I believe how this will work is that we will pull data dynamically from user profile.
++        foodList.add(new FoodItem("French Toast", 350));
++        foodList.add(new FoodItem("Apple", 100));
++        foodList.add(new FoodItem("Orange", 60));
++        foodList.add(new FoodItem("Pizza Slice", 320));
++        foodList.add(new FoodItem("Veggie Pizza Slice", 350));
++        foodList.add(new FoodItem("Donut Holes", 35));
++        foodList.add(new FoodItem("Glazed Donut", 60));
++        foodList.add(new FoodItem("Some really long food name like an entire cake", 11000));
++        FoodAdapter adapter = new FoodAdapter(this, foodList);
++        recyclerView.setLayoutManager(new LinearLayoutManager(this));
++        recyclerView.setAdapter(adapter);
++        //Placeholder to start on searchfoodscreen, replace with the login screen once made.
++        openSearchScreen();
++    }
++    private void openSearchScreen() {
++        searchBox = findViewById(R.id.searchFoodText);
++    }
++    private void openEditScreen() {
++        Intent intent = new Intent(MainActivity.this, EditFoodActivity.class);
++        startActivity(intent);
++    }
++}
+\ No newline at end of file
+Index: BarcodeScanner/app/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/.gitignore b/BarcodeScanner/app/.gitignore
+new file mode 100644
+--- /dev/null	(date 1759698430065)
++++ b/BarcodeScanner/app/.gitignore	(date 1759698430065)
+@@ -0,0 +1,1 @@
++/build
+\ No newline at end of file
+Index: BarcodeScanner/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.gitignore b/BarcodeScanner/.gitignore
+new file mode 100644
+--- /dev/null	(date 1759698430058)
++++ b/BarcodeScanner/.gitignore	(date 1759698430058)
+@@ -0,0 +1,15 @@
++*.iml
++.gradle
++/local.properties
++/.idea/caches
++/.idea/libraries
++/.idea/modules.xml
++/.idea/workspace.xml
++/.idea/navEditor.xml
++/.idea/assetWizardSettings.xml
++.DS_Store
++/build
++/captures
++.externalNativeBuild
++.cxx
++local.properties
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1759698430054)
++++ b/.idea/.name	(date 1759698430054)
+@@ -0,0 +1,1 @@
++CSE4316
+\ No newline at end of file
+Index: BarcodeScanner/.idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/.name b/BarcodeScanner/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1759698430059)
++++ b/BarcodeScanner/.idea/.name	(date 1759698430059)
+@@ -0,0 +1,1 @@
++Barcode Scanner
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/java/com/example/barcodescanner/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/java/com/example/barcodescanner/MainActivity.kt b/BarcodeScanner/app/src/main/java/com/example/barcodescanner/MainActivity.kt
+new file mode 100644
+--- /dev/null	(date 1759698430072)
++++ b/BarcodeScanner/app/src/main/java/com/example/barcodescanner/MainActivity.kt	(date 1759698430072)
+@@ -0,0 +1,33 @@
++package com.example.barcodescanner
++
++import android.content.Intent
++import android.os.Bundle
++import androidx.activity.enableEdgeToEdge
++import androidx.appcompat.app.AppCompatActivity
++import androidx.core.view.ViewCompat
++import androidx.core.view.WindowInsetsCompat
++import android.widget.Button
++import android.widget.Toast
++
++class MainActivity : AppCompatActivity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        enableEdgeToEdge()
++        setContentView(R.layout.activity_main)
++        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
++            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
++            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
++            insets
++        }
++
++        val button: Button = findViewById(R.id.scanButton)
++
++        button.setOnClickListener {
++            // Code to execute when the button is clicked
++            //Toast.makeText(this, "Button clicked!", Toast.LENGTH_SHORT).show()
++            val intent = Intent(this, NextActivity::class.java)
++            startActivity(intent)
++            // You can also call other functions or perform more complex actions here
++        }
++    }
++}
+\ No newline at end of file
+Index: BarcodeScanner/.idea/migrations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/migrations.xml b/BarcodeScanner/.idea/migrations.xml
+new file mode 100644
+--- /dev/null	(date 1759698430062)
++++ b/BarcodeScanner/.idea/migrations.xml	(date 1759698430062)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectMigrations">
++    <option name="MigrateToGradleLocalJavaHome">
++      <set>
++        <option value="$PROJECT_DIR$" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: BarcodeScanner/.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/misc.xml b/BarcodeScanner/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1759698430063)
++++ b/BarcodeScanner/.idea/misc.xml	(date 1759698430063)
+@@ -0,0 +1,16 @@
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
++  </component>
++  <component name="VisualizationToolProject">
++    <option name="state">
++      <ProjectState>
++        <option name="scale" value="0.2403846153846154" />
++      </ProjectState>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/layout/activity_main.xml b/BarcodeScanner/app/src/main/res/layout/activity_main.xml
+new file mode 100644
+--- /dev/null	(date 1759698430077)
++++ b/BarcodeScanner/app/src/main/res/layout/activity_main.xml	(date 1759698430077)
+@@ -0,0 +1,29 @@
++<?xml version="1.0" encoding="utf-8"?>
++
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:id="@+id/main"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="@color/gray"
++    tools:context=".MainActivity">
++
++    <Button
++        android:id="@+id/scanButton"
++        android:layout_width="fill_parent"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="55dp"
++        android:layout_marginTop="308dp"
++        android:layout_marginEnd="55dp"
++        android:backgroundTint="@color/red"
++        android:text="@string/scan"
++        android:textColor="@color/white"
++        android:textSize="35sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="1.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        tools:ignore="VisualLintButtonSize" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/java/com/example/barcodescanner/NextActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/java/com/example/barcodescanner/NextActivity.kt b/BarcodeScanner/app/src/main/java/com/example/barcodescanner/NextActivity.kt
+new file mode 100644
+--- /dev/null	(date 1759698430073)
++++ b/BarcodeScanner/app/src/main/java/com/example/barcodescanner/NextActivity.kt	(date 1759698430073)
+@@ -0,0 +1,13 @@
++package com.example.barcodescanner
++
++import android.content.Intent
++import android.os.Bundle
++import android.widget.Button
++import androidx.appcompat.app.AppCompatActivity
++
++class NextActivity : AppCompatActivity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.activity_next)
++    }
++}
+\ No newline at end of file
+Index: app/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/proguard-rules.pro b/app/proguard-rules.pro
+new file mode 100644
+--- /dev/null	(date 1759698430098)
++++ b/app/proguard-rules.pro	(date 1759698430098)
+@@ -0,0 +1,21 @@
++# Add project specific ProGuard rules here.
++# You can control the set of applied configuration files using the
++# proguardFiles setting in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
++
++# Uncomment this to preserve the line number information for
++# debugging stack traces.
++#-keepattributes SourceFile,LineNumberTable
++
++# If you keep the line number information, uncomment this to
++# hide the original source file name.
++#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/layout/activity_next.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/layout/activity_next.xml b/BarcodeScanner/app/src/main/res/layout/activity_next.xml
+new file mode 100644
+--- /dev/null	(date 1759698430077)
++++ b/BarcodeScanner/app/src/main/res/layout/activity_next.xml	(date 1759698430077)
+@@ -0,0 +1,123 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:background="@color/gray"
++    android:layout_height="match_parent">
++
++    <Button
++        android:id="@+id/scanAnotherButton"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="54dp"
++        android:layout_marginTop="680dp"
++        android:layout_marginEnd="54dp"
++        android:backgroundTint="@color/red"
++        android:text="@string/scan_another"
++        android:textColor="@color/white"
++        android:textSize="30sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        tools:ignore="VisualLintButtonSize" />
++
++    <Button
++        android:gravity="center_horizontal"
++        android:id="@+id/moreInfo"
++        android:layout_width="220dp"
++        android:layout_height="70dp"
++        android:layout_marginStart="54dp"
++        android:layout_marginTop="552dp"
++        android:layout_marginEnd="54dp"
++        android:backgroundTint="@color/red"
++        android:text="@string/more_info"
++        android:textColor="@color/white"
++        android:textSize="30sp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.495"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        tools:ignore="VisualLintOverlap" />
++
++    <TextView
++        android:layout_width="300dp"
++        android:layout_height="250dp"
++        android:layout_marginStart="56dp"
++        android:layout_marginTop="65dp"
++        android:background="@drawable/box"
++        android:gravity="center"
++        android:text="@string/image"
++        android:textColor="@color/black"
++        android:textSize="30sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:layout_width="250dp"
++        android:layout_height="290dp"
++        android:layout_marginStart="80dp"
++        android:layout_marginTop="346dp"
++        android:background="@drawable/box"
++        android:gravity="center_horizontal"
++        android:text="@string/item_desc"
++        android:textColor="@color/black"
++        android:textSize="30sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        tools:ignore="VisualLintOverlap,TextSizeCheck" />
++
++    <TextView
++        android:layout_width="250dp"
++        android:layout_height="290dp"
++        android:layout_marginStart="55dp"
++        android:layout_marginTop="265dp"
++        android:gravity="center"
++        android:text="@string/calories"
++        android:textColor="@color/black"
++        android:textSize="30sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        tools:ignore="VisualLintOverlap" />
++
++    <TextView
++        android:layout_width="250dp"
++        android:layout_height="290dp"
++        android:layout_marginStart="24dp"
++        android:layout_marginTop="302dp"
++        android:gravity="center"
++        android:text="@string/fats"
++        android:textColor="@color/black"
++        android:textSize="30sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        tools:ignore="VisualLintOverlap" />
++
++    <TextView
++        android:layout_width="250dp"
++        android:layout_height="290dp"
++        android:layout_marginStart="32dp"
++        android:layout_marginTop="338dp"
++        android:gravity="center"
++        android:text="@string/carbs"
++        android:textColor="@color/black"
++        android:textSize="30sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        tools:ignore="VisualLintOverlap" />
++
++    <TextView
++        android:layout_width="250dp"
++        android:layout_height="290dp"
++        android:layout_marginStart="44dp"
++        android:layout_marginTop="374dp"
++        android:gravity="center"
++        android:text="@string/sodium"
++        android:textColor="@color/black"
++        android:textSize="30sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
++
+Index: BarcodeScanner/app/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/proguard-rules.pro b/BarcodeScanner/app/proguard-rules.pro
+new file mode 100644
+--- /dev/null	(date 1759698430067)
++++ b/BarcodeScanner/app/proguard-rules.pro	(date 1759698430067)
+@@ -0,0 +1,21 @@
++# Add project specific ProGuard rules here.
++# You can control the set of applied configuration files using the
++# proguardFiles setting in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
++
++# Uncomment this to preserve the line number information for
++# debugging stack traces.
++#-keepattributes SourceFile,LineNumberTable
++
++# If you keep the line number information, uncomment this to
++# hide the original source file name.
++#-renamesourcefileattribute SourceFile
+\ No newline at end of file
+Index: BarcodeScanner/.idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/runConfigurations.xml b/BarcodeScanner/.idea/runConfigurations.xml
+new file mode 100644
+--- /dev/null	(date 1759698430063)
++++ b/BarcodeScanner/.idea/runConfigurations.xml	(date 1759698430063)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="com.intellij.execution.junit.AbstractAllInDirectoryConfigurationProducer" />
++        <option value="com.intellij.execution.junit.AllInPackageConfigurationProducer" />
++        <option value="com.intellij.execution.junit.PatternConfigurationProducer" />
++        <option value="com.intellij.execution.junit.TestInClassConfigurationProducer" />
++        <option value="com.intellij.execution.junit.UniqueIdConfigurationProducer" />
++        <option value="com.intellij.execution.junit.testDiscovery.JUnitTestDiscoveryConfigurationProducer" />
++        <option value="org.jetbrains.kotlin.idea.junit.KotlinJUnitRunConfigurationProducer" />
++        <option value="org.jetbrains.kotlin.idea.junit.KotlinPatternConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/searchfoodscreen.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/searchfoodscreen.xml b/app/src/main/res/layout/searchfoodscreen.xml
+new file mode 100644
+--- /dev/null	(date 1759698430109)
++++ b/app/src/main/res/layout/searchfoodscreen.xml	(date 1759698430109)
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++<EditText
++    android:id="@+id/searchFoodText"
++    android:layout_width="0dp"
++    android:layout_height="wrap_content"
++    android:layout_marginTop="40dp"
++    android:layout_marginStart="20dp"
++    android:layout_marginEnd="20dp"
++    android:hint="Search Food"
++    android:inputType="text"
++    app:layout_constraintTop_toTopOf="parent"
++    app:layout_constraintStart_toStartOf="parent"
++    app:layout_constraintEnd_toEndOf="parent" />
++
++<androidx.recyclerview.widget.RecyclerView
++    app:layout_constraintTop_toTopOf="parent"
++    app:layout_constraintStart_toStartOf="parent"
++    android:layout_marginTop="80dp"
++    android:id="@+id/foodRecyclerView"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:padding="16dp"/>
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+new file mode 100644
+--- /dev/null	(date 1759698430101)
++++ b/app/src/main/AndroidManifest.xml	(date 1759698430101)
+@@ -0,0 +1,25 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools">
++
++    <application
++        android:allowBackup="true"
++        android:dataExtractionRules="@xml/data_extraction_rules"
++        android:fullBackupContent="@xml/backup_rules"
++        android:icon="@mipmap/ic_launcher"
++        android:label="@string/app_name"
++        android:roundIcon="@mipmap/ic_launcher_round"
++        android:supportsRtl="true"
++        android:theme="@style/Theme.fitbite"
++        tools:targetApi="31">
++        <activity android:name=".EditFoodActivity" />
++        <activity
++            android:name=".MainActivity"
++            android:exported="true">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity>
++    </application>
++</manifest>
+\ No newline at end of file
+Index: BarcodeScanner/settings.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/settings.gradle.kts b/BarcodeScanner/settings.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1759698430097)
++++ b/BarcodeScanner/settings.gradle.kts	(date 1759698430097)
+@@ -0,0 +1,24 @@
++pluginManagement {
++    repositories {
++        google {
++            content {
++                includeGroupByRegex("com\\.android.*")
++                includeGroupByRegex("com\\.google.*")
++                includeGroupByRegex("androidx.*")
++            }
++        }
++        mavenCentral()
++        gradlePluginPortal()
++    }
++}
++dependencyResolutionManagement {
++    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
++    repositories {
++        google()
++        mavenCentral()
++    }
++}
++
++rootProject.name = "Barcode Scanner"
++include(":app")
++ 
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/AndroidManifest.xml b/BarcodeScanner/app/src/main/AndroidManifest.xml
+new file mode 100644
+--- /dev/null	(date 1759698430070)
++++ b/BarcodeScanner/app/src/main/AndroidManifest.xml	(date 1759698430070)
+@@ -0,0 +1,33 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android">
++
++    <application
++        android:allowBackup="true"
++        android:dataExtractionRules="@xml/data_extraction_rules"
++        android:fullBackupContent="@xml/backup_rules"
++        android:icon="@mipmap/ic_launcher"
++        android:label="@string/app_name"
++        android:roundIcon="@mipmap/ic_launcher_round"
++        android:supportsRtl="true"
++        android:theme="@style/Theme.BarcodeScanner">
++        <activity
++            android:name=".MainActivity"
++            android:exported="true">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity>
++
++        <activity
++            android:name=".NextActivity"
++            android:exported="true">
++            <intent-filter>
++                <action android:name="android.intent.action.NEXT" />
++                <category android:name="android.intent.category.ALTERNATIVE" />
++            </intent-filter>
++        </activity>
++    </application>
++
++</manifest>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+new file mode 100644
+--- /dev/null	(date 1759698430123)
++++ b/app/src/main/res/values/strings.xml	(date 1759698430123)
+@@ -0,0 +1,3 @@
++<resources>
++    <string name="app_name">FitBite</string>
++</resources>
+\ No newline at end of file
+Index: BarcodeScanner/.idea/AndroidProjectSystem.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/AndroidProjectSystem.xml b/BarcodeScanner/.idea/AndroidProjectSystem.xml
+new file mode 100644
+--- /dev/null	(date 1759698430059)
++++ b/BarcodeScanner/.idea/AndroidProjectSystem.xml	(date 1759698430059)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="AndroidProjectSystem">
++    <option name="providerId" value="com.android.tools.idea.GradleProjectSystem" />
++  </component>
++</project>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/values/strings.xml b/BarcodeScanner/app/src/main/res/values/strings.xml
+new file mode 100644
+--- /dev/null	(date 1759698430088)
++++ b/BarcodeScanner/app/src/main/res/values/strings.xml	(date 1759698430088)
+@@ -0,0 +1,12 @@
++<resources>
++    <string name="app_name">Barcode Scanner</string>
++    <string name="scan">Scan Barcode</string>
++    <string name="item_desc"><b>Item Description</b></string>
++    <string name="calories">Calories: 210</string>
++    <string name="fats">Fats: 16</string>
++    <string name="carbs">Carbs: 40</string>
++    <string name="sodium">Sodium: 16</string>
++    <string name="scan_another">Scan Another Barcode</string>
++    <string name="image"><b>Barcode Image</b></string>
++    <string name="more_info">More Info</string>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+new file mode 100644
+--- /dev/null	(date 1759698430123)
++++ b/app/src/main/res/values/themes.xml	(date 1759698430123)
+@@ -0,0 +1,16 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Theme.fitbite" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
++        <!-- Primary brand color. -->
++        <item name="colorPrimary">@color/purple_500</item>
++        <item name="colorPrimaryVariant">@color/purple_700</item>
++        <item name="colorOnPrimary">@color/white</item>
++        <!-- Secondary brand color. -->
++        <item name="colorSecondary">@color/teal_200</item>
++        <item name="colorSecondaryVariant">@color/teal_700</item>
++        <item name="colorOnSecondary">@color/black</item>
++        <!-- Status bar color. -->
++        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
++        <!-- Customize your theme here. -->
++    </style>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/values-night/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values-night/themes.xml b/app/src/main/res/values-night/themes.xml
+new file mode 100644
+--- /dev/null	(date 1759698430121)
++++ b/app/src/main/res/values-night/themes.xml	(date 1759698430121)
+@@ -0,0 +1,16 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Theme.fitbite" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
++        <!-- Primary brand color. -->
++        <item name="colorPrimary">@color/purple_200</item>
++        <item name="colorPrimaryVariant">@color/purple_700</item>
++        <item name="colorOnPrimary">@color/black</item>
++        <!-- Secondary brand color. -->
++        <item name="colorSecondary">@color/teal_200</item>
++        <item name="colorSecondaryVariant">@color/teal_200</item>
++        <item name="colorOnSecondary">@color/black</item>
++        <!-- Status bar color. -->
++        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
++        <!-- Customize your theme here. -->
++    </style>
++</resources>
+\ No newline at end of file
+Index: app/src/main/res/xml/backup_rules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/xml/backup_rules.xml b/app/src/main/res/xml/backup_rules.xml
+new file mode 100644
+--- /dev/null	(date 1759698430124)
++++ b/app/src/main/res/xml/backup_rules.xml	(date 1759698430124)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample backup rules file; uncomment and customize as necessary.
++   See https://developer.android.com/guide/topics/data/autobackup
++   for details.
++   Note: This file is ignored for devices older that API 31
++   See https://developer.android.com/about/versions/12/backup-restore
++-->
++<full-backup-content>
++    <!--
++   <include domain="sharedpref" path="."/>
++   <exclude domain="sharedpref" path="device.xml"/>
++-->
++</full-backup-content>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/values/themes.xml b/BarcodeScanner/app/src/main/res/values/themes.xml
+new file mode 100644
+--- /dev/null	(date 1759698430088)
++++ b/BarcodeScanner/app/src/main/res/values/themes.xml	(date 1759698430088)
+@@ -0,0 +1,9 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Base.Theme.BarcodeScanner" parent="Theme.Material3.DayNight.NoActionBar">
++        <!-- Customize your light theme here. -->
++        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
++    </style>
++
++    <style name="Theme.BarcodeScanner" parent="Base.Theme.BarcodeScanner" />
++</resources>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/xml/backup_rules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/xml/backup_rules.xml b/BarcodeScanner/app/src/main/res/xml/backup_rules.xml
+new file mode 100644
+--- /dev/null	(date 1759698430089)
++++ b/BarcodeScanner/app/src/main/res/xml/backup_rules.xml	(date 1759698430089)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample backup rules file; uncomment and customize as necessary.
++   See https://developer.android.com/guide/topics/data/autobackup
++   for details.
++   Note: This file is ignored for devices older than API 31
++   See https://developer.android.com/about/versions/12/backup-restore
++-->
++<full-backup-content>
++    <!--
++   <include domain="sharedpref" path="."/>
++   <exclude domain="sharedpref" path="device.xml"/>
++-->
++</full-backup-content>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/values-night/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/values-night/themes.xml b/BarcodeScanner/app/src/main/res/values-night/themes.xml
+new file mode 100644
+--- /dev/null	(date 1759698430086)
++++ b/BarcodeScanner/app/src/main/res/values-night/themes.xml	(date 1759698430086)
+@@ -0,0 +1,7 @@
++<resources xmlns:tools="http://schemas.android.com/tools">
++    <!-- Base application theme. -->
++    <style name="Base.Theme.BarcodeScanner" parent="Theme.Material3.DayNight.NoActionBar">
++        <!-- Customize your dark theme here. -->
++        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
++    </style>
++</resources>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/drawable/box.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/drawable/box.xml b/BarcodeScanner/app/src/main/res/drawable/box.xml
+new file mode 100644
+--- /dev/null	(date 1759698430075)
++++ b/BarcodeScanner/app/src/main/res/drawable/box.xml	(date 1759698430075)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<selector xmlns:android="http://schemas.android.com/apk/res/android">
++    <item>
++        <shape android:shape="rectangle">
++            <solid android:color="@android:color/transparent"/>
++            <stroke android:width="3dp" android:color="@color/black"/>
++        </shape>
++    </item>
++</selector>
+\ No newline at end of file
+Index: app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1759698430098)
++++ b/app/build.gradle.kts	(date 1759698430098)
+@@ -0,0 +1,41 @@
++plugins {
++    alias(libs.plugins.android.application)
++}
++
++android {
++    namespace = "com.example.fitbite"
++    compileSdk = 34
++
++    defaultConfig {
++        applicationId = "com.example.fitbite"
++        minSdk = 24
++        targetSdk = 34
++        versionCode = 1
++        versionName = "1.0"
++
++        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
++    }
++
++    buildTypes {
++        release {
++            isMinifyEnabled = false
++            proguardFiles(
++                getDefaultProguardFile("proguard-android-optimize.txt"),
++                "proguard-rules.pro"
++            )
++        }
++    }
++    compileOptions {
++        sourceCompatibility = JavaVersion.VERSION_1_8
++        targetCompatibility = JavaVersion.VERSION_1_8
++    }
++}
++
++dependencies {
++
++    implementation(libs.appcompat)
++    implementation(libs.material)
++    testImplementation(libs.junit)
++    androidTestImplementation(libs.ext.junit)
++    androidTestImplementation(libs.espresso.core)
++}
+\ No newline at end of file
+Index: BarcodeScanner/app/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/build.gradle.kts b/BarcodeScanner/app/build.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1759698430066)
++++ b/BarcodeScanner/app/build.gradle.kts	(date 1759698430066)
+@@ -0,0 +1,48 @@
++plugins {
++    alias(libs.plugins.android.application)
++    alias(libs.plugins.kotlin.android)
++}
++
++android {
++    namespace = "com.example.barcodescanner"
++    compileSdk = 36
++
++    defaultConfig {
++        applicationId = "com.example.barcodescanner"
++        minSdk = 24
++        targetSdk = 36
++        versionCode = 1
++        versionName = "1.0"
++
++        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
++    }
++
++    buildTypes {
++        release {
++            isMinifyEnabled = false
++            proguardFiles(
++                getDefaultProguardFile("proguard-android-optimize.txt"),
++                "proguard-rules.pro"
++            )
++        }
++    }
++    compileOptions {
++        sourceCompatibility = JavaVersion.VERSION_11
++        targetCompatibility = JavaVersion.VERSION_11
++    }
++    kotlinOptions {
++        jvmTarget = "11"
++    }
++}
++
++dependencies {
++
++    implementation(libs.androidx.core.ktx)
++    implementation(libs.androidx.appcompat)
++    implementation(libs.material)
++    implementation(libs.androidx.activity)
++    implementation(libs.androidx.constraintlayout)
++    testImplementation(libs.junit)
++    androidTestImplementation(libs.androidx.junit)
++    androidTestImplementation(libs.androidx.espresso.core)
++}
+\ No newline at end of file
+Index: BarcodeScanner/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/build.gradle.kts b/BarcodeScanner/build.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1759698430091)
++++ b/BarcodeScanner/build.gradle.kts	(date 1759698430091)
+@@ -0,0 +1,5 @@
++// Top-level build file where you can add configuration options common to all sub-projects/modules.
++plugins {
++    alias(libs.plugins.android.application) apply false
++    alias(libs.plugins.kotlin.android) apply false
++}
+\ No newline at end of file
+Index: app/src/main/res/drawable/circlebutton.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/circlebutton.xml b/app/src/main/res/drawable/circlebutton.xml
+new file mode 100644
+--- /dev/null	(date 1759698430107)
++++ b/app/src/main/res/drawable/circlebutton.xml	(date 1759698430107)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="utf-8"?>
++<shape xmlns:android="http://schemas.android.com/apk/res/android"
++    android:shape="oval">
++    <solid android:color="#6200EE"/> <!-- button color -->
++    <size
++        android:width="50dp"
++        android:height="50dp" /> <!-- size of the circle -->
++</shape>
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>*.iml\n.gradle\n/local.properties\n/.idea/caches\n/.idea/libraries\n/.idea/modules.xml\n/.idea/workspace.xml\n/.idea/navEditor.xml\n/.idea/assetWizardSettings.xml\n.DS_Store\n/build\n/captures\n.externalNativeBuild\n.cxx\nlocal.properties\n\n# Project exclude paths\n/app/\n/gradle/
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision f6ff6390ec3f121b25bf0ebb575b2d64c49352b5)
++++ b/.gitignore	(date 1759698570954)
+@@ -13,7 +13,3 @@
+ .externalNativeBuild
+ .cxx
+ local.properties
+-
+-# Project exclude paths
+-/app/
+-/gradle/
+\ No newline at end of file
+Index: gradle.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># Project-wide Gradle settings.\n# IDE (e.g. Android Studio) users:\n# Gradle settings configured through the IDE *will override*\n# any settings specified in this file.\n# For more details on how to configure your build environment visit\n# http://www.gradle.org/docs/current/userguide/build_environment.html\n# Specifies the JVM arguments used for the daemon process.\n# The setting is particularly useful for tweaking memory settings.\norg.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8\n# When configured, Gradle will run in incubating parallel mode.\n# This option should only be used with decoupled projects. For more details, visit\n# https://developer.android.com/r/tools/gradle-multi-project-decoupled-projects\n# org.gradle.parallel=true\n# AndroidX package structure to make it clearer which packages are bundled with the\n# Android operating system, and which are packaged with your app's APK\n# https://developer.android.com/topic/libraries/support-library/androidx-rn\nandroid.useAndroidX=true\n# Kotlin code style for this project: \"official\" or \"obsolete\":\nkotlin.code.style=official\n# Enables namespacing of each library's R class so that its R class includes only the\n# resources declared in the library itself and none from the library's dependencies,\n# thereby reducing the size of the R class for that library\nandroid.nonTransitiveRClass=true
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle.properties b/gradle.properties
+--- a/gradle.properties	(revision f6ff6390ec3f121b25bf0ebb575b2d64c49352b5)
++++ b/gradle.properties	(date 1759698574458)
+@@ -15,8 +15,6 @@
+ # Android operating system, and which are packaged with your app's APK
+ # https://developer.android.com/topic/libraries/support-library/androidx-rn
+ android.useAndroidX=true
+-# Kotlin code style for this project: "official" or "obsolete":
+-kotlin.code.style=official
+ # Enables namespacing of each library's R class so that its R class includes only the
+ # resources declared in the library itself and none from the library's dependencies,
+ # thereby reducing the size of the R class for that library
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+new file mode 100644
+--- /dev/null	(date 1759698430122)
++++ b/app/src/main/res/values/colors.xml	(date 1759698430122)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <color name="purple_200">#FFBB86FC</color>
++    <color name="purple_500">#FF6200EE</color>
++    <color name="purple_700">#FF3700B3</color>
++    <color name="teal_200">#FF03DAC5</color>
++    <color name="teal_700">#FF018786</color>
++    <color name="black">#FF000000</color>
++    <color name="white">#FFFFFFFF</color>
++</resources>
+\ No newline at end of file
+Index: build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\nplugins {\n    alias(libs.plugins.android.application) apply false\n    alias(libs.plugins.kotlin.android) apply false\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle.kts b/build.gradle.kts
+--- a/build.gradle.kts	(revision f6ff6390ec3f121b25bf0ebb575b2d64c49352b5)
++++ b/build.gradle.kts	(date 1759698573154)
+@@ -1,5 +1,4 @@
+ // Top-level build file where you can add configuration options common to all sub-projects/modules.
+ plugins {
+     alias(libs.plugins.android.application) apply false
+-    alias(libs.plugins.kotlin.android) apply false
+ }
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/values/colors.xml b/BarcodeScanner/app/src/main/res/values/colors.xml
+new file mode 100644
+--- /dev/null	(date 1759698430087)
++++ b/BarcodeScanner/app/src/main/res/values/colors.xml	(date 1759698430087)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <color name="black">#FF000000</color>
++    <color name="white">#FFFFFFFF</color>
++    <color name="gray">#DED5D5</color>
++    <color name="red">#A43333</color>
++</resources>
+\ No newline at end of file
+Index: BarcodeScanner/.idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/compiler.xml b/BarcodeScanner/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1759698430060)
++++ b/BarcodeScanner/.idea/compiler.xml	(date 1759698430060)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="21" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/xml/data_extraction_rules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/xml/data_extraction_rules.xml b/app/src/main/res/xml/data_extraction_rules.xml
+new file mode 100644
+--- /dev/null	(date 1759698430124)
++++ b/app/src/main/res/xml/data_extraction_rules.xml	(date 1759698430124)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample data extraction rules file; uncomment and customize as necessary.
++   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
++   for details.
++-->
++<data-extraction-rules>
++    <cloud-backup>
++        <!-- TODO: Use <include> and <exclude> to control what is backed up.
++        <include .../>
++        <exclude .../>
++        -->
++    </cloud-backup>
++    <!--
++    <device-transfer>
++        <include .../>
++        <exclude .../>
++    </device-transfer>
++    -->
++</data-extraction-rules>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/xml/data_extraction_rules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/xml/data_extraction_rules.xml b/BarcodeScanner/app/src/main/res/xml/data_extraction_rules.xml
+new file mode 100644
+--- /dev/null	(date 1759698430090)
++++ b/BarcodeScanner/app/src/main/res/xml/data_extraction_rules.xml	(date 1759698430090)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="utf-8"?><!--
++   Sample data extraction rules file; uncomment and customize as necessary.
++   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
++   for details.
++-->
++<data-extraction-rules>
++    <cloud-backup>
++        <!-- TODO: Use <include> and <exclude> to control what is backed up.
++        <include .../>
++        <exclude .../>
++        -->
++    </cloud-backup>
++    <!--
++    <device-transfer>
++        <include .../>
++        <exclude .../>
++    </device-transfer>
++    -->
++</data-extraction-rules>
+\ No newline at end of file
+Index: settings.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>pluginManagement {\n    repositories {\n        google {\n            content {\n                includeGroupByRegex(\"com\\\\.android.*\")\n                includeGroupByRegex(\"com\\\\.google.*\")\n                includeGroupByRegex(\"androidx.*\")\n            }\n        }\n        mavenCentral()\n        gradlePluginPortal()\n    }\n}\ndependencyResolutionManagement {\n    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)\n    repositories {\n        google()\n        mavenCentral()\n    }\n}\n\nrootProject.name = \"FitBite\"\ninclude(\":app\")\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+--- a/settings.gradle.kts	(revision f6ff6390ec3f121b25bf0ebb575b2d64c49352b5)
++++ b/settings.gradle.kts	(date 1759698577532)
+@@ -19,5 +19,6 @@
+     }
+ }
+ 
+-rootProject.name = "FitBite"
++rootProject.name = "CSE4316"
+ include(":app")
++ 
+\ No newline at end of file
+Index: BarcodeScanner/.idea/deploymentTargetSelector.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/deploymentTargetSelector.xml b/BarcodeScanner/.idea/deploymentTargetSelector.xml
+new file mode 100644
+--- /dev/null	(date 1759698430060)
++++ b/BarcodeScanner/.idea/deploymentTargetSelector.xml	(date 1759698430060)
+@@ -0,0 +1,24 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetSelector">
++    <selectionStates>
++      <SelectionState runConfigName="app">
++        <option name="selectionMode" value="DROPDOWN" />
++        <DropdownSelection timestamp="2025-10-04T05:56:52.281929800Z">
++          <Target type="DEFAULT_BOOT">
++            <handle>
++              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Binh\.android\avd\Medium_Phone.avd" />
++            </handle>
++          </Target>
++        </DropdownSelection>
++        <DialogSelection />
++      </SelectionState>
++      <SelectionState runConfigName="NextActivity">
++        <option name="selectionMode" value="DROPDOWN" />
++      </SelectionState>
++      <SelectionState runConfigName="NextActivity (1)">
++        <option name="selectionMode" value="DROPDOWN" />
++      </SelectionState>
++    </selectionStates>
++  </component>
++</project>
+\ No newline at end of file
+Index: BarcodeScanner/.idea/deviceManager.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/deviceManager.xml b/BarcodeScanner/.idea/deviceManager.xml
+new file mode 100644
+--- /dev/null	(date 1759698430061)
++++ b/BarcodeScanner/.idea/deviceManager.xml	(date 1759698430061)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DeviceTable">
++    <option name="columnSorters">
++      <list>
++        <ColumnSorterState>
++          <option name="column" value="Name" />
++          <option name="order" value="ASCENDING" />
++        </ColumnSorterState>
++      </list>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/fitbite/EditFoodActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/fitbite/EditFoodActivity.java b/app/src/main/java/com/example/fitbite/EditFoodActivity.java
+new file mode 100644
+--- /dev/null	(date 1759698430103)
++++ b/app/src/main/java/com/example/fitbite/EditFoodActivity.java	(date 1759698430103)
+@@ -0,0 +1,22 @@
++package com.example.fitbite;
++
++import android.content.Intent;
++import android.os.Bundle;
++import android.widget.Button;
++import androidx.appcompat.app.AppCompatActivity;
++
++public class EditFoodActivity extends AppCompatActivity {
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.editfoodscreen);
++
++        Button backButton = findViewById(R.id.saveButton);
++
++        backButton.setOnClickListener(v -> {
++            Intent intent = new Intent(EditFoodActivity.this, MainActivity.class);
++            startActivity(intent);
++            finish();
++        });
++    }
++}
+Index: app/src/main/res/layout/editfoodscreen.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/editfoodscreen.xml b/app/src/main/res/layout/editfoodscreen.xml
+new file mode 100644
+--- /dev/null	(date 1759698430108)
++++ b/app/src/main/res/layout/editfoodscreen.xml	(date 1759698430108)
+@@ -0,0 +1,37 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++    <Button
++        android:id="@+id/backButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Save"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        android:layout_marginBottom="100dp"
++        android:layout_marginStart="50dp" />
++    <Button
++        android:id="@+id/saveButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Back"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        android:layout_marginBottom="100dp"
++        android:layout_marginEnd="50dp" />
++
++    <ImageView
++        android:id="@+id/appIcon"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:src="@drawable/appicon"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.496"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.155" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/androidTest/java/com/example/fitbite/ExampleInstrumentedTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/androidTest/java/com/example/fitbite/ExampleInstrumentedTest.java b/app/src/androidTest/java/com/example/fitbite/ExampleInstrumentedTest.java
+new file mode 100644
+--- /dev/null	(date 1759698430100)
++++ b/app/src/androidTest/java/com/example/fitbite/ExampleInstrumentedTest.java	(date 1759698430100)
+@@ -0,0 +1,26 @@
++package com.example.fitbite;
++
++import android.content.Context;
++
++import androidx.test.platform.app.InstrumentationRegistry;
++import androidx.test.ext.junit.runners.AndroidJUnit4;
++
++import org.junit.Test;
++import org.junit.runner.RunWith;
++
++import static org.junit.Assert.*;
++
++/**
++ * Instrumented test, which will execute on an Android device.
++ *
++ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
++ */
++@RunWith(AndroidJUnit4.class)
++public class ExampleInstrumentedTest {
++    @Test
++    public void useAppContext() {
++        // Context of the app under test.
++        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
++        assertEquals("com.example.cse4316", appContext.getPackageName());
++    }
++}
+\ No newline at end of file
+Index: BarcodeScanner/app/src/androidTest/java/com/example/barcodescanner/ExampleInstrumentedTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/androidTest/java/com/example/barcodescanner/ExampleInstrumentedTest.kt b/BarcodeScanner/app/src/androidTest/java/com/example/barcodescanner/ExampleInstrumentedTest.kt
+new file mode 100644
+--- /dev/null	(date 1759698430069)
++++ b/BarcodeScanner/app/src/androidTest/java/com/example/barcodescanner/ExampleInstrumentedTest.kt	(date 1759698430069)
+@@ -0,0 +1,24 @@
++package com.example.barcodescanner
++
++import androidx.test.platform.app.InstrumentationRegistry
++import androidx.test.ext.junit.runners.AndroidJUnit4
++
++import org.junit.Test
++import org.junit.runner.RunWith
++
++import org.junit.Assert.*
++
++/**
++ * Instrumented test, which will execute on an Android device.
++ *
++ * See [testing documentation](http://d.android.com/tools/testing).
++ */
++@RunWith(AndroidJUnit4::class)
++class ExampleInstrumentedTest {
++    @Test
++    fun useAppContext() {
++        // Context of the app under test.
++        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
++        assertEquals("com.example.barcodescanner", appContext.packageName)
++    }
++}
+\ No newline at end of file
+Index: app/src/test/java/com/example/fitbite/ExampleUnitTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/test/java/com/example/fitbite/ExampleUnitTest.java b/app/src/test/java/com/example/fitbite/ExampleUnitTest.java
+new file mode 100644
+--- /dev/null	(date 1759698430126)
++++ b/app/src/test/java/com/example/fitbite/ExampleUnitTest.java	(date 1759698430126)
+@@ -0,0 +1,17 @@
++package com.example.fitbite;
++
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++/**
++ * Example local unit test, which will execute on the development machine (host).
++ *
++ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
++ */
++public class ExampleUnitTest {
++    @Test
++    public void addition_isCorrect() {
++        assertEquals(4, 2 + 2);
++    }
++}
+\ No newline at end of file
+Index: BarcodeScanner/app/src/test/java/com/example/barcodescanner/ExampleUnitTest.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/test/java/com/example/barcodescanner/ExampleUnitTest.kt b/BarcodeScanner/app/src/test/java/com/example/barcodescanner/ExampleUnitTest.kt
+new file mode 100644
+--- /dev/null	(date 1759698430091)
++++ b/BarcodeScanner/app/src/test/java/com/example/barcodescanner/ExampleUnitTest.kt	(date 1759698430091)
+@@ -0,0 +1,17 @@
++package com.example.barcodescanner
++
++import org.junit.Test
++
++import org.junit.Assert.*
++
++/**
++ * Example local unit test, which will execute on the development machine (host).
++ *
++ * See [testing documentation](http://d.android.com/tools/testing).
++ */
++class ExampleUnitTest {
++    @Test
++    fun addition_isCorrect() {
++        assertEquals(4, 2 + 2)
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/fitbite/FoodAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/fitbite/FoodAdapter.java b/app/src/main/java/com/example/fitbite/FoodAdapter.java
+new file mode 100644
+--- /dev/null	(date 1759698430104)
++++ b/app/src/main/java/com/example/fitbite/FoodAdapter.java	(date 1759698430104)
+@@ -0,0 +1,60 @@
++package com.example.fitbite;
++import android.content.Context;
++import android.content.Intent;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.Button;
++import android.widget.TextView;
++import androidx.annotation.NonNull;
++import androidx.recyclerview.widget.RecyclerView;
++import java.util.List;
++
++public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
++    private Context context;
++    private List<FoodItem> foodList;
++
++    public FoodAdapter(Context context, List<FoodItem> foodList) {
++        this.context = context;
++        this.foodList = foodList;
++    }
++    public static class FoodViewHolder extends RecyclerView.ViewHolder {
++        TextView foodTextView;
++        Button editButton;
++        Button plusButton;
++        public FoodViewHolder(View itemView) {
++            super(itemView);
++            foodTextView = itemView.findViewById(R.id.foodTextView);
++            editButton = itemView.findViewById(R.id.editButton);
++            plusButton = itemView.findViewById(R.id.plusButton);
++        }
++    }
++    @NonNull
++    @Override
++    public FoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
++        View view = LayoutInflater.from(context).inflate(R.layout.foodlist, parent, false);
++        return new FoodViewHolder(view);
++    }
++    @Override
++    public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
++        FoodItem item = foodList.get(position);
++        holder.foodTextView.setText(item.name + " " + item.calories);
++
++        holder.editButton.setOnClickListener(v -> {
++            Intent intent = new Intent(context, EditFoodActivity.class);
++            intent.putExtra("foodName", item.name);
++            intent.putExtra("calories", item.calories);
++            context.startActivity(intent);
++        });
++
++        // + button has no functionality for now
++        holder.plusButton.setOnClickListener(v -> {
++            //This is the plus button, does nothing for now
++        });
++    }
++
++    @Override
++    public int getItemCount() {
++        return foodList.size();
++    }
++}
+Index: app/src/main/java/com/example/fitbite/FoodItem.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/fitbite/FoodItem.java b/app/src/main/java/com/example/fitbite/FoodItem.java
+new file mode 100644
+--- /dev/null	(date 1759698430104)
++++ b/app/src/main/java/com/example/fitbite/FoodItem.java	(date 1759698430104)
+@@ -0,0 +1,11 @@
++package com.example.fitbite;
++
++public class FoodItem {
++    public String name;
++    public int calories;
++
++    public FoodItem(String name, int calories) {
++        this.name = name;
++        this.calories = calories;
++    }
++}
+Index: app/src/main/res/layout/foodlist.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/foodlist.xml b/app/src/main/res/layout/foodlist.xml
+new file mode 100644
+--- /dev/null	(date 1759698430109)
++++ b/app/src/main/res/layout/foodlist.xml	(date 1759698430109)
+@@ -0,0 +1,48 @@
++<androidx.constraintlayout.widget.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content"
++    android:padding="16dp">
++
++    <TextView
++        android:id="@+id/foodTextView"
++        android:layout_width="0dp"
++        android:layout_height="wrap_content"
++        android:text="Food Name 123"
++        android:textSize="18sp"
++        android:textStyle="bold"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toStartOf="@+id/editButton"
++        android:ellipsize="end"
++        android:singleLine="true"
++        android:layout_marginEnd="8dp" />
++
++    <Button
++        android:id="@+id/editButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Edit"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintStart_toEndOf="@id/foodTextView"
++        app:layout_constraintEnd_toStartOf="@+id/plusButton"
++        android:layout_marginEnd="8dp" />
++
++    <Button
++        android:id="@+id/plusButton"
++        android:layout_width="50dp"
++        android:layout_height="50dp"
++        android:background="@drawable/circlebutton"
++        android:text="+"
++        android:textColor="#FFFFFF"
++        android:textSize="20sp"
++        android:padding="0dp"
++        android:gravity="center"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: BarcodeScanner/gradle.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/BarcodeScanner/gradle.properties b/BarcodeScanner/gradle.properties
+new file mode 100644
+--- /dev/null	(date 1759698430091)
++++ b/BarcodeScanner/gradle.properties	(date 1759698430091)
+@@ -0,0 +1,23 @@
++# Project-wide Gradle settings.
++# IDE (e.g. Android Studio) users:
++# Gradle settings configured through the IDE *will override*
++# any settings specified in this file.
++# For more details on how to configure your build environment visit
++# http://www.gradle.org/docs/current/userguide/build_environment.html
++# Specifies the JVM arguments used for the daemon process.
++# The setting is particularly useful for tweaking memory settings.
++org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
++# When configured, Gradle will run in incubating parallel mode.
++# This option should only be used with decoupled projects. For more details, visit
++# https://developer.android.com/r/tools/gradle-multi-project-decoupled-projects
++# org.gradle.parallel=true
++# AndroidX package structure to make it clearer which packages are bundled with the
++# Android operating system, and which are packaged with your app's APK
++# https://developer.android.com/topic/libraries/support-library/androidx-rn
++android.useAndroidX=true
++# Kotlin code style for this project: "official" or "obsolete":
++kotlin.code.style=official
++# Enables namespacing of each library's R class so that its R class includes only the
++# resources declared in the library itself and none from the library's dependencies,
++# thereby reducing the size of the R class for that library
++android.nonTransitiveRClass=true
+\ No newline at end of file
+Index: BarcodeScanner/.idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/.idea/gradle.xml b/BarcodeScanner/.idea/gradle.xml
+new file mode 100644
+--- /dev/null	(date 1759698430062)
++++ b/BarcodeScanner/.idea/gradle.xml	(date 1759698430062)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="testRunner" value="CHOOSE_PER_TEST" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/app" />
++          </set>
++        </option>
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: BarcodeScanner/gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/BarcodeScanner/gradle/wrapper/gradle-wrapper.properties b/BarcodeScanner/gradle/wrapper/gradle-wrapper.properties
+new file mode 100644
+--- /dev/null	(date 1759698430096)
++++ b/BarcodeScanner/gradle/wrapper/gradle-wrapper.properties	(date 1759698430096)
+@@ -0,0 +1,6 @@
++#Fri Oct 03 22:53:40 CDT 2025
++distributionBase=GRADLE_USER_HOME
++distributionPath=wrapper/dists
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
++zipStoreBase=GRADLE_USER_HOME
++zipStorePath=wrapper/dists
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/gradle/wrapper/gradle-wrapper.properties b/gradle/wrapper/gradle-wrapper.properties
+new file mode 100644
+--- /dev/null	(date 1759699235738)
++++ b/gradle/wrapper/gradle-wrapper.properties	(date 1759699235738)
+@@ -0,0 +1,6 @@
++#Sat Oct 04 16:33:27 CDT 2025
++distributionBase=GRADLE_USER_HOME
++distributionPath=wrapper/dists
++distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip
++zipStoreBase=GRADLE_USER_HOME
++zipStorePath=wrapper/dists
+Index: BarcodeScanner/gradlew
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/gradlew b/BarcodeScanner/gradlew
+new file mode 100644
+--- /dev/null	(date 1759698430096)
++++ b/BarcodeScanner/gradlew	(date 1759698430096)
+@@ -0,0 +1,185 @@
++#!/usr/bin/env sh
++
++#
++# Copyright 2015 the original author or authors.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#      https://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++#
++
++##############################################################################
++##
++##  Gradle start up script for UN*X
++##
++##############################################################################
++
++# Attempt to set APP_HOME
++# Resolve links: $0 may be a link
++PRG="$0"
++# Need this for relative symlinks.
++while [ -h "$PRG" ] ; do
++    ls=`ls -ld "$PRG"`
++    link=`expr "$ls" : '.*-> \(.*\)$'`
++    if expr "$link" : '/.*' > /dev/null; then
++        PRG="$link"
++    else
++        PRG=`dirname "$PRG"`"/$link"
++    fi
++done
++SAVED="`pwd`"
++cd "`dirname \"$PRG\"`/" >/dev/null
++APP_HOME="`pwd -P`"
++cd "$SAVED" >/dev/null
++
++APP_NAME="Gradle"
++APP_BASE_NAME=`basename "$0"`
++
++# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
++
++# Use the maximum available, or set MAX_FD != -1 to use that value.
++MAX_FD="maximum"
++
++warn () {
++    echo "$*"
++}
++
++die () {
++    echo
++    echo "$*"
++    echo
++    exit 1
++}
++
++# OS specific support (must be 'true' or 'false').
++cygwin=false
++msys=false
++darwin=false
++nonstop=false
++case "`uname`" in
++  CYGWIN* )
++    cygwin=true
++    ;;
++  Darwin* )
++    darwin=true
++    ;;
++  MINGW* )
++    msys=true
++    ;;
++  NONSTOP* )
++    nonstop=true
++    ;;
++esac
++
++CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
++
++
++# Determine the Java command to use to start the JVM.
++if [ -n "$JAVA_HOME" ] ; then
++    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
++        # IBM's JDK on AIX uses strange locations for the executables
++        JAVACMD="$JAVA_HOME/jre/sh/java"
++    else
++        JAVACMD="$JAVA_HOME/bin/java"
++    fi
++    if [ ! -x "$JAVACMD" ] ; then
++        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++    fi
++else
++    JAVACMD="java"
++    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++fi
++
++# Increase the maximum file descriptors if we can.
++if [ "$cygwin" = "false" -a "$darwin" = "false" -a "$nonstop" = "false" ] ; then
++    MAX_FD_LIMIT=`ulimit -H -n`
++    if [ $? -eq 0 ] ; then
++        if [ "$MAX_FD" = "maximum" -o "$MAX_FD" = "max" ] ; then
++            MAX_FD="$MAX_FD_LIMIT"
++        fi
++        ulimit -n $MAX_FD
++        if [ $? -ne 0 ] ; then
++            warn "Could not set maximum file descriptor limit: $MAX_FD"
++        fi
++    else
++        warn "Could not query maximum file descriptor limit: $MAX_FD_LIMIT"
++    fi
++fi
++
++# For Darwin, add options to specify how the application appears in the dock
++if $darwin; then
++    GRADLE_OPTS="$GRADLE_OPTS \"-Xdock:name=$APP_NAME\" \"-Xdock:icon=$APP_HOME/media/gradle.icns\""
++fi
++
++# For Cygwin or MSYS, switch paths to Windows format before running java
++if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
++    APP_HOME=`cygpath --path --mixed "$APP_HOME"`
++    CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
++
++    JAVACMD=`cygpath --unix "$JAVACMD"`
++
++    # We build the pattern for arguments to be converted via cygpath
++    ROOTDIRSRAW=`find -L / -maxdepth 1 -mindepth 1 -type d 2>/dev/null`
++    SEP=""
++    for dir in $ROOTDIRSRAW ; do
++        ROOTDIRS="$ROOTDIRS$SEP$dir"
++        SEP="|"
++    done
++    OURCYGPATTERN="(^($ROOTDIRS))"
++    # Add a user-defined pattern to the cygpath arguments
++    if [ "$GRADLE_CYGPATTERN" != "" ] ; then
++        OURCYGPATTERN="$OURCYGPATTERN|($GRADLE_CYGPATTERN)"
++    fi
++    # Now convert the arguments - kludge to limit ourselves to /bin/sh
++    i=0
++    for arg in "$@" ; do
++        CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
++        CHECK2=`echo "$arg"|egrep -c "^-"`                                 ### Determine if an option
++
++        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
++            eval `echo args$i`=`cygpath --path --ignore --mixed "$arg"`
++        else
++            eval `echo args$i`="\"$arg\""
++        fi
++        i=`expr $i + 1`
++    done
++    case $i in
++        0) set -- ;;
++        1) set -- "$args0" ;;
++        2) set -- "$args0" "$args1" ;;
++        3) set -- "$args0" "$args1" "$args2" ;;
++        4) set -- "$args0" "$args1" "$args2" "$args3" ;;
++        5) set -- "$args0" "$args1" "$args2" "$args3" "$args4" ;;
++        6) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" ;;
++        7) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" ;;
++        8) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" ;;
++        9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
++    esac
++fi
++
++# Escape application args
++save () {
++    for i do printf %s\\n "$i" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/' \\\\/" ; done
++    echo " "
++}
++APP_ARGS=`save "$@"`
++
++# Collect all arguments for the java command, following the shell quoting and substitution rules
++eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS "\"-Dorg.gradle.appname=$APP_BASE_NAME\"" -classpath "\"$CLASSPATH\"" org.gradle.wrapper.GradleWrapperMain "$APP_ARGS"
++
++exec "$JAVACMD" "$@"
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\n  <component name=\"GradleSettings\">\n    <option name=\"linkedExternalProjectsSettings\">\n      <GradleProjectSettings>\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"gradleJvm\" value=\"#GRADLE_LOCAL_JAVA_HOME\" />\n        <option name=\"modules\">\n          <set>\n            <option value=\"$PROJECT_DIR$\" />\n            <option value=\"$PROJECT_DIR$/app\" />\n          </set>\n        </option>\n        <option name=\"resolveExternalAnnotations\" value=\"false\" />\n      </GradleProjectSettings>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision f6ff6390ec3f121b25bf0ebb575b2d64c49352b5)
++++ b/.idea/gradle.xml	(date 1759706021667)
+@@ -4,6 +4,7 @@
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
++        <option name="testRunner" value="CHOOSE_PER_TEST" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+         <option name="gradleJvm" value="#GRADLE_LOCAL_JAVA_HOME" />
+         <option name="modules">
+@@ -12,7 +13,6 @@
+             <option value="$PROJECT_DIR$/app" />
+           </set>
+         </option>
+-        <option name="resolveExternalAnnotations" value="false" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: BarcodeScanner/gradlew.bat
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/gradlew.bat b/BarcodeScanner/gradlew.bat
+new file mode 100644
+--- /dev/null	(date 1759698430096)
++++ b/BarcodeScanner/gradlew.bat	(date 1759698430096)
+@@ -0,0 +1,89 @@
++@rem
++@rem Copyright 2015 the original author or authors.
++@rem
++@rem Licensed under the Apache License, Version 2.0 (the "License");
++@rem you may not use this file except in compliance with the License.
++@rem You may obtain a copy of the License at
++@rem
++@rem      https://www.apache.org/licenses/LICENSE-2.0
++@rem
++@rem Unless required by applicable law or agreed to in writing, software
++@rem distributed under the License is distributed on an "AS IS" BASIS,
++@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++@rem See the License for the specific language governing permissions and
++@rem limitations under the License.
++@rem
++
++@if "%DEBUG%" == "" @echo off
++@rem ##########################################################################
++@rem
++@rem  Gradle startup script for Windows
++@rem
++@rem ##########################################################################
++
++@rem Set local scope for the variables with windows NT shell
++if "%OS%"=="Windows_NT" setlocal
++
++set DIRNAME=%~dp0
++if "%DIRNAME%" == "" set DIRNAME=.
++set APP_BASE_NAME=%~n0
++set APP_HOME=%DIRNAME%
++
++@rem Resolve any "." and ".." in APP_HOME to make it shorter.
++for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
++
++@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
++
++@rem Find java.exe
++if defined JAVA_HOME goto findJavaFromJavaHome
++
++set JAVA_EXE=java.exe
++%JAVA_EXE% -version >NUL 2>&1
++if "%ERRORLEVEL%" == "0" goto execute
++
++echo.
++echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:findJavaFromJavaHome
++set JAVA_HOME=%JAVA_HOME:"=%
++set JAVA_EXE=%JAVA_HOME%/bin/java.exe
++
++if exist "%JAVA_EXE%" goto execute
++
++echo.
++echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:execute
++@rem Setup the command line
++
++set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
++
++
++@rem Execute Gradle
++"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %*
++
++:end
++@rem End local scope for the variables with windows NT shell
++if "%ERRORLEVEL%"=="0" goto mainEnd
++
++:fail
++rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
++rem the _cmd.exe /c_ return code!
++if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
++exit /b 1
++
++:mainEnd
++if "%OS%"=="Windows_NT" endlocal
++
++:omega
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"CompilerConfiguration\">\n    <bytecodeTargetLevel target=\"17\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	(revision f6ff6390ec3f121b25bf0ebb575b2d64c49352b5)
++++ b/.idea/compiler.xml	(date 1759701032045)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="CompilerConfiguration">
+-    <bytecodeTargetLevel target="17" />
++    <bytecodeTargetLevel target="21" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/deploymentTargetSelector.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"deploymentTargetSelector\">\n    <selectionStates>\n      <SelectionState runConfigName=\"app\">\n        <option name=\"selectionMode\" value=\"DROPDOWN\" />\n      </SelectionState>\n    </selectionStates>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetSelector.xml b/.idea/deploymentTargetSelector.xml
+--- a/.idea/deploymentTargetSelector.xml	(revision f6ff6390ec3f121b25bf0ebb575b2d64c49352b5)
++++ b/.idea/deploymentTargetSelector.xml	(date 1759706021673)
+@@ -4,6 +4,14 @@
+     <selectionStates>
+       <SelectionState runConfigName="app">
+         <option name="selectionMode" value="DROPDOWN" />
++        <DropdownSelection timestamp="2025-10-05T21:53:17.817964Z">
++          <Target type="DEFAULT_BOOT">
++            <handle>
++              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/cesargodinez/.android/avd/Medium_Phone.avd" />
++            </handle>
++          </Target>
++        </DropdownSelection>
++        <DialogSelection />
+       </SelectionState>
+     </selectionStates>
+   </component>
+Index: app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml b/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+new file mode 100644
+--- /dev/null	(date 1759698430110)
++++ b/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	(date 1759698430110)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background"/>
++    <foreground android:drawable="@mipmap/ic_launcher_foreground"/>
++</adaptive-icon>
+\ No newline at end of file
+Index: BarcodeScanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BarcodeScanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml b/BarcodeScanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+new file mode 100644
+--- /dev/null	(date 1759698430078)
++++ b/BarcodeScanner/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml	(date 1759698430078)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
++    <background android:drawable="@drawable/ic_launcher_background" />
++    <foreground android:drawable="@drawable/ic_launcher_foreground" />
++    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
++</adaptive-icon>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_17\" default=\"true\" project-jdk-name=\"jbr-17\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision f6ff6390ec3f121b25bf0ebb575b2d64c49352b5)
++++ b/.idea/misc.xml	(date 1759701032028)
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="jbr-21" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: app/src/main/res/drawable/ic_launcher_background.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/ic_launcher_background.xml b/app/src/main/res/drawable/ic_launcher_background.xml
+new file mode 100644
+--- /dev/null	(date 1759698430107)
++++ b/app/src/main/res/drawable/ic_launcher_background.xml	(date 1759698430107)
+@@ -0,0 +1,74 @@
++<?xml version="1.0" encoding="utf-8"?>
++<vector
++    android:height="108dp"
++    android:width="108dp"
++    android:viewportHeight="108"
++    android:viewportWidth="108"
++    xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="#3DDC84"
++          android:pathData="M0,0h108v108h-108z"/>
++    <path android:fillColor="#00000000" android:pathData="M9,0L9,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,0L19,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,0L29,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,0L39,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,0L49,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,0L59,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,0L69,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,0L79,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M89,0L89,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M99,0L99,108"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,9L108,9"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,19L108,19"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,29L108,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,39L108,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,49L108,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,59L108,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,69L108,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,79L108,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,89L108,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M0,99L108,99"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,29L89,29"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,39L89,39"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,49L89,49"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,59L89,59"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,69L89,69"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M19,79L89,79"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M29,19L29,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M39,19L39,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M49,19L49,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M59,19L59,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M69,19L69,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++    <path android:fillColor="#00000000" android:pathData="M79,19L79,89"
++          android:strokeColor="#33FFFFFF" android:strokeWidth="0.8"/>
++</vector>

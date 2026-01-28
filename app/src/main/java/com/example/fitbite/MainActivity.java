@@ -2,14 +2,17 @@ package com.example.fitbite;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import com.example.fitbite.network.ProxyClient;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,42 +23,52 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Example: Initialize search box if present
+        // If the search box exists on this layout, grab it
         searchBox = findViewById(R.id.searchFoodText);
 
-        // Example: Load default fragment if needed
-        // loadFragment(new HomeFragment()); // Uncomment if you have a fragment for the main dashboard
+        // Keep main's FatSecret proxy test (remove later if you don’t want it always running)
+        testFatsecret();
+
+        // Only build the search list UI if the recycler exists on this screen
+        openSearchScreen();
     }
 
-    /**
-     * Opens the search screen inside the fragment container
-     */
     private void openSearchScreen() {
         RecyclerView recyclerView = findViewById(R.id.foodRecyclerView);
-        if (recyclerView != null) {
-            List<FoodItem> foodList = new ArrayList<>();
-            FoodAdapter adapter = new FoodAdapter(this, foodList);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setAdapter(adapter);
-        }
+        if (recyclerView == null) return;
+
+        List<FoodItem> foodList = new ArrayList<>();
+
+        // Example placeholder data (main)
+        foodList.add(new FoodItem("French Toast", 350));
+        foodList.add(new FoodItem("Apple", 100));
+        foodList.add(new FoodItem("Orange", 60));
+        foodList.add(new FoodItem("Pizza Slice", 320));
+        foodList.add(new FoodItem("Veggie Pizza Slice", 350));
+        foodList.add(new FoodItem("Donut Holes", 35));
+        foodList.add(new FoodItem("Glazed Donut", 60));
+        foodList.add(new FoodItem("Some really long food name like an entire cake", 11000));
+
+        FoodAdapter adapter = new FoodAdapter(this, foodList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
     }
 
-    /**
-     * Opens the EditFoodActivity screen
-     */
     private void openEditScreen() {
         Intent intent = new Intent(MainActivity.this, EditFoodActivity.class);
         startActivity(intent);
     }
 
-    /**
-     * Helper method to replace the fragment in the container
-     */
-    private void loadFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .addToBackStack(null)
-                .commit();
+    private void testFatsecret() {
+        new Thread(() -> {
+            try {
+                ProxyClient proxy = new ProxyClient();
+                String json = proxy.searchFood("apple");
+                runOnUiThread(() -> Log.d("FATSECRET_TEST", json));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }
+

@@ -5,7 +5,6 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
     android:paddingStart="16dp"
     android:paddingTop="16dp"
     android:paddingEnd="16dp">
@@ -563,6 +562,7 @@
         </LinearLayout>
 
         <LinearLayout
+	    android:id="@+id/more_section"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

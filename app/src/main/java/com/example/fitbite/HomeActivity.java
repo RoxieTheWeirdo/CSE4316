@@ -1,6 +1,8 @@
 package com.example.fitbite;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,8 +15,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import com.example.nutritionalappplanner.page.ScanResultFragment;
+
 import com.example.nutritionalappplanner.page.FoodDetailFragment;
+import com.example.nutritionalappplanner.page.ScanResultFragment;
 import com.google.android.material.card.MaterialCardView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -24,13 +27,31 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Notifications.createChannel(this);
+
+        // Request notification permission on Android 13+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(
+                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS},
+                        100
+                );
+            }
+        }
+
+        // Optional: keep their test notification (remove later if you want)
+        Notifications.showNotification(this, 1, "A Notification!", "Test Notification", Notifications.MinimalNotifs);
+
+
         setupHomeViews();
         setupCenterButton();
         setupSections();
+        setupMoreSection();
         setupFragmentBackStackListener();
     }
 
-    // --- Setup the home screen views and sample data ---
+    //Home screen views and sample data
     private void setupHomeViews() {
         TextView tvCaloriesRemaining = findViewById(R.id.tv_calories_remaining);
         TextView tvBaseGoal = findViewById(R.id.tv_base_goal);
@@ -73,22 +94,37 @@ public class HomeActivity extends AppCompatActivity {
         );
     }
 
-    // --- Setup center + button popup ---
+    //center + button popup
     private void setupCenterButton() {
         MaterialCardView centerButton = findViewById(R.id.centerButton);
         centerButton.setOnClickListener(this::showPopupMenu);
     }
 
-    // --- Setup plan & diary sections ---
+    //Setup plan & diary sections
     private void setupSections() {
         LinearLayout planSection = findViewById(R.id.plan_section);
-        planSection.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, MealPlanActivity.class)));
+        planSection.setOnClickListener(v ->
+                startActivity(new Intent(HomeActivity.this, MealPlanActivity.class))
+        );
 
         LinearLayout diarySection = findViewById(R.id.diary_section);
-        diarySection.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class)));
+        diarySection.setOnClickListener(v ->
+                startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class))
+        );
     }
 
-    // --- Show popup menu ---
+    //Setup "More" section (Settings)
+    private void setupMoreSection() {
+        LinearLayout moreSection = findViewById(R.id.more_section);
+        if (moreSection != null) {
+            moreSection.setOnClickListener(v -> {
+                Intent intent = new Intent(HomeActivity.this, SettingsOverview.class);
+                startActivity(intent);
+            });
+        }
+    }
+
+    //Show popup menu
     private void showPopupMenu(View anchorView) {
         View popupView = LayoutInflater.from(this).inflate(R.layout.popup_options, null);
         PopupWindow popupWindow = new PopupWindow(
@@ -101,13 +137,11 @@ public class HomeActivity extends AppCompatActivity {
         popupWindow.setElevation(10);
 
         popupView.findViewById(R.id.btnSearchFood).setOnClickListener(v -> {
-            Toast.makeText(this, "Search Food clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(HomeActivity.this, SearchFoodActivity.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnBarcodeScan).setOnClickListener(v -> {
-            Toast.makeText(this, "Barcode Scan clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(HomeActivity.this, BarcodeScanner.class));
             popupWindow.dismiss();
         });
@@ -115,26 +149,27 @@ public class HomeActivity extends AppCompatActivity {
         popupView.findViewById(R.id.btnMealScan).setOnClickListener(v -> {
             Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
 
+            //fragment-based meal scan flow
             hideHomeViews();
-
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, new ScanCameraFragment())
-                    .addToBackStack(null) // no name needed
+                    .addToBackStack(null)
                     .commit();
 
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnWeight).setOnClickListener(v -> {
-            Toast.makeText(this, "Weight clicked", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, WeightActivity.class);
+            startActivity(intent);
             popupWindow.dismiss();
         });
 
         popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0, 550);
     }
 
-    // --- Hide/show home views helpers ---
+    //Hide/show home views helpers
     private void hideHomeViews() {
         View contentRoot = findViewById(R.id.content_root);
         View scroll = findViewById(R.id.scroll);
@@ -149,12 +184,14 @@ public class HomeActivity extends AppCompatActivity {
         if (scroll != null) scroll.setVisibility(View.VISIBLE);
     }
 
-    // --- Handle fragment back stack changes to restore/hide home views ---
+    //Handle fragment back stack changes to restore/hide home views
     private void setupFragmentBackStackListener() {
         getSupportFragmentManager().addOnBackStackChangedListener(() -> {
             Fragment topFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
-            if (topFragment instanceof ScanCameraFragment || topFragment instanceof ScanResultFragment || topFragment instanceof FoodDetailFragment) {
+            if (topFragment instanceof ScanCameraFragment
+                    || topFragment instanceof ScanResultFragment
+                    || topFragment instanceof FoodDetailFragment) {
                 hideHomeViews();
             } else {
                 showHomeViews();
@@ -162,4 +199,3 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 }
-
