@@ -88,9 +88,10 @@ public class activity_basics_exercise extends AppCompatActivity {
                 .addOnSuccessListener(aVoid -> {
                     Log.d(TAG, "Exercise level successfully written!");
                     // Proceed to the correct HomeActivity
-                    Intent intent = new Intent(activity_basics_exercise.this, HomeActivity.class);
+                    Intent intent = new Intent(activity_basics_exercise.this, bodyReconfiguration.class);
                     startActivity(intent);
                     finish(); // Close the onboarding flow
+
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Error writing exercise level", e);

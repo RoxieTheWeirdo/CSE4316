@@ -435,7 +435,24 @@
 
             </LinearLayout>
 
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bodyreconfiguration"
+                android:layout_width="375dp"
+                android:layout_height="90dp"
+                android:text="Body Transformation"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:cornerRadius="12dp"
+                app:elevation="3dp"
+                android:backgroundTint="#111318" />
+
+
+
+
+
         </LinearLayout>
+
     </ScrollView>
 
     <!-- Bottom navigation placeholder -->

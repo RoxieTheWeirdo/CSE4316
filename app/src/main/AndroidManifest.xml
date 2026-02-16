@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
+
     <application
 
         android:allowBackup="true"
@@ -37,6 +39,8 @@
         <activity android:name=".activity_basics_height" />
         <activity android:name=".activity_basics_weight" />
         <activity android:name=".activity_basics_exercise" />
+        <activity android:name=".bodyReconfiguration" />
+
 
         <!-- 🔹 Home screens -->
         <activity android:name=".HomeActivity" />
@@ -44,9 +48,16 @@
         <activity android:name=".SearchFoodActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".EditFoodActivity" />
+
         <activity android:name=".BarcodeScanner"
             android:stateNotNeeded="true"/>
-        <activity android:name=".CaptureAct" />
+
+
+        <activity
+            android:name=".CaptureAct"
+            android:screenOrientation="portrait"
+            android:theme="@style/zxingCameraTheme"/>
+
         <activity android:name=".BarcodeScannerAfter" />
         <activity android:name=".BarcodeMoreInfo" />
         <activity android:name=".PantryScanner" />
@@ -63,7 +74,9 @@
         <activity android:name=".SettingChangeSex" />
         <activity android:name=".SettingChangeExercise" />
         <activity android:name=".WeightActivity" />
-    </application>
 
+
+
+    </application>
 
 </manifest>

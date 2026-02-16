@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Custom style for NumberPicker -->
     <style name="NumberPickerTheme" parent="android:Widget">
         <item name="android:textColorPrimary">#FFFFFF</item>
@@ -7,4 +8,12 @@
         <item name="colorControlNormal">#FFFFFF</item>
         <item name="android:background">#1C1C1C</item>
     </style>
+
+
+    <style name="zxingCameraTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
 </resources>

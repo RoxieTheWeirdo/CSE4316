@@ -47,7 +47,7 @@ public class activity_basics_weight extends AppCompatActivity {
 
         setupPounds();
 
-        // ✅ Back
+        //  Back
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         btnPounds.setOnClickListener(v -> {

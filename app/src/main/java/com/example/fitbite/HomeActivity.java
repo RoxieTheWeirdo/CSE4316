@@ -54,11 +54,16 @@ public class HomeActivity extends AppCompatActivity {
         TextView tvExerciseCal = findViewById(R.id.tv_ex_cal);
         TextView tvExerciseTime = findViewById(R.id.tv_ex_time);
 
-        // --- Example data ---
-        int calorieGoal = 1900;
+
+        // Get calorie goal from the create account algorithm
+        int calorieGoal = getIntent().getIntExtra("CALORIE_TARGET", 0);
+
+        // Temporary example values (until food & exercise are dynamic)
         int foodConsumed = 1225;
         int exerciseBurned = 200;
+
         int remaining = calorieGoal - foodConsumed + exerciseBurned;
+
 
         tvCaloriesRemaining.setText(String.valueOf(remaining));
         tvBaseGoal.setText("Goal: " + calorieGoal);
