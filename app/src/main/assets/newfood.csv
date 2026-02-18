@@ -1,0 +1,155 @@
+Name,Category,Calories,Fat (g),Protein (g),Carbs (g),Fiber (g),Sugar (g)
+Apple,Fruit,52,0.2,0.3,14,2.4,10
+Avocado,Fruit,160,15,2,8.5,6.7,0.7
+Banana,Fruit,89,0.3,1.1,23,2.6,12
+Blueberries,Fruit,57,0.3,0.7,14,2.4,10
+Broccoli,Vegetable,34,0.4,2.8,7,2.6,1.7
+Chicken Breast,Protein,165,3.6,31,0,0,0
+Salmon,Protein,208,13,20,0,0,0
+Eggs,Protein,155,11,13,1.1,0,1.1
+Greek Yogurt (Plain),Dairy,59,0.4,10,3.6,0,3.6
+Almonds,Nuts,579,50,21,22,12,4.4
+Spinach,Vegetable,23,0.4,2.9,3.6,2.2,0.4
+Sweet Potato,Vegetable,86,0.1,1.6,20,3,4.2
+Quinoa,Grain,120,1.9,4.4,21,2.8,0.9
+Brown Rice,Grain,111,0.9,2.6,23,1.8,0.4
+Oats,Grain,389,6.9,16.9,66,10.6,0
+Beef (Lean),Protein,250,15,26,0,0,0
+Cheddar Cheese,Dairy,403,33,25,1.3,0,0.5
+Chickpeas,Legume,164,2.6,8.9,27,7.6,4.8
+Lentils,Legume,116,0.4,9,20,7.9,1.8
+Peanut Butter,Nut Butter,588,50,25,20,6,9
+Kale,Vegetable,49,0.9,4.3,9,3.6,2.3
+Strawberries,Fruit,32,0.3,0.7,7.7,2,4.9
+Walnuts,Nuts,654,65,15,14,6.7,2.6
+Tofu (Firm),Protein,83,4.8,8,1.9,0.3,0
+Turkey Breast,Protein,135,1,30,0,0,0
+Black Beans,Legume,132,0.5,8.9,23,8.7,0.3
+Cottage Cheese,Dairy,98,4.3,11,3.4,0,2.7
+Whole Milk,Dairy,61,3.3,3.2,4.8,0,5.1
+White Bread,Grain,265,3.2,9,49,2.7,5
+Carrot,Vegetable,41,0.2,0.9,10,2.8,4.7
+Cucumber,Vegetable,15,0.1,0.7,3.6,0.5,1.7
+Garlic,Vegetable,149,0.5,6.4,33,2.1,1
+Honey,Sweetener,304,0,0.3,82,0.2,82
+Olive Oil,Oil,884,100,0,0,0,0
+Pork Chop,Protein,242,14,27,0,0,0
+Potato (White),Vegetable,77,0.1,2,17,2.2,0.8
+Pumpkin Seeds,Seeds,559,49,30,11,6,1
+Shrimp,Protein,99,0.3,24,0.2,0,0
+Soy Milk,Dairy Alt,54,1.8,3.3,6,0.6,4
+Tomato,Vegetable,18,0.2,0.9,3.9,1.2,2.6
+Tuna (Canned),Protein,116,0.8,26,0,0,0
+Watermelon,Fruit,30,0.2,0.6,7.6,0.4,6
+Chia Seeds,Seeds,486,31,17,42,34,0
+Dark Chocolate,Treat,546,31,4.9,61,7,48
+Asparagus,Vegetable,20,0.1,2.2,3.9,2.1,1.9
+Bell Pepper,Vegetable,31,0.3,1,6,2.1,4.2
+Cashews,Nuts,553,44,18,30,3.3,5.9
+Hummus,Dip,166,9.6,7.9,14,6,0.3
+Mushrooms,Vegetable,22,0.3,3.1,3.3,1,2
+Raspberries,Fruit,52,0.7,1.2,12,6.5,4.4
+Whole Wheat Pasta,Grain,124,1,5,27,4.5,1
+Linguine,Grain,158,1,6,31,2,1
+Seitan,Protein,370,1.9,75,14,0.6,0
+Tempeh,Protein,192,11,19,9,3,0
+Edamame,Legume,122,5,11,10,5,2
+Bison,Protein,143,2.4,28,0,0,0
+Duck Breast,Protein,200,11,24,0,0,0
+Cod,Protein,82,0.7,18,0,0,0
+Mackerel,Protein,205,14,19,0,0,0
+Lobster,Protein,89,0.9,19,0,0,0
+Scallops,Protein,111,0.8,20,2,0,0
+Bacon,Protein,541,42,37,1.4,0,0
+Ham,Protein,145,6,21,1.5,0,1
+Swiss Cheese,Dairy,380,28,27,1.5,0,0.5
+Mozzarella,Dairy,280,17,28,3,0,1
+Feta Cheese,Dairy,264,21,14,4,0,4
+Parmesan,Dairy,431,29,38,4,0,0.8
+Ricotta,Dairy,174,13,11,3,0,0.3
+Butter,Oil,717,81,0.9,0.1,0,0.1
+Heavy Cream,Dairy,345,37,2,3,0,3
+Sour Cream,Dairy,193,19,2,5,0,3
+Coconut Milk,Dairy Alt,230,24,2.3,6,2,3
+Almond Milk,Dairy Alt,15,1.1,0.6,0.6,0.3,0
+Oat Milk,Dairy Alt,50,0.7,1,7,0.8,4
+Artichoke,Vegetable,47,0.2,3.3,10.5,5.4,1
+Brussels Sprouts,Vegetable,43,0.3,3.4,9,3.8,2.2
+Cauliflower,Vegetable,25,0.3,1.9,5,2,1.9
+Celery,Vegetable,16,0.2,0.7,3,1.6,1.8
+Eggplant,Vegetable,25,0.2,1,6,3,3.5
+Zucchini,Vegetable,17,0.3,1.2,3,1,1.7
+Green Beans,Vegetable,31,0.2,1.8,7,2.7,3.3
+Peas,Vegetable,81,0.4,5,14,5,5.7
+Corn,Grain,86,1.3,3.2,19,2,6.3
+Pear,Fruit,57,0.1,0.4,15,3.1,10
+Peach,Fruit,39,0.3,0.9,10,1.5,8
+Plum,Fruit,46,0.3,0.7,11,1.4,10
+Mango,Fruit,60,0.4,0.8,15,1.6,14
+Pineapple,Fruit,50,0.1,0.5,13,1.4,10
+Kiwi,Fruit,61,0.5,1.1,15,3,9
+Grapes,Fruit,69,0.2,0.7,18,0.9,15
+Cherry,Fruit,50,0.3,1,12,1.6,8
+Orange,Fruit,47,0.1,0.9,12,2.4,9
+Lemon,Fruit,29,0.3,1.1,9,2.8,2.5
+Grapefruit,Fruit,42,0.1,0.8,11,1.6,7
+Pomegranate,Fruit,83,1.2,1.7,19,4,14
+Date,Fruit,282,0.4,2.5,75,8,63
+Fig,Fruit,74,0.3,0.8,19,2.9,16
+Cranberries,Fruit,46,0.1,0.4,12,4.6,4
+Blackberries,Fruit,43,0.5,1.4,10,5,4.9
+Melon,Fruit,34,0.2,0.8,8,0.9,8
+Apricot,Fruit,48,0.4,1.4,11,2,9
+Papaya,Fruit,43,0.3,0.5,11,1.7,8
+Macadamia Nuts,Nuts,718,76,8,14,9,4.6
+Pecans,Nuts,691,72,9,14,10,4
+Pistachios,Nuts,562,45,20,28,10,7.7
+Sunflower Seeds,Seeds,584,51,21,20,9,2.6
+Sesame Seeds,Seeds,573,50,18,23,12,0.3
+Flax Seeds,Seeds,534,42,18,29,27,1.6
+Barley,Grain,354,2.3,12,73,17,0.8
+Bulgur,Grain,83,0.2,3,18,4.5,0.1
+Couscous,Grain,112,0.2,3.8,23,1.4,0.1
+Millet,Grain,119,1,3.5,23,1.3,0.1
+Rye Bread,Grain,259,3.3,9,48,6,3.9
+Sourdough Bread,Grain,289,1.2,12,56,2.4,0.7
+Tortilla (Corn),Grain,218,2.9,5.7,45,6,1.1
+Tortilla (Flour),Grain,297,7.7,8,49,2.4,2
+Bagel,Grain,250,1.5,10,48,2.3,6
+Pretzel,Treat,380,3,10,80,3,2
+Granola,Grain,471,20,10,64,5,29
+Peanuts,Nuts,567,49,26,16,9,4
+Reese's Cup,Treat,515,30,10,53,3,48
+Peanut Satay Sauce,Sauce,250,20,8,12,1,8
+Lasagna,Prepared,135,5,8,15,1,3
+Cheesecake,Treat,321,22,5,25,0.5,18
+Macaroni and Cheese,Prepared,164,7,7,18,1,2
+Beer,Alcohol,43,0,0.5,3.6,0,0
+Red Wine,Alcohol,85,0,0.1,2.6,0,0.6
+White Wine,Alcohol,82,0,0.1,2.6,0,0.6
+Vodka,Alcohol,231,0,0,0,0,0
+Quail Eggs,Protein,158,11,13,0.4,0,0.4
+Venison,Protein,150,2.4,30,0,0,0
+Salami,Protein,336,26,22,1,0,1
+Clams,Protein,74,0.7,13,2.6,0,0
+Goat Cheese,Dairy,364,30,22,0.1,0,0.1
+Blue Cheese,Dairy,353,29,21,2.3,0,0.5
+Hemp Seeds,Seeds,553,49,31,9,4,1.5
+Popcorn (Air-Popped),Grain,387,4.5,13,78,15,0.9
+Spelt,Grain,338,2.4,15,70,11,6.8
+Wild Rice,Grain,101,0.3,4,21,1.8,0.7
+Radish,Vegetable,16,0.1,0.7,3.4,1.6,1.9
+Okra,Vegetable,33,0.2,1.9,7.5,3.2,1.5
+Leek,Vegetable,61,0.3,1.5,14,1.8,3.9
+Kohlrabi,Vegetable,27,0.1,1.7,6,3.6,2.6
+Guava,Fruit,68,1,2.6,14,5,9
+Lychee,Fruit,66,0.4,0.8,17,1.3,15
+Passion Fruit,Fruit,97,0.7,2.2,23,10,11
+Tamarind,Fruit,239,0.6,2.8,63,5,57
+Pumpkin,Vegetable,26,0.1,1,6.5,0.5,2.8
+Squash (Butternut),Vegetable,45,0.1,1,12,2,2.2
+Pickles (Dill),Vegetable,0,0,0.1,1,0.5,0
+Seaweed (Nori),Vegetable,0,0,0.1,0.1,0.1,0
+Celery (Stick),Vegetable,0,0.1,0.3,1.5,0.8,0.9
+Konjac Jelly,Treat,0,0,0,1,1,0
+Iceberg Lettuce,Vegetable,0,0.1,0.4,1.1,0.5,0.8

@@ -86,6 +86,6 @@ dependencies {
     implementation("nl.dionsegijn:konfetti-compose:2.0.4")
     implementation("nl.dionsegijn:konfetti-core:2.0.4")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-
+    implementation("com.github.haifengl:smile-core:2.6.0")
 
 }

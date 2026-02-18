@@ -92,6 +92,21 @@
             android:text="Change Exercise Level"
             android:textAllCaps="false"
             android:layout_marginBottom="24dp" />
+        <TextView
+            android:id="@+id/curAllergies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Current allergies"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp" />
+
+        <Button
+            android:id="@+id/btnChangeAllergies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Allergies"
+            android:textAllCaps="false"
+            android:layout_marginBottom="24dp" />
 
     </LinearLayout>
 </ScrollView>

@@ -70,4 +70,15 @@
         android:layout_height="wrap_content"
         android:text="Not set"
         android:layout_marginBottom="16dp"/>
+    <!-- Allergies/Dietary Restrictions -->
+    <TextView
+        android:text="Allergies/Dietary Restrictions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/allergies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_marginBottom="16dp"/>
 </LinearLayout>

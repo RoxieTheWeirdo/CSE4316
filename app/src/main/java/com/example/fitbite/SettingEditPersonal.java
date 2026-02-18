@@ -13,8 +13,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SettingEditPersonal extends AppCompatActivity {
 
-    TextView curBirthday, curHeight, curWeight, curSex, curExercise;
-    Button btnChangeBirthday, btnChangeHeight, btnChangeWeight, btnChangeSex, btnChangeExercise;
+    TextView curBirthday, curHeight, curWeight, curSex, curExercise, curAllergies;
+    Button btnChangeBirthday, btnChangeHeight, btnChangeWeight, btnChangeSex, btnChangeExercise, btnChangeAllergies;
     LocalSettings localSettings;
     FirebaseUser user;
     FirebaseFirestore db;
@@ -35,12 +35,15 @@ public class SettingEditPersonal extends AppCompatActivity {
         curWeight   = findViewById(R.id.curWeight);
         curSex      = findViewById(R.id.curSex);
         curExercise = findViewById(R.id.curExercise);
+        curAllergies = findViewById(R.id.curAllergies);
 
         btnChangeBirthday = findViewById(R.id.btnChangeBirthday);
         btnChangeHeight   = findViewById(R.id.btnChangeHeight);
         btnChangeWeight   = findViewById(R.id.btnChangeWeight);
         btnChangeSex      = findViewById(R.id.btnChangeSex);
         btnChangeExercise = findViewById(R.id.btnChangeExercise);
+        btnChangeAllergies = findViewById(R.id.btnChangeAllergies);
+
         if (user != null) {
             DocumentReference ref =
                     db.collection("users").document(user.getUid());
@@ -97,6 +100,8 @@ public class SettingEditPersonal extends AppCompatActivity {
 
                 curSex.setText(snap.getString("sex") != null ? snap.getString("sex") : "Not Set");
                 curExercise.setText(snap.getString("exerciseLevel") != null ? snap.getString("exerciseLevel") : "Not Set");
+                String allergies = snap.getString("allergies");
+                curAllergies.setText(allergies != null  && !allergies.trim().isEmpty() ? allergies : "None");
             });
         }
 
@@ -118,6 +123,10 @@ public class SettingEditPersonal extends AppCompatActivity {
         });
         btnChangeExercise.setOnClickListener(v -> {
             Intent intent = new Intent(SettingEditPersonal.this, SettingChangeExercise.class);
+            startActivity(intent);
+        });
+        btnChangeAllergies.setOnClickListener(v -> {
+            Intent intent = new Intent(SettingEditPersonal.this, SettingChangeAllergies.class);
             startActivity(intent);
         });
     }

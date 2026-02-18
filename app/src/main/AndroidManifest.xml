@@ -45,6 +45,7 @@
         <!-- 🔹 Home screens -->
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".AutoMealPlan" />
         <activity android:name=".SearchFoodActivity" />
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".EditFoodActivity" />
@@ -73,6 +74,7 @@
         <activity android:name=".SettingChangeWeight" />
         <activity android:name=".SettingChangeSex" />
         <activity android:name=".SettingChangeExercise" />
+        <activity android:name=".SettingChangeAllergies" />
         <activity android:name=".WeightActivity" />
 
 

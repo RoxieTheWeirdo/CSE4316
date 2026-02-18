@@ -120,7 +120,6 @@ public class SettingsOverview extends AppCompatActivity {
                             Long year = snapshot.getLong("birthYear");
                             if (day != null && month != null && year != null) {
                                 birthdayView.setText(String.format("%s %02d, %04d", month, day, year));
-                                // Optional: calculate age if stored
                                 Long age = snapshot.getLong("age");
                                 ageView.setText(age != null ? String.valueOf(age) : "-");
                             } else {
@@ -134,7 +133,7 @@ public class SettingsOverview extends AppCompatActivity {
 
                             Long heightCm = snapshot.getLong("heightInCm");
                             Long weightLbs = snapshot.getLong("weightInPounds");
-                            String unitPref = localSettings.getUnitPreference(); // "Metric" or "Imperial"
+                            String unitPref = localSettings.getUnitPreference(); // Metric or Imperial
 
                             if (heightCm != null) {
                                 if (unitPref.equals("Metric")) {
@@ -144,7 +143,7 @@ public class SettingsOverview extends AppCompatActivity {
                                     int feet = (int) (totalInches / 12);
                                     int inches = (int) Math.round(totalInches % 12);
 
-                                    // Prevent 12 inches from appearing
+                                    //Prevents 12 inches from appearing
                                     if (inches == 12) {
                                         feet += 1;
                                         inches = 0;
@@ -181,6 +180,14 @@ public class SettingsOverview extends AppCompatActivity {
                             }
                             else {
                                 exerciseView.setText("Not set");
+                            }
+                            TextView allergiesView = finalView.findViewById(R.id.allergies);
+                            String allergies = snapshot.getString("allergies");
+                            if (allergies != null && !allergies.isEmpty()) {
+                                allergiesView.setText(allergies);
+                            }
+                            else {
+                                allergiesView.setText("None");
                             }
                         }
                     });
