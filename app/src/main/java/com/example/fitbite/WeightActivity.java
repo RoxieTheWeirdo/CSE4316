@@ -61,7 +61,6 @@ public class WeightActivity extends AppCompatActivity {
     private ArrayList<WeightEntry> historyList = new ArrayList<>();
     private WeightHistoryAdapter historyAdapter;
     private boolean hasGoal = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -81,7 +80,6 @@ public class WeightActivity extends AppCompatActivity {
         Button historyButton = findViewById(R.id.historyButton);
 
         loadSavedWeightAndDate();
-
         //Ensure fireworks appear above everything
         KonfettiView konfettiView = findViewById(R.id.confettiView);
         konfettiView.bringToFront();
@@ -355,7 +353,20 @@ public class WeightActivity extends AppCompatActivity {
                     }
 
                     //Update current weight
-                    currentWeight = Float.parseFloat(w);
+                    float newWeight = Float.parseFloat(w);
+                    if (newWeight < currentWeight) {
+                        float dropPercent = ((currentWeight - newWeight) / currentWeight) * 100f;
+                        if (dropPercent > 10f) {
+                            Notifications.showInAppNotification(
+                                    this,
+                                    "Weight warning",
+                                    "You claim to have lost a lot of weight! Did you input your new weight correctly?",
+                                    null,
+                                    5000
+                            );
+                        }
+                    }
+                    currentWeight = newWeight;
                     updateUI();
                     // Save to Firebase
                     saveToFirebase(

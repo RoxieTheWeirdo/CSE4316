@@ -88,5 +88,6 @@ dependencies {
     implementation("com.github.haifengl:smile-core:2.6.0")
     implementation("com.google.android.gms:play-services-auth:21.2.0")
     implementation("com.google.android.gms:play-services-fitness:21.2.0")
-
+    implementation("androidx.work:work-runtime:2.9.0")
+    implementation("com.google.firebase:firebase-messaging:23.4.1")
 }

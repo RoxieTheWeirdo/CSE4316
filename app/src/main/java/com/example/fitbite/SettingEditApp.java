@@ -11,22 +11,26 @@ import com.google.android.material.button.MaterialButtonToggleGroup;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 public class SettingEditApp extends AppCompatActivity {
 
     MaterialButtonToggleGroup toggleGroup;
     LocalSettings localSettings;
+    private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings3);
-
+        auth = FirebaseAuth.getInstance();
         localSettings = new LocalSettings(this);
 
         toggleGroup = findViewById(R.id.themeToggleGroup);
         MaterialButton btnLight = findViewById(R.id.btnLight);
         MaterialButton btnDark = findViewById(R.id.btnDark);
         MaterialButton btnSystem = findViewById(R.id.btnSystem);
-
         // Preselect current theme
         String currentTheme = localSettings.getTheme();
         switch (currentTheme) {
@@ -88,10 +92,17 @@ public class SettingEditApp extends AppCompatActivity {
 
         String mode = localSettings.getNotificationMode();
         switch (mode) {
-            case "Minimal": notifGroup.check(R.id.btnNotifyMinimal); break;
-            case "All": notifGroup.check(R.id.btnNotifyAll); break;
-            default: notifGroup.check(R.id.btnNotifyOff); break;
+            case "Minimal":
+                notifGroup.check(R.id.btnNotifyMinimal);
+                break;
+            case "All":
+                notifGroup.check(R.id.btnNotifyAll);
+                break;
+            default:
+                notifGroup.check(R.id.btnNotifyOff);
+                break;
         }
+
         notifGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
             if (!isChecked) return;
 
@@ -99,6 +110,13 @@ public class SettingEditApp extends AppCompatActivity {
             if (checkedId == R.id.btnNotifyMinimal) selected = "Minimal";
             if (checkedId == R.id.btnNotifyAll) selected = "All";
 
+            FirebaseUser user = auth.getCurrentUser();
+            if (user != null) {
+                FirebaseFirestore.getInstance()
+                        .collection("users")
+                        .document(user.getUid())
+                        .update("notificationPreference", selected);
+            }
             NotificationManagerCompat manager = NotificationManagerCompat.from(this);
             boolean systemEnabled = manager.areNotificationsEnabled();
             boolean permissionGranted = true;

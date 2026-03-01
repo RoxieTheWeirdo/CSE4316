@@ -26,7 +26,7 @@
 
         <!-- 🔹 Login page launches first -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,6 +68,7 @@
         <activity android:name=".MealDetailActivity" />
         <activity android:name=".FoodDiaryActivity" />
         <activity android:name=".SettingEditAccount" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".SettingEditPersonal" />
         <activity android:name=".SettingEditApp" />
         <activity android:name=".SettingsOverview" />
@@ -78,9 +79,9 @@
         <activity android:name=".SettingChangeExercise" />
         <activity android:name=".SettingChangeAllergies" />
         <activity android:name=".WeightActivity" />
+        <activity android:name=".NotificationHistory" />
 
 
 
     </application>
-
 </manifest>

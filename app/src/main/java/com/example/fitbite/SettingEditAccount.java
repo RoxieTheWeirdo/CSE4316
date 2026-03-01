@@ -38,6 +38,7 @@ public class SettingEditAccount extends AppCompatActivity {
         Button ChangeEmail = findViewById(R.id.ChangeEmail);
         Button ChangePassword = findViewById(R.id.ChangePassword);
         Button DeleteAccount = findViewById(R.id.DeleteAccount);
+        Button SignOut = findViewById(R.id.SignOut);
         TextView curEmail = findViewById(R.id.curEmail);
         TextView curUser = findViewById(R.id.curUsername);
         if (user != null) {
@@ -127,15 +128,17 @@ public class SettingEditAccount extends AppCompatActivity {
                 }
                 else {
                     if (user != null) {
+                        loadingScreen(true);
                         user.updatePassword(pass1)
                                 .addOnCompleteListener(task -> {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(this, "Password updated successfully", Toast.LENGTH_SHORT).show();
+                                        Notifications.showInAppNotification(this, "Password Changed", "You have changed your password.", null, 4000);
                                     }
                                     else {
                                         Toast.makeText(this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
+                        loadingScreen(false);
                     }
                     else {
                         Toast.makeText(this, "No user logged in", Toast.LENGTH_SHORT).show();
@@ -195,20 +198,49 @@ public class SettingEditAccount extends AppCompatActivity {
                     return;
                 }
 
-                FirebaseFirestore.getInstance()
+                DocumentReference userDoc = FirebaseFirestore.getInstance()
                         .collection("users")
-                        .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                        .update("username", newUsername)
-                        .addOnSuccessListener(unused -> {
-                            Toast.makeText(this, "Username updated", Toast.LENGTH_SHORT).show();
-                            dialog.dismiss();
-                        })
-                        .addOnFailureListener(e ->
-                                Toast.makeText(this, "Failed to update username: " + e.getMessage(), Toast.LENGTH_SHORT).show()
-                        );
-            });
+                        .document(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
+                // Use an array to store oldUsername so it can be modified inside lambda
+                final String[] oldUsernameHolder = new String[1];
+
+                userDoc.get().addOnSuccessListener(snapshot -> {
+                    if (snapshot.exists()) {
+                        oldUsernameHolder[0] = snapshot.getString("username");
+                        if (oldUsernameHolder[0] == null) oldUsernameHolder[0] = "Unknown";
+
+                        // Then update to new username
+                        userDoc.update("username", newUsername)
+                                .addOnSuccessListener(unused -> {
+                                    Notifications.showInAppNotification(
+                                            SettingEditAccount.this,
+                                            "Username Change",
+                                            "Changed your username from " + oldUsernameHolder[0] + " to " + newUsername,
+                                            null,
+                                            4000
+                                    );
+                                    dialog.dismiss();
+                                })
+                                .addOnFailureListener(e ->
+                                        Toast.makeText(this, "Failed to update username: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                                );
+                    }
+                }).addOnFailureListener(e ->
+                        Toast.makeText(this, "Failed to fetch current username: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                );
+            });
             dialog.show();
+        });
+        SignOut.setOnClickListener(v -> {
+
+            // Sign out from Firebase
+            FirebaseAuth.getInstance().signOut();
+            Toast.makeText(this, "Successfully signed out of FitBite!",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(SettingEditAccount.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         });
 
     }

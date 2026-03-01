@@ -42,7 +42,6 @@ public class AutoMealPlan extends AppCompatActivity {
     private double userHeightCm = 170.0;
     private int userAge = 25;
     private String userSex = "Male";
-
     // --- SCALER STATISTICS (For Normalization/ML) ---
     private double meanCals, devCals, meanProt, devProt, meanCarb, devCarb,
             meanFat, devFat, meanFib, devFib, meanSug, devSug;
@@ -254,6 +253,11 @@ public class AutoMealPlan extends AppCompatActivity {
 
     // --- OUTPUT ---
     private void generateWeekPlan(List<FoodScore> rankedFoods) {
+        LocalSettings localSettings = new LocalSettings(this);
+        String mode = localSettings.getNotificationMode();
+        if (mode.equals("All")) {
+            Notifications.showInAppNotification(this, "New Meal Plan!", "You've generated a new meal plan for the week!", null, 3000);
+        }
         List<Meal> meals = new ArrayList<>();
         String[] days = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
         int poolSize = Math.min(25, rankedFoods.size());

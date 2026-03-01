@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -25,6 +27,11 @@ import com.google.android.gms.fitness.data.DataType;
 import com.google.android.gms.fitness.data.Field;
 import com.google.android.gms.fitness.request.DataReadRequest;
 import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.concurrent.TimeUnit;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -48,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView ivMealThumb;
 
     private TextView tvStepsCount, tvStepsGoal, tvExerciseCal, tvExerciseTime;
-
+    private boolean welcomeShown = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +64,6 @@ public class HomeActivity extends AppCompatActivity {
         // -------------------- Notifications --------------------
         Notifications.createChannel(this);
         requestPostNotificationPermissionIfNeeded();
-
-        Notifications.showNotification(
-                this,
-                1,
-                "A Notification!",
-                "Test Notification",
-                Notifications.MinimalNotifs
-        );
 
         // -------------------- UI Setup --------------------
         bindViews();
@@ -84,6 +83,20 @@ public class HomeActivity extends AppCompatActivity {
     // -------------------- Bind Views --------------------
 
     private void bindViews() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        return;
+                    }
+                    String token = task.getResult();
+
+                    // Save token to Firestore
+                    FirebaseFirestore.getInstance()
+                            .collection("users")
+                            .document(FirebaseAuth.getInstance().getUid())
+                            .update("fcmToken", token);
+                });
+        //Notifications.showNotification(this, 1, "A Notification!", "Test Notification", Notifications.MinimalNotifs);
         // Calories Section
         tvCaloriesRemaining = findViewById(R.id.tv_calories_remaining);
         tvBaseGoal = findViewById(R.id.tv_base_goal);
@@ -155,12 +168,36 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class))
         );
 
-        // Settings / More Section
         LinearLayout moreSection = findViewById(R.id.more_section);
-        moreSection.setOnClickListener(v -> {
-            Toast.makeText(this, "More clicked", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(HomeActivity.this, SettingsOverview.class));
-        });
+        moreSection.setOnClickListener(v -> showSidebar(v));
+        String user = FirebaseAuth.getInstance().getUid();
+        LocalSettings localSettings = new LocalSettings(this);
+        String mode = localSettings.getNotificationMode();
+        if (user != null && !welcomeShown && mode.equals("All")) {
+            FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(user)
+                    .get()
+                    .addOnSuccessListener(doc -> {
+
+                        String username = doc.getString("username");
+
+                        String title;
+                        String message = "";
+                        Class<?> targetActivity = null;
+
+                        if (username == null || username.isEmpty()) {
+                            title = "Welcome!";
+                            message = "Tap here to set your username";
+                            targetActivity = SettingEditAccount.class;
+                        } else {
+                            title = "Welcome back " + username + "!";
+                        }
+                        welcomeShown = true;
+                        Notifications.showInAppNotification(this, title, message, targetActivity, 5000
+                        );
+                    });
+        }
     }
 
     // -------------------- Permissions --------------------
@@ -340,5 +377,38 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0, 550);
+    }
+    private void showSidebar(View anchorView) {
+        // Inflate sidebar layout
+        View sidebarView = LayoutInflater.from(this).inflate(R.layout.homesidebar, null);
+
+        // Create popup window
+        final PopupWindow sidebar = new PopupWindow(
+                sidebarView,
+                600, // width in pixels (adjust as needed)
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                true
+        );
+        sidebar.setElevation(12);
+
+        // Dismiss sidebar if touched outside
+        sidebar.setOutsideTouchable(true);
+        sidebar.setFocusable(true);
+
+        // Set button actions
+        sidebarView.findViewById(R.id.btnNotifications).setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, NotificationHistory.class);
+            startActivity(intent);
+            sidebar.dismiss();
+        });
+
+        sidebarView.findViewById(R.id.btnSettings).setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, SettingsOverview.class);
+            startActivity(intent);
+            sidebar.dismiss();
+        });
+
+        // Show popup aligned to right
+        sidebar.showAtLocation(anchorView, Gravity.END | Gravity.TOP, 0, 0);
     }
 }
