@@ -153,3 +153,150 @@ Seaweed (Nori),Vegetable,0,0,0.1,0.1,0.1,0
 Celery (Stick),Vegetable,0,0.1,0.3,1.5,0.8,0.9
 Konjac Jelly,Treat,0,0,0,1,1,0
 Iceberg Lettuce,Vegetable,0,0.1,0.4,1.1,0.5,0.8
+Onion,Vegetable,42,0.08,0.92,10.11,1.4,4.28
+Vegetable Oil,Oil,120,13.6,0,0,0,0
+White Rice (1 Cup Cooked),Grain,204,0.44,4.20,44.08,0.6,0.08
+Italian Sausage,Protein,234,18.57,13,2.9,0.1,0.58
+Lime,Fruit,20,0.13,0.47,7.06,1.9,1.13
+Baked Beans (1 Cup),Legume,382,13.03,14.02,54.12,13.9,0
+Scallions,Vegetable,32,0.19,1.83,7.34,2.6,2.33
+Chicken Thigh,Protein,135,8.45,13.67,0,0,0
+Chicken Wing,Protein,81,5.4,7.46,0,0,0
+Chicken Drumstick,Protein,81,4.2,10.18,0,0,0
+Salt,Seasoning,0,0,0,0,0,0
+Black Pepper,Spice,0,0,0,0,0,0
+Turmeric,Spice,8,0.22,0.17,1.43,0.5,0.07
+White Flour (1 oz),Grain,103,0.28,2.93,21.63,0.8,0.08
+Baking Soda (1 tsp),Agent,0,0,0,0,0,0
+Baking Powder (1 tsp),Agent,2,0,0,1.27,0,0  
+Parsley (1 tbsp),Herb,1,0.03,0.11,0.24,0.1,0.03  
+Basil (2 tbsps),Herb,1,0.03,0.13,0.23,0.2,0.02  
+Rosemary (1 tbsp),Herb,2,0.1,0.06,0.35,0.2,0  
+Cilantro (1 oz),Herb,7,0.15,0.6,1.04,0.8,0.25 
+Sugar (1 tsp),Sweetener,16,0,0,4.2,0,4.2
+Brown Sugar (1 tsp),Sweetener,11,0,0,2.92,0,2.92
+Apple Cider Vinegar (1 tbsp),Condiment,0,0,0,0,0,0
+Vinegar (1 tbsp),Condiment,3,0,0,0.01,0,0.01
+Balsamic Vinegar (1 tbsp),Condiment,13,0,0,2.55,0,2.33
+Vanilla Extract (1 tsp),Sweetener,13,0,0,2.55,0,2.33
+Tone's Pure Almond Extract (1/4 tsp),Sweetener,5,0,0,0,0,0
+Nonfat Milk (1 cup),Dairy,86,8.35,11.88,0,12.47
+Half and Half Cream (1 tbsp),Dairy,20,1.72,0.44,0.64,0,0.02
+Sweetened Condensed Milk (19 g),Dairy,61,1.65,1.5,10.34,0,10.34
+Provolone Cheese (1 oz),Dairy,98,7.45,7.16,0.6,0,0.16
+Monterey Jack Cheese (1 oz),Dairy,106,8.58,6.94,0.19,0,0.14
+Cream Cheese (1 tbsp),Dairy,51,5.06,1.09,0.39,0,0.03
+Roast Beef,Protein,56,5.44,0,0,0
+Beef Pastrami,Protein,41,6.1,0,0,0
+Bologna,Protein,87,6.97,1.56,0,1.25
+Brazil Nuts (1 oz),Nuts,186,18.83,4.06,3.48,2.1,0.66
+Fresh Gourmet Raw Whole Pine Nuts (1 tbsp),Nuts,60,6,1,1,0,0
+Tilapia (Fish),Protein,96,1.7,20.08,0,0,0
+Catfish,Protein,240,14.53,17.57,8.54,0.5,0.85
+Crab,Protein,119,2.08,23.64,0,0,0
+Sardines in Oil (Canned),Protein,191,10.53,22.65,0,0,0
+Jalapeno Peppers,Vegetable,4,0.09,0.19,0.83,0.4,0.48
+Hot Chili Pepper,Vegetable,18,0.14,0.87,4.11,0.7,2.34
+Ginger (1 tsp),Vegetable,2,0.02,0.04,0.36,0,0.03
+Cantaloupe Melons,Fruit,60,0.34,1.49,14.44,1.6,13.91
+Honeydew Melons,Fruit,64,0.25,0.96,16.09,1.4,14.37
+Black Currants (European),Fruit,63,0.41,1.4,15.38,0,0
+Sunbelle Golden Berries,Fruit,74,0.5,2,11,4,0
+Ketchup (100 g),Condiment,97,0.38,1.74,25.08,0.3,22.77
+Mustard (100 g),Condiment,66,3.11,3.95,7.78,3.2,2.84
+Mayonnaise (100 g),Condiment,390,33.4,0.9,23.9,0,6.4
+Soy Sauce (100 g),Sauce,53,0.04,6.28,7.61,0.8,1.7
+Sesame Oil (100 g),Oil,884,100,0,0,0,0
+Coconut Oil (100 g),Oil,862,100,0,0,0,0
+Canola Vegetable Oil (100 g),Oil,884,100,0,0,0,0
+Coffee (8 fl oz),Seeds,2,0.05,0.28,0.09,0,0
+Brewed Tea (8 fl oz),Beverage,2,0,0,0.71,0,0
+Kroger Farro (1/4 cup dry),Seeds,150,1,6,32,3,0
+Buckwheat (100 g),Seeds,343,3.4,13.25,71.5,10,0
+Lamb Chop,Protein,226,17.55,15.86,0,0,0
+Duck Egg,Protein,130,9.64,8.97,1.02,0,0.65
+Goose Meat,Protein,161,7.13,22.75,0,0,0
+Rabbit Meat,Protein,136,5.55,20.05,0,0,0
+Pheasant,Protein,246,12.05,32.26,0,0,0
+Reese Anchovies (6 pieces),Protein,25,1.5,4,0,0,0
+Swordfish,Protein,121,4.01,19.80,0,0,0
+Wild Rainbow Trout,Protein,119,3.46,20.48,0,0,0
+Whole Catch Wild Alaskan Halibut,Protein,115,2.66,20.35,0,0,0
+Mussels,Protein,86,2.24,11.9,3.69,0,0
+Octopus,Protein,82,1.04,14.91,2.2,0,0
+Squid,Protein,92,1.38,15.58,3.08,0,0
+Chicken Liver,Protein,116,4.83,16.92,0,0,0
+Beef Tongue,Protein,224,16.09,14.9,3.68,0,0
+Corned Beef,Protein,251,18.98,18.17,0.47,0,0
+Boar's Head Pancetta (2 oz),Protein,160,14,9,0,0,0
+Chorizos,Protein,455,38.27,24.1,1.86,0,0
+Johnsonville Andouille Smoked Sausage (2 oz),Protein,160,14,7,1,0,0
+Bok Choy,Vegetable,9,0.14,1.05,1.53,0.7,0.83
+Swiss Chard,Vegetable,7,0.07,0.65,1.35,0.6,0.4
+Watercress,Herb,11,0.1,2.3,1.29,0.5,0.2
+Endive,Vegetable,17,0.2,1.25,3.35,3.1,0.25
+Radicchio,Vegetable,23,0.25,1.43,4.48,0.9,0.6
+Fennel Bulb,Vegetable,33,0.4,1.61,6.95,3.7,4.28
+Frieda's Daikon,Vegetable,50,3.33,3.33,3.33,0,0
+Jicama,Vegetable,49,0.12,0.94,11.47,6.4,2.34
+Parsnips,Vegetable,75,0.3,1.2,17.99,4.9,4.8
+Rutabaga,Vegetable,36,0.2,1.2,8.13,2.5,5.6
+Turnip,Vegetable,28,0.1,0.9,6.43,1.8,3.8
+Shallots,Vegetable,72,0.1,2.5,16.8,0,0
+Bamboo Shoots,Vegetable,27,0.3,2.6,5.2,2.2,3
+Water Chestnuts,Vegetable,97,0.1,1.4,23.94,3,4.8
+Shiitake Mushrooms,Vegetable,56,0.22,1.56,14.39,2.1,4.08
+Oyster Mushroom,Vegetable,35,0.44,3.34,6.43,2.4,1.11
+Fresh Selections Portobello Mushrooms,Vegetable,29,0,3.53,4.71,3.5,1.18
+Enoki Mushrooms,Vegetable,42,0.41,2.7,6.96,2.5,0.22
+Persimmon,Fruit,70,0.19,0.58,18.59,3.6,12.53
+Carambola (Starfruit),Fruit,31,0.3,0.95,6.12,2.5,3.62
+Dragon Fruit (Pitaya),Fruit,57,0.36,0.71,14.29,1.4,10
+Plantains,Fruit,122,0.37,1.3,31.89,2.3,15
+Elderberries,Fruit,73,0.5,0.66,18.4,7,0
+Mulberries,Fruit,43,0.39,1.44,9.8,1.7,8.1
+Boysenberries,Fruit,43,0.49,1.39,9.61,5.3,4.88
+Quinces,Fruit,57,0.1,0.4,15.3,1.9,0
+Trader Joe's Blood Orange,Fruit,70,1,1,15,3,14
+Kumquat,Fruit,13,0.16,0.36,3.02,1.2,1.78
+Trader Joe's Mascarpone (100 g),Dairy,429,50,7.14,0,0,0
+Gruyere Cheese,Dairy,413,32.34,29.81,0.36,0,0.36
+Havarti Cheese,Dairy,371,29.68,23.24,2.79,0,0.51
+Gouda Cheese,Dairy,356,27.44,24.94,2.22,0,2.22
+Camembert Cheese,Dairy,300,24.26,19.8,0.46,0,0.46
+Brie Cheese,Dairy,334,27.68,20.75,0.45,0,0.45
+Romano Cheese,Dairy,387,26.94,31.8,3.63,0,0.73
+Kefir (1 cup),Dairy,135,7.1,7.43,10.4,0,11.96
+Clarified Butter Ghee,Dairy,876,99.48,0.28,0,0,0
+Malk Cashew Milk (100 g),Dairy,38,2.92,1.25,2.08,0.4,0.42
+Rice Dream Original Rice Milk Drink (1cup),Dairy,120,2.5,0,24,0.2,8
+Amaranth,Seeds,374,6.51,14.45,66.17,9.3,0
+Nature's Earthly Choice Freekeh (1/4 cup),Grain,130,1,8,26,4,1
+Sorghum,Grain,339,3.3,11.3,74.63,6.3,0
+Bob's Red Mill Whole Grain Teff (100 g),Grain,358,0,11.32,79.25,5.7,0
+Nature's Earthly Choice Wheat Berries (100 g),Grain,375,1.25,15,80,15,0
+Adzuki Beans (Mature Seeds),Legume,329,0.53,19.87,62.9,12.7,0
+Lima Beans,Legume,113,0.86,6.84,20.17,4.9,1.48
+Great Value Navy Beans (100 g),Legume,286,1.43,22.86,60,14.3,2.86
+Great Value Pinto Beans (100 g),Legume,85,0,5.39,15.39,3.8,0.77
+Bob's Red Mill Mung Beans (100 g),Legume,353,0.98,23.53,62.75,15.7,5.88
+Bob's Red Mill Fava Beans (100 g),Legume,350,1.25,25,57.5,25,2.5
+La Tourangelle Pistachio Oil (1 tbsp),Oil,130,14,0,0,0,0
+Avocado Oil (1 tbsp),Oil,124,14,0,0,0,0
+Walnut Oil (1 tbsp),Oil,120,13.6,0,0,0,0
+Cumin (1 tsp),Spice,8,0.47,0.37,0.93,0.2,0.05
+Paprika (1 tsp),Spice,6,0.27,0.31,1.17,0.8,0.22
+Cardamom (1 tsp ground),Spice,6,0.13,0.22,1.37,0.6,0
+Coriander Seed (100 g),Seeds,298,17.77,12.37,54.99,41.9,0
+Anise Seed (100 g),Seeds,337,15.9,17.6,50.02,14.6,0
+Ground Nutmeg (1 tsp),Spice,12,0.8,0.13,1.08,0.5,0.63
+Ground Cloves (1 tsp),Spice,7,0.42,0.13,1.29,0.7,0.05
+Poppy Seed (100 g),Seeds,533,44.7,18.04,23.69,10,13.69
+Maple Syrup (1 tbsp),Sweetener,52,0.04,0,13.42,0,11.9
+Simply Nature Agave Nectar (1 tbsp),Sweetener,60,0,0,16,0,16
+Truffles (1 piece),Vegetable,64,4.25,0.79,5.68,0.3,4.85
+Durian,Fruit,147,5.33,1.47,27.09,3.8,0
+Rhubarb (100 g),Vegetable,21,0.2,0.9,4.54,1.8,1.1
+Miso,Seasoning,199,6.01,11.69,26.47,5.4,6.2
+Jackfruit,Fruit,94,0.3,1.47,24.01,1.6,0
+
