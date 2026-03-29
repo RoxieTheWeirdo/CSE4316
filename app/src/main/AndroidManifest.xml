@@ -79,6 +79,7 @@
         <activity android:name=".SettingChangeExercise" />
         <activity android:name=".SettingChangeAllergies" />
         <activity android:name=".WeightActivity" />
+        <activity android:name=".ExerciseActivity" />
         <activity android:name=".NotificationHistory" />
 
 

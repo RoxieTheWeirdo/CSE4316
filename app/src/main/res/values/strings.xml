@@ -5,4 +5,17 @@
     <string name="ingredients_label">Ingredients:</string>
     <string name="ingredients">• Tuna\n• Low-fat mayo\n• Pickles\n• Raisins</string>
     <string name="new_suggestion">New Suggestion</string>
+    <string-array name="exercise_types">
+        <item>All</item>
+        <item>Cardio</item>
+        <item>Strength</item>
+        <item>Flexibility</item>
+        <item>Balance</item>
+    </string-array>
+    <string-array name="exercise_types_only">
+        <item>Cardio</item>
+        <item>Strength</item>
+        <item>Flexibility</item>
+        <item>Balance</item>
+    </string-array>
 </resources>

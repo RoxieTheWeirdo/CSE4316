@@ -1,0 +1,165 @@
+[
+  { "name": "Running", "intensity": "Very Light - 4.5 mph", "type": "Cardio", "met": 7.0 },
+  { "name": "Running", "intensity": "Light - 5 mph", "type": "Cardio", "met": 8.3 },
+  { "name": "Running", "intensity": "Moderate - 6 mph", "type": "Cardio", "met": 9.8 },
+  { "name": "Running", "intensity": "Fast - 7 mph", "type": "Cardio", "met": 11.0 },
+  { "name": "Running", "intensity": "Very Fast - 8 mph", "type": "Cardio", "met": 11.8 },
+
+  { "name": "Walking", "intensity": "Slow", "type": "Cardio", "met": 2.5 },
+  { "name": "Walking", "intensity": "Normal", "type": "Cardio", "met": 3.0 },
+  { "name": "Walking", "intensity": "Brisk", "type": "Cardio", "met": 3.8 },
+  { "name": "Walking", "intensity": "Uphill", "type": "Cardio", "met": 5.0 },
+
+  { "name": "Cycling", "intensity": "Leisure", "type": "Cardio", "met": 4.0 },
+  { "name": "Cycling", "intensity": "Moderate", "type": "Cardio", "met": 8.0 },
+  { "name": "Cycling", "intensity": "Fast", "type": "Cardio", "met": 10.0 },
+  { "name": "Cycling", "intensity": "Very Fast", "type": "Cardio", "met": 12.0 },
+
+  { "name": "Swimming", "intensity": "Light", "type": "Cardio", "met": 6.0 },
+  { "name": "Swimming", "intensity": "Moderate", "type": "Cardio", "met": 8.0 },
+  { "name": "Swimming", "intensity": "Fast", "type": "Cardio", "met": 10.0 },
+
+  { "name": "Jump Rope", "intensity": "Slow", "type": "Cardio", "met": 8.0 },
+  { "name": "Jump Rope", "intensity": "Moderate", "type": "Cardio", "met": 10.0 },
+  { "name": "Jump Rope", "intensity": "Fast", "type": "Cardio", "met": 12.3 },
+
+  { "name": "Rowing", "intensity": "Light", "type": "Cardio", "met": 5.0 },
+  { "name": "Rowing", "intensity": "Moderate", "type": "Cardio", "met": 7.0 },
+  { "name": "Rowing", "intensity": "Vigorous", "type": "Cardio", "met": 8.5 },
+
+  { "name": "Elliptical", "intensity": "Light", "type": "Cardio", "met": 5.0 },
+  { "name": "Elliptical", "intensity": "Moderate", "type": "Cardio", "met": 7.0 },
+  { "name": "Elliptical", "intensity": "Intense", "type": "Cardio", "met": 9.0 },
+
+  { "name": "Stair Climbing", "intensity": "Slow", "type": "Cardio", "met": 4.0 },
+  { "name": "Stair Climbing", "intensity": "Moderate", "type": "Cardio", "met": 8.0 },
+  { "name": "Stair Climbing", "intensity": "Fast", "type": "Cardio", "met": 9.0 },
+
+  { "name": "Hiking", "intensity": "Easy", "type": "Cardio", "met": 5.0 },
+  { "name": "Hiking", "intensity": "Moderate", "type": "Cardio", "met": 6.0 },
+  { "name": "Hiking", "intensity": "Difficult", "type": "Cardio", "met": 7.5 },
+
+  { "name": "Dancing", "intensity": "Casual", "type": "Cardio", "met": 4.0 },
+  { "name": "Dancing", "intensity": "Moderate", "type": "Cardio", "met": 6.5 },
+  { "name": "Dancing", "intensity": "Intense", "type": "Cardio", "met": 8.0 },
+
+  { "name": "HIIT", "intensity": "Moderate", "type": "Cardio", "met": 9.0 },
+  { "name": "HIIT", "intensity": "Intense", "type": "Cardio", "met": 11.0 },
+  { "name": "Sprinting", "intensity": "Short Intervals", "type": "Cardio", "met": 12.0 },
+
+  { "name": "Treadmill Walking", "intensity": "Flat", "type": "Cardio", "met": 3.0 },
+  { "name": "Treadmill Walking", "intensity": "Incline", "type": "Cardio", "met": 5.0 },
+  { "name": "Treadmill Running", "intensity": "Moderate", "type": "Cardio", "met": 9.5 },
+
+  { "name": "Stationary Bike", "intensity": "Light", "type": "Cardio", "met": 4.0 },
+  { "name": "Stationary Bike", "intensity": "Moderate", "type": "Cardio", "met": 6.8 },
+  { "name": "Stationary Bike", "intensity": "Vigorous", "type": "Cardio", "met": 10.0 },
+
+  { "name": "StairMaster", "intensity": "Moderate", "type": "Cardio", "met": 8.0 },
+  { "name": "StairMaster", "intensity": "Hard", "type": "Cardio", "met": 9.5 },
+
+  { "name": "Zumba", "intensity": "Light", "type": "Cardio", "met": 5.5 },
+  { "name": "Zumba", "intensity": "Intense", "type": "Cardio", "met": 8.5 },
+
+  { "name": "Push-ups", "intensity": "Light", "type": "Strength", "met": 3.5 },
+  { "name": "Push-ups", "intensity": "Moderate", "type": "Strength", "met": 4.0 },
+  { "name": "Push-ups", "intensity": "Intense", "type": "Strength", "met": 5.0 },
+
+  { "name": "Bench Press", "intensity": "Light", "type": "Strength", "met": 4.0 },
+  { "name": "Bench Press", "intensity": "Moderate", "type": "Strength", "met": 5.0 },
+  { "name": "Bench Press", "intensity": "Heavy", "type": "Strength", "met": 6.0 },
+
+  { "name": "Squats", "intensity": "Light", "type": "Strength", "met": 4.5 },
+  { "name": "Squats", "intensity": "Moderate", "type": "Strength", "met": 5.5 },
+  { "name": "Squats", "intensity": "Heavy", "type": "Strength", "met": 6.5 },
+
+  { "name": "Deadlift", "intensity": "Light", "type": "Strength", "met": 5.0 },
+  { "name": "Deadlift", "intensity": "Moderate", "type": "Strength", "met": 6.0 },
+  { "name": "Deadlift", "intensity": "Heavy", "type": "Strength", "met": 7.0 },
+
+  { "name": "Pull-ups", "intensity": "Assisted", "type": "Strength", "met": 4.0 },
+  { "name": "Pull-ups", "intensity": "Bodyweight", "type": "Strength", "met": 5.5 },
+  { "name": "Pull-ups", "intensity": "Weighted", "type": "Strength", "met": 7.0 },
+
+  { "name": "Lunges", "intensity": "Light", "type": "Strength", "met": 4.0 },
+  { "name": "Lunges", "intensity": "Moderate", "type": "Strength", "met": 5.0 },
+  { "name": "Lunges", "intensity": "Weighted", "type": "Strength", "met": 6.0 },
+
+  { "name": "Plank", "intensity": "Light", "type": "Strength", "met": 3.0 },
+  { "name": "Plank", "intensity": "Moderate", "type": "Strength", "met": 3.5 },
+  { "name": "Plank", "intensity": "Intense", "type": "Strength", "met": 4.0 },
+
+  { "name": "Cable Fly Machine", "intensity": "Standard", "type": "Strength", "met": 4.5 },
+  { "name": "Cable Crossover", "intensity": "Standard", "type": "Strength", "met": 4.5 },
+  { "name": "Cable Row", "intensity": "Standard", "type": "Strength", "met": 5.0 },
+
+  { "name": "Chest Press Machine", "intensity": "Light", "type": "Strength", "met": 4.0 },
+  { "name": "Chest Press Machine", "intensity": "Moderate", "type": "Strength", "met": 5.0 },
+  { "name": "Chest Press Machine", "intensity": "Heavy", "type": "Strength", "met": 6.0 },
+
+  { "name": "Lat Pulldown Machine", "intensity": "Light", "type": "Strength", "met": 4.0 },
+  { "name": "Lat Pulldown Machine", "intensity": "Moderate", "type": "Strength", "met": 5.0 },
+  { "name": "Lat Pulldown Machine", "intensity": "Heavy", "type": "Strength", "met": 6.0 },
+
+  { "name": "Seated Row Machine", "intensity": "Light", "type": "Strength", "met": 4.0 },
+  { "name": "Seated Row Machine", "intensity": "Moderate", "type": "Strength", "met": 5.0 },
+  { "name": "Seated Row Machine", "intensity": "Heavy", "type": "Strength", "met": 6.0 },
+
+  { "name": "Leg Press Machine", "intensity": "Light", "type": "Strength", "met": 4.5 },
+  { "name": "Leg Press Machine", "intensity": "Moderate", "type": "Strength", "met": 5.5 },
+  { "name": "Leg Press Machine", "intensity": "Heavy", "type": "Strength", "met": 6.5 },
+
+  { "name": "Leg Extension Machine", "intensity": "Light", "type": "Strength", "met": 3.5 },
+  { "name": "Leg Extension Machine", "intensity": "Moderate", "type": "Strength", "met": 5.0 },
+
+  { "name": "Leg Curl Machine", "intensity": "Light", "type": "Strength", "met": 3.5 },
+  { "name": "Leg Curl Machine", "intensity": "Moderate", "type": "Strength", "met": 4.5 },
+
+  { "name": "Smith Machine Squat", "intensity": "Light", "type": "Strength", "met": 4.5 },
+  { "name": "Smith Machine Squat", "intensity": "Moderate", "type": "Strength", "met": 5.5 },
+  { "name": "Smith Machine Squat", "intensity": "Heavy", "type": "Strength", "met": 6.5 },
+
+  { "name": "Cable Tricep Pushdown", "intensity": "Standard", "type": "Strength", "met": 3.5 },
+  { "name": "Cable Bicep Curl", "intensity": "Standard", "type": "Strength", "met": 3.5 },
+
+  { "name": "Hip Abduction Machine", "intensity": "Standard", "type": "Strength", "met": 3.5 },
+  { "name": "Hip Adduction Machine", "intensity": "Standard", "type": "Strength", "met": 3.5 },
+
+  { "name": "Shoulder Press Machine", "intensity": "Light", "type": "Strength", "met": 4.0 },
+  { "name": "Shoulder Press Machine", "intensity": "Moderate", "type": "Strength", "met": 5.0 },
+  { "name": "Shoulder Press Machine", "intensity": "Heavy", "type": "Strength", "met": 6.0 },
+
+  { "name": "Hack Squat Machine", "intensity": "Standard", "type": "Strength", "met": 6.0 },
+  { "name": "Glute Kickback Machine", "intensity": "Standard", "type": "Strength", "met": 4.5 },
+
+  { "name": "Ab Crunch Machine", "intensity": "Standard", "type": "Strength", "met": 4.0 },
+  { "name": "Torso Rotation Machine", "intensity": "Standard", "type": "Strength", "met": 3.5 },
+
+  { "name": "Calf Raise Machine", "intensity": "Seated", "type": "Strength", "met": 3.5 },
+  { "name": "Calf Raise Machine", "intensity": "Standing", "type": "Strength", "met": 4.0 },
+
+  { "name": "Basketball", "intensity": "Casual", "type": "Sports", "met": 6.0 },
+  { "name": "Basketball", "intensity": "Game", "type": "Sports", "met": 8.0 },
+
+  { "name": "Soccer", "intensity": "Casual", "type": "Sports", "met": 6.5 },
+  { "name": "Soccer", "intensity": "Competitive", "type": "Sports", "met": 8.5 },
+
+  { "name": "Tennis", "intensity": "Singles", "type": "Sports", "met": 7.0 },
+  { "name": "Tennis", "intensity": "Doubles", "type": "Sports", "met": 5.0 },
+
+  { "name": "Football", "intensity": "Practice", "type": "Sports", "met": 6.0 },
+  { "name": "Football", "intensity": "Game", "type": "Sports", "met": 8.0 },
+
+  { "name": "Boxing", "intensity": "Bag Work", "type": "Sports", "met": 8.0 },
+  { "name": "Boxing", "intensity": "Sparring", "type": "Sports", "met": 10.0 },
+
+  { "name": "Yoga", "intensity": "Hatha", "type": "Flexibility", "met": 2.5 },
+  { "name": "Yoga", "intensity": "Vinyasa", "type": "Flexibility", "met": 3.5 },
+  { "name": "Yoga", "intensity": "Power", "type": "Flexibility", "met": 4.0 },
+
+  { "name": "Stretching", "intensity": "Light", "type": "Flexibility", "met": 2.0 },
+  { "name": "Stretching", "intensity": "Deep", "type": "Flexibility", "met": 2.5 },
+
+  { "name": "Pilates", "intensity": "Beginner", "type": "Flexibility", "met": 3.0 },
+  { "name": "Pilates", "intensity": "Advanced", "type": "Flexibility", "met": 4.0 }
+]

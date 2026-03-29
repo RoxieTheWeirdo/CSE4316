@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Exercise Name (Display only) -->
+    <TextView
+        android:id="@+id/tvSelectedExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exercise Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="12dp"/>
+
+    <!-- Duration -->
+    <EditText
+        android:id="@+id/etDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Duration (minutes)"
+        android:inputType="number"
+        android:paddingBottom="12dp"/>
+
+    <!-- Bigger Calories -->
+    <TextView
+        android:id="@+id/tvEstimatedCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Estimated Calories: 0"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:paddingTop="10dp"/>
+
+</LinearLayout>

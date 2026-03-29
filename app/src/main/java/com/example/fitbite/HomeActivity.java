@@ -30,7 +30,10 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import java.util.Calendar;
@@ -56,6 +59,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView tvStepsCount, tvStepsGoal, tvExerciseCal, tvExerciseTime;
     private boolean welcomeShown = false;
+
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +74,7 @@ public class HomeActivity extends AppCompatActivity {
         bindViews();
         populateDashboard();
         setupClickListeners();
+        loadExerciseData();
 
         // -------------------- Steps via Google Fit --------------------
         // For Android 10+ you need ACTIVITY_RECOGNITION runtime permission for step sensors.
@@ -141,8 +147,8 @@ public class HomeActivity extends AppCompatActivity {
         tvStepsCount.setText("--");
         tvStepsGoal.setText("Goal: 10,000 steps");
 
-        tvExerciseCal.setText("56 cal");
-        tvExerciseTime.setText("00:00 hr");
+      //  tvExerciseCal.setText("56 cal");
+        //tvExerciseTime.setText("00:00 hr");
     }
 
     // -------------------- Click Listeners --------------------
@@ -150,6 +156,12 @@ public class HomeActivity extends AppCompatActivity {
     private void setupClickListeners() {
         ivMealThumb.setOnClickListener(v ->
                 Toast.makeText(HomeActivity.this, "Opening food log...", Toast.LENGTH_SHORT).show()
+        );
+
+        MaterialCardView exerciseSection = findViewById(R.id.card_exercise);
+
+        exerciseSection.setOnClickListener(v ->
+                startActivity(new Intent(HomeActivity.this, ExerciseActivity.class))
         );
 
         // Center + Button Popup
@@ -410,5 +422,42 @@ public class HomeActivity extends AppCompatActivity {
 
         // Show popup aligned to right
         sidebar.showAtLocation(anchorView, Gravity.END | Gravity.TOP, 0, 0);
+    }
+    private void loadExerciseData() {
+        db = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getUid();
+
+        if (userId == null) return;
+
+        db.collection("users")
+                .document(userId)
+                .collection("exercises")
+                .addSnapshotListener((value, error) -> {
+
+                    if (error != null || value == null) return;
+
+                    int totalCalories = 0;
+                    int totalTime = 0;
+
+                    String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+                    for (QueryDocumentSnapshot doc : value) {
+                        Exercise e = doc.toObject(Exercise.class);
+
+                        if (e.date != null && e.date.equals(today)) {
+                            totalCalories += e.calories;
+                            totalTime += e.duration;
+                        }
+                    }
+
+                    // Update UI
+                    tvExerciseCal.setText(totalCalories + " cal");
+
+                    // Convert minutes → hours format
+                    int hours = totalTime / 60;
+                    int minutes = totalTime % 60;
+
+                    tvExerciseTime.setText(String.format("%02d:%02d hr", hours, minutes));
+                });
     }
 }
