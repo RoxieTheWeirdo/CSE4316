@@ -18,4 +18,3 @@ public class Meal {
     public String getTime() { return time; }
     public int getCalories() { return calories; }
 }
-

@@ -1,60 +1,81 @@
 package com.example.fitbite;
-import android.content.Context;
-import android.content.Intent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder> {
-    private Context context;
-    private List<FoodItem> foodList;
 
-    public FoodAdapter(Context context, List<FoodItem> foodList) {
-        this.context = context;
-        this.foodList = foodList;
+    private final List<Food> foods;
+    private final OnFoodActionListener listener;
+
+    public interface OnFoodActionListener {
+        void onDelete(Food food);
+        void onEdit(Food food);
     }
-    public static class FoodViewHolder extends RecyclerView.ViewHolder {
-        TextView foodTextView;
-        Button editButton;
-        Button plusButton;
-        public FoodViewHolder(View itemView) {
-            super(itemView);
-            foodTextView = itemView.findViewById(R.id.foodTextView);
-            editButton = itemView.findViewById(R.id.editButton);
-            plusButton = itemView.findViewById(R.id.plusButton);
-        }
+
+    public FoodAdapter(List<Food> foods, OnFoodActionListener listener) {
+        this.foods = foods;
+        this.listener = listener;
     }
+
     @NonNull
     @Override
     public FoodViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.foodlist, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_food, parent, false);
         return new FoodViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull FoodViewHolder holder, int position) {
-        FoodItem item = foodList.get(position);
-        holder.foodTextView.setText(item.name + " " + item.calories);
+        Food food = foods.get(position);
 
-        holder.editButton.setOnClickListener(v -> {
-            Intent intent = new Intent(context, EditFoodActivity.class);
-            intent.putExtra("foodName", item.name);
-            intent.putExtra("calories", item.calories);
-            context.startActivity(intent);
+        holder.foodName.setText(food.getName());
+        holder.foodCalories.setText(food.getCalories() + " cal");
+
+        if (food.getQuantity() > 1) {
+            holder.foodQuantity.setVisibility(View.VISIBLE);
+            holder.foodQuantity.setText("x" + food.getQuantity());
+        } else {
+            holder.foodQuantity.setVisibility(View.GONE);
+        }
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onEdit(food);
+            }
         });
 
-        // + button has no functionality for now
-        holder.plusButton.setOnClickListener(v -> {
-            //This is the plus button, does nothing for now
+        holder.itemView.setOnLongClickListener(v -> {
+            if (listener != null) {
+                listener.onDelete(food);
+            }
+            return true;
         });
     }
 
     @Override
     public int getItemCount() {
-        return foodList.size();
+        return foods.size();
+    }
+
+    static class FoodViewHolder extends RecyclerView.ViewHolder {
+        TextView foodName;
+        TextView foodCalories;
+        TextView foodQuantity;
+
+        public FoodViewHolder(@NonNull View itemView) {
+            super(itemView);
+            foodName = itemView.findViewById(R.id.food_name);
+            foodCalories = itemView.findViewById(R.id.food_calories);
+            foodQuantity = itemView.findViewById(R.id.food_quantity);
+        }
     }
 }

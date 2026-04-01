@@ -5,4 +5,9 @@
     <string name="ingredients_label">Ingredients:</string>
     <string name="ingredients">• Tuna\n• Low-fat mayo\n• Pickles\n• Raisins</string>
     <string name="new_suggestion">New Suggestion</string>
+    <string-array name="meal_types">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+    </string-array>
 </resources>

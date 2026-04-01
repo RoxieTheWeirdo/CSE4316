@@ -1,35 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FAFAFA">
+    android:background="#F5F5F5">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Food Diary"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:paddingBottom="12dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/diaryRecyclerView"
+        android:id="@+id/selected_date_text"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingBottom="80dp" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addMealFab"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="Add Meal"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        android:padding="16dp"
+        android:text="Feb 24, 2026"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/white"
+        android:padding="16dp"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/goal_calories_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1590"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Goal"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="6dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/food_calories_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Food"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="6dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/exercise_calories_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exercise"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="="
+            android:textSize="20sp"
+            android:layout_marginHorizontal="6dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/remaining_calories_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1590"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#4CAF50" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remaining"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <include
+                android:id="@+id/breakfast_section"
+                layout="@layout/meal_section" />
+
+            <include
+                android:id="@+id/lunch_section"
+                layout="@layout/meal_section" />
+
+            <include
+                android:id="@+id/dinner_section"
+                layout="@layout/meal_section" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

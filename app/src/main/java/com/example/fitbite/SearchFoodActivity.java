@@ -19,7 +19,7 @@ import java.util.List;
 public class SearchFoodActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private FoodAdapter adapter;
+    private FoodItemAdapter adapter;
     private EditText searchInput;
     private ImageButton searchButton;
     private List<FoodItem> foodList = new ArrayList<>();
@@ -36,7 +36,7 @@ public class SearchFoodActivity extends AppCompatActivity {
 
         searchButton = findViewById(R.id.searchButton);
 
-        adapter = new FoodAdapter(this, foodList);
+        adapter = new FoodItemAdapter(this, foodList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
