@@ -53,7 +53,10 @@ public class activity_basics_birthday extends AppCompatActivity {
         yearPicker.setMaxValue(2010);
         yearPicker.setValue(1995);
 
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+        findViewById(R.id.btnBack).setOnClickListener(v -> {
+            finish();
+            overridePendingTransition(0, 0);
+        });
 
         btnNext.setOnClickListener(v -> saveBirthdayAndProceed());
     }
@@ -82,12 +85,12 @@ public class activity_basics_birthday extends AppCompatActivity {
                 .set(userBirthday, SetOptions.merge())
                 .addOnSuccessListener(aVoid -> {
                     Log.d(TAG, "Birthday successfully written to Firestore.");
-                    Toast.makeText(activity_basics_birthday.this, "Birthday saved!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(activity_basics_birthday.this, "Birthday saved!", Toast.LENGTH_SHORT).show();
 
                     // Proceed to the next activity
                     Intent intent = new Intent(activity_basics_birthday.this, activity_basics_height.class);
                     startActivity(intent);
-                    finish();
+                    overridePendingTransition(0,0);
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Error writing birthday document", e);

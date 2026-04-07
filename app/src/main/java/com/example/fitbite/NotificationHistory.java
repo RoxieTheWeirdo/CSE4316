@@ -21,7 +21,10 @@ public class NotificationHistory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notification_history);
         ImageView back = findViewById(R.id.btnBack);
-        back.setOnClickListener(v -> finish());
+        back.setOnClickListener(v -> {
+            finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        });
         historyContainer = findViewById(R.id.history_container);
         loadHistory();
     }

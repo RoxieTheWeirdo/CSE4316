@@ -20,61 +20,177 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Allergy buttons row -->
+    <!-- Allergy buttons container -->
     <LinearLayout
-        android:id="@+id/allergyContainer"
+        android:id="@+id/allergyRowsContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center"
         android:layout_marginTop="32dp"
         app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDairy"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:text="Dairy"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:checkable="true"
-            app:cornerRadius="48dp"
-            app:strokeColor="#FFFFFF"
-            app:strokeWidth="2dp"
-	    app:backgroundTint="@color/settings_allergybuttoncheck" />
+        <!-- Row 1 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnGluten"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="16dp"
-            android:text="Gluten"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:checkable="true"
-            app:cornerRadius="48dp"
-            app:strokeColor="#FFFFFF"
-            app:strokeWidth="2dp"
-	    app:backgroundTint="@color/settings_allergybuttoncheck" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDairy"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:text="Dairy"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:checkable="true"
+                app:cornerRadius="48dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/settings_allergybuttoncheck" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnPeanut"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="16dp"
-            android:text="Peanut"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:checkable="true"
-            app:cornerRadius="48dp"
-            app:strokeColor="#FFFFFF"
-            app:strokeWidth="2dp"
-	    app:backgroundTint="@color/settings_allergybuttoncheck" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnWheat"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="16dp"
+                android:text="Wheat"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:checkable="true"
+                app:cornerRadius="48dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/settings_allergybuttoncheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnPeanut"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="16dp"
+                android:text="Peanut"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:checkable="true"
+                app:cornerRadius="48dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/settings_allergybuttoncheck" />
+        </LinearLayout>
+
+        <!-- Row 2 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSoy"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:text="Soy"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:checkable="true"
+                app:cornerRadius="48dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/settings_allergybuttoncheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEggs"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="16dp"
+                android:text="Eggs"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:checkable="true"
+                app:cornerRadius="48dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/settings_allergybuttoncheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnFish"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="16dp"
+                android:text="Fish"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:checkable="true"
+                app:cornerRadius="48dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/settings_allergybuttoncheck" />
+        </LinearLayout>
+
+        <!-- Row 3 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSesame"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:text="Sesame"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:checkable="true"
+                app:cornerRadius="48dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/settings_allergybuttoncheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShellfish"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+		android:layout_width="wrap_content"
+		android:minWidth="96dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="16dp"
+                android:text="Shellfish"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:checkable="true"
+                app:cornerRadius="48dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/settings_allergybuttoncheck" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnTreeNut"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="16dp"
+                android:text="Tree Nut"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:checkable="true"
+                app:cornerRadius="48dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="2dp"
+                app:backgroundTint="@color/settings_allergybuttoncheck" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <!-- Bottom Done button -->

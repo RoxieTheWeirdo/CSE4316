@@ -74,7 +74,7 @@ public class activity_basics_sex extends AppCompatActivity {
                     Log.d(TAG, "Sex successfully written!");
                     Intent intent = new Intent(activity_basics_sex.this, activity_basics_birthday.class);
                     startActivity(intent);
-                    finish();
+                    overridePendingTransition(0,0);
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Error writing sex", e);

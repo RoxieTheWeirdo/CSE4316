@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
@@ -34,13 +36,18 @@ public class SettingEditAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        Button ChangeUsername = findViewById(R.id.ChangeUsername);
-        Button ChangeEmail = findViewById(R.id.ChangeEmail);
-        Button ChangePassword = findViewById(R.id.ChangePassword);
-        Button DeleteAccount = findViewById(R.id.DeleteAccount);
-        Button SignOut = findViewById(R.id.SignOut);
+        RelativeLayout ChangeUsername = findViewById(R.id.btnChangeUsername);
+        RelativeLayout ChangeEmail = findViewById(R.id.btnChangeEmail);
+        RelativeLayout ChangePassword = findViewById(R.id.btnChangePassword);
+        RelativeLayout DeleteAccount = findViewById(R.id.btnDeleteAccount);
+        Button SignOut = findViewById(R.id.btnSignOut);
         TextView curEmail = findViewById(R.id.curEmail);
         TextView curUser = findViewById(R.id.curUsername);
+        ImageView btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> {
+            finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        });
         if (user != null) {
             // Set email
             curEmail.setText(user.getEmail());

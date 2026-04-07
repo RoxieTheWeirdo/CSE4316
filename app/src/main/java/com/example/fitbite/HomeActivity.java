@@ -133,7 +133,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void populateDashboard() {
         // Get calorie goal from account creation
-        int calorieGoal = getIntent().getIntExtra("CALORIE_TARGET", 0);
+        int calorieGoal = getIntent().getIntExtra("CALORIE_TARGET", 1500);
 
         // Temporary example values
         int foodConsumed = 1225;
@@ -392,25 +392,25 @@ public class HomeActivity extends AppCompatActivity {
         popupWindow.setElevation(10);
 
         popupView.findViewById(R.id.btnSearchFood).setOnClickListener(v -> {
-            Toast.makeText(this, "Search Food clicked", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Search Food clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, SearchFoodActivity.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnBarcodeScan).setOnClickListener(v -> {
-            Toast.makeText(this, "Barcode Scan clicked", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Barcode Scan clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, BarcodeScanner.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnMealScan).setOnClickListener(v -> {
-            Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, PantryScanner.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnWeight).setOnClickListener(v -> {
-            Toast.makeText(this, "Weight clicked", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Weight clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, WeightActivity.class));
             popupWindow.dismiss();
         });
@@ -418,36 +418,33 @@ public class HomeActivity extends AppCompatActivity {
         popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0, 550);
     }
     private void showSidebar(View anchorView) {
-        // Inflate sidebar layout
         View sidebarView = LayoutInflater.from(this).inflate(R.layout.homesidebar, null);
 
-        // Create popup window
         final PopupWindow sidebar = new PopupWindow(
                 sidebarView,
-                600, // width in pixels (adjust as needed)
+                600, // width in pixels
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 true
         );
-        sidebar.setElevation(12);
 
-        // Dismiss sidebar if touched outside
+        sidebar.setElevation(12);
         sidebar.setOutsideTouchable(true);
         sidebar.setFocusable(true);
 
-        // Set button actions
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            sidebar.setAnimationStyle(R.style.PopupAnimationRight);
+        }
         sidebarView.findViewById(R.id.btnNotifications).setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, NotificationHistory.class);
-            startActivity(intent);
+            startActivity(new Intent(HomeActivity.this, NotificationHistory.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             sidebar.dismiss();
         });
 
         sidebarView.findViewById(R.id.btnSettings).setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, SettingsOverview.class);
-            startActivity(intent);
+            startActivity(new Intent(HomeActivity.this, SettingsOverview.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             sidebar.dismiss();
         });
-
-        // Show popup aligned to right
         sidebar.showAtLocation(anchorView, Gravity.END | Gravity.TOP, 0, 0);
     }
     private void loadExerciseData() {

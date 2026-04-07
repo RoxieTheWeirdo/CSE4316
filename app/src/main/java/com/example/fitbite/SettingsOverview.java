@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.graphics.Color;
@@ -21,7 +22,8 @@ public class SettingsOverview extends AppCompatActivity {
     LinearLayout tabAccount, tabPersonal, tabApp;
     TextView tabAccountText, tabPersonalText, tabAppText;
     FrameLayout contentContainer;
-    ImageButton btnEditFields;
+    LinearLayout btnEditFields;
+    ImageView btnBack;
     String currentTab = "account"; // keep track of active tab
     LocalSettings localSettings;
     FirebaseUser user;
@@ -47,13 +49,16 @@ public class SettingsOverview extends AppCompatActivity {
         tabAccountText = findViewById(R.id.tabAccountText);
         tabPersonalText = findViewById(R.id.tabPersonalText);
         tabAppText = findViewById(R.id.tabAppText);
-
+        btnBack = findViewById(R.id.btnBack);
         // Content container
         contentContainer = findViewById(R.id.contentContainer);
 
         // Pencil icon
         btnEditFields = findViewById(R.id.btnEditFields);
-
+        btnBack.setOnClickListener(v -> {
+            finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        });
         user = FirebaseAuth.getInstance().getCurrentUser();
         db = FirebaseFirestore.getInstance();
 

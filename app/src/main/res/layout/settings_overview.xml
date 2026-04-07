@@ -1,10 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
+
+    <!-- Top Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
+
+        <!-- Back Button -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_left_arrow"
+            app:tint="@color/textPrimary"
+            android:contentDescription="Back"
+            android:padding="4dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+        <!-- Center Title -->
+        <TextView
+            android:id="@+id/titleSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 
     <!-- Top Tabs -->
     <LinearLayout
@@ -18,81 +48,148 @@
         <LinearLayout
             android:id="@+id/tab_account"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="12dp">
-            <TextView
-                android:id="@+id/tabAccountText"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Account"
-                android:textColor="#4DA6FF"
-                android:textStyle="bold"
-                android:textSize="16sp"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_account"
+                    android:tint="@color/textPrimary"
+                    android:layout_marginEnd="4dp"/>
+
+                <TextView
+                    android:id="@+id/tabAccountText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Account"
+                    android:textColor="#4DA6FF"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:singleLine="true"
+                    android:ellipsize="none"/>
+            </LinearLayout>
         </LinearLayout>
 
         <!-- Personal Tab -->
         <LinearLayout
             android:id="@+id/tab_personal"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="12dp">
-            <TextView
-                android:id="@+id/tabPersonalText"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Personal"
-                android:textColor="#6B6F75"
-                android:textSize="16sp"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_heart"
+                    android:tint="@color/textPrimary"
+                    android:layout_marginEnd="4dp"/>
+
+                <TextView
+                    android:id="@+id/tabPersonalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Personal"
+                    android:textColor="#6B6F75"
+                    android:textSize="16sp"
+                    android:singleLine="true"
+                    android:ellipsize="none"/>
+            </LinearLayout>
         </LinearLayout>
 
         <!-- App Tab -->
         <LinearLayout
             android:id="@+id/tab_app"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="12dp">
-            <TextView
-                android:id="@+id/tabAppText"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="App"
-                android:textColor="#6B6F75"
-                android:textSize="16sp"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/appicon_black"
+                    android:tint="@color/textPrimary"
+                    android:layout_marginEnd="4dp"/>
+
+                <TextView
+                    android:id="@+id/tabAppText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="App"
+                    android:textColor="#6B6F75"
+                    android:textSize="16sp"
+                    android:singleLine="true"
+                    android:ellipsize="none"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Divider + Pencil Container -->
+    <!-- Divider + Pencil -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp">
 
+        <!-- Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#DDDDDD"/>
+            android:background="#DDDDDD" />
 
-        <!-- Pencil Icon -->
-        <ImageButton
+        <!-- Edit Button (Text + Icon) -->
+        <LinearLayout
             android:id="@+id/btnEditFields"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_edit"
-            android:background="@android:color/transparent"
-            android:tint="?attr/colorOnBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:contentDescription="Edit"/>
+            android:gravity="center"
+            android:padding="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edit Info"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnBackground"
+                android:layout_marginEnd="6dp"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_edit"
+                app:tint="@color/textPrimary"/>
+        </LinearLayout>
     </RelativeLayout>
 
     <!-- Content Container -->
@@ -100,5 +197,6 @@
         android:id="@+id/contentContainer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
+
 </LinearLayout>

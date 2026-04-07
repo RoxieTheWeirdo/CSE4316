@@ -152,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
                                         .addOnSuccessListener(unused -> {
                                             showMessage("Account created!", true);
                                             startActivity(new Intent(LoginActivity.this, CreateAccount.class));
+                                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                             finish();
                                         })
                                         .addOnFailureListener(e ->
@@ -166,6 +167,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotPasswordButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
+            overridePendingTransition(0, 0);
         });
     }
 
@@ -209,10 +211,12 @@ public class LoginActivity extends AppCompatActivity {
                 if (initialized != null && initialized) {
                     loadingScreen(false);
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
                 }
                 else {
                     startActivity(new Intent(LoginActivity.this, CreateAccount.class));
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
                 }
             } else {
@@ -226,6 +230,7 @@ public class LoginActivity extends AppCompatActivity {
                             showMessage("User profile created", true);
                             loadingScreen(false);
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             finish();
                         })
                         .addOnFailureListener(e ->

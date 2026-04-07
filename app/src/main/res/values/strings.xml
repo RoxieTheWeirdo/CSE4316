@@ -5,6 +5,7 @@
     <string name="ingredients_label">Ingredients:</string>
     <string name="ingredients">• Tuna\n• Low-fat mayo\n• Pickles\n• Raisins</string>
     <string name="new_suggestion">New Suggestion</string>
+    <string name="app_version">V.1.0.0 - macroBit</string>
     <string-array name="exercise_types">
         <item>All</item>
         <item>Cardio</item>

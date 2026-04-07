@@ -16,7 +16,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/ic_left_arrow"
-	    android:tint="?attr/colorOnSurface"/>
+	    android:tint="?attr/colorOnSurface"
             android:contentDescription="Back"
             android:padding="4dp"/>
 
