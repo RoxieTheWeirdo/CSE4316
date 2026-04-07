@@ -1,6 +1,7 @@
 package com.example.fitbite;
 
 import android.Manifest;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -8,9 +9,11 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +62,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView tvStepsCount, tvStepsGoal, tvExerciseCal, tvExerciseTime;
     private boolean welcomeShown = false;
+
+    private ProgressBar stepsProgressBar;
 
     private FirebaseFirestore db;
     @Override
@@ -120,6 +125,8 @@ public class HomeActivity extends AppCompatActivity {
         tvStepsGoal = findViewById(R.id.tv_steps_goal);
         tvExerciseCal = findViewById(R.id.tv_ex_cal);
         tvExerciseTime = findViewById(R.id.tv_ex_time);
+
+        stepsProgressBar = findViewById(R.id.progress_steps);
     }
 
     // -------------------- Populate UI --------------------
@@ -334,11 +341,31 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                     tvStepsCount.setText(String.valueOf(totalSteps));
-                })
+                    int goal = 10000;
+                    stepsProgressBar.setMax(goal);
+                    int progress = (int) Math.min(totalSteps, goal);
+                    animateProgressBar(stepsProgressBar, progress);                })
                 .addOnFailureListener(e -> {
                     tvStepsCount.setText("--");
                     Toast.makeText(this, "Failed to read steps: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    private void animateProgressBar(ProgressBar progressBar, int targetProgress) {
+
+        int start = progressBar.getProgress();
+
+        ValueAnimator animator = ValueAnimator.ofInt(start, targetProgress);
+        animator.setDuration(800); // animation speed (ms)
+
+        animator.setInterpolator(new DecelerateInterpolator()); // smooth slowdown
+
+        animator.addUpdateListener(animation -> {
+            int value = (int) animation.getAnimatedValue();
+            progressBar.setProgress(value);
+        });
+
+        animator.start();
     }
 
     private long getStartOfTodayMillis() {

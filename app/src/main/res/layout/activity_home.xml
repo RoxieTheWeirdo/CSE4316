@@ -361,12 +361,15 @@
                             android:textColor="#9AA0A6"
                             android:textSize="12sp" />
 
-                        <!-- small progress bar -->
-                        <View
+                        <ProgressBar
+                            android:id="@+id/progress_steps"
+                            style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="8dp"
                             android:layout_marginTop="10dp"
-                            android:background="@drawable/steps_progress_bg" />
+                            android:max="10000"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/steps_progress_bg"/>
 
                     </LinearLayout>
 
