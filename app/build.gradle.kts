@@ -31,7 +31,7 @@ android {
 
         buildConfigField("String", "FATSECRET_CONSUMER_KEY", "\"${fatsecretConsumerKey.trim()}\"")
         buildConfigField("String", "FATSECRET_CONSUMER_SECRET", "\"${fatsecretConsumerSecret.trim()}\"")
-        buildConfigField("String", "CLARIFAI_API_KEY", "\"3254255dfab8489dbb2c2b552481f600\"")
+        buildConfigField("String", "CLARIFAI_API_KEY", "\"44d784d00bb54d64a7a40d385f32e718\"")
         buildConfigField("String", "CLARIFAI_WORKFLOW_ID", "\"FoodImageModel\"")
         buildConfigField("String", "CLARIFAI_WORKFLOW_VERSION", "\"034d2b10314c4e30892e6ffcbe9af4c0\"")
     }
@@ -85,9 +85,11 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.material3)
     implementation(libs.compose.ui.tooling.preview)
+    implementation("com.google.android.material:material:1.11.0")
 
     debugImplementation(libs.compose.ui.tooling)
-    debugImplementation(libs.compose.ui.test.manifest)
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:34.5.0"))

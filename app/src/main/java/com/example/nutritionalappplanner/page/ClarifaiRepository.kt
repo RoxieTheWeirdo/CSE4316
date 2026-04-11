@@ -7,6 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.util.Log
 
 class ClarifaiRepository(
     private val apiKey: String,
@@ -51,10 +52,14 @@ class ClarifaiRepository(
                     )
                 )
             )
-
+            val token = apiKey.trim()
+                .removePrefix("Key ")
+                .removePrefix("Key")
+                .trim()
+            Log.d("CLARIFAI", "tokenLen=${token.length} userId=xb8v9ik6mz12 appId=FitBite")
             // Call workflow endpoint
             val response = api.runWorkflow(
-                authHeader = "Key $apiKey",
+                authHeader = "Key $token",
                 workflowId = workflowId,
                 versionId = workflowVersion,
                 request = request

@@ -12,10 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
+import com.example.nutritionalappplanner.page.PantryFragment;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import com.example.nutritionalappplanner.page.FoodDetailFragment;
 import com.example.nutritionalappplanner.page.ScanResultFragment;
 import com.google.android.material.card.MaterialCardView;
@@ -26,6 +29,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        findViewById(R.id.bottom_nav).bringToFront();
 
         Notifications.createChannel(this);
 
@@ -49,6 +54,13 @@ public class HomeActivity extends AppCompatActivity {
         setupSections();
         setupMoreSection();
         setupFragmentBackStackListener();
+        View bottomNav = findViewById(R.id.bottom_nav);
+
+        ViewCompat.setOnApplyWindowInsetsListener(bottomNav, (v, insets) -> {
+            int bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom;
+            v.setPadding(0, 0, 0, bottom);
+            return insets;
+        });
     }
 
     //Home screen views and sample data
@@ -147,15 +159,17 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         popupView.findViewById(R.id.btnMealScan).setOnClickListener(v -> {
-            Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Pantry clicked", Toast.LENGTH_SHORT).show();
 
             //fragment-based meal scan flow
             hideHomeViews();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, new ScanCameraFragment())
+                    .replace(R.id.fragment_container, new PantryFragment())
                     .addToBackStack(null)
                     .commit();
+
+            findViewById(R.id.fragment_container).bringToFront();
 
             popupWindow.dismiss();
         });
@@ -173,28 +187,76 @@ public class HomeActivity extends AppCompatActivity {
     private void hideHomeViews() {
         View contentRoot = findViewById(R.id.content_root);
         View scroll = findViewById(R.id.scroll);
-        if (contentRoot != null) contentRoot.setVisibility(View.GONE);
-        if (scroll != null) scroll.setVisibility(View.GONE);
+
+        if (contentRoot != null) {
+            contentRoot.setVisibility(View.GONE);
+
+            ConstraintLayout.LayoutParams params =
+                    (ConstraintLayout.LayoutParams) contentRoot.getLayoutParams();
+            params.height = 0;
+            params.topToTop = ConstraintLayout.LayoutParams.UNSET;
+            params.bottomToTop = ConstraintLayout.LayoutParams.UNSET;
+            contentRoot.setLayoutParams(params);
+        }
+
+        if (scroll != null) {
+            scroll.setVisibility(View.GONE);
+
+            ConstraintLayout.LayoutParams params =
+                    (ConstraintLayout.LayoutParams) scroll.getLayoutParams();
+            params.height = 0;
+            params.topToTop = ConstraintLayout.LayoutParams.UNSET;
+            params.bottomToTop = ConstraintLayout.LayoutParams.UNSET;
+            scroll.setLayoutParams(params);
+        }
     }
 
     private void showHomeViews() {
         View contentRoot = findViewById(R.id.content_root);
         View scroll = findViewById(R.id.scroll);
-        if (contentRoot != null) contentRoot.setVisibility(View.VISIBLE);
-        if (scroll != null) scroll.setVisibility(View.VISIBLE);
+
+        if (contentRoot != null) {
+            contentRoot.setVisibility(View.VISIBLE);
+
+            ConstraintLayout.LayoutParams params =
+                    (ConstraintLayout.LayoutParams) contentRoot.getLayoutParams();
+
+            params.height = 0;
+            params.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+            params.bottomToTop = R.id.bottom_nav;
+
+            contentRoot.setLayoutParams(params);
+        }
+
+        if (scroll != null) {
+            scroll.setVisibility(View.VISIBLE);
+
+            ConstraintLayout.LayoutParams params =
+                    (ConstraintLayout.LayoutParams) scroll.getLayoutParams();
+
+            params.height = 0;
+            params.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
+            params.bottomToTop = R.id.bottom_nav;
+
+            scroll.setLayoutParams(params);
+        }
     }
 
     //Handle fragment back stack changes to restore/hide home views
     private void setupFragmentBackStackListener() {
         getSupportFragmentManager().addOnBackStackChangedListener(() -> {
-            Fragment topFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+            int count = getSupportFragmentManager().getBackStackEntryCount();
 
-            if (topFragment instanceof ScanCameraFragment
-                    || topFragment instanceof ScanResultFragment
-                    || topFragment instanceof FoodDetailFragment) {
+            View bottomNav = findViewById(R.id.bottom_nav);
+
+            if (count > 0) {
+                // We are inside fragments (Pantry, Scanner, etc.)
                 hideHomeViews();
+                //bottomNav.setVisibility(View.VISIBLE);
             } else {
+                // Back to Home screen
                 showHomeViews();
+                bottomNav.setVisibility(View.VISIBLE);
             }
         });
     }

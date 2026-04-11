@@ -24,7 +24,18 @@ class ScanCameraFragment : Fragment() {
 
     private var _binding: FragmentScanCameraBinding? = null
     private val binding get() = _binding!!
-
+    private fun setBottomNavVisible(visible: Boolean) {
+        val bottomNav = requireActivity().findViewById<View>(R.id.bottom_nav)
+        bottomNav?.visibility = if (visible) View.VISIBLE else View.GONE
+    }
+    override fun onResume() {
+        super.onResume()
+        setBottomNavVisible(false) // HIDE nav when camera opens
+    }
+    override fun onPause() {
+        super.onPause()
+        setBottomNavVisible(true) // SHOW nav when leaving
+    }
     private var imageCapture: ImageCapture? = null
 
     // Register permission launcher

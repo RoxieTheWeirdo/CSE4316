@@ -2,7 +2,7 @@ package com.example.nutritionalappplanner.page
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.nutritionalappplanner.data.remote.FatSecretRepository
+import com.example.nutritionalappplanner.page.FatSecretRepository
 import com.example.fitbite.BuildConfig
 
 class FoodDetailViewModelFactory : ViewModelProvider.Factory {

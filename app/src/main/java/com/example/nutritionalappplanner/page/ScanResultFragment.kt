@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitbite.FoodItem
 import com.example.fitbite.databinding.FragmentScanResultBinding
 import kotlinx.coroutines.launch
@@ -48,12 +47,8 @@ class ScanResultFragment : Fragment() {
             binding.capturedImageView.setImageURI(Uri.parse(uri))
         }
 
-        // Adapter with click listener
-        val adapter = FoodListAdapter { item ->
-            onFoodClicked(item)
-        }
-        binding.foodRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.foodRecyclerView.adapter = adapter
+        // Hide the RecyclerView since we are not showing a list anymore
+        binding.foodRecyclerView.visibility = View.GONE
 
         // Observe ViewModel state
         lifecycleScope.launch {
@@ -72,7 +67,8 @@ class ScanResultFragment : Fragment() {
 
                     is ScanState.Success -> {
                         binding.progressBar.visibility = View.GONE
-                        adapter.submitList(state.foods)
+
+                        onFoodClicked(state.food)
                     }
 
                     is ScanState.Error -> {
@@ -92,11 +88,14 @@ class ScanResultFragment : Fragment() {
     private fun onFoodClicked(item: FoodItem) {
         val fragment = FoodDetailFragment().apply {
             arguments = Bundle().apply {
+                putString("foodId", item.foodId)
                 putString("foodName", item.name)
                 putInt("calories", item.calories)
                 putDouble("fat", item.fat)
                 putDouble("carbs", item.carbs)
                 putDouble("protein", item.protein)
+                putString("defaultStorage", "FRIDGE")
+
             }
         }
 
@@ -105,9 +104,6 @@ class ScanResultFragment : Fragment() {
             .addToBackStack(null)
             .commit()
     }
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

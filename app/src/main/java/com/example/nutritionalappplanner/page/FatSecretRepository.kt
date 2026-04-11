@@ -1,16 +1,14 @@
-package com.example.nutritionalappplanner.data.remote
+package com.example.nutritionalappplanner.page
 
 import android.util.Base64
 import android.util.Log
 import com.example.fitbite.FoodItem
-import com.example.nutritionalappplanner.page.FoodDetail
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import com.google.gson.annotations.SerializedName
 import retrofit2.http.*
 
 class FatSecretRepository(
@@ -45,7 +43,7 @@ class FatSecretRepository(
         foodApi = retrofitFood.create(FatSecretFoodApi::class.java)
     }
 
-    /** Search foods by name using FatSecret text API */
+    //Search foods by name using FatSecret text API
     suspend fun searchFoodByName(foodName: String): List<FoodItem> {
         val token = getAccessToken()
         val response = foodApi.searchFoodByName("Bearer $token", foodName)
@@ -64,7 +62,7 @@ class FatSecretRepository(
         }
     }
 
-    /** Get detailed nutrition for a specific food by id (food.get) */
+    //Get detailed nutrition for a specific food by id (food.get)
     suspend fun getFoodDetails(foodId: String): FoodDetail {
         val token = getAccessToken()
         val response = foodApi.getFoodById("Bearer $token", foodId)
@@ -81,7 +79,7 @@ class FatSecretRepository(
         )
     }
 
-    /** Get OAuth access token from FatSecret */
+    //Get OAuth access token from FatSecret
     private suspend fun getAccessToken(): String = tokenMutex.withLock {
         cachedToken?.let { return it }
 
@@ -115,19 +113,3 @@ class FatSecretRepository(
 
 }
 
-/** Retrofit API for OAuth */
-private interface FatSecretAuthApi {
-    @FormUrlEncoded
-    @POST("connect/token")
-    suspend fun getAccessToken(
-        @Field("grant_type") grantType: String,
-        @Field("scope") scope: String,
-        @Header("Authorization") authHeader: String
-    ): TokenResponse
-}
-
-private data class TokenResponse(
-    @SerializedName("access_token") val accessToken: String,
-    @SerializedName("token_type") val tokenType: String,
-    @SerializedName("expires_in") val expiresIn: Int
-)

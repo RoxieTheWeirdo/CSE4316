@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import com.example.nutritionalappplanner.data.remote.FatSecretRepository
+import com.example.nutritionalappplanner.page.FatSecretRepository
 
 data class FoodDetail(
     val name: String,
@@ -33,7 +33,7 @@ class FoodDetailViewModel(
         _state.value = FoodDetailState.Loading
         viewModelScope.launch {
             try {
-                // You will implement this in FatSecretRepository
+
                 val detail = repository.getFoodDetails(foodId)
                 _state.value = FoodDetailState.Success(detail)
             } catch (e: Exception) {

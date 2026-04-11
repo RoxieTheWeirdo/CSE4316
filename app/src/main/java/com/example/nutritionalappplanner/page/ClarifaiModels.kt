@@ -2,9 +2,7 @@ package com.example.nutritionalappplanner.data.remote
 
 import com.google.gson.annotations.SerializedName
 
-// --------------------------
 // Request Models
-// --------------------------
 data class ClarifaiRequest(
     val inputs: List<ClarifaiInput>
 ) {
@@ -31,10 +29,7 @@ data class ClarifaiImage(
     val base64: String
 )
 
-
-// --------------------------
 // Response Models (Updated for Workflow Results)
-// --------------------------
 data class ClarifaiWorkflowResponse(
     val results: List<ClarifaiWorkflowResult>?
 )
