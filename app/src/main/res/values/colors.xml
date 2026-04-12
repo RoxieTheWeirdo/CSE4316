@@ -8,9 +8,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="background">#FFFFFF</color>
-    <color name="cardBackground">#F1F1F1</color>
-    <color name="textPrimary">#111111</color>
+    <color name="backgroundPrimary">#FFFFFF</color>
+    <color name="backgroundSecondary">#F0F0F0</color>
+    <color name="textPrimary">#000000</color>
     <color name="textSecondary">#666666</color>
-    <color name="accent">#4DA6FF</color>
+    <color name="accentColor">#6200EE</color>
+    <color name="cardBackground">#E0E0E0</color>
+    <color name="buttonEnabled">#6200EE</color>
+    <color name="buttonDisabled">#CCCCCC</color>
+    <color name="pillSelectedGreen">#4CAF50</color> 
 </resources>

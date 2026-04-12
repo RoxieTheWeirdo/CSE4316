@@ -61,7 +61,6 @@ public class WeightActivity extends AppCompatActivity {
     private ArrayList<WeightEntry> historyList = new ArrayList<>();
     private WeightHistoryAdapter historyAdapter;
     private boolean hasGoal = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -81,7 +80,6 @@ public class WeightActivity extends AppCompatActivity {
         Button historyButton = findViewById(R.id.historyButton);
 
         loadSavedWeightAndDate();
-
         //Ensure fireworks appear above everything
         KonfettiView konfettiView = findViewById(R.id.confettiView);
         konfettiView.bringToFront();
@@ -90,7 +88,7 @@ public class WeightActivity extends AppCompatActivity {
         historyAdapter = new WeightHistoryAdapter(historyList);
         historyButton.setOnClickListener(v -> showHistoryPopup());
 
-        loadHistoryFromFirebase(null);
+       // loadHistoryFromFirebase(null);
 
         //Load UI and charts
         updateUI();
@@ -131,6 +129,7 @@ public class WeightActivity extends AppCompatActivity {
                             }
 
                             updateUI();
+                            loadHistoryFromFirebase(null);
                             if (!hasGoal) {
                                 showSetGoalDialogForced();
                             }
@@ -355,7 +354,20 @@ public class WeightActivity extends AppCompatActivity {
                     }
 
                     //Update current weight
-                    currentWeight = Float.parseFloat(w);
+                    float newWeight = Float.parseFloat(w);
+                    if (newWeight < currentWeight) {
+                        float dropPercent = ((currentWeight - newWeight) / currentWeight) * 100f;
+                        if (dropPercent > 10f) {
+                            Notifications.showInAppNotification(
+                                    this,
+                                    "Weight warning",
+                                    "You claim to have lost a lot of weight! Did you input your new weight correctly?",
+                                    null,
+                                    5000
+                            );
+                        }
+                    }
+                    currentWeight = newWeight;
                     updateUI();
                     // Save to Firebase
                     saveToFirebase(
@@ -475,6 +487,24 @@ public class WeightActivity extends AppCompatActivity {
                                     (ts != null ? ts : 0L)
                             ));
                         }
+                    }
+                    // If user has no history yet, insert their starting weight
+                    if (fullHistory.isEmpty() && currentWeight > 0) {
+                        Map<String, Object> firstEntry = new HashMap<>();
+
+                        String date = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(new Date());
+                        String time = new SimpleDateFormat("hh:mm a", Locale.getDefault()).format(new Date());
+                        firstEntry.put("weight", currentWeight);
+                        firstEntry.put("date", date);
+                        firstEntry.put("time", time);
+                        firstEntry.put("timestamp", System.currentTimeMillis());
+
+                        db.collection("users")
+                                .document(user.getUid())
+                                .collection("weightHistory")
+                                .add(firstEntry);
+
+                        fullHistory.add(new WeightEntry(currentWeight, date, time, System.currentTimeMillis()));
                     }
 
 
@@ -635,10 +665,14 @@ public class WeightActivity extends AppCompatActivity {
             weightChart.setDragEnabled(count > 7);
         }
 
-        weightChart.setDragDecelerationEnabled(false);
-        weightChart.setDragEnabled(true);
-        weightChart.setScaleXEnabled(false);
-        weightChart.setScaleYEnabled(false);
+        //weightChart.setDragDecelerationEnabled(false);
+        //weightChart.setDragEnabled(true);
+        //weightChart.setScaleXEnabled(false);
+        //weightChart.setScaleYEnabled(false);
+        //weightChart.setDragDecelerationEnabled(true);
+        //weightChart.setDragDecelerationFrictionCoef(0.9f);
+        weightChart.setDragEnabled(count > 7);
+        weightChart.setScaleEnabled(false);
         weightChart.setDragDecelerationEnabled(true);
         weightChart.setDragDecelerationFrictionCoef(0.9f);
         weightChart.setHighlightPerTapEnabled(false);

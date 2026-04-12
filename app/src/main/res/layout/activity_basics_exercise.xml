@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1C1C1C"
+    android:background="@color/backgroundPrimary"
     android:fillViewport="true">
 
     <LinearLayout
@@ -24,6 +24,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_back_arrow"
+		app:tint="@color/textPrimary"
                 android:contentDescription="Back" />
 
             <TextView
@@ -31,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Basics"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/textPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </RelativeLayout>
@@ -42,8 +43,8 @@
             android:layout_width="match_parent"
             android:layout_height="4dp"
             android:layout_marginTop="8dp"
-            android:progress="100"
-            android:progressTint="#FFFFFF"
+            android:progress="85"
+            android:progressTint="@color/textPrimary"
             android:progressBackgroundTint="#404040" />
 
         <TextView
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="How often do you exercise?"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/textPrimary"
             android:textSize="28sp"
             android:textStyle="bold" />
 
@@ -60,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Estimate the number of recreational sports,\ncardio, or resistance training sessions"
-            android:textColor="#999999"
+            android:textColor="@color/textSecondary"
             android:textSize="14sp" />
 
         <androidx.cardview.widget.CardView
@@ -235,10 +236,6 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="24dp" />
-
         <Button
             android:id="@+id/btnNext"
             android:layout_width="match_parent"
@@ -248,7 +245,8 @@
             android:enabled="false"
             android:text="Next"
             android:textAllCaps="false"
-            android:textColor="#666666"
+            android:textColor="#FFFFFF"
+	    android:layout_marginTop="24dp"
             android:textSize="16sp"
             android:textStyle="bold" />
 

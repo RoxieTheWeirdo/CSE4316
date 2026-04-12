@@ -16,7 +16,6 @@ import org.json.JSONObject;
 public class BarcodeScannerAfter extends AppCompatActivity {
 
     private TextView nameTextView, caloriesView, sodiumView, fatsView, carbsView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +80,11 @@ public class BarcodeScannerAfter extends AppCompatActivity {
                 JSONObject food = root.getJSONObject("food");
 
                 String foodName = food.optString("food_name", "Unknown item");
+                LocalSettings localSettings = new LocalSettings(this);
+                String mode = localSettings.getNotificationMode();
+                if (mode.equals("All")){
+                    Notifications.showInAppNotification(this, "Barcode Scan", "Scanned" + foodName + "via a barcode.", null, 3000);
+                }
 
 
                 JSONObject servings = food.getJSONObject("servings");
