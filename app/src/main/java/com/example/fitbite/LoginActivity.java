@@ -42,7 +42,18 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private GoogleSignInClient googleSignInClient;
     private FirebaseFirestore firestore;
+    /*@Override
+    protected void onStart() {
+        super.onStart();
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (currentUser != null) {
+            // User is already signed in
+            loadingScreen(true);
+            checkUserFirestore(); // send them to Home or CreateAccount
+        }
+    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
                                         .addOnSuccessListener(unused -> {
                                             showMessage("Account created!", true);
                                             startActivity(new Intent(LoginActivity.this, CreateAccount.class));
+                                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                             finish();
                                         })
                                         .addOnFailureListener(e ->
@@ -155,6 +167,7 @@ public class LoginActivity extends AppCompatActivity {
         forgotPasswordButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
+            overridePendingTransition(0, 0);
         });
     }
 
@@ -181,19 +194,29 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkUserFirestore() {
+
         String uid = auth.getCurrentUser().getUid();
         DocumentReference userDoc = firestore.collection("users").document(uid);
-
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null) {
+            FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(user.getUid())
+                    .update("lastActive", com.google.firebase.Timestamp.now());
+        }
         userDoc.get().addOnSuccessListener(snapshot -> {
             if (snapshot.exists()) {
                 //Incomplete account setup
                 Boolean initialized = snapshot.getBoolean("initialized");
                 if (initialized != null && initialized) {
+                    loadingScreen(false);
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
                 }
                 else {
                     startActivity(new Intent(LoginActivity.this, CreateAccount.class));
+                    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                     finish();
                 }
             } else {
@@ -205,7 +228,9 @@ public class LoginActivity extends AppCompatActivity {
                 userDoc.set(defaultUser)
                         .addOnSuccessListener(unused -> {
                             showMessage("User profile created", true);
+                            loadingScreen(false);
                             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                             finish();
                         })
                         .addOnFailureListener(e ->

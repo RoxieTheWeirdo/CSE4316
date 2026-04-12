@@ -49,7 +49,8 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         backToLoginButton.setOnClickListener(v -> {
             Intent intent = new Intent(ForgotPasswordActivity.this, LoginActivity.class);
             startActivity(intent);
-            finish(); // optional but recommended so user cannot come back here by pressing back
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            finish();
         });
     }
 }

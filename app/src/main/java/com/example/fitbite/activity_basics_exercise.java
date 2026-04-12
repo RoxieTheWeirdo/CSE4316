@@ -23,7 +23,7 @@ public class activity_basics_exercise extends AppCompatActivity {
     private static final String TAG = "BasicsExerciseActivity";
     private CardView card0Sessions, card1to3Sessions, card4to6Sessions, card7PlusSessions;
     private RadioButton radio0Sessions, radio1to3Sessions, radio4to6Sessions, radio7PlusSessions;
-    private Button btnNext;
+    private Button btnNext, btnBack;
     private String selectedExercise = "";
 
     private FirebaseFirestore db;
@@ -65,6 +65,10 @@ public class activity_basics_exercise extends AppCompatActivity {
 
         // Next button
         btnNext.setOnClickListener(v -> saveExerciseAndProceed());
+        findViewById(R.id.btnBack).setOnClickListener(v -> {
+            finish();
+            overridePendingTransition(0, 0);
+        });
     }
 
     private void saveExerciseAndProceed() {
@@ -82,15 +86,15 @@ public class activity_basics_exercise extends AppCompatActivity {
 
         Map<String, Object> userData = new HashMap<>();
         userData.put("exerciseLevel", selectedExercise);
-        userData.put("initialized", true);
         db.collection("users").document(userId)
                 .set(userData, SetOptions.merge())
                 .addOnSuccessListener(aVoid -> {
                     Log.d(TAG, "Exercise level successfully written!");
                     // Proceed to the correct HomeActivity
-                    Intent intent = new Intent(activity_basics_exercise.this, HomeActivity.class);
+                    Intent intent = new Intent(activity_basics_exercise.this, bodyReconfiguration.class);
                     startActivity(intent);
-                    finish(); // Close the onboarding flow
+                    overridePendingTransition(0,0);
+
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Error writing exercise level", e);

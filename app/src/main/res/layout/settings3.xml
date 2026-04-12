@@ -1,98 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/backgroundPrimary">
 
-    <TextView
-        android:text="Select App Theme"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"/>
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/themeToggleGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:singleSelection="true"
-        app:selectionRequired="true">
+        <!-- Top Back Button -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_left_arrow"
+            app:tint="@color/textPrimary"
+            android:contentDescription="Back"
+            android:padding="4dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLight"
+        <!-- ===== App Theme Section ===== -->
+        <TextView
+            android:text="Select App Theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Light"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/textPrimary"
+            android:textSize="16sp"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDark"
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/themeToggleGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dark"/>
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            android:layout_gravity="start">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSystem"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLight"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Light"
+                android:textColor="@color/textPrimary"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDark"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Dark"
+                android:textColor="@color/textPrimary"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSystem"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="System Default"
+                android:textColor="@color/textPrimary"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <!-- ===== Unit Preference Section ===== -->
+        <TextView
+            android:text="Unit Preference"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="System Default"/>
-    </com.google.android.material.button.MaterialButtonToggleGroup>
-<TextView
-    android:text="Unit Preference"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="8dp"/>
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/textPrimary"
+            android:textSize="16sp"/>
 
-<com.google.android.material.button.MaterialButtonToggleGroup
-    android:id="@+id/unitToggleGroup"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:singleSelection="true"
-    app:selectionRequired="true">
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/unitToggleGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            android:layout_gravity="start">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnMetric"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Metric"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnMetric"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Metric"
+                android:textColor="@color/textPrimary"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnImperial"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Imperial"/>
-</com.google.android.material.button.MaterialButtonToggleGroup>
-<TextView
-    android:text="Notification Preference"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="8dp"/>
-<com.google.android.material.button.MaterialButtonToggleGroup
-    android:id="@+id/notificationToggleGroup"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:singleSelection="true">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnImperial"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Imperial"
+                android:textColor="@color/textPrimary"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNotifyOff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Off" />
+        <!-- ===== Notification Preference Section ===== -->
+        <TextView
+            android:text="Notification Preference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/textPrimary"
+            android:textSize="16sp"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNotifyMinimal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Minimal" />
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/notificationToggleGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            android:layout_gravity="start">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNotifyAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="All" />
-</com.google.android.material.button.MaterialButtonToggleGroup>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNotifyOff"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Off"
+                android:textColor="@color/textPrimary"/>
 
-</LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNotifyMinimal"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Minimal"
+                android:textColor="@color/textPrimary"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNotifyAll"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="All"
+                android:textColor="@color/textPrimary"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    </LinearLayout>
+</ScrollView>

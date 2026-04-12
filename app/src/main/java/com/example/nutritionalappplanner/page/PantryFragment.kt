@@ -35,7 +35,7 @@ class PantryFragment : Fragment() {
     private lateinit var searchInput: EditText
     private lateinit var scanButton: ImageButton
 
-    private var isSearching = false // 🔥 prevents duplicate calls
+    private var isSearching = false // prevents duplicate calls
 
     private val fatSecretRepository = FatSecretRepository(
         consumerKey = BuildConfig.FATSECRET_CONSUMER_KEY,
@@ -69,7 +69,7 @@ class PantryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 🔍 Search + 📷 Scan
+        // Search + Scan
         searchInput = view.findViewById(R.id.searchInput)
         scanButton = view.findViewById(R.id.scanButton)
 
@@ -202,7 +202,7 @@ class PantryFragment : Fragment() {
         }
     }
 
-    // 🌐 API SEARCH
+    // API SEARCH
     private fun searchFoods(query: String) {
         if (isSearching) return
         isSearching = true

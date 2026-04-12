@@ -29,8 +29,8 @@ public class WeightHistoryAdapter extends RecyclerView.Adapter<WeightHistoryAdap
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         WeightEntry e = list.get(position);
-        holder.weight.setText(e.weight + " lb");
-        holder.dateTime.setText(e.date + " • " + e.time);
+        holder.weight.setText(e.getWeight() + " lb");
+        holder.dateTime.setText(e.getDate() + " • " + e.getTime());
     }
 
     @Override

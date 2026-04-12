@@ -67,4 +67,9 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
             mealCalories = itemView.findViewById(R.id.mealCalories);
         }
     }
+    public void updateMeals(List<Meal> newMeals) {
+        mealList.clear();
+        mealList.addAll(newMeals);
+        notifyDataSetChanged();
+    }
 }

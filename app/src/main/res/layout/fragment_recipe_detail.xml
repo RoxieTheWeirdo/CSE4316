@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="#000000">
 
-    <!-- 🔥 TOP TOOLBAR (CHECKMARK WILL APPEAR HERE) -->
+    <!-- TOP TOOLBAR -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppBar"
         android:layout_width="match_parent"

@@ -1,5 +1,7 @@
 package com.example.fitbite;
 
+import android.Manifest;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -7,81 +9,137 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.fitness.Fitness;
+import com.google.android.gms.fitness.FitnessOptions;
+import com.google.android.gms.fitness.data.DataType;
+import com.google.android.gms.fitness.data.Field;
+import com.google.android.gms.fitness.request.DataReadRequest;
+import com.google.android.material.card.MaterialCardView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import androidx.fragment.app.Fragment;
 import com.example.nutritionalappplanner.page.PantryFragment;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import com.example.nutritionalappplanner.page.FoodDetailFragment;
-import com.example.nutritionalappplanner.page.ScanResultFragment;
-import com.google.android.material.card.MaterialCardView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 public class HomeActivity extends AppCompatActivity {
 
+    // Request codes
+    private static final int GOOGLE_FIT_PERMISSIONS_REQUEST_CODE = 101;
+    private static final int ACTIVITY_RECOGNITION_REQUEST_CODE = 102;
+    private static final int POST_NOTIFICATIONS_REQUEST_CODE = 100;
+
+    // Google Fit options (steps)
+    private final FitnessOptions fitnessOptions = FitnessOptions.builder()
+            .addDataType(DataType.TYPE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
+            .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
+            .build();
+
+    // Views
+    private TextView tvCaloriesRemaining, tvBaseGoal, tvFoodTotal, tvExerciseTotal;
+    private TextView tvMealName, tvMealCal, tvMealTime;
+    private ImageView ivMealThumb;
+
+    private TextView tvStepsCount, tvStepsGoal, tvExerciseCal, tvExerciseTime;
+    private boolean welcomeShown = false;
+
+    private ProgressBar stepsProgressBar;
+
+    private FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        findViewById(R.id.bottom_nav).bringToFront();
-
+        // -------------------- Notifications --------------------
         Notifications.createChannel(this);
+        requestPostNotificationPermissionIfNeeded();
 
-        // Request notification permission on Android 13+
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS)
-                    != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(
-                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS},
-                        100
-                );
-            }
-        }
-
-        // Optional: keep their test notification (remove later if you want)
-        Notifications.showNotification(this, 1, "A Notification!", "Test Notification", Notifications.MinimalNotifs);
-
-
-        setupHomeViews();
-        setupCenterButton();
-        setupSections();
-        setupMoreSection();
+        // -------------------- UI Setup --------------------
+        bindViews();
+        populateDashboard();
+        setupClickListeners();
+        loadExerciseData();
+        findViewById(R.id.bottom_nav).bringToFront();
         setupFragmentBackStackListener();
-        View bottomNav = findViewById(R.id.bottom_nav);
 
-        ViewCompat.setOnApplyWindowInsetsListener(bottomNav, (v, insets) -> {
-            int bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom;
-            v.setPadding(0, 0, 0, bottom);
-            return insets;
-        });
+        // -------------------- Steps via Google Fit --------------------
+        // For Android 10+ you need ACTIVITY_RECOGNITION runtime permission for step sensors.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            requestActivityRecognitionPermissionIfNeeded();
+        } else {
+            // Pre-Android 10: no ACTIVITY_RECOGNITION runtime permission needed
+            ensureGoogleFitPermissionsAndReadSteps();
+        }
     }
 
-    //Home screen views and sample data
-    private void setupHomeViews() {
-        TextView tvCaloriesRemaining = findViewById(R.id.tv_calories_remaining);
-        TextView tvBaseGoal = findViewById(R.id.tv_base_goal);
-        TextView tvFoodTotal = findViewById(R.id.tv_food_total);
-        TextView tvExerciseTotal = findViewById(R.id.tv_exercise_total);
+    // -------------------- Bind Views --------------------
 
-        TextView tvMealName = findViewById(R.id.tv_meal_name);
-        TextView tvMealCal = findViewById(R.id.tv_meal_cal);
-        TextView tvMealTime = findViewById(R.id.tv_food_time);
-        ImageView ivMealThumb = findViewById(R.id.iv_meal_thumb);
+    private void bindViews() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        return;
+                    }
+                    String token = task.getResult();
 
-        TextView tvStepsCount = findViewById(R.id.tv_steps_count);
-        TextView tvStepsGoal = findViewById(R.id.tv_steps_goal);
-        TextView tvExerciseCal = findViewById(R.id.tv_ex_cal);
-        TextView tvExerciseTime = findViewById(R.id.tv_ex_time);
+                    // Save token to Firestore
+                    FirebaseFirestore.getInstance()
+                            .collection("users")
+                            .document(FirebaseAuth.getInstance().getUid())
+                            .update("fcmToken", token);
+                });
+        //Notifications.showNotification(this, 1, "A Notification!", "Test Notification", Notifications.MinimalNotifs);
+        // Calories Section
+        tvCaloriesRemaining = findViewById(R.id.tv_calories_remaining);
+        tvBaseGoal = findViewById(R.id.tv_base_goal);
+        tvFoodTotal = findViewById(R.id.tv_food_total);
+        tvExerciseTotal = findViewById(R.id.tv_exercise_total);
 
-        // Example data
-        int calorieGoal = 1900;
+        // Food Log
+        tvMealName = findViewById(R.id.tv_meal_name);
+        tvMealCal = findViewById(R.id.tv_meal_cal);
+        tvMealTime = findViewById(R.id.tv_food_time);
+        ivMealThumb = findViewById(R.id.iv_meal_thumb);
+
+        // Steps and Exercise
+        tvStepsCount = findViewById(R.id.tv_steps_count);
+        tvStepsGoal = findViewById(R.id.tv_steps_goal);
+        tvExerciseCal = findViewById(R.id.tv_ex_cal);
+        tvExerciseTime = findViewById(R.id.tv_ex_time);
+
+        stepsProgressBar = findViewById(R.id.progress_steps);
+    }
+
+    // -------------------- Populate UI --------------------
+
+    private void populateDashboard() {
+        // Get calorie goal from account creation
+        int calorieGoal = getIntent().getIntExtra("CALORIE_TARGET", 1500);
+
+        // Temporary example values
         int foodConsumed = 1225;
         int exerciseBurned = 200;
         int remaining = calorieGoal - foodConsumed + exerciseBurned;
@@ -96,49 +154,238 @@ public class HomeActivity extends AppCompatActivity {
         tvMealTime.setText("Today • 1:05 PM");
         ivMealThumb.setImageResource(R.drawable.meal_placeholder);
 
-        tvStepsCount.setText("3,871");
+        // Steps placeholder until Fit returns
+        tvStepsCount.setText("--");
         tvStepsGoal.setText("Goal: 10,000 steps");
-        tvExerciseCal.setText("56 cal");
-        tvExerciseTime.setText("00:00 hr");
 
+      //  tvExerciseCal.setText("56 cal");
+        //tvExerciseTime.setText("00:00 hr");
+    }
+
+    // -------------------- Click Listeners --------------------
+
+    private void setupClickListeners() {
         ivMealThumb.setOnClickListener(v ->
                 Toast.makeText(HomeActivity.this, "Opening food log...", Toast.LENGTH_SHORT).show()
         );
-    }
 
-    //center + button popup
-    private void setupCenterButton() {
+        MaterialCardView exerciseSection = findViewById(R.id.card_exercise);
+
+        exerciseSection.setOnClickListener(v ->
+                startActivity(new Intent(HomeActivity.this, ExerciseActivity.class))
+        );
+
+        // Center + Button Popup
         MaterialCardView centerButton = findViewById(R.id.centerButton);
         centerButton.setOnClickListener(this::showPopupMenu);
-    }
 
-    //Setup plan & diary sections
-    private void setupSections() {
+        // Meal Plan Section
         LinearLayout planSection = findViewById(R.id.plan_section);
         planSection.setOnClickListener(v ->
                 startActivity(new Intent(HomeActivity.this, MealPlanActivity.class))
         );
 
+        // Diary Section
         LinearLayout diarySection = findViewById(R.id.diary_section);
         diarySection.setOnClickListener(v ->
                 startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class))
         );
-    }
 
-    //Setup "More" section (Settings)
-    private void setupMoreSection() {
         LinearLayout moreSection = findViewById(R.id.more_section);
-        if (moreSection != null) {
-            moreSection.setOnClickListener(v -> {
-                Intent intent = new Intent(HomeActivity.this, SettingsOverview.class);
-                startActivity(intent);
-            });
+        moreSection.setOnClickListener(v -> showSidebar(v));
+        String user = FirebaseAuth.getInstance().getUid();
+        LocalSettings localSettings = new LocalSettings(this);
+        String mode = localSettings.getNotificationMode();
+        if (user != null && !welcomeShown && mode.equals("All")) {
+            FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(user)
+                    .get()
+                    .addOnSuccessListener(doc -> {
+
+                        String username = doc.getString("username");
+
+                        String title;
+                        String message = "";
+                        Class<?> targetActivity = null;
+
+                        if (username == null || username.isEmpty()) {
+                            title = "Welcome!";
+                            message = "Tap here to set your username";
+                            targetActivity = SettingEditAccount.class;
+                        } else {
+                            title = "Welcome back " + username + "!";
+                        }
+                        welcomeShown = true;
+                        Notifications.showInAppNotification(this, title, message, targetActivity, 5000
+                        );
+                    });
         }
     }
 
-    //Show popup menu
+    // -------------------- Permissions --------------------
+
+    private void requestPostNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        POST_NOTIFICATIONS_REQUEST_CODE
+                );
+            }
+        }
+    }
+
+    private void requestActivityRecognitionPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (checkSelfPermission(Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(
+                        new String[]{Manifest.permission.ACTIVITY_RECOGNITION},
+                        ACTIVITY_RECOGNITION_REQUEST_CODE
+                );
+            } else {
+                // Already granted
+                ensureGoogleFitPermissionsAndReadSteps();
+            }
+        }
+    }
+
+    private void ensureGoogleFitPermissionsAndReadSteps() {
+        GoogleSignInAccount account = GoogleSignIn.getAccountForExtension(this, fitnessOptions);
+
+        if (!GoogleSignIn.hasPermissions(account, fitnessOptions)) {
+            GoogleSignIn.requestPermissions(
+                    this,
+                    GOOGLE_FIT_PERMISSIONS_REQUEST_CODE,
+                    account,
+                    fitnessOptions
+            );
+        } else {
+            readTodaySteps();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GOOGLE_FIT_PERMISSIONS_REQUEST_CODE) {
+            GoogleSignInAccount account = GoogleSignIn.getAccountForExtension(this, fitnessOptions);
+
+            if (GoogleSignIn.hasPermissions(account, fitnessOptions)) {
+                Toast.makeText(this, "Fit permission granted", Toast.LENGTH_SHORT).show();
+                readTodaySteps();
+            } else {
+                Toast.makeText(this, "Fit permission NOT granted", Toast.LENGTH_SHORT).show();
+                tvStepsCount.setText("--");
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == ACTIVITY_RECOGNITION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Now we can proceed to Fit consent + read steps
+                ensureGoogleFitPermissionsAndReadSteps();
+            } else {
+                Toast.makeText(this, "Activity Recognition permission denied", Toast.LENGTH_SHORT).show();
+                tvStepsCount.setText("--");
+            }
+        }
+    }
+
+    // -------------------- Google Fit Steps --------------------
+
+    private void readTodaySteps() {
+        GoogleSignInAccount account = GoogleSignIn.getAccountForExtension(this, fitnessOptions);
+        if (account == null) {
+            tvStepsCount.setText("--");
+            Toast.makeText(this, "No Google account available for Fit", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        long startTime = getStartOfTodayMillis();
+        long endTime = System.currentTimeMillis();
+
+        DataReadRequest request = new DataReadRequest.Builder()
+                .aggregate(DataType.TYPE_STEP_COUNT_DELTA, DataType.AGGREGATE_STEP_COUNT_DELTA)
+                .bucketByTime(1, TimeUnit.DAYS)
+                .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
+                .build();
+
+        Fitness.getHistoryClient(this, account)
+                .readData(request)
+                .addOnSuccessListener(response -> {
+                    long totalSteps = 0;
+
+                    if (!response.getBuckets().isEmpty()) {
+                        for (int b = 0; b < response.getBuckets().size(); b++) {
+                            for (int ds = 0; ds < response.getBuckets().get(b).getDataSets().size(); ds++) {
+                                for (int dp = 0; dp < response.getBuckets().get(b).getDataSets().get(ds).getDataPoints().size(); dp++) {
+                                    totalSteps += response.getBuckets().get(b)
+                                            .getDataSets().get(ds)
+                                            .getDataPoints().get(dp)
+                                            .getValue(Field.FIELD_STEPS).asInt();
+                                }
+                            }
+                        }
+                    } else {
+                        for (int ds = 0; ds < response.getDataSets().size(); ds++) {
+                            for (int dp = 0; dp < response.getDataSets().get(ds).getDataPoints().size(); dp++) {
+                                totalSteps += response.getDataSets().get(ds)
+                                        .getDataPoints().get(dp)
+                                        .getValue(Field.FIELD_STEPS).asInt();
+                            }
+                        }
+                    }
+
+                    tvStepsCount.setText(String.valueOf(totalSteps));
+                    int goal = 10000;
+                    stepsProgressBar.setMax(goal);
+                    int progress = (int) Math.min(totalSteps, goal);
+                    animateProgressBar(stepsProgressBar, progress);                })
+                .addOnFailureListener(e -> {
+                    tvStepsCount.setText("--");
+                    Toast.makeText(this, "Failed to read steps: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
+
+    private void animateProgressBar(ProgressBar progressBar, int targetProgress) {
+
+        int start = progressBar.getProgress();
+
+        ValueAnimator animator = ValueAnimator.ofInt(start, targetProgress);
+        animator.setDuration(800); // animation speed (ms)
+
+        animator.setInterpolator(new DecelerateInterpolator()); // smooth slowdown
+
+        animator.addUpdateListener(animation -> {
+            int value = (int) animation.getAnimatedValue();
+            progressBar.setProgress(value);
+        });
+
+        animator.start();
+    }
+
+    private long getStartOfTodayMillis() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTimeInMillis();
+    }
+
+    // -------------------- Popup Menu --------------------
+
     private void showPopupMenu(View anchorView) {
         View popupView = LayoutInflater.from(this).inflate(R.layout.popup_options, null);
+
         PopupWindow popupWindow = new PopupWindow(
                 popupView,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -149,20 +396,21 @@ public class HomeActivity extends AppCompatActivity {
         popupWindow.setElevation(10);
 
         popupView.findViewById(R.id.btnSearchFood).setOnClickListener(v -> {
-            startActivity(new Intent(HomeActivity.this, SearchFoodActivity.class));
+            //Toast.makeText(this, "Search Food clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, SearchFoodActivity.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnBarcodeScan).setOnClickListener(v -> {
-            startActivity(new Intent(HomeActivity.this, BarcodeScanner.class));
+            //Toast.makeText(this, "Barcode Scan clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, BarcodeScanner.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnMealScan).setOnClickListener(v -> {
-            Toast.makeText(this, "Pantry clicked", Toast.LENGTH_SHORT).show();
-
-            //fragment-based meal scan flow
+            //Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
             hideHomeViews();
+
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, new PantryFragment())
@@ -175,89 +423,101 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         popupView.findViewById(R.id.btnWeight).setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, WeightActivity.class);
-            startActivity(intent);
+            //Toast.makeText(this, "Weight clicked", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, WeightActivity.class));
             popupWindow.dismiss();
         });
 
         popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0, 550);
     }
+    private void showSidebar(View anchorView) {
+        View sidebarView = LayoutInflater.from(this).inflate(R.layout.homesidebar, null);
 
-    //Hide/show home views helpers
+        final PopupWindow sidebar = new PopupWindow(
+                sidebarView,
+                600, // width in pixels
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                true
+        );
+
+        sidebar.setElevation(12);
+        sidebar.setOutsideTouchable(true);
+        sidebar.setFocusable(true);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            sidebar.setAnimationStyle(R.style.PopupAnimationRight);
+        }
+        sidebarView.findViewById(R.id.btnNotifications).setOnClickListener(v -> {
+            startActivity(new Intent(HomeActivity.this, NotificationHistory.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            sidebar.dismiss();
+        });
+
+        sidebarView.findViewById(R.id.btnSettings).setOnClickListener(v -> {
+            startActivity(new Intent(HomeActivity.this, SettingsOverview.class));
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            sidebar.dismiss();
+        });
+        sidebar.showAtLocation(anchorView, Gravity.END | Gravity.TOP, 0, 0);
+    }
     private void hideHomeViews() {
         View contentRoot = findViewById(R.id.content_root);
-        View scroll = findViewById(R.id.scroll);
-
-        if (contentRoot != null) {
-            contentRoot.setVisibility(View.GONE);
-
-            ConstraintLayout.LayoutParams params =
-                    (ConstraintLayout.LayoutParams) contentRoot.getLayoutParams();
-            params.height = 0;
-            params.topToTop = ConstraintLayout.LayoutParams.UNSET;
-            params.bottomToTop = ConstraintLayout.LayoutParams.UNSET;
-            contentRoot.setLayoutParams(params);
-        }
-
-        if (scroll != null) {
-            scroll.setVisibility(View.GONE);
-
-            ConstraintLayout.LayoutParams params =
-                    (ConstraintLayout.LayoutParams) scroll.getLayoutParams();
-            params.height = 0;
-            params.topToTop = ConstraintLayout.LayoutParams.UNSET;
-            params.bottomToTop = ConstraintLayout.LayoutParams.UNSET;
-            scroll.setLayoutParams(params);
-        }
+        if (contentRoot != null) contentRoot.setVisibility(View.GONE);
     }
 
     private void showHomeViews() {
         View contentRoot = findViewById(R.id.content_root);
-        View scroll = findViewById(R.id.scroll);
-
-        if (contentRoot != null) {
-            contentRoot.setVisibility(View.VISIBLE);
-
-            ConstraintLayout.LayoutParams params =
-                    (ConstraintLayout.LayoutParams) contentRoot.getLayoutParams();
-
-            params.height = 0;
-            params.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
-            params.bottomToTop = R.id.bottom_nav;
-
-            contentRoot.setLayoutParams(params);
-        }
-
-        if (scroll != null) {
-            scroll.setVisibility(View.VISIBLE);
-
-            ConstraintLayout.LayoutParams params =
-                    (ConstraintLayout.LayoutParams) scroll.getLayoutParams();
-
-            params.height = 0;
-            params.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
-            params.bottomToTop = R.id.bottom_nav;
-
-            scroll.setLayoutParams(params);
-        }
+        if (contentRoot != null) contentRoot.setVisibility(View.VISIBLE);
     }
 
-    //Handle fragment back stack changes to restore/hide home views
     private void setupFragmentBackStackListener() {
         getSupportFragmentManager().addOnBackStackChangedListener(() -> {
             int count = getSupportFragmentManager().getBackStackEntryCount();
-
             View bottomNav = findViewById(R.id.bottom_nav);
 
             if (count > 0) {
-                // We are inside fragments (Pantry, Scanner, etc.)
                 hideHomeViews();
-                //bottomNav.setVisibility(View.VISIBLE);
             } else {
-                // Back to Home screen
                 showHomeViews();
                 bottomNav.setVisibility(View.VISIBLE);
             }
         });
+    }
+    private void loadExerciseData() {
+        db = FirebaseFirestore.getInstance();
+        String userId = FirebaseAuth.getInstance().getUid();
+
+        if (userId == null) return;
+
+        db.collection("users")
+                .document(userId)
+                .collection("exercises")
+                .addSnapshotListener((value, error) -> {
+
+                    if (error != null || value == null) return;
+
+                    int totalCalories = 0;
+                    int totalTime = 0;
+
+                    String today = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+                    for (QueryDocumentSnapshot doc : value) {
+                        Exercise e = doc.toObject(Exercise.class);
+
+                        if (e.date != null && e.date.equals(today)) {
+                            totalCalories += e.calories;
+                            totalTime += e.duration;
+                        }
+                    }
+
+                    // Update UI
+                    tvExerciseCal.setText(totalCalories + " cal");
+
+                    // Convert minutes → hours format
+                    int hours = totalTime / 60;
+                    int minutes = totalTime % 60;
+
+                    tvExerciseTime.setText(String.format("%02d:%02d hr", hours, minutes));
+                });
     }
 }

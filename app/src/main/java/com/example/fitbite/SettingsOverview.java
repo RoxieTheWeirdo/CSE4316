@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.graphics.Color;
@@ -21,7 +22,8 @@ public class SettingsOverview extends AppCompatActivity {
     LinearLayout tabAccount, tabPersonal, tabApp;
     TextView tabAccountText, tabPersonalText, tabAppText;
     FrameLayout contentContainer;
-    ImageButton btnEditFields;
+    LinearLayout btnEditFields;
+    ImageView btnBack;
     String currentTab = "account"; // keep track of active tab
     LocalSettings localSettings;
     FirebaseUser user;
@@ -47,13 +49,16 @@ public class SettingsOverview extends AppCompatActivity {
         tabAccountText = findViewById(R.id.tabAccountText);
         tabPersonalText = findViewById(R.id.tabPersonalText);
         tabAppText = findViewById(R.id.tabAppText);
-
+        btnBack = findViewById(R.id.btnBack);
         // Content container
         contentContainer = findViewById(R.id.contentContainer);
 
         // Pencil icon
         btnEditFields = findViewById(R.id.btnEditFields);
-
+        btnBack.setOnClickListener(v -> {
+            finish();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        });
         user = FirebaseAuth.getInstance().getCurrentUser();
         db = FirebaseFirestore.getInstance();
 
@@ -120,7 +125,6 @@ public class SettingsOverview extends AppCompatActivity {
                             Long year = snapshot.getLong("birthYear");
                             if (day != null && month != null && year != null) {
                                 birthdayView.setText(String.format("%s %02d, %04d", month, day, year));
-                                // Optional: calculate age if stored
                                 Long age = snapshot.getLong("age");
                                 ageView.setText(age != null ? String.valueOf(age) : "-");
                             } else {
@@ -134,7 +138,7 @@ public class SettingsOverview extends AppCompatActivity {
 
                             Long heightCm = snapshot.getLong("heightInCm");
                             Long weightLbs = snapshot.getLong("weightInPounds");
-                            String unitPref = localSettings.getUnitPreference(); // "Metric" or "Imperial"
+                            String unitPref = localSettings.getUnitPreference(); // Metric or Imperial
 
                             if (heightCm != null) {
                                 if (unitPref.equals("Metric")) {
@@ -144,7 +148,7 @@ public class SettingsOverview extends AppCompatActivity {
                                     int feet = (int) (totalInches / 12);
                                     int inches = (int) Math.round(totalInches % 12);
 
-                                    // Prevent 12 inches from appearing
+                                    //Prevents 12 inches from appearing
                                     if (inches == 12) {
                                         feet += 1;
                                         inches = 0;
@@ -181,6 +185,14 @@ public class SettingsOverview extends AppCompatActivity {
                             }
                             else {
                                 exerciseView.setText("Not set");
+                            }
+                            TextView allergiesView = finalView.findViewById(R.id.allergies);
+                            String allergies = snapshot.getString("allergies");
+                            if (allergies != null && !allergies.isEmpty()) {
+                                allergiesView.setText(allergies);
+                            }
+                            else {
+                                allergiesView.setText("None");
                             }
                         }
                     });

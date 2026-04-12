@@ -6,8 +6,8 @@ val camerax_version = "1.3.4"
 val properties = Properties()
 // NOTE: Do NOT hardcode secrets here.
 // Keep for sprint demo, but move to local.properties / env later.
-val fatsecretConsumerKey = "d93a1c71a19841cfbbef59d49370fe3e"
-val fatsecretConsumerSecret = "685ad09e5b5942ba9c6764ad750825a7"
+val fatsecretConsumerKey = ""
+val fatsecretConsumerSecret = ""
 
 plugins {
     id("com.android.application")
@@ -31,9 +31,9 @@ android {
 
         buildConfigField("String", "FATSECRET_CONSUMER_KEY", "\"${fatsecretConsumerKey.trim()}\"")
         buildConfigField("String", "FATSECRET_CONSUMER_SECRET", "\"${fatsecretConsumerSecret.trim()}\"")
-        buildConfigField("String", "CLARIFAI_API_KEY", "\"44d784d00bb54d64a7a40d385f32e718\"")
+        buildConfigField("String", "CLARIFAI_API_KEY", "\"\"")
         buildConfigField("String", "CLARIFAI_WORKFLOW_ID", "\"FoodImageModel\"")
-        buildConfigField("String", "CLARIFAI_WORKFLOW_VERSION", "\"034d2b10314c4e30892e6ffcbe9af4c0\"")
+        buildConfigField("String", "CLARIFAI_WORKFLOW_VERSION", "\"\"")
     }
 
     buildFeatures {
@@ -126,16 +126,21 @@ dependencies {
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 
-    // NOTE: This line duplicates libs.material above; keep only ONE.
-    // If libs.material already maps to 1.12.0, you can remove this.
-    // implementation("com.google.android.material:material:1.12.0")
+// keep ONLY ONE material dependency (you already have libs.material above)
+    implementation("com.google.android.material:material:1.12.0")
 
     implementation("nl.dionsegijn:konfetti-xml:2.0.4")
     implementation("nl.dionsegijn:konfetti-compose:2.0.4")
     implementation("nl.dionsegijn:konfetti-core:2.0.4")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-
+// Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+
+// New dependencies from main
+    implementation("com.github.haifengl:smile-core:2.6.0")
+    implementation("com.google.android.gms:play-services-fitness:21.2.0")
+    implementation("androidx.work:work-runtime:2.9.0")
+    implementation("com.google.firebase:firebase-messaging:23.4.1")
 }

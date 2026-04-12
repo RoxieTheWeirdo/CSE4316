@@ -37,7 +37,7 @@ public class MealPlanActivity extends AppCompatActivity {
         nextMealName = findViewById(R.id.nextMealName);
         mealCalories = findViewById(R.id.MealCalories);
         weekMealsRecyclerView = findViewById(R.id.weekMealsRecyclerView);
-
+        Button btnMakeMealPlan = findViewById(R.id.btnMakeMealPlan);
 
         // sample data
         nextMealTime.setText("Today, 12:30 PM");
@@ -49,6 +49,10 @@ public class MealPlanActivity extends AppCompatActivity {
         mealAdapter = new MealAdapter(this, mealList);
         weekMealsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         weekMealsRecyclerView.setAdapter(mealAdapter);
+        btnMakeMealPlan.setOnClickListener(v -> {
+            Intent intent = new Intent(MealPlanActivity.this, AutoMealPlan.class);
+            startActivity(intent);
+        });
     }
 
     // Sample data

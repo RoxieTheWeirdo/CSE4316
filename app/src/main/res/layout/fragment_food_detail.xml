@@ -113,7 +113,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- ===== NEW: STORAGE + QUANTITY ===== -->
+        <!--STORAGE + QUANTITY -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -219,7 +219,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Status (KEEP) -->
+        <!-- Status -->
         <TextView
             android:id="@+id/tvStatus"
             android:layout_width="wrap_content"

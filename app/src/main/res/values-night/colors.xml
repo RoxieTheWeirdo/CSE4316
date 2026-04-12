@@ -1,7 +1,10 @@
 <resources>
-    <color name="background">#111318</color>
-    <color name="cardBackground">#1E1E24</color>
+    <color name="backgroundPrimary">#121212</color>
+    <color name="backgroundSecondary">#1E1E1E</color>
     <color name="textPrimary">#FFFFFF</color>
-    <color name="textSecondary">#9AA0A6</color>
-    <color name="accent">#4DA6FF</color>
+    <color name="textSecondary">#AAAAAA</color>
+    <color name="accentColor">#BB86FC</color>
+    <color name="cardBackground">#2C2C2C</color>
+    <color name="buttonEnabled">#BB86FC</color>
+    <color name="buttonDisabled">#666666</color>
 </resources>

@@ -45,7 +45,7 @@ object RecipeMatcher {
 
             if (r.ingredients.isEmpty()) return@mapNotNull null
 
-            // Required filter still uses tokens (good logic to keep)
+            // Required filter still uses tokens
             if (requiredTokens.isNotEmpty()) {
                 val allRecipeTokens = if (r.ingredientTokens.isNotEmpty()) {
                     r.ingredientTokens.map { singularize(it.lowercase().trim()) }.toSet()

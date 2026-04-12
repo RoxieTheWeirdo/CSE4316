@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- Custom style for NumberPicker -->
     <style name="NumberPickerTheme" parent="android:Widget">
-        <item name="android:textColorPrimary">#FFFFFF</item>
-        <item name="android:textColorSecondary">#FFFFFF</item>
-        <item name="colorControlNormal">#FFFFFF</item>
-        <item name="android:background">#1C1C1C</item>
+	<item name="android:textColorPrimary">@color/textPrimary</item>
+    	<item name="android:textColorSecondary">@color/textSecondary</item>
+    	<item name="colorControlNormal">@color/textPrimary</item>
+    	<item name="android:background">@color/backgroundSecondary</item>
+    </style>
+
+
+    <style name="zxingCameraTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+    <style name="PopupAnimationRight">
+        <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_right</item>
     </style>
 </resources>

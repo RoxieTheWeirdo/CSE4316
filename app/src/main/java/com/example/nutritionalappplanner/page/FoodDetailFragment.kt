@@ -125,7 +125,7 @@ class FoodDetailFragment : Fragment() {
         actStorage.setText(defaultStorage, false)
     }
 
-    // SAME SAVE LOGIC (JUST USING INPUT VALUES NOW)
+    // SAVE LOGIC
     private fun saveToPantry() {
         val uid = auth.currentUser?.uid
         if (uid.isNullOrBlank()) {

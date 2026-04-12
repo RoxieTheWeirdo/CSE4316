@@ -1,14 +1,18 @@
 package com.example.fitbite;
 
 public class WeightEntry {
-    public float weight;
-    public String date;
-    public String time;
 
-    public WeightEntry(float w, String d, String t) {
-        weight = w;
-        date = d;
-        time = t;
+    private final float weight;
+    private final String date;
+    private final String time;
+
+    private final long timestamp;
+
+    public WeightEntry(float weight, String date, String time, long timestamp) {
+        this.weight = weight;
+        this.date = date;
+        this.time = time;
+        this.timestamp = timestamp;
     }
 
     public float getWeight() {
@@ -19,7 +23,9 @@ public class WeightEntry {
         return date;
     }
 
-    public String getDateTime() {
-        return date + " " + time;
+    public String getTime() {
+        return time;
     }
+
+    public long getTimestamp() { return timestamp; }
 }
