@@ -38,7 +38,7 @@
             android:layout_height="120dp"
             android:backgroundTint="#111318"
             android:textColor="@color/white"
-            android:text="Meal Scan" />
+            android:text="Pantry" />
 
         <Button
             android:id="@+id/btnWeight"

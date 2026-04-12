@@ -1,14 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
-    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <!-- Camera not required -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <application
-
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -24,7 +26,7 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
 
-        <!-- 🔹 Login page launches first -->
+        <!-- Launcher -->
         <activity
             android:name=".SplashScreen"
             android:exported="true">
@@ -34,8 +36,8 @@
             </intent-filter>
         </activity>
 
+        <!-- Account setup -->
         <activity android:name=".CreateAccount" />
-
         <activity android:name=".activity_basics_sex" />
         <activity android:name=".activity_basics_birthday" />
         <activity android:name=".activity_basics_height" />
@@ -43,8 +45,7 @@
         <activity android:name=".activity_basics_exercise" />
         <activity android:name=".bodyReconfiguration" />
 
-
-        <!-- 🔹 Home screens -->
+        <!-- Main app -->
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".AutoMealPlan" />
@@ -52,21 +53,23 @@
         <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".EditFoodActivity" />
 
+        <!-- Barcode -->
         <activity android:name=".BarcodeScanner"
             android:stateNotNeeded="true"/>
-
-
         <activity
             android:name=".CaptureAct"
             android:screenOrientation="portrait"
             android:theme="@style/zxingCameraTheme"/>
-
         <activity android:name=".BarcodeScannerAfter" />
         <activity android:name=".BarcodeMoreInfo" />
         <activity android:name=".PantryScanner" />
+
+        <!-- Meals -->
         <activity android:name=".MealPlanActivity" />
         <activity android:name=".MealDetailActivity" />
         <activity android:name=".FoodDiaryActivity" />
+
+        <!-- Settings -->
         <activity android:name=".SettingEditAccount" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SettingEditPersonal" />
@@ -79,10 +82,23 @@
         <activity android:name=".SettingChangeExercise" />
         <activity android:name=".SettingChangeAllergies" />
         <activity android:name=".WeightActivity" />
+
+        <!-- New from main -->
         <activity android:name=".ExerciseActivity" />
         <activity android:name=".NotificationHistory" />
 
-
+        <!-- FileProvider (keep yours) -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/files_paths" />
+        </provider>
 
     </application>
+
 </manifest>
+

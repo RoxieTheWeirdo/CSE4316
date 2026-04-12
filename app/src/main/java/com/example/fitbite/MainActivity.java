@@ -2,18 +2,20 @@ package com.example.fitbite;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;               // <-- ADDED
+import android.util.Log;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import java.util.List;
-import java.util.ArrayList;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fitbite.network.ProxyClient;   // <-- ADDED
+import java.util.ArrayList;
+import java.util.List;
+
+import com.example.fitbite.network.ProxyClient;
 
 public class MainActivity extends AppCompatActivity {
+
     private EditText searchBox;
 
     @Override
@@ -21,32 +23,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        // If the search box exists on this layout, grab it
+        searchBox = findViewById(R.id.searchFoodText);
 
+        // Keep main's FatSecret proxy test (remove later if you don’t want it always running)
         testFatsecret();
+
+        // Only build the search list UI if the recycler exists on this screen
+        openSearchScreen();
     }
 
     private void openSearchScreen() {
         RecyclerView recyclerView = findViewById(R.id.foodRecyclerView);
-        List<FoodItem> foodList = new ArrayList<>();
+        if (recyclerView == null) return;
 
-        //This is just an example array from the discord picture
-        //I believe how this will work is that we will pull data dynamically from user profile.
-        foodList.add(new FoodItem("French Toast", 350));
-        foodList.add(new FoodItem("Apple", 100));
-        foodList.add(new FoodItem("Orange", 60));
-        foodList.add(new FoodItem("Pizza Slice", 320));
-        foodList.add(new FoodItem("Veggie Pizza Slice", 350));
-        foodList.add(new FoodItem("Donut Holes", 35));
-        foodList.add(new FoodItem("Glazed Donut", 60));
-        foodList.add(new FoodItem("Some really long food name like an entire cake", 11000));
+        List<FoodItem> foodList = new ArrayList<>();
 
         FoodAdapter adapter = new FoodAdapter(this, foodList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
-
-        //Placeholder to start on searchfoodscreen, replace with the login screen once made.
-       // openSearchScreen();
-        searchBox = findViewById(R.id.searchFoodText);
     }
 
     private void openEditScreen() {
@@ -59,12 +54,11 @@ public class MainActivity extends AppCompatActivity {
             try {
                 ProxyClient proxy = new ProxyClient();
                 String json = proxy.searchFood("apple");
-
                 runOnUiThread(() -> Log.d("FATSECRET_TEST", json));
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();
     }
 }
+

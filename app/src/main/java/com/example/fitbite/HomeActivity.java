@@ -34,6 +34,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import androidx.fragment.app.Fragment;
+import com.example.nutritionalappplanner.page.PantryFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -80,6 +82,8 @@ public class HomeActivity extends AppCompatActivity {
         populateDashboard();
         setupClickListeners();
         loadExerciseData();
+        findViewById(R.id.bottom_nav).bringToFront();
+        setupFragmentBackStackListener();
 
         // -------------------- Steps via Google Fit --------------------
         // For Android 10+ you need ACTIVITY_RECOGNITION runtime permission for step sensors.
@@ -405,7 +409,16 @@ public class HomeActivity extends AppCompatActivity {
 
         popupView.findViewById(R.id.btnMealScan).setOnClickListener(v -> {
             //Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, PantryScanner.class));
+            hideHomeViews();
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new PantryFragment())
+                    .addToBackStack(null)
+                    .commit();
+
+            findViewById(R.id.fragment_container).bringToFront();
+
             popupWindow.dismiss();
         });
 
@@ -446,6 +459,29 @@ public class HomeActivity extends AppCompatActivity {
             sidebar.dismiss();
         });
         sidebar.showAtLocation(anchorView, Gravity.END | Gravity.TOP, 0, 0);
+    }
+    private void hideHomeViews() {
+        View contentRoot = findViewById(R.id.content_root);
+        if (contentRoot != null) contentRoot.setVisibility(View.GONE);
+    }
+
+    private void showHomeViews() {
+        View contentRoot = findViewById(R.id.content_root);
+        if (contentRoot != null) contentRoot.setVisibility(View.VISIBLE);
+    }
+
+    private void setupFragmentBackStackListener() {
+        getSupportFragmentManager().addOnBackStackChangedListener(() -> {
+            int count = getSupportFragmentManager().getBackStackEntryCount();
+            View bottomNav = findViewById(R.id.bottom_nav);
+
+            if (count > 0) {
+                hideHomeViews();
+            } else {
+                showHomeViews();
+                bottomNav.setVisibility(View.VISIBLE);
+            }
+        });
     }
     private void loadExerciseData() {
         db = FirebaseFirestore.getInstance();

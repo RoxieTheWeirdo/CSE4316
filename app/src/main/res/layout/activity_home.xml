@@ -5,9 +5,25 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingStart="16dp"
-    android:paddingTop="16dp"
-    android:paddingEnd="16dp">
+    android:padding="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content_root"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- Scroll container -->
     <ScrollView
@@ -33,9 +49,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="#111318"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="6dp">
+                app:cardBackgroundColor="@android:color/black"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:strokeColor="#2A2A2A"
+                app:strokeWidth="1dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -200,9 +218,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="#111318"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="6dp">
+                app:cardBackgroundColor="@android:color/black"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp"
+                app:strokeColor="#2A2A2A"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -288,7 +308,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:text="View full food log"
-                        android:textColor="#4DA6FF"
+                        android:textColor="#9C6BFF"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -309,9 +329,11 @@
                     android:layout_height="120dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#111318"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
+                    app:cardBackgroundColor="@android:color/black"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#2A2A2A"
+                    app:strokeWidth="1dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -381,9 +403,11 @@
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="#111318"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="4dp">
+                    app:cardBackgroundColor="@android:color/black"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#2A2A2A"
+                    app:strokeWidth="1dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -462,11 +486,14 @@
     <LinearLayout
         android:id="@+id/bottom_nav"
         android:layout_width="0dp"
-        android:layout_height="72dp"
-        android:background="#111318"
+        android:layout_height="114dp"
+        android:background="@drawable/bg_bottom_nav"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:elevation="16dp"
+        android:translationZ="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -528,13 +555,15 @@
                 android:layout_height="50dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardBackgroundColor="#4DA6FF"
+                app:cardBackgroundColor="#9C6BFF"
                 app:cardCornerRadius="32dp"
-                app:cardElevation="8dp">
+                app:cardElevation="0dp"
+                app:strokeColor="#2A2A2A"
+                app:strokeWidth="1dp">>
 
                 <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_plus" />
             </com.google.android.material.card.MaterialCardView>
@@ -558,7 +587,7 @@
             <TextView
                 android:layout_width="21dp"
                 android:layout_height="wrap_content"
-                android:text="Plan"
+                android:text="Pla"
                 android:textColor="#6B6F75"
                 android:textSize="11sp" />
         </LinearLayout>
