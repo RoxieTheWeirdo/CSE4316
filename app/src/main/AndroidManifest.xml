@@ -58,6 +58,8 @@
             android:name=".CaptureAct"
             android:screenOrientation="portrait"
             android:theme="@style/zxingCameraTheme"/>
+        <activity android:name=".MealGeneratorActivity" />
+
 
         <activity android:name=".BarcodeScannerAfter" />
         <activity android:name=".BarcodeMoreInfo" />
