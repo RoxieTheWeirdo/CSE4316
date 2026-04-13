@@ -6,8 +6,8 @@ val camerax_version = "1.3.4"
 val properties = Properties()
 // NOTE: Do NOT hardcode secrets here.
 // Keep for sprint demo, but move to local.properties / env later.
-val fatsecretConsumerKey = ""
-val fatsecretConsumerSecret = ""
+val fatsecretConsumerKey = "XXXXXXXXXXXXX"
+val fatsecretConsumerSecret = "XXXXXXX"
 
 plugins {
     id("com.android.application")
@@ -34,6 +34,8 @@ android {
         buildConfigField("String", "CLARIFAI_API_KEY", "\"\"")
         buildConfigField("String", "CLARIFAI_WORKFLOW_ID", "\"FoodImageModel\"")
         buildConfigField("String", "CLARIFAI_WORKFLOW_VERSION", "\"\"")
+        buildConfigField("String", "CLARIFAI_API_KEY", "\"XXXXXXX\"")
+        buildConfigField("String", "CLARIFAI_WORKFLOW_VERSION", "\"XXXXXXXX\"")
     }
 
     buildFeatures {
