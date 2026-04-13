@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/backgroundPrimary"
+    android:background="#1C1C1C"
     android:padding="16dp">
 
     <RelativeLayout
@@ -19,7 +19,6 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_back_arrow"
-	    app:tint="@color/textPrimary"
             android:contentDescription="Back" />
 
         <TextView
@@ -27,8 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Basics"
-            android:textColor="@color/textPrimary"
-            android:textSize="17sp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -39,7 +38,7 @@
         android:layout_height="4dp"
         android:layout_marginTop="8dp"
         android:progress="20"
-        android:progressTint="@color/textPrimary"
+        android:progressTint="#FFFFFF"
         android:progressBackgroundTint="#404040" />
 
     <TextView
@@ -47,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="What is your sex?"
-        android:textColor="@color/textPrimary"
+        android:textColor="#FFFFFF"
         android:textSize="28sp"
         android:textStyle="bold" />
 
@@ -56,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        app:cardBackgroundColor="@color/backgroundSecondary"
+        app:cardBackgroundColor="#2C2C2C"
         app:cardCornerRadius="12dp"
         app:cardElevation="0dp">
 
@@ -72,7 +71,6 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_female"
-		app:tint="@color/textPrimary"
                 android:contentDescription="Female icon" />
 
             <TextView
@@ -82,13 +80,13 @@
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/iconFemale"
                 android:text="Female"
-                android:textColor="@color/textPrimary"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/radioFemale"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:buttonTint="#666666" />
@@ -100,7 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:cardBackgroundColor="@color/backgroundSecondary"
+        app:cardBackgroundColor="#2C2C2C"
         app:cardCornerRadius="12dp"
         app:cardElevation="0dp">
 
@@ -115,8 +113,7 @@
                 android:layout_height="32dp"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_male2"
-		app:tint="@color/textPrimary"
+                android:src="@drawable/ic_male"
                 android:contentDescription="Male icon" />
 
             <TextView
@@ -126,13 +123,13 @@
                 android:layout_marginStart="16dp"
                 android:layout_toEndOf="@id/iconMale"
                 android:text="Male"
-                android:textColor="@color/textPrimary"
+                android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/radioMale"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:buttonTint="#666666" />
@@ -153,7 +150,7 @@
         android:enabled="false"
         android:text="Next"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="#666666"
         android:textSize="16sp"
         android:textStyle="bold" />
 

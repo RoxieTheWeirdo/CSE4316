@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -16,9 +14,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class SettingEditPersonal extends AppCompatActivity {
 
     TextView curBirthday, curHeight, curWeight, curSex, curExercise, curAllergies;
-    RelativeLayout btnChangeBirthday, btnChangeHeight, btnChangeWeight, btnChangeSex, btnChangeExercise, btnChangeAllergies;
+    Button btnChangeBirthday, btnChangeHeight, btnChangeWeight, btnChangeSex, btnChangeExercise, btnChangeAllergies;
     LocalSettings localSettings;
-    ImageView btnBack;
     FirebaseUser user;
     FirebaseFirestore db;
 
@@ -46,11 +43,7 @@ public class SettingEditPersonal extends AppCompatActivity {
         btnChangeSex      = findViewById(R.id.btnChangeSex);
         btnChangeExercise = findViewById(R.id.btnChangeExercise);
         btnChangeAllergies = findViewById(R.id.btnChangeAllergies);
-        btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> {
-            finish();
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        });
+
         if (user != null) {
             DocumentReference ref =
                     db.collection("users").document(user.getUid());

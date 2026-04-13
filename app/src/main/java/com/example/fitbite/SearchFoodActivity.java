@@ -22,7 +22,7 @@ public class SearchFoodActivity extends AppCompatActivity {
     private FoodAdapter adapter;
     private EditText searchInput;
     private ImageButton searchButton;
-    private final List<FoodItem> foodList = new ArrayList<>();
+    private List<FoodItem> foodList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +30,17 @@ public class SearchFoodActivity extends AppCompatActivity {
         setContentView(R.layout.searchfoodscreen);
 
         recyclerView = findViewById(R.id.foodRecyclerView);
+
+
         searchInput = findViewById(R.id.searchFoodText);
+
         searchButton = findViewById(R.id.searchButton);
 
         adapter = new FoodAdapter(this, foodList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        // When search button is clicked → fetch from API
+        // 🔥 When search button is clicked → fetch from API
         searchButton.setOnClickListener(v -> {
             String query = searchInput.getText().toString().trim();
             if (!query.isEmpty()) {
@@ -46,7 +49,7 @@ public class SearchFoodActivity extends AppCompatActivity {
         });
     }
 
-    // gets food from Proxy Server
+    // gets food from your Proxy Server
     private void searchFood(String query) {
         new Thread(() -> {
             try {
@@ -64,7 +67,11 @@ public class SearchFoodActivity extends AppCompatActivity {
 
                     for (FoodResponse.Food f : response.foods.food) {
                         int calories = extractCalories(f.food_description);
-                        foodList.add(new FoodItem(f.food_name, calories));
+
+                        foodList.add(new FoodItem(
+                                f.food_name,
+                                calories
+                        ));
                     }
                 }
 
@@ -86,7 +93,7 @@ public class SearchFoodActivity extends AppCompatActivity {
         }
     }
 
-    // Gson model for parsing JSON
+    //  Gson model for parsing JSON
     public static class FoodResponse {
         Foods foods;
 

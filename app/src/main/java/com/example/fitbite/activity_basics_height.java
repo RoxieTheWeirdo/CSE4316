@@ -44,10 +44,7 @@ public class activity_basics_height extends AppCompatActivity {
         setupFeetInches(); // default view
 
         // ✅ Back
-        findViewById(R.id.btnBack).setOnClickListener(v -> {
-            finish();
-            overridePendingTransition(0, 0);
-        });
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         btnFeetInches.setOnClickListener(v -> {
             if (!isFeetInches) {
@@ -95,7 +92,7 @@ public class activity_basics_height extends AppCompatActivity {
                     Log.d(TAG, "Height successful");
                     Intent intent = new Intent(activity_basics_height.this, activity_basics_weight.class);
                     startActivity(intent);
-                    overridePendingTransition(0,0);
+                    finish();
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Error writing height", e);

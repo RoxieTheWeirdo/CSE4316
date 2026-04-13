@@ -17,9 +17,7 @@ import java.util.List;
 
 public class SettingChangeAllergies extends AppCompatActivity {
 
-    MaterialButton btnDairy, btnWheat, btnPeanut;
-    MaterialButton btnSoy, btnEggs, btnFish;
-    MaterialButton btnSesame, btnShellfish, btnTreeNut;
+    MaterialButton btnDairy, btnGluten, btnPeanut;
     Button btnDone;
 
     FirebaseUser user;
@@ -36,15 +34,8 @@ public class SettingChangeAllergies extends AppCompatActivity {
 
         // Views
         btnDairy  = findViewById(R.id.btnDairy);
-        btnWheat = findViewById(R.id.btnWheat);
+        btnGluten = findViewById(R.id.btnGluten);
         btnPeanut = findViewById(R.id.btnPeanut);
-        btnSoy = findViewById(R.id.btnSoy);
-        btnEggs = findViewById(R.id.btnEggs);
-        btnFish = findViewById(R.id.btnFish);
-        btnSesame = findViewById(R.id.btnSesame);
-        btnShellfish = findViewById(R.id.btnShellfish);
-        btnTreeNut = findViewById(R.id.btnTreeNut);
-
         btnDone   = findViewById(R.id.btnDone);
 
         if (user == null) {
@@ -68,14 +59,8 @@ public class SettingChangeAllergies extends AppCompatActivity {
                     List<String> allergies = Arrays.asList(allergyString.split(",\\s*"));
 
                     btnDairy.setChecked(allergies.contains("Dairy"));
-                    btnWheat.setChecked(allergies.contains("Wheat"));
+                    btnGluten.setChecked(allergies.contains("Gluten"));
                     btnPeanut.setChecked(allergies.contains("Peanut"));
-                    btnSoy.setChecked(allergies.contains("Soy"));
-                    btnEggs.setChecked(allergies.contains("Eggs"));
-                    btnFish.setChecked(allergies.contains("Fish"));
-                    btnSesame.setChecked(allergies.contains("Sesame"));
-                    btnShellfish.setChecked(allergies.contains("Shellfish"));
-                    btnTreeNut.setChecked(allergies.contains("Tree Nut"));
                 });
 
         // ----------------------------
@@ -84,15 +69,9 @@ public class SettingChangeAllergies extends AppCompatActivity {
         btnDone.setOnClickListener(v -> {
             ArrayList<String> allergies = new ArrayList<>();
 
-            if (btnDairy.isChecked())    allergies.add("Dairy");
-            if (btnWheat.isChecked())    allergies.add("Wheat");
-            if (btnPeanut.isChecked())   allergies.add("Peanut");
-            if (btnSoy.isChecked())      allergies.add("Soy");
-            if (btnEggs.isChecked())     allergies.add("Eggs");
-            if (btnFish.isChecked())     allergies.add("Fish");
-            if (btnSesame.isChecked())   allergies.add("Sesame");
-            if (btnShellfish.isChecked())allergies.add("Shellfish");
-            if (btnTreeNut.isChecked())  allergies.add("Tree Nut");
+            if (btnDairy.isChecked())  allergies.add("Dairy");
+            if (btnGluten.isChecked()) allergies.add("Gluten");
+            if (btnPeanut.isChecked()) allergies.add("Peanut");
 
             String allergyString = String.join(", ", allergies);
 

@@ -48,10 +48,7 @@ public class activity_basics_weight extends AppCompatActivity {
         setupPounds();
 
         //  Back
-        findViewById(R.id.btnBack).setOnClickListener(v -> {
-            finish();
-            overridePendingTransition(0, 0);
-        });
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
         btnPounds.setOnClickListener(v -> {
             if (!isPounds) {
@@ -110,7 +107,7 @@ public class activity_basics_weight extends AppCompatActivity {
                     intent.putExtra("weight", currentWeight);
                     intent.putExtra("isPounds", isPounds);
                     startActivity(intent);
-                    overridePendingTransition(0,0);
+                    finish();
                 })
                 .addOnFailureListener(e -> {
                     Log.w(TAG, "Error writing weight", e);
