@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F5F9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- MONDAY -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monday"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:baselineAligned="false"
+            android:layout_marginBottom="20dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍳" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BREAKFAST" android:textSize="9sp" android:textStyle="bold" android:textColor="#22C55E" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvMonBreakfast" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥗" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LUNCH" android:textSize="9sp" android:textStyle="bold" android:textColor="#3B82F6" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvMonLunch" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="14dp"
+                app:cardElevation="3dp"
+                app:cardBackgroundColor="#EFF6FF">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍽️" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DINNER" android:textSize="9sp" android:textStyle="bold" android:textColor="#2563EB" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvMonDinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#2563EB" android:textStyle="bold" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- TUESDAY -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuesday"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:baselineAligned="false"
+            android:layout_marginBottom="20dp">
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍳" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BREAKFAST" android:textSize="9sp" android:textStyle="bold" android:textColor="#22C55E" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvTueBreakfast" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥗" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LUNCH" android:textSize="9sp" android:textStyle="bold" android:textColor="#3B82F6" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvTueLunch" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#EFF6FF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍽️" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DINNER" android:textSize="9sp" android:textStyle="bold" android:textColor="#2563EB" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvTueDinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#2563EB" android:textStyle="bold" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- WEDNESDAY -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wednesday"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:baselineAligned="false"
+            android:layout_marginBottom="20dp">
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍳" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BREAKFAST" android:textSize="9sp" android:textStyle="bold" android:textColor="#22C55E" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvWedBreakfast" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥗" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LUNCH" android:textSize="9sp" android:textStyle="bold" android:textColor="#3B82F6" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvWedLunch" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#EFF6FF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍽️" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DINNER" android:textSize="9sp" android:textStyle="bold" android:textColor="#2563EB" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvWedDinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#2563EB" android:textStyle="bold" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- THURSDAY -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thursday"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:baselineAligned="false"
+            android:layout_marginBottom="20dp">
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍳" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BREAKFAST" android:textSize="9sp" android:textStyle="bold" android:textColor="#22C55E" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvThuBreakfast" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥗" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LUNCH" android:textSize="9sp" android:textStyle="bold" android:textColor="#3B82F6" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvThuLunch" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#EFF6FF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍽️" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DINNER" android:textSize="9sp" android:textStyle="bold" android:textColor="#2563EB" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvThuDinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#2563EB" android:textStyle="bold" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- FRIDAY -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Friday"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:baselineAligned="false"
+            android:layout_marginBottom="20dp">
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍳" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BREAKFAST" android:textSize="9sp" android:textStyle="bold" android:textColor="#22C55E" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvFriBreakfast" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥗" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LUNCH" android:textSize="9sp" android:textStyle="bold" android:textColor="#3B82F6" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvFriLunch" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#EFF6FF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍽️" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DINNER" android:textSize="9sp" android:textStyle="bold" android:textColor="#2563EB" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvFriDinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#2563EB" android:textStyle="bold" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- SATURDAY -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Saturday"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:baselineAligned="false"
+            android:layout_marginBottom="20dp">
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍳" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BREAKFAST" android:textSize="9sp" android:textStyle="bold" android:textColor="#22C55E" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvSatBreakfast" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥗" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LUNCH" android:textSize="9sp" android:textStyle="bold" android:textColor="#3B82F6" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvSatLunch" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#EFF6FF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍽️" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DINNER" android:textSize="9sp" android:textStyle="bold" android:textColor="#2563EB" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvSatDinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#2563EB" android:textStyle="bold" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <!-- SUNDAY -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunday"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            android:baselineAligned="false"
+            android:layout_marginBottom="20dp">
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍳" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BREAKFAST" android:textSize="9sp" android:textStyle="bold" android:textColor="#22C55E" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvSunBreakfast" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="5dp" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🥗" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LUNCH" android:textSize="9sp" android:textStyle="bold" android:textColor="#3B82F6" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvSunLunch" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#475569" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" app:cardCornerRadius="14dp" app:cardElevation="3dp" app:cardBackgroundColor="#EFF6FF">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center" android:padding="8dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🍽️" android:textSize="24sp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="DINNER" android:textSize="9sp" android:textStyle="bold" android:textColor="#2563EB" android:letterSpacing="0.08" android:layout_marginTop="4dp"/>
+                    <TextView android:id="@+id/tvSunDinner" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="—" android:textSize="11sp" android:textColor="#2563EB" android:textStyle="bold" android:layout_marginTop="3dp" android:maxLines="2" android:ellipsize="end"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnRegenerate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Regenerate Meals"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#22C55E"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+
+</ScrollView>
