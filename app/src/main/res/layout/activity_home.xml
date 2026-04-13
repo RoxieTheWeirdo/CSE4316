@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- activity_main.xml -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/root"
@@ -8,6 +9,7 @@
     android:paddingTop="16dp"
     android:paddingEnd="16dp">
 
+    <!-- Scroll container -->
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="0dp"
@@ -25,7 +27,7 @@
             android:orientation="vertical"
             android:paddingBottom="24dp">
 
-            <!-- CALORIES CARD -->
+            <!-- CALORIES CARD (large, full width) -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_calories"
                 android:layout_width="match_parent"
@@ -59,6 +61,7 @@
                         android:textColor="#9AA0A6"
                         android:textSize="12sp" />
 
+                    <!-- Left: circular progress / donut placeholder -->
                     <FrameLayout
                         android:id="@+id/donut_container"
                         android:layout_width="120dp"
@@ -66,6 +69,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_marginTop="50dp">
 
+                        <!-- Replace this with actual donut/progress view programatically -->
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -97,6 +101,7 @@
                         </LinearLayout>
                     </FrameLayout>
 
+                    <!-- Right: summary (goal / food / exercise) -->
                     <LinearLayout
                         android:id="@+id/calorie_right"
                         android:layout_width="wrap_content"
@@ -189,7 +194,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- FOOD LOG CARD -->
+            <!-- FOOD LOG CARD (same approximate size as calories) -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_food"
                 android:layout_width="match_parent"
@@ -223,6 +228,7 @@
                         android:textColor="#9AA0A6"
                         android:textSize="12sp" />
 
+                    <!-- Placeholder for meal item: thumbnail + title + calories -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -275,6 +281,7 @@
                             android:textStyle="bold" />
                     </LinearLayout>
 
+                    <!-- Quick action: view full meal log -->
                     <TextView
                         android:id="@+id/tv_view_full_log"
                         android:layout_width="wrap_content"
@@ -287,7 +294,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Row: Steps + Exercise -->
+            <!-- Row: Steps + Exercise side-by-side -->
             <LinearLayout
                 android:id="@+id/row_small_cards"
                 android:layout_width="match_parent"
@@ -295,6 +302,7 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
+                <!-- Steps card (left) -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_steps"
                     android:layout_width="0dp"
@@ -353,6 +361,7 @@
                             android:textColor="#9AA0A6"
                             android:textSize="12sp" />
 
+                        <!-- small progress bar -->
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="8dp"
@@ -363,6 +372,7 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
+                <!-- Exercise card (right) -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/card_exercise"
                     android:layout_width="0dp"
@@ -425,390 +435,27 @@
 
             </LinearLayout>
 
-            <!-- MACRONUTRIENTS CARD — 5 donuts, 3 top + 2 bottom -->
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/card_macros"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                app:cardBackgroundColor="#111318"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="6dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bodyreconfiguration"
+                android:layout_width="375dp"
+                android:layout_height="90dp"
+                android:text="Body Transformation"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                app:cornerRadius="12dp"
+                app:elevation="3dp"
+                android:backgroundTint="#111318" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Macronutrients"
-                        android:textColor="#FFFFFF"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="16dp" />
 
-                    <!-- TOP ROW: Protein, Carbs, Fat -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:weightSum="3"
-                        android:layout_marginBottom="16dp">
 
-                        <!-- Protein -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center">
 
-                            <FrameLayout
-                                android:layout_width="76dp"
-                                android:layout_height="76dp">
-
-                                <com.google.android.material.progressindicator.CircularProgressIndicator
-                                    android:id="@+id/progress_protein"
-                                    android:layout_width="76dp"
-                                    android:layout_height="76dp"
-                                    android:layout_gravity="center"
-                                    android:indeterminate="false"
-                                    android:progress="0"
-                                    app:indicatorColor="#FF6B6B"
-                                    app:trackColor="#2C2C2E"
-                                    app:trackThickness="6dp" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:id="@+id/tv_protein_remaining"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="--"
-                                        android:textColor="#FFFFFF"
-                                        android:textSize="13sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="left"
-                                        android:textColor="#8E8E93"
-                                        android:textSize="9sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="6dp"
-                                android:text="Protein"
-                                android:textColor="#FF6B6B"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tv_protein_goal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Goal: --"
-                                android:textColor="#9AA0A6"
-                                android:textSize="9sp" />
-                        </LinearLayout>
-
-                        <!-- Carbs -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center">
-
-                            <FrameLayout
-                                android:layout_width="76dp"
-                                android:layout_height="76dp">
-
-                                <com.google.android.material.progressindicator.CircularProgressIndicator
-                                    android:id="@+id/progress_carbs"
-                                    android:layout_width="76dp"
-                                    android:layout_height="76dp"
-                                    android:layout_gravity="center"
-                                    android:indeterminate="false"
-                                    android:progress="0"
-                                    app:indicatorColor="#FFD93D"
-                                    app:trackColor="#2C2C2E"
-                                    app:trackThickness="6dp" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:id="@+id/tv_carbs_remaining"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="--"
-                                        android:textColor="#FFFFFF"
-                                        android:textSize="13sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="left"
-                                        android:textColor="#8E8E93"
-                                        android:textSize="9sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="6dp"
-                                android:text="Carbs"
-                                android:textColor="#FFD93D"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tv_carbs_goal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Goal: --"
-                                android:textColor="#9AA0A6"
-                                android:textSize="9sp" />
-                        </LinearLayout>
-
-                        <!-- Fat -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center">
-
-                            <FrameLayout
-                                android:layout_width="76dp"
-                                android:layout_height="76dp">
-
-                                <com.google.android.material.progressindicator.CircularProgressIndicator
-                                    android:id="@+id/progress_fat"
-                                    android:layout_width="76dp"
-                                    android:layout_height="76dp"
-                                    android:layout_gravity="center"
-                                    android:indeterminate="false"
-                                    android:progress="0"
-                                    app:indicatorColor="#6BCB77"
-                                    app:trackColor="#2C2C2E"
-                                    app:trackThickness="6dp" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:id="@+id/tv_fat_remaining"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="--"
-                                        android:textColor="#FFFFFF"
-                                        android:textSize="13sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="left"
-                                        android:textColor="#8E8E93"
-                                        android:textSize="9sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="6dp"
-                                android:text="Fat"
-                                android:textColor="#6BCB77"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tv_fat_goal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Goal: --"
-                                android:textColor="#9AA0A6"
-                                android:textSize="9sp" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <!-- BOTTOM ROW: Fiber, Sodium — centered -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:weightSum="2">
-
-                        <!-- Fiber -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center">
-
-                            <FrameLayout
-                                android:layout_width="76dp"
-                                android:layout_height="76dp">
-
-                                <com.google.android.material.progressindicator.CircularProgressIndicator
-                                    android:id="@+id/progress_fiber"
-                                    android:layout_width="76dp"
-                                    android:layout_height="76dp"
-                                    android:layout_gravity="center"
-                                    android:indeterminate="false"
-                                    android:progress="0"
-                                    app:indicatorColor="#A78BFA"
-                                    app:trackColor="#2C2C2E"
-                                    app:trackThickness="6dp" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:id="@+id/tv_fiber_remaining"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="--"
-                                        android:textColor="#FFFFFF"
-                                        android:textSize="13sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="left"
-                                        android:textColor="#8E8E93"
-                                        android:textSize="9sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="6dp"
-                                android:text="Fiber"
-                                android:textColor="#A78BFA"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tv_fiber_goal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Goal: --"
-                                android:textColor="#9AA0A6"
-                                android:textSize="9sp" />
-                        </LinearLayout>
-
-                        <!-- Sodium -->
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="vertical"
-                            android:gravity="center">
-
-                            <FrameLayout
-                                android:layout_width="76dp"
-                                android:layout_height="76dp">
-
-                                <com.google.android.material.progressindicator.CircularProgressIndicator
-                                    android:id="@+id/progress_sodium"
-                                    android:layout_width="76dp"
-                                    android:layout_height="76dp"
-                                    android:layout_gravity="center"
-                                    android:indeterminate="false"
-                                    android:progress="0"
-                                    app:indicatorColor="#FB923C"
-                                    app:trackColor="#2C2C2E"
-                                    app:trackThickness="6dp" />
-
-                                <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:gravity="center"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:id="@+id/tv_sodium_remaining"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="--"
-                                        android:textColor="#FFFFFF"
-                                        android:textSize="13sp"
-                                        android:textStyle="bold" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="left"
-                                        android:textColor="#8E8E93"
-                                        android:textSize="9sp" />
-                                </LinearLayout>
-                            </FrameLayout>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="6dp"
-                                android:text="Sodium"
-                                android:textColor="#FB923C"
-                                android:textSize="11sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tv_sodium_goal"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Goal: --"
-                                android:textColor="#9AA0A6"
-                                android:textSize="9sp" />
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
     </ScrollView>
 
-    <!-- Bottom navigation -->
+    <!-- Bottom navigation placeholder -->
     <LinearLayout
         android:id="@+id/bottom_nav"
         android:layout_width="0dp"
@@ -821,6 +468,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+        <!-- Simple icons/text placeholders; replace with BottomNavigationView if desired -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -864,9 +512,11 @@
                 android:textSize="11sp" />
         </LinearLayout>
 
+        <!-- Center big + button -->
         <FrameLayout
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginTop="0dp"
             android:foregroundGravity="center">
 
             <com.google.android.material.card.MaterialCardView
@@ -911,7 +561,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/more_section"
+	    android:id="@+id/more_section"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

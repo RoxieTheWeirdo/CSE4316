@@ -1,34 +1,21 @@
 package com.example.fitbite;
 
-import java.io.Serializable;
-
-public class Meal implements Serializable {
-
-    private String breakfast;
-    private String lunch;
-    private String dinner;
+public class Meal {
+    private String day;
+    private String name;
+    private String time;
     private int calories;
 
-    public Meal(String breakfast, String lunch, String dinner, int calories) {
-        this.breakfast = breakfast;
-        this.lunch = lunch;
-        this.dinner = dinner;
+    public Meal(String day, String name, String time, int calories) {
+        this.day = day;
+        this.name = name;
+        this.time = time;
         this.calories = calories;
     }
 
-    public String getBreakfast() {
-        return breakfast;
-    }
-
-    public String getLunch() {
-        return lunch;
-    }
-
-    public String getDinner() {
-        return dinner;
-    }
-
-    public int getCalories() {
-        return calories;
-    }
+    public String getDay() { return day; }
+    public String getName() { return name; }
+    public String getTime() { return time; }
+    public int getCalories() { return calories; }
 }
+
