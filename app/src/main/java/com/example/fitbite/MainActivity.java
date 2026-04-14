@@ -9,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fitbite.network.ProxyClient;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.example.fitbite.network.ProxyClient;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,13 +23,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // If the search box exists on this layout, grab it
+        // Grab search box if present
         searchBox = findViewById(R.id.searchFoodText);
 
-        // Keep main's FatSecret proxy test (remove later if you don’t want it always running)
+        // Test API (optional)
         testFatsecret();
 
-        // Only build the search list UI if the recycler exists on this screen
+        // Load food list if recycler exists
         openSearchScreen();
     }
 
@@ -37,9 +37,17 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.foodRecyclerView);
         if (recyclerView == null) return;
 
-        List<FoodItem> foodList = new ArrayList<>();
+        List<Food> foodList = new ArrayList<>();
 
-        FoodAdapter adapter = new FoodAdapter(this, foodList);
+        foodList.add(new Food("French Toast", 350,10,10,10));
+        foodList.add(new Food("Apple", 100,10,10,10));
+        foodList.add(new Food("Orange", 60,10,10,10));
+        foodList.add(new Food("Pizza Slice", 320,10,10,10));
+        foodList.add(new Food("Veggie Pizza Slice", 350,10,10,10));
+        foodList.add(new Food("Donut Holes", 35,10,10,10));
+        foodList.add(new Food("Glazed Donut", 60,10,10,10));
+
+        FoodAdapter adapter = new FoodAdapter(foodList, null);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
@@ -61,4 +69,3 @@ public class MainActivity extends AppCompatActivity {
         }).start();
     }
 }
-

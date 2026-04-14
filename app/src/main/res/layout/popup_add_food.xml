@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/backgroundPrimary">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Food"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        android:layout_marginBottom="12dp" />
+
+    <EditText
+        android:id="@+id/food_name_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Food name"
+        android:textColor="@color/textPrimary"
+        android:textColorHint="@color/textSecondary" />
+
+    <EditText
+        android:id="@+id/food_protein_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Protein per item"
+        android:textColor="@color/textPrimary"
+        android:textColorHint="@color/textSecondary" />
+
+    <EditText
+        android:id="@+id/food_carbs_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Carbohydrates per item"
+        android:textColor="@color/textPrimary"
+        android:textColorHint="@color/textSecondary" />
+
+    <EditText
+        android:id="@+id/food_fat_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Fat per item"
+        android:textColor="@color/textPrimary"
+        android:textColorHint="@color/textSecondary" />
+
+    <EditText
+        android:id="@+id/food_calories_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Calories per item"
+        android:inputType="number"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/textPrimary"
+        android:textColorHint="@color/textSecondary" />
+
+    <Button
+        android:id="@+id/add_food_confirm_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/buttonEnabled"
+        android:textColor="@color/colorOnPrimary" />
+
+</LinearLayout>

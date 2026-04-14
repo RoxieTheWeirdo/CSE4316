@@ -8,7 +8,10 @@ public class FoodItem {
     public double carbs;
     public double protein;
 
-    // Full constructor (used when you have full nutrition info)
+    // REQUIRED for Firebase
+    public FoodItem() {}
+
+    // Full constructor (for full nutrition data)
     public FoodItem(String foodId, String name, int calories, double fat, double carbs, double protein) {
         this.foodId = foodId;
         this.name = name;
@@ -18,7 +21,7 @@ public class FoodItem {
         this.protein = protein;
     }
 
-    // Lightweight constructor (used by search screens, lists, etc.)
+    // Lightweight constructor (for simple lists / search)
     public FoodItem(String name, int calories) {
         this.foodId = null;
         this.name = name;
