@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#000000"
+    android:background="@color/backgroundPrimary"
     android:padding="16dp">
 
     <!-- Title -->
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Search Results"
-        android:textColor="@android:color/white"
+        android:textColor="@color/textPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="12dp"/>

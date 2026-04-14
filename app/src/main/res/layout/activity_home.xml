@@ -5,7 +5,8 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="0dp">
+    android:padding="0dp"
+    android:background="@color/backgroundPrimary">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/content_root"
@@ -41,7 +42,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="24dp">
+            android:paddingBottom="24dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
 
             <!-- CALORIES CARD (large, full width) -->
             <com.google.android.material.card.MaterialCardView
@@ -49,10 +52,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@android:color/black"
+                app:cardBackgroundColor="@color/cardBackground"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#2A2A2A"
+                app:strokeColor="@color/textSecondary"
                 app:strokeWidth="1dp">
 
                 <RelativeLayout
@@ -65,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Calories"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/textPrimary"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -76,7 +79,7 @@
                         android:layout_below="@id/tv_calories_title"
                         android:layout_marginTop="6dp"
                         android:text="Remaining = Goal - Food + Exercise"
-                        android:textColor="#9AA0A6"
+                        android:textColor="@color/textSecondary"
                         android:textSize="12sp" />
 
                     <!-- Left: circular progress / donut placeholder -->
@@ -105,7 +108,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="317"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/textPrimary"
                                 android:textSize="28sp"
                                 android:textStyle="bold" />
 
@@ -147,7 +150,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="6dp"
                                 android:text=" 1,600"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/textPrimary"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -174,7 +177,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="6dp"
                                 android:text=" 1,339"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/textPrimary"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -201,7 +204,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="6dp"
                                 android:text=" 56"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/textPrimary"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -218,10 +221,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="12dp"
-                app:cardBackgroundColor="@android:color/black"
+                app:cardBackgroundColor="@color/cardBackground"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="6dp"
-                app:strokeColor="#2A2A2A"
+                app:strokeColor="@color/textSecondary"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -235,7 +238,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Last meal"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/textPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -245,7 +248,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Today • 1:05 PM"
-                        android:textColor="#9AA0A6"
+                        android:textColor="@color/textSecondary"
                         android:textSize="12sp" />
 
                     <!-- Placeholder for meal item: thumbnail + title + calories -->
@@ -277,7 +280,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Grilled Salmon + Salad"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/textPrimary"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
 
@@ -287,7 +290,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="6dp"
                                 android:text="Protein 32g • Carbs 10g"
-                                android:textColor="#9AA0A6"
+                                android:textColor="@color/textSecondary"
                                 android:textSize="13sp" />
                         </LinearLayout>
 
@@ -296,7 +299,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="540 cal"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/textPrimary"
                             android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -329,10 +332,10 @@
                     android:layout_height="120dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@android:color/black"
+                    app:cardBackgroundColor="@color/cardBackground"
                     app:cardCornerRadius="14dp"
                     app:cardElevation="0dp"
-                    app:strokeColor="#2A2A2A"
+                    app:strokeColor="@color/textSecondary"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -346,7 +349,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Steps"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/textPrimary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -369,7 +372,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:text=" 3,871"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/textPrimary"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -380,7 +383,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="Goal: 10,000 steps"
-                            android:textColor="#9AA0A6"
+                            android:textColor="@color/textSecondary"
                             android:textSize="12sp" />
 
                         <ProgressBar
@@ -403,10 +406,10 @@
                     android:layout_width="0dp"
                     android:layout_height="120dp"
                     android:layout_weight="1"
-                    app:cardBackgroundColor="@android:color/black"
+                    app:cardBackgroundColor="@color/cardBackground"
                     app:cardCornerRadius="14dp"
                     app:cardElevation="0dp"
-                    app:strokeColor="#2A2A2A"
+                    app:strokeColor="@color/textSecondary"
                     app:strokeWidth="1dp">
 
                     <LinearLayout
@@ -420,7 +423,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Exercise"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/textPrimary"
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
@@ -443,7 +446,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
                                 android:text=" 56 cal"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/textPrimary"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -454,7 +457,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="00:00 hr"
-                            android:textColor="#9AA0A6"
+                            android:textColor="@color/textSecondary"
                             android:textSize="12sp" />
                     </LinearLayout>
 
@@ -465,14 +468,16 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bodyreconfiguration"
-                android:layout_width="375dp"
+                android:layout_width="match_parent"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
                 android:layout_height="90dp"
                 android:text="Body Transformation"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/textPrimary"
                 android:textSize="18sp"
                 app:cornerRadius="12dp"
                 app:elevation="3dp"
-                android:backgroundTint="#111318" />
+                android:backgroundTint="@color/cardBackground"/>
 
 
 
@@ -486,67 +491,70 @@
     <LinearLayout
         android:id="@+id/bottom_nav"
         android:layout_width="0dp"
-        android:layout_height="114dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_bottom_nav"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="48dp"
         android:elevation="16dp"
         android:translationZ="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Simple icons/text placeholders; replace with BottomNavigationView if desired -->
+        <!-- Dashboard -->
         <LinearLayout
+            android:id="@+id/dashboard_section"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:duplicateParentState="true">
 
             <ImageView
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:src="@drawable/ic_dashboard"
-                app:tint="#BFC6CC" />
+                app:tint="@color/nav_item_color" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dashboard"
-                android:textColor="#BFC6CC"
+                android:textColor="@color/nav_item_color"
                 android:textSize="11sp" />
         </LinearLayout>
 
+        <!-- Diary -->
         <LinearLayout
             android:id="@+id/diary_section"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:duplicateParentState="true">
 
             <ImageView
-                android:layout_width="46dp"
+                android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:src="@drawable/ic_diary"
-                app:tint="#6B6F75" />
+                app:tint="@color/nav_item_color" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Diary"
-                android:textColor="#6B6F75"
+                android:textColor="@color/nav_item_color"
                 android:textSize="11sp" />
         </LinearLayout>
 
-        <!-- Center big + button -->
+        <!-- Center Button -->
         <FrameLayout
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="0dp"
             android:foregroundGravity="center">
 
             <com.google.android.material.card.MaterialCardView
@@ -555,62 +563,66 @@
                 android:layout_height="50dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardBackgroundColor="#9C6BFF"
+                app:cardBackgroundColor="@color/cardBackground"
                 app:cardCornerRadius="32dp"
                 app:cardElevation="0dp"
-                app:strokeColor="#2A2A2A"
-                app:strokeWidth="1dp">>
+                app:strokeColor="@color/textSecondary"
+                app:strokeWidth="1dp">
 
                 <ImageView
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_plus" />
             </com.google.android.material.card.MaterialCardView>
 
         </FrameLayout>
 
+        <!-- Plan -->
         <LinearLayout
             android:id="@+id/plan_section"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:duplicateParentState="true">
 
             <ImageView
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:src="@drawable/ic_plan"
-                app:tint="#6B6F75" />
+                app:tint="@color/nav_item_color" />
 
             <TextView
-                android:layout_width="21dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pla"
-                android:textColor="#6B6F75"
+                android:text="Plan"
+                android:textColor="@color/nav_item_color"
                 android:textSize="11sp" />
         </LinearLayout>
 
+        <!-- More -->
         <LinearLayout
-	    android:id="@+id/more_section"
+            android:id="@+id/more_section"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:duplicateParentState="true">
 
             <ImageView
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:src="@drawable/ic_more"
-                app:tint="#6B6F75" />
+                app:tint="@color/nav_item_color" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="More"
-                android:textColor="#6B6F75"
+                android:textColor="@color/nav_item_color"
                 android:textSize="11sp" />
         </LinearLayout>
 

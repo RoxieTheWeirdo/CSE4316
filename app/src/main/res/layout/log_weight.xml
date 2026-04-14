@@ -1,47 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@android:color/white">
+    android:background="@color/backgroundPrimary">
 
     <!-- Weight Input -->
-    <EditText
-        android:id="@+id/etWeight"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter weight (lb)"
-        android:inputType="numberDecimal"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text"
-        android:textSize="16sp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        app:boxBackgroundMode="outline"
+        app:boxBackgroundColor="@color/backgroundSecondary"
+        app:boxStrokeColor="@color/textSecondary"
+        app:hintTextColor="@color/textSecondary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textSecondary" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Date Field -->
-    <EditText
-        android:id="@+id/etDate"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Date"
-        android:focusable="false"
-        android:clickable="true"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text"
-        android:textSize="16sp"
-        android:layout_marginBottom="16dp" />
+        android:layout_marginBottom="16dp"
+        app:boxBackgroundMode="outline"
+        app:boxBackgroundColor="@color/backgroundSecondary"
+        app:boxStrokeColor="@color/textSecondary"
+        app:hintTextColor="@color/textSecondary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="true"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textSecondary" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Time Field -->
-    <EditText
-        android:id="@+id/etTime"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Time"
-        android:focusable="false"
-        android:clickable="true"
-        android:padding="12dp"
-        android:background="@android:drawable/edit_text"
-        android:textSize="16sp"
-        android:layout_marginBottom="4dp" />
+        app:boxBackgroundMode="outline"
+        app:boxBackgroundColor="@color/backgroundSecondary"
+        app:boxStrokeColor="@color/textSecondary"
+        app:hintTextColor="@color/textSecondary">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="true"
+            android:textColor="@color/textPrimary"
+            android:textColorHint="@color/textSecondary" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

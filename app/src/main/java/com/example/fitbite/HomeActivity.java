@@ -43,6 +43,9 @@ import java.util.concurrent.TimeUnit;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
+import androidx.core.content.ContextCompat;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.Color;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -179,23 +182,52 @@ public class HomeActivity extends AppCompatActivity {
         MaterialCardView centerButton = findViewById(R.id.centerButton);
         centerButton.setOnClickListener(this::showPopupMenu);
 
-        // Meal Plan Section
-        LinearLayout planSection = findViewById(R.id.plan_section);
-        planSection.setOnClickListener(v ->
-                startActivity(new Intent(HomeActivity.this, MealPlanActivity.class))
-        );
-
-        // Diary Section
+        //  NAV ITEMS
+        LinearLayout dashboard = findViewById(R.id.dashboard_section);
         LinearLayout diarySection = findViewById(R.id.diary_section);
-        diarySection.setOnClickListener(v ->
-                startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class))
-        );
-
+        LinearLayout planSection = findViewById(R.id.plan_section);
         LinearLayout moreSection = findViewById(R.id.more_section);
-        moreSection.setOnClickListener(v -> showSidebar(v));
+
+        View[] navItems = {dashboard, diarySection, planSection, moreSection};
+
+        View.OnClickListener navHighlight = v -> {
+            for (View item : navItems) {
+                item.setSelected(false);
+            }
+            v.setSelected(true);
+        };
+
+        // Dashboard (home)
+        dashboard.setOnClickListener(v -> {
+            navHighlight.onClick(v);
+            // Already on home
+        });
+
+        // Meal Plan
+        planSection.setOnClickListener(v -> {
+            navHighlight.onClick(v);
+            startActivity(new Intent(HomeActivity.this, MealPlanActivity.class));
+        });
+
+        // Diary
+        diarySection.setOnClickListener(v -> {
+            navHighlight.onClick(v);
+            startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class));
+        });
+
+        // More
+        moreSection.setOnClickListener(v -> {
+            navHighlight.onClick(v);
+            showSidebar(v);
+        });
+
+        // Default selected tab
+        dashboard.setSelected(true);
+
         String user = FirebaseAuth.getInstance().getUid();
         LocalSettings localSettings = new LocalSettings(this);
         String mode = localSettings.getNotificationMode();
+
         if (user != null && !welcomeShown && mode.equals("All")) {
             FirebaseFirestore.getInstance()
                     .collection("users")
@@ -216,8 +248,15 @@ public class HomeActivity extends AppCompatActivity {
                         } else {
                             title = "Welcome back " + username + "!";
                         }
+
                         welcomeShown = true;
-                        Notifications.showInAppNotification(this, title, message, targetActivity, 5000
+
+                        Notifications.showInAppNotification(
+                                this,
+                                title,
+                                message,
+                                targetActivity,
+                                5000
                         );
                     });
         }
@@ -395,20 +434,22 @@ public class HomeActivity extends AppCompatActivity {
 
         popupWindow.setElevation(10);
 
+        // ensures popup respects light/dark theme
+        popupWindow.setBackgroundDrawable(
+                new ColorDrawable(Color.TRANSPARENT)
+        );
+
         popupView.findViewById(R.id.btnSearchFood).setOnClickListener(v -> {
-            //Toast.makeText(this, "Search Food clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, SearchFoodActivity.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnBarcodeScan).setOnClickListener(v -> {
-            //Toast.makeText(this, "Barcode Scan clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, BarcodeScanner.class));
             popupWindow.dismiss();
         });
 
         popupView.findViewById(R.id.btnMealScan).setOnClickListener(v -> {
-            //Toast.makeText(this, "Meal Scan clicked", Toast.LENGTH_SHORT).show();
             hideHomeViews();
 
             getSupportFragmentManager()
@@ -423,7 +464,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         popupView.findViewById(R.id.btnWeight).setOnClickListener(v -> {
-            //Toast.makeText(this, "Weight clicked", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, WeightActivity.class));
             popupWindow.dismiss();
         });

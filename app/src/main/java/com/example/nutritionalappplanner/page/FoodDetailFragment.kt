@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 import androidx.fragment.app.FragmentManager
 import com.example.nutritionalappplanner.page.PantryFragment
+import androidx.core.content.ContextCompat
 
 class FoodDetailFragment : Fragment() {
 
@@ -87,8 +88,10 @@ class FoodDetailFragment : Fragment() {
         setupDropdowns(defaultStorage)
         val toolbar = view.findViewById<MaterialToolbar>(R.id.topAppBar)
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
-        toolbar.setTitleTextColor(resources.getColor(android.R.color.white))
-        toolbar.overflowIcon?.setTint(resources.getColor(android.R.color.white))
+        val textColor = ContextCompat.getColor(requireContext(), R.color.textPrimary)
+
+        toolbar.setTitleTextColor(textColor)
+        toolbar.overflowIcon?.setTint(textColor)
         // CHECKMARK MENU (REPLACES BUTTON)
         requireActivity().addMenuProvider(object : MenuProvider {
 

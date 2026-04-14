@@ -14,6 +14,7 @@ import com.example.fitbite.R
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import androidx.core.content.ContextCompat
 
 class RecipeDetailFragment : Fragment(R.layout.fragment_recipe_detail) {
 
@@ -63,6 +64,7 @@ class RecipeDetailFragment : Fragment(R.layout.fragment_recipe_detail) {
         } else 0
 
         tvMatch.text = "$matched/$total matched ($percent%)"
+        tvMatch.setTextColor(ContextCompat.getColor(requireContext(), R.color.textPrimary))
 
         // -------- TAB LOGIC --------
         layoutIngredients.visibility = View.VISIBLE
@@ -102,6 +104,13 @@ class RecipeDetailFragment : Fragment(R.layout.fragment_recipe_detail) {
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.food_detail_menu, menu)
+
+                val textColor = ContextCompat.getColor(requireContext(), R.color.textPrimary)
+
+                for (i in 0 until menu.size()) {
+                    val item = menu.getItem(i)
+                    item.icon?.setTint(textColor)
+                }
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

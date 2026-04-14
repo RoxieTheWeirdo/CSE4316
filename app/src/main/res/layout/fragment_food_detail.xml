@@ -4,28 +4,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@color/backgroundPrimary"
     android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000"
+            android:background="@color/backgroundPrimary"
             android:title="Add Item"
-            android:titleTextColor="@android:color/white"/>
+            app:titleTextColor="@color/textPrimary"/>
 
-        <!-- ===== FOOD CARD (UNCHANGED) ===== -->
+        <!-- FOOD CARD -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="#111318"
+            app:cardBackgroundColor="@color/cardBackground"
             app:cardCornerRadius="16dp"
-            app:strokeColor="#2A2D36"
+            app:strokeColor="@color/textSecondary"
             app:strokeWidth="1dp"
             app:cardElevation="0dp">
 
@@ -41,33 +42,35 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="22sp"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/textPrimary"
                     android:text="Food name" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginVertical="12dp"
-                    android:background="#2A2D36" />
+                    android:background="@color/textSecondary"
+                    android:alpha="0.2"/>
 
                 <TextView
                     android:id="@+id/tvServing"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#9AA0A6"
+                    android:textColor="@color/textSecondary"
                     android:text="Serving: -" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginVertical="8dp"
-                    android:background="#2A2D36" />
+                    android:background="@color/textSecondary"
+                    android:alpha="0.2"/>
 
                 <TextView
                     android:id="@+id/tvCalories"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/textPrimary"
                     android:textStyle="bold"
                     android:text="Calories: -" />
 
@@ -75,52 +78,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginVertical="8dp"
-                    android:background="#2A2D36" />
+                    android:background="@color/textSecondary"
+                    android:alpha="0.2"/>
 
                 <TextView
                     android:id="@+id/tvFat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#9AA0A6"
+                    android:textColor="@color/textSecondary"
                     android:text="Fat: -" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginVertical="8dp"
-                    android:background="#2A2D36" />
+                    android:background="@color/textSecondary"
+                    android:alpha="0.2"/>
 
                 <TextView
                     android:id="@+id/tvCarbs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#9AA0A6"
+                    android:textColor="@color/textSecondary"
                     android:text="Carbs: -" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginVertical="8dp"
-                    android:background="#2A2D36" />
+                    android:background="@color/textSecondary"
+                    android:alpha="0.2"/>
 
                 <TextView
                     android:id="@+id/tvProtein"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#9AA0A6"
+                    android:textColor="@color/textSecondary"
                     android:text="Protein: -" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!--STORAGE + QUANTITY -->
+        <!-- STORAGE + QUANTITY -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:cardCornerRadius="20dp"
-            app:cardBackgroundColor="#111318"
-            app:strokeColor="#2A2D36"
+            app:cardBackgroundColor="@color/cardBackground"
+            app:strokeColor="@color/textSecondary"
             app:strokeWidth="1dp"
             app:cardElevation="0dp">
 
@@ -139,7 +145,7 @@
 
                     <TextView
                         android:text="Storage"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/textPrimary"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -152,14 +158,16 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        app:boxBackgroundColor="@color/cardBackground"
+                        app:boxStrokeColor="@color/textSecondary">
 
                         <AutoCompleteTextView
                             android:id="@+id/actStorage"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="none"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@color/textPrimary" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -172,7 +180,7 @@
 
                     <TextView
                         android:text="Quantity and Unit"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/textPrimary"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -188,28 +196,32 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:layout_marginEnd="8dp"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            app:boxBackgroundColor="@color/cardBackground"
+                            app:boxStrokeColor="@color/textSecondary">
 
                             <AutoCompleteTextView
                                 android:id="@+id/actQuantity"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="none"
-                                android:textColor="@android:color/white" />
+                                android:textColor="@color/textPrimary" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            app:boxBackgroundColor="@color/cardBackground"
+                            app:boxStrokeColor="@color/textSecondary">
 
                             <AutoCompleteTextView
                                 android:id="@+id/actUnit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="none"
-                                android:textColor="@android:color/white" />
+                                android:textColor="@color/textPrimary" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
@@ -225,7 +237,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:textColor="#9AA0A6"
+            android:textColor="@color/textSecondary"
             android:text="" />
 
     </LinearLayout>

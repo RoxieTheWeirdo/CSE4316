@@ -70,7 +70,7 @@ class PantryItemDetailFragment : Fragment(R.layout.fragment_pantry_item_detail) 
         // TOOLBAR
         val toolbar = view.findViewById<MaterialToolbar>(R.id.topAppBar)
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
-        toolbar.setTitleTextColor(requireContext().getColor(android.R.color.white))
+        toolbar.setTitleTextColor(requireContext().getColor(R.color.textPrimary))
 
         // CHECKMARK MENU
         requireActivity().addMenuProvider(object : MenuProvider {

@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.launch
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.content.ContextCompat
 
 class PantryFragment : Fragment() {
 
@@ -260,32 +261,38 @@ class PantryFragment : Fragment() {
     }
 
     private fun selectTab(selected: String?) {
+
         underlineAll.visibility = View.INVISIBLE
         underlineFridge.visibility = View.INVISIBLE
         underlineFreezer.visibility = View.INVISIBLE
         underlinePantry.visibility = View.INVISIBLE
 
-        tvAll.setTextColor(Color.parseColor("#9AA0A6"))
-        tvFridge.setTextColor(Color.parseColor("#9AA0A6"))
-        tvFreezer.setTextColor(Color.parseColor("#9AA0A6"))
-        tvPantry.setTextColor(Color.parseColor("#9AA0A6"))
+        val selectedColor = ContextCompat.getColor(requireContext(), R.color.textPrimary)
+        val unselectedColor = ContextCompat.getColor(requireContext(), R.color.textSecondary)
 
+        // Reset all to unselected
+        tvAll.setTextColor(unselectedColor)
+        tvFridge.setTextColor(unselectedColor)
+        tvFreezer.setTextColor(unselectedColor)
+        tvPantry.setTextColor(unselectedColor)
+
+        // Apply selected state
         when (selected) {
             null -> {
                 underlineAll.visibility = View.VISIBLE
-                tvAll.setTextColor(Color.WHITE)
+                tvAll.setTextColor(selectedColor)
             }
             "FRIDGE" -> {
                 underlineFridge.visibility = View.VISIBLE
-                tvFridge.setTextColor(Color.WHITE)
+                tvFridge.setTextColor(selectedColor)
             }
             "FREEZER" -> {
                 underlineFreezer.visibility = View.VISIBLE
-                tvFreezer.setTextColor(Color.WHITE)
+                tvFreezer.setTextColor(selectedColor)
             }
             "PANTRY" -> {
                 underlinePantry.visibility = View.VISIBLE
-                tvPantry.setTextColor(Color.WHITE)
+                tvPantry.setTextColor(selectedColor)
             }
         }
     }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000000">
+    android:background="@color/backgroundPrimary">
 
     <!-- TOP TOOLBAR -->
     <com.google.android.material.appbar.MaterialToolbar
@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:title="Recipe"
-        android:background="#000000"
-        app:titleTextColor="@android:color/white"/>
+        android:background="@color/backgroundPrimary"
+        app:titleTextColor="@color/textPrimary"/>
 
     <!-- SCROLLABLE CONTENT -->
     <ScrollView
@@ -33,7 +33,7 @@
                 android:id="@+id/tvRecipeTitle"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/white"
+                android:textColor="@color/textPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -44,7 +44,7 @@
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="6dp"
                 android:textStyle="bold"
-                android:textColor="@android:color/white"
+                android:textColor="@color/textPrimary"
                 android:background="@drawable/bg_match_pill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -55,8 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="24dp"
-                app:cardBackgroundColor="#111318"
-                app:strokeColor="#2A2D36"
+                app:cardBackgroundColor="@color/cardBackground"
+                app:strokeColor="@color/textSecondary"
                 app:strokeWidth="1dp"
                 app:cardElevation="0dp">
 
@@ -78,18 +78,18 @@
 
                         <TextView
                             android:id="@+id/tvIngredientsTab"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="INGREDIENTS"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold" />
+                            android:textColor="@color/textPrimary"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
 
                         <View
                             android:id="@+id/underlineIngredients"
                             android:layout_width="40dp"
                             android:layout_height="3dp"
                             android:layout_marginTop="4dp"
-                            android:background="#A970FF" />
+                            android:background="@color/accentColor" />
                     </LinearLayout>
 
                     <!-- INSTRUCTIONS TAB -->
@@ -104,22 +104,21 @@
 
                         <TextView
                             android:id="@+id/tvInstructionsTab"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="INSTRUCTIONS"
-                            android:textColor="#9AA0A6" />
+                            android:textColor="@color/textSecondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
 
                         <View
                             android:id="@+id/underlineInstructions"
                             android:layout_width="40dp"
                             android:layout_height="3dp"
                             android:layout_marginTop="4dp"
-                            android:background="#A970FF"
+                            android:background="@color/accentColor"
                             android:visibility="invisible" />
                     </LinearLayout>
 
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
             <!-- INGREDIENTS CARD -->
@@ -128,8 +127,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="20dp"
-                app:cardBackgroundColor="#111318"
-                app:strokeColor="#2A2D36"
+                app:cardBackgroundColor="@color/cardBackground"
+                app:strokeColor="@color/textSecondary"
                 app:strokeWidth="1dp"
                 app:cardElevation="0dp">
 
@@ -143,13 +142,12 @@
                     <TextView
                         android:text="Ingredients"
                         android:textStyle="bold"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/textPrimary"
                         android:layout_marginBottom="12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
             <!-- INSTRUCTIONS -->
@@ -165,8 +163,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="20dp"
-                    app:cardBackgroundColor="#111318"
-                    app:strokeColor="#2A2D36"
+                    app:cardBackgroundColor="@color/cardBackground"
+                    app:strokeColor="@color/textSecondary"
                     app:strokeWidth="1dp"
                     app:cardElevation="0dp">
 
@@ -179,20 +177,19 @@
                         <TextView
                             android:text="Instructions"
                             android:textStyle="bold"
-                            android:textColor="@android:color/white"
+                            android:textColor="@color/textPrimary"
                             android:layout_marginBottom="12dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/tvInstructions"
-                            android:textColor="#E0E0E0"
+                            android:textColor="@color/textPrimary"
                             android:lineSpacingExtra="4dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
                     </LinearLayout>
-
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>

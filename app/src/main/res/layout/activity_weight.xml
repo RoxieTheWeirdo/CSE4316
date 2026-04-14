@@ -3,26 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundPrimary"
     android:padding="16dp">
 
-    <!-- SCROLL CONTAINER -->
+    <!-- SCROLL -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/weightScroll"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        android:overScrollMode="ifContentScrolls"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- CONTENT (your original layout moved here) -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <!-- HEADER -->
+            <!-- TITLE -->
             <TextView
                 android:id="@+id/weightTitle"
                 android:layout_width="wrap_content"
@@ -30,23 +29,23 @@
                 android:text="Weight Tracker"
                 android:textSize="28sp"
                 android:textStyle="bold"
-                android:textColor="#333333"
+                android:textColor="@color/textPrimary"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+            <!-- PROGRESS CARD -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/weightProgressCard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@android:color/white"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="24dp"
-                app:cardElevation="8dp"
+                app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/cardBackground"
                 app:layout_constraintTop_toBottomOf="@id/weightTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-                <!-- CURRENT WEIGHT SECTION -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -54,9 +53,7 @@
                     android:padding="20dp"
                     android:gravity="center">
 
-                    <!-- RING -->
                     <FrameLayout
-                        android:id="@+id/progressRing"
                         android:layout_width="180dp"
                         android:layout_height="180dp"
                         android:gravity="center">
@@ -67,10 +64,8 @@
                             android:layout_height="180dp"
                             app:indicatorSize="150dp"
                             app:trackThickness="12dp"
-                            app:indicatorColor="#6FBF73"
-                            app:trackColor="#E6EDE7"
-                            app:indicatorDirectionCircular="clockwise"
-                            app:showAnimationBehavior="none"
+                            app:indicatorColor="@color/accentColor"
+                            app:trackColor="@color/backgroundSecondary"
                             app:trackCornerRadius="8dp" />
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,30 +78,30 @@
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
                                 android:text="164.2"
-                                android:textColor="#000"
+                                android:textColor="@color/textPrimary"
                                 android:textSize="32sp"
-                                android:letterSpacing="-0.02"
                                 android:textStyle="bold"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintHorizontal_bias="0.385"
-                                app:layout_constraintStart_toStartOf="parent"
+
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintVertical_bias="0.377"
-                                app:layout_constraintVertical_chainStyle="packed" />
+                                app:layout_constraintHorizontal_bias="0.385"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+
+                                android:translationY="-6dp"/>
 
                             <TextView
                                 android:id="@+id/currentWeightPercent"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
+                                android:text="97% to goal"
+                                android:textColor="@color/accentColor"
                                 android:includeFontPadding="false"
-                                android:text="68% to goal"
-                                android:textColor="#6FBF73"
+                                android:layout_marginTop="4dp"
                                 android:textSize="12sp"
+                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.432"
-                                app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/currentWeightInsideValue" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -117,12 +112,10 @@
                         android:id="@+id/goalProgressInfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:text="Goal: 150 lb • 14.2 lb remaining"
-                        android:textColor="#5F6B63"
-                        android:textStyle="normal"
-                        android:alpha="0.9"
+                        android:textColor="@color/textSecondary"
                         android:textSize="14sp"
+                        android:layout_marginTop="16dp"
                         android:gravity="center" />
 
                     <TextView
@@ -130,9 +123,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Last updated: --"
+                        android:textColor="@color/textSecondary"
                         android:textSize="12sp"
-                        android:textColor="#8E9A94"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="8dp"
                         android:gravity="center" />
 
                 </LinearLayout>
@@ -146,10 +139,10 @@
                 android:layout_height="240dp"
                 android:layout_marginTop="16dp"
                 app:cardCornerRadius="24dp"
-                android:backgroundTint="@android:color/white"
                 app:cardElevation="6dp"
-                app:layout_constraintStart_toStartOf="parent"
+                app:cardBackgroundColor="@color/cardBackground"
                 app:layout_constraintTop_toBottomOf="@id/weightProgressCard"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <FrameLayout
@@ -160,23 +153,21 @@
                     <com.github.mikephil.charting.charts.LineChart
                         android:id="@+id/weightChart"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="8dp"
-                        android:clipToPadding="false" />
+                        android:layout_height="match_parent" />
 
                 </FrameLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ADD WEIGHT CARD -->
+            <!-- BUTTON CARD -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/addWeightCard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="@android:color/white"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="6dp"
+                app:cardBackgroundColor="@color/cardBackground"
                 app:layout_constraintTop_toBottomOf="@id/graphCard"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -195,8 +186,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Set Goal"
-                        android:backgroundTint="#6FBF73"
-                        android:textColor="#FFFFFF" />
+                        android:backgroundTint="@color/accentColor"
+                        android:textColor="@color/white" />
 
                     <Button
                         android:id="@+id/logWeightButton"
@@ -204,8 +195,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Log Weight"
-                        android:backgroundTint="#6FBF73"
-                        android:textColor="#FFFFFF"
+                        android:backgroundTint="@color/accentColor"
+                        android:textColor="@color/white"
                         android:layout_marginStart="8dp" />
 
                     <Button
@@ -214,8 +205,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="History"
-                        android:backgroundTint="#6FBF73"
-                        android:textColor="#FFFFFF"
+                        android:backgroundTint="@color/accentColor"
+                        android:textColor="@color/white"
                         android:layout_marginStart="8dp" />
 
                 </LinearLayout>
@@ -223,7 +214,9 @@
             </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.core.widget.NestedScrollView>
+
 
     <!-- CONFETTI OVERLAY (stays OUTSIDE scroll so it covers whole screen) -->
     <nl.dionsegijn.konfetti.xml.KonfettiView

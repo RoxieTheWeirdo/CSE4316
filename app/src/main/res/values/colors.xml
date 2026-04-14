@@ -16,5 +16,7 @@
     <color name="cardBackground">#E0E0E0</color>
     <color name="buttonEnabled">#6200EE</color>
     <color name="buttonDisabled">#CCCCCC</color>
-    <color name="pillSelectedGreen">#4CAF50</color> 
+    <color name="pillSelectedGreen">#4CAF50</color>
+    <color name="colorOnPrimary">#000000</color>
+    <color name="borderColor">#D0D0D0</color>
 </resources>

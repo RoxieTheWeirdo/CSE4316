@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
     app:cardCornerRadius="18dp"
-    app:cardBackgroundColor="#111318"
-    app:strokeColor="#2A2D36"
+    app:cardBackgroundColor="@color/cardBackground"
+    app:strokeColor="@color/textSecondary"
     app:strokeWidth="1dp"
     app:cardElevation="0dp">
 
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Item name"
-            android:textColor="@android:color/white"
+            android:textColor="@color/textPrimary"
             android:textStyle="bold"
             android:textSize="16sp"/>
 
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="147 kcal"
-            android:textColor="#9AA0A6"
+            android:textColor="@color/textSecondary"
             android:textSize="13sp"
             android:layout_marginTop="4dp"/>
 

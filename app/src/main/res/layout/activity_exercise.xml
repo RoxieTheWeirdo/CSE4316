@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="@color/backgroundPrimary">
 
     <!-- Main Content -->
     <LinearLayout
@@ -22,7 +22,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="6dp">
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@color/cardBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -42,7 +43,7 @@
                         android:layout_height="wrap_content"
                         android:text="Calories Burned"
                         android:textSize="12sp"
-                        android:textColor="#777" />
+                        android:textColor="@color/textSecondary" />
 
                     <TextView
                         android:id="@+id/tvTotalCalories"
@@ -50,7 +51,8 @@
                         android:layout_height="wrap_content"
                         android:text="300"
                         android:textSize="22sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary" />
                 </LinearLayout>
 
                 <!-- Time -->
@@ -65,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:text="Time"
                         android:textSize="12sp"
-                        android:textColor="#777" />
+                        android:textColor="@color/textSecondary" />
 
                     <TextView
                         android:id="@+id/tvTotalTime"
@@ -73,7 +75,8 @@
                         android:layout_height="wrap_content"
                         android:text="45 min"
                         android:textSize="22sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -93,18 +96,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Search exercises">
+            android:hint="Search exercises"
+            app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="@color/backgroundSecondary"
+            app:boxStrokeColor="@color/textSecondary"
+            app:hintTextColor="@color/textSecondary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/searchBar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/textPrimary"
+                android:textColorHint="@color/textSecondary" />
+
         </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Tabs -->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+
+            android:background="@color/cardBackground"
+
+            app:tabTextColor="@color/textSecondary"
+            app:tabSelectedTextColor="@color/textPrimary"
+            app:tabIndicatorColor="@color/accentColor"
+            />
+
+        <!-- List -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -123,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:text="No exercises found"
                 android:textSize="16sp"
-                android:textColor="#9E9E9E"
+                android:textColor="@color/textSecondary"
                 android:visibility="gone"
                 android:layout_gravity="center"
                 android:padding="16dp"/>

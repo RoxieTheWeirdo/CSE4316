@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="12dp"
+    android:padding="16dp"
     android:background="@drawable/popup_background"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
@@ -20,33 +20,37 @@
             android:id="@+id/btnSearchFood"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:backgroundTint="#111318"
-            android:textColor="@color/white"
-            android:text="Search Food" />
+            android:backgroundTint="@color/backgroundSecondary"
+            android:textColor="@color/textPrimary"
+            android:text="Search Food"
+            android:elevation="4dp" />
 
         <Button
             android:id="@+id/btnBarcodeScan"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:backgroundTint="#111318"
-            android:textColor="@color/white"
-            android:text="Barcode Scan" />
+            android:backgroundTint="@color/backgroundSecondary"
+            android:textColor="@color/textPrimary"
+            android:text="Barcode Scan"
+            android:elevation="4dp" />
 
         <Button
             android:id="@+id/btnMealScan"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:backgroundTint="#111318"
-            android:textColor="@color/white"
-            android:text="Pantry" />
+            android:backgroundTint="@color/backgroundSecondary"
+            android:textColor="@color/textPrimary"
+            android:text="Pantry"
+            android:elevation="4dp" />
 
         <Button
             android:id="@+id/btnWeight"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:backgroundTint="#111318"
-            android:textColor="@color/white"
-            android:text="Weight" />
+            android:backgroundTint="@color/backgroundSecondary"
+            android:textColor="@color/textPrimary"
+            android:text="Weight"
+            android:elevation="4dp" />
 
     </GridLayout>
 
