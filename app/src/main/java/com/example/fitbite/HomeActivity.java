@@ -161,7 +161,7 @@ public class HomeActivity extends AppCompatActivity {
         tvStepsCount.setText("--");
         tvStepsGoal.setText("Goal: 10,000 steps");
 
-      //  tvExerciseCal.setText("56 cal");
+        //  tvExerciseCal.setText("56 cal");
         //tvExerciseTime.setText("00:00 hr");
     }
 
@@ -182,12 +182,24 @@ public class HomeActivity extends AppCompatActivity {
         MaterialCardView centerButton = findViewById(R.id.centerButton);
         centerButton.setOnClickListener(this::showPopupMenu);
 
-        //  NAV ITEMS
+        // NAV ITEMS
         LinearLayout dashboard = findViewById(R.id.dashboard_section);
         LinearLayout diarySection = findViewById(R.id.diary_section);
         LinearLayout planSection = findViewById(R.id.plan_section);
         LinearLayout moreSection = findViewById(R.id.more_section);
 
+// Click actions
+        planSection.setOnClickListener(v -> {
+            startActivity(new Intent(HomeActivity.this, MealGeneratorActivity.class));
+        });
+
+        diarySection.setOnClickListener(v -> {
+            startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class));
+        });
+
+        moreSection.setOnClickListener(this::showSidebar);
+
+// Highlight logic
         View[] navItems = {dashboard, diarySection, planSection, moreSection};
 
         View.OnClickListener navHighlight = v -> {
