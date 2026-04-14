@@ -188,16 +188,6 @@ public class HomeActivity extends AppCompatActivity {
         LinearLayout planSection = findViewById(R.id.plan_section);
         LinearLayout moreSection = findViewById(R.id.more_section);
 
-// Click actions
-        planSection.setOnClickListener(v -> {
-            startActivity(new Intent(HomeActivity.this, MealGeneratorActivity.class));
-        });
-
-        diarySection.setOnClickListener(v -> {
-            startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class));
-        });
-
-        moreSection.setOnClickListener(this::showSidebar);
 
 // Highlight logic
         View[] navItems = {dashboard, diarySection, planSection, moreSection};

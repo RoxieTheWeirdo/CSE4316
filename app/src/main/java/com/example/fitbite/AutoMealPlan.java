@@ -160,15 +160,15 @@ public class AutoMealPlan extends AppCompatActivity {
             FoodForML d = picks.get(2);
 
             meals.add(new Meal(
-                    days[i],
-                    b.name + "," + l.name + "," + d.name,
-                    "3 Meals",
+                    b.name,
+                    l.name,
+                    d.name,
                     (int)(b.calories + l.calories + d.calories)
             ));
         }
 
         // 🔥 SEND TO NEXT SCREEN
-        Intent intent = new Intent(AutoMealPlan.this, MealDayActivity.class);
+        Intent intent = new Intent(AutoMealPlan.this, MealPlanActivity.class);
         intent.putExtra("mealList", new ArrayList<>(meals));
         startActivity(intent);
     }

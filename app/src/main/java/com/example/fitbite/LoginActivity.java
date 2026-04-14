@@ -158,6 +158,8 @@ public class LoginActivity extends AppCompatActivity {
                                         .addOnFailureListener(e ->
                                                 showMessage("Failed to create profile: " + e.getMessage(), false)
                                         );
+                            }else {
+                                showMessage("Signup failed: " + task.getException().getMessage(), false);
                             }
                         });
             }
