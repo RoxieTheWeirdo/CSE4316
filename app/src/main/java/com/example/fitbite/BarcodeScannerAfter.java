@@ -105,10 +105,10 @@ public class BarcodeScannerAfter extends AppCompatActivity {
                 // third  Update UI on main thread
                 runOnUiThread(() -> {
                     nameTextView.setText(foodName);
-                    caloriesView.setText("Calories: " + calories);
-                    fatsView.setText("Fats: " + fat + " g");
-                    carbsView.setText("Carbs: " + carbs + " g");
-                    sodiumView.setText("Sodium: " + sodium + " mg");
+                    caloriesView.setText((int)calories);
+                    fatsView.setText(fat + " g");
+                    carbsView.setText(carbs + " g");
+                    sodiumView.setText(sodium + " mg");
                 });
 
             } catch (Exception e) {
