@@ -130,6 +130,12 @@ public class bodyReconfiguration extends AppCompatActivity {
                                 double tdee = bmr * getActivityFactor(exercise);
                                 int finalCalories = adjustForGoal((int) Math.round(tdee), selectedGoal);
 
+                                // Persist the computed goal so HomeActivity can read it on any launch
+                                Map<String, Object> goalData = new HashMap<>();
+                                goalData.put("goalCalories", finalCalories);
+                                db.collection("users").document(userId)
+                                        .set(goalData, SetOptions.merge());
+
                                 Intent intent = new Intent(bodyReconfiguration.this, HomeActivity.class);
                                 intent.putExtra("CALORIE_TARGET", finalCalories);
                                 intent.putExtra("GOAL_TYPE", selectedGoal);

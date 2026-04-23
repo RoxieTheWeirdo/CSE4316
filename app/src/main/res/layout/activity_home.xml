@@ -221,6 +221,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:focusable="true"
                 app:cardBackgroundColor="@color/cardBackground"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="6dp"
@@ -279,7 +281,7 @@
                                 android:id="@+id/tv_meal_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Grilled Salmon + Salad"
+                                android:text="No meals logged yet"
                                 android:textColor="@color/textPrimary"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -289,7 +291,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="6dp"
-                                android:text="Protein 32g • Carbs 10g"
+                                android:text=""
                                 android:textColor="@color/textSecondary"
                                 android:textSize="13sp" />
                         </LinearLayout>
@@ -298,7 +300,7 @@
                             android:id="@+id/tv_meal_cal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="540 cal"
+                            android:text="-- cal"
                             android:textColor="@color/textPrimary"
                             android:textSize="16sp"
                             android:textStyle="bold" />

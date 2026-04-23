@@ -39,26 +39,25 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
 
         holder.foodName.setText(food.getName());
         holder.foodCalories.setText(food.getCalories() + " cal");
-
-        if (food.getQuantity() > 1) {
-            holder.foodQuantity.setVisibility(View.VISIBLE);
-            holder.foodQuantity.setText("x" + food.getQuantity());
-        } else {
-            holder.foodQuantity.setVisibility(View.GONE);
-        }
+        holder.foodMacros.setText(String.format("P: %sg  C: %sg  F: %sg",
+                formatMacro(food.getProtein()),
+                formatMacro(food.getCarbs()),
+                formatMacro(food.getFat())));
 
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onEdit(food);
-            }
+            if (listener != null) listener.onEdit(food);
         });
 
         holder.itemView.setOnLongClickListener(v -> {
-            if (listener != null) {
-                listener.onDelete(food);
-            }
+            if (listener != null) listener.onDelete(food);
             return true;
         });
+    }
+
+    private static String formatMacro(double value) {
+        return value == (long) value
+                ? String.valueOf((long) value)
+                : String.format("%.1f", value);
     }
 
     @Override
@@ -69,13 +68,13 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodViewHolder
     static class FoodViewHolder extends RecyclerView.ViewHolder {
         TextView foodName;
         TextView foodCalories;
-        TextView foodQuantity;
+        TextView foodMacros;
 
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
             foodName = itemView.findViewById(R.id.foodName);
             foodCalories = itemView.findViewById(R.id.foodCalories);
-            foodQuantity = itemView.findViewById(R.id.food_quantity);
+            foodMacros = itemView.findViewById(R.id.foodMacros);
         }
     }
 }
