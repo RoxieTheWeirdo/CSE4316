@@ -54,7 +54,8 @@ public class HomeActivity extends AppCompatActivity {
     private static final int ACTIVITY_RECOGNITION_REQUEST_CODE = 102;
     private static final int POST_NOTIFICATIONS_REQUEST_CODE = 100;
 
-    // Google Fit options (steps)
+    // Google Fit options (steps) — Fit API deprecated in favour of Health Connect
+    @SuppressWarnings("deprecation")
     private final FitnessOptions fitnessOptions = FitnessOptions.builder()
             .addDataType(DataType.TYPE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
             .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
@@ -398,6 +399,7 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressWarnings("deprecation")
     private void ensureGoogleFitPermissionsAndReadSteps() {
         GoogleSignInAccount account = GoogleSignIn.getAccountForExtension(this, fitnessOptions);
 
@@ -414,6 +416,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -449,6 +452,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // -------------------- Google Fit Steps --------------------
 
+    @SuppressWarnings("deprecation")
     private void readTodaySteps() {
         GoogleSignInAccount account = GoogleSignIn.getAccountForExtension(this, fitnessOptions);
         if (account == null) {
@@ -598,13 +602,21 @@ public class HomeActivity extends AppCompatActivity {
         }
         sidebarView.findViewById(R.id.btnNotifications).setOnClickListener(v -> {
             startActivity(new Intent(HomeActivity.this, NotificationHistory.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, android.R.anim.fade_in, android.R.anim.fade_out);
+            } else {
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
             sidebar.dismiss();
         });
 
         sidebarView.findViewById(R.id.btnSettings).setOnClickListener(v -> {
             startActivity(new Intent(HomeActivity.this, SettingsOverview.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, android.R.anim.fade_in, android.R.anim.fade_out);
+            } else {
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
             sidebar.dismiss();
         });
         sidebar.showAtLocation(anchorView, Gravity.END | Gravity.TOP, 0, 0);

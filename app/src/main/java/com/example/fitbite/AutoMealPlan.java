@@ -31,7 +31,7 @@ public class AutoMealPlan extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.meal_generator);
+        setContentView(R.layout.automealplan);
 
         db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -95,7 +95,7 @@ public class AutoMealPlan extends AppCompatActivity {
             validFoods.add(f);
         }
 
-        if (validFoods.size() < 3) {
+        if (validFoods.size() < 4) {
             Toast.makeText(this, "Not enough foods match constraints", Toast.LENGTH_LONG).show();
             return;
         }
@@ -135,9 +135,8 @@ public class AutoMealPlan extends AppCompatActivity {
     private void generateWeekPlan(List<FoodScore> rankedFoods) {
 
         List<Meal> meals = new ArrayList<>();
-        String[] days = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
 
-        int poolSize = Math.min(25, rankedFoods.size());
+        int poolSize = Math.min(30, rankedFoods.size());
 
         for (int i = 0; i < 7; i++) {
 
@@ -152,18 +151,20 @@ public class AutoMealPlan extends AppCompatActivity {
                     picks.add(fs.food);
                     used.add(fs.food.name);
                 }
-                if (picks.size() == 3) break;
+                if (picks.size() == 4) break;
             }
 
             FoodForML b = picks.get(0);
             FoodForML l = picks.get(1);
-            FoodForML d = picks.get(2);
+            FoodForML s = picks.get(2);
+            FoodForML d = picks.get(3);
 
             meals.add(new Meal(
                     b.name,
                     l.name,
+                    s.name,
                     d.name,
-                    (int)(b.calories + l.calories + d.calories)
+                    (int)(b.calories + l.calories + s.calories + d.calories)
             ));
         }
 

@@ -124,7 +124,7 @@ public class MealGeneratorActivity extends AppCompatActivity {
 
             int totalCalories = breakfast.calories + lunch.calories + dinner.calories;
 
-            mealList.add(new Meal(breakfastStr, lunchStr, dinnerStr, totalCalories));
+            mealList.add(new Meal(breakfastStr, lunchStr, "", dinnerStr, totalCalories));
         }
 
         return mealList;
