@@ -1,18 +1,8 @@
-## Getting Started
+## FitBite installation instructions
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+1. Install Android Studio: https://developer.android.com/studio.
+2. Install JDK 13: https://www.oracle.com/java/technologies/javase/jdk13-archive-downloads.html
+3. Create a new project in Android Studio.
+4. Clone this repository to your local device using "git clone https://github.com/RoxieTheWeirdo/CSE4316/tree/Final"
+5. Configure gradle properites in Android Studio to target JDK 13.
+6. Run the application by using Android Studio's built in emulator, or by connecting a real phone to your computer, enabling USB Debugging, and running it on your phone.
