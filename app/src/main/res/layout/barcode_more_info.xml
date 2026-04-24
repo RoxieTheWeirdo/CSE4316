@@ -4,76 +4,181 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="10dp">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_marginBottom="496dp"
+        android:gravity="center_horizontal"
+        android:text="More Info"
+        android:textColor="@color/textPrimary"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginBottom="528dp"
+        android:background="@color/cardBackground"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Serving Size -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="460dp"
+        android:background="@drawable/fact_container"
+        android:text="Serving Size"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/servingSizeTextView"
-        android:layout_width="match_parent"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="572dp"
+        android:layout_marginBottom="472dp"
         android:gravity="center_horizontal"
-        android:textSize="15sp"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Cholesterol -->
     <TextView
-        android:id="@+id/fatsTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="492dp"
-        android:gravity="start"
-        android:textSize="15sp"
+        android:layout_marginBottom="400dp"
+        android:background="@drawable/fact_container"
+        android:text="Cholesterol"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/cholTextView"
-        android:layout_width="match_parent"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="444dp"
-        android:gravity="start"
-        android:textSize="15sp"
+        android:layout_marginBottom="410dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Fiber -->
     <TextView
-        android:id="@+id/sodiumTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="380dp"
-        android:gravity="start"
-        android:textSize="15sp"
+        android:layout_marginBottom="340dp"
+        android:background="@drawable/fact_container"
+        android:text="Fiber"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
-        android:id="@+id/carbsTextView"
+        android:id="@+id/fiberTextView"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="352dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Sugar -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
-        android:gravity="start"
-        android:textSize="15sp"
+        android:layout_marginBottom="280dp"
+        android:background="@drawable/fact_container"
+        android:text="Sugar"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/sugarTextView"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="292dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Protein -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="220dp"
+        android:background="@drawable/fact_container"
+        android:text="Protein"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
     <TextView
         android:id="@+id/proteinTextView"
-        android:layout_width="match_parent"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="268dp"
-        android:gravity="start"
-        android:textSize="15sp"
+        android:layout_marginBottom="228dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/nutrientsTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="172dp"
-        android:gravity="start"
-        android:textSize="15sp"
+    <!-- Vertical Line -->
+    <View
+        android:layout_width="3dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="220dp"
+        android:background="@color/cardBackground"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

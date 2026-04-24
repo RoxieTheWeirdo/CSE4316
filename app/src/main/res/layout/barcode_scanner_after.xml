@@ -58,7 +58,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Carbs -->
@@ -85,7 +85,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Fats -->
@@ -111,7 +111,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Sodium -->
@@ -137,7 +137,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Vertical Line -->
