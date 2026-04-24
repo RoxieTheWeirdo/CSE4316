@@ -33,8 +33,8 @@ android {
         buildConfigField("String", "CLARIFAI_API_KEY", "\"\"")
         buildConfigField("String", "CLARIFAI_WORKFLOW_ID", "\"FoodImageModel\"")
         buildConfigField("String", "CLARIFAI_WORKFLOW_VERSION", "\"\"")
-        buildConfigField("String", "CLARIFAI_API_KEY", "\"44d784d00bb54d64a7a40d385f32e718\"")
-        buildConfigField("String", "CLARIFAI_WORKFLOW_VERSION", "\"034d2b10314c4e30892e6ffcbe9af4c0\"")
+        buildConfigField("String", "CLARIFAI_API_KEY", "\"XXXXXXXXXXXXXX\"")
+        buildConfigField("String", "CLARIFAI_WORKFLOW_VERSION", "\"XXXXXXXXXXXXX\"")
 
     }
 
