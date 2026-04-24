@@ -21,14 +21,13 @@
         android:padding="16dp"
         android:gravity="center_vertical">
 
-        <!-- Food details -->
+        <!-- Left: name + macros -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <!-- Name -->
             <TextView
                 android:id="@+id/foodName"
                 android:layout_width="wrap_content"
@@ -36,30 +35,29 @@
                 android:text="Food Name"
                 android:textColor="@color/textPrimary"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="15sp" />
 
-            <!-- Calories -->
             <TextView
-                android:id="@+id/foodCalories"
+                android:id="@+id/foodMacros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="120 kcal"
+                android:layout_marginTop="3dp"
+                android:text="P: 0g  C: 0g  F: 0g"
                 android:textColor="@color/textSecondary"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
 
-        <!-- Quantity (from food_log) -->
+        <!-- Right: calories -->
         <TextView
-            android:id="@+id/food_quantity"
+            android:id="@+id/foodCalories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="x2"
-            android:textSize="14sp"
-            android:textColor="@color/textSecondary"
-            android:layout_marginEnd="8dp"
-            android:visibility="gone" />
+            android:layout_marginStart="12dp"
+            android:text="0 cal"
+            android:textColor="@color/textPrimary"
+            android:textStyle="bold"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

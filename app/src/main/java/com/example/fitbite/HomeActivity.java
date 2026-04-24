@@ -54,7 +54,8 @@ public class HomeActivity extends AppCompatActivity {
     private static final int ACTIVITY_RECOGNITION_REQUEST_CODE = 102;
     private static final int POST_NOTIFICATIONS_REQUEST_CODE = 100;
 
-    // Google Fit options (steps)
+    // Google Fit options (steps) — Fit API deprecated in favour of Health Connect
+    @SuppressWarnings("deprecation")
     private final FitnessOptions fitnessOptions = FitnessOptions.builder()
             .addDataType(DataType.TYPE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
             .addDataType(DataType.AGGREGATE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
@@ -62,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // Views
     private TextView tvCaloriesRemaining, tvBaseGoal, tvFoodTotal, tvExerciseTotal;
-    private TextView tvMealName, tvMealCal, tvMealTime;
+    private TextView tvMealName, tvMealCal, tvMealTime, tvMealDetails, tvViewFullLog;
     private ImageView ivMealThumb;
 
     private TextView tvStepsCount, tvStepsGoal, tvExerciseCal, tvExerciseTime;
@@ -71,6 +72,11 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressBar stepsProgressBar;
 
     private FirebaseFirestore db;
+
+    // Calorie card state — updated independently as each source loads
+    private int calorieGoal = 0;
+    private int foodConsumed = 0;
+    private int exerciseBurned = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +90,8 @@ public class HomeActivity extends AppCompatActivity {
         bindViews();
         populateDashboard();
         setupClickListeners();
+        loadCalorieGoal();
+        loadLastMeal();
         loadExerciseData();
         findViewById(R.id.bottom_nav).bringToFront();
         setupFragmentBackStackListener();
@@ -125,6 +133,8 @@ public class HomeActivity extends AppCompatActivity {
         tvMealName = findViewById(R.id.tv_meal_name);
         tvMealCal = findViewById(R.id.tv_meal_cal);
         tvMealTime = findViewById(R.id.tv_food_time);
+        tvMealDetails = findViewById(R.id.tv_meal_details);
+        tvViewFullLog = findViewById(R.id.tv_view_full_log);
         ivMealThumb = findViewById(R.id.iv_meal_thumb);
 
         // Steps and Exercise
@@ -139,37 +149,135 @@ public class HomeActivity extends AppCompatActivity {
     // -------------------- Populate UI --------------------
 
     private void populateDashboard() {
-        // Get calorie goal from account creation
-        int calorieGoal = getIntent().getIntExtra("CALORIE_TARGET", 1500);
+        // Set static placeholders; calorie data is filled in by the loaders below
+        tvMealName.setText("No meals logged yet");
+        tvMealCal.setText("-- cal");
+        tvMealTime.setText("--");
+        tvMealDetails.setText("");
+        ivMealThumb.setImageResource(R.drawable.meal_placeholder);
 
-        // Temporary example values
-        int foodConsumed = 1225;
-        int exerciseBurned = 200;
+        tvCaloriesRemaining.setText("--");
+        tvBaseGoal.setText("Goal: --");
+        tvFoodTotal.setText("Food: 0");
+        tvExerciseTotal.setText("Exercise: 0");
+
+        tvStepsCount.setText("--");
+        tvStepsGoal.setText("Goal: 10,000 steps");
+    }
+
+    private void updateCalorieCard() {
         int remaining = calorieGoal - foodConsumed + exerciseBurned;
-
         tvCaloriesRemaining.setText(String.valueOf(remaining));
         tvBaseGoal.setText("Goal: " + calorieGoal);
         tvFoodTotal.setText("Food: " + foodConsumed);
         tvExerciseTotal.setText("Exercise: " + exerciseBurned);
+    }
 
-        tvMealName.setText("Grilled Chicken Bowl");
-        tvMealCal.setText("540 cal");
-        tvMealTime.setText("Today • 1:05 PM");
-        ivMealThumb.setImageResource(R.drawable.meal_placeholder);
+    private void loadCalorieGoal() {
+        db = FirebaseFirestore.getInstance();
+        String uid = FirebaseAuth.getInstance().getUid();
+        if (uid == null) return;
 
-        // Steps placeholder until Fit returns
-        tvStepsCount.setText("--");
-        tvStepsGoal.setText("Goal: 10,000 steps");
+        db.collection("users").document(uid).get()
+                .addOnSuccessListener(doc -> {
+                    if (doc.exists()) {
+                        Long goalLong = doc.getLong("goalCalories");
+                        if (goalLong != null) {
+                            calorieGoal = goalLong.intValue();
+                        } else {
+                            Double goalDouble = doc.getDouble("goalCalories");
+                            calorieGoal = goalDouble != null ? (int) Math.round(goalDouble) : 1600;
+                        }
+                    } else {
+                        calorieGoal = 1600;
+                    }
+                    updateCalorieCard();
+                    loadTodayFoodTotal();
+                });
+    }
 
-        //  tvExerciseCal.setText("56 cal");
-        //tvExerciseTime.setText("00:00 hr");
+    private void loadTodayFoodTotal() {
+        String uid = FirebaseAuth.getInstance().getUid();
+        if (uid == null) return;
+
+        String today = new SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new Date());
+        String[] meals = {"breakfast", "lunch", "dinner"};
+        int[] totals = {0, 0, 0};
+
+        for (int i = 0; i < meals.length; i++) {
+            final int idx = i;
+            db.collection("users").document(uid)
+                    .collection("foodDiary").document(today)
+                    .collection("meals").document(meals[idx])
+                    .collection("items")
+                    .addSnapshotListener((snapshots, e) -> {
+                        if (snapshots == null) return;
+                        int mealTotal = 0;
+                        for (com.google.firebase.firestore.QueryDocumentSnapshot doc : snapshots) {
+                            Long cal = doc.getLong("calories");
+                            if (cal != null) mealTotal += cal.intValue();
+                        }
+                        totals[idx] = mealTotal;
+                        foodConsumed = totals[0] + totals[1] + totals[2];
+                        updateCalorieCard();
+                    });
+        }
+    }
+
+    private void loadLastMeal() {
+        String uid = FirebaseAuth.getInstance().getUid();
+        if (uid == null) return;
+
+        FirebaseFirestore.getInstance()
+                .collection("users").document(uid)
+                .collection("meta").document("lastMeal")
+                .addSnapshotListener((doc, e) -> {
+                    if (e != null || doc == null || !doc.exists()) return;
+
+                    LastMeal meal = doc.toObject(LastMeal.class);
+                    if (meal == null) return;
+
+                    tvMealName.setText(meal.getFoodName());
+                    tvMealCal.setText(meal.getCalories() + " cal");
+
+                    String macros = String.format("P: %sg  C: %sg  F: %sg",
+                            formatMacro(meal.getProtein()),
+                            formatMacro(meal.getCarbs()),
+                            formatMacro(meal.getFat()));
+                    tvMealDetails.setText(macros);
+
+                    // Format timestamp
+                    if (meal.getEatenAt() > 0) {
+                        java.util.Date mealDate = new java.util.Date(meal.getEatenAt());
+                        String today = new SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(new java.util.Date());
+                        String mealDay = new SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault()).format(mealDate);
+                        String dayLabel = today.equals(mealDay) ? "Today" : new SimpleDateFormat("MMM d", java.util.Locale.getDefault()).format(mealDate);
+                        String time = new SimpleDateFormat("h:mm a", java.util.Locale.getDefault()).format(mealDate);
+                        tvMealTime.setText(dayLabel + " \u2022 " + time);
+                    }
+                });
+    }
+
+    private static String formatMacro(double value) {
+        return value == (long) value
+                ? String.valueOf((long) value)
+                : String.format(java.util.Locale.getDefault(), "%.1f", value);
     }
 
     // -------------------- Click Listeners --------------------
 
     private void setupClickListeners() {
         ivMealThumb.setOnClickListener(v ->
-                Toast.makeText(HomeActivity.this, "Opening food log...", Toast.LENGTH_SHORT).show()
+                startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class))
+        );
+
+        tvViewFullLog.setOnClickListener(v ->
+                startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class))
+        );
+
+        MaterialCardView foodCard = findViewById(R.id.card_food);
+        foodCard.setOnClickListener(v ->
+                startActivity(new Intent(HomeActivity.this, FoodDiaryActivity.class))
         );
 
         MaterialCardView exerciseSection = findViewById(R.id.card_exercise);
@@ -291,6 +399,7 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressWarnings("deprecation")
     private void ensureGoogleFitPermissionsAndReadSteps() {
         GoogleSignInAccount account = GoogleSignIn.getAccountForExtension(this, fitnessOptions);
 
@@ -307,6 +416,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -342,6 +452,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // -------------------- Google Fit Steps --------------------
 
+    @SuppressWarnings("deprecation")
     private void readTodaySteps() {
         GoogleSignInAccount account = GoogleSignIn.getAccountForExtension(this, fitnessOptions);
         if (account == null) {
@@ -491,13 +602,21 @@ public class HomeActivity extends AppCompatActivity {
         }
         sidebarView.findViewById(R.id.btnNotifications).setOnClickListener(v -> {
             startActivity(new Intent(HomeActivity.this, NotificationHistory.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, android.R.anim.fade_in, android.R.anim.fade_out);
+            } else {
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
             sidebar.dismiss();
         });
 
         sidebarView.findViewById(R.id.btnSettings).setOnClickListener(v -> {
             startActivity(new Intent(HomeActivity.this, SettingsOverview.class));
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, android.R.anim.fade_in, android.R.anim.fade_out);
+            } else {
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
             sidebar.dismiss();
         });
         sidebar.showAtLocation(anchorView, Gravity.END | Gravity.TOP, 0, 0);
@@ -552,14 +671,14 @@ public class HomeActivity extends AppCompatActivity {
                         }
                     }
 
-                    // Update UI
                     tvExerciseCal.setText(totalCalories + " cal");
 
-                    // Convert minutes → hours format
                     int hours = totalTime / 60;
                     int minutes = totalTime % 60;
-
                     tvExerciseTime.setText(String.format("%02d:%02d hr", hours, minutes));
+
+                    exerciseBurned = totalCalories;
+                    updateCalorieCard();
                 });
     }
 }
