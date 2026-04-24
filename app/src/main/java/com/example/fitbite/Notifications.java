@@ -60,12 +60,12 @@ public class Notifications {
             return; // never send
         }
 
-        // Correct logic: Minimal users skip AllNotifs, but receive MinimalNotifs
+        //Minimal users skip AllNotifs, but receive MinimalNotifs
         if (pref.equals("Minimal") && type == AllNotifs) {
             return;
         }
 
-        // Runtime permission check (Android 13+ / TIRAMISU)
+        //Permission check
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (context.checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                 return;
@@ -77,7 +77,7 @@ public class Notifications {
                 .setSmallIcon(R.drawable.appicon_grayscale)
                 .setLargeIcon(BitmapFactory.decodeResource(
                         context.getResources(),
-                        R.drawable.appicon // full-color app icon
+                        R.drawable.appicon
                 ))
                 .setContentTitle(title)
                 .setContentText(message)
@@ -179,7 +179,7 @@ public class Notifications {
             notif.put("title", title);
             notif.put("message", message);
 
-            // System time in readable format
+            // System time
             String time = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a", Locale.getDefault())
                     .format(new Date());
             notif.put("time", time);

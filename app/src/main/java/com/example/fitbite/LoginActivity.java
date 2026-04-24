@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
+import com.google.firebase.auth.FirebaseAuthException;
 
 import com.example.fitbite.network.ProxyClient;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -83,7 +84,6 @@ public class LoginActivity extends AppCompatActivity {
         createAccountButton = findViewById(R.id.create_account_button);
         googleSignInButton = findViewById(R.id.GoogleSignIn);
 
-        // ✅ ADDED LINE
         Button forgotPasswordButton = findViewById(R.id.forgotPasswordButton);
 
         loadingOverlay = getLayoutInflater().inflate(R.layout.loading, null);
@@ -116,17 +116,31 @@ public class LoginActivity extends AppCompatActivity {
                 auth.signInWithEmailAndPassword(username, password)
                         .addOnCompleteListener(task -> {
                             loadingScreen(false);
+
                             if (task.isSuccessful()) {
                                 showMessage("Login successful!", true);
                                 checkUserFirestore();
                             } else {
-                                showMessage("Login failed! Invalid Username/Email or Password!", false);
+                                Exception e = task.getException();
+
+                                if (e instanceof com.google.firebase.auth.FirebaseAuthInvalidUserException) {
+                                    showMessage("No account found with this email. Create an account to join FitBite!", false);
+
+                                } else if (e instanceof com.google.firebase.auth.FirebaseAuthInvalidCredentialsException) {
+                                    showMessage("Incorrect password. Please try again.", false);
+
+                                } else if (e instanceof com.google.firebase.FirebaseNetworkException) {
+                                    showMessage("No internet connection.", false);
+
+                                } else {
+                                    showMessage("Login failed: " + e.getMessage(), false);
+                                }
                             }
                         });
             }
         });
 
-        // Handle create account → go to CreateAccount.java
+        // Handle create account -> go to CreateAccount.java
         createAccountButton.setOnClickListener(v -> {
             String username = usernameInput.getText().toString().trim();
             String password = passwordInput.getText().toString().trim();
@@ -139,33 +153,35 @@ public class LoginActivity extends AppCompatActivity {
                 auth.createUserWithEmailAndPassword(username, password)
                         .addOnCompleteListener(task -> {
                             loadingScreen(false);
+
                             if (task.isSuccessful()) {
                                 FirebaseUser user = auth.getCurrentUser();
+
                                 Map<String, Object> userData = new HashMap<>();
                                 userData.put("email", user.getEmail());
                                 userData.put("uid", user.getUid());
                                 userData.put("username", null);
                                 userData.put("initialized", false);
+
                                 firestore.collection("users")
                                         .document(user.getUid())
                                         .set(userData)
                                         .addOnSuccessListener(unused -> {
                                             showMessage("Account created!", true);
                                             startActivity(new Intent(LoginActivity.this, CreateAccount.class));
-                                            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                                             finish();
                                         })
                                         .addOnFailureListener(e ->
                                                 showMessage("Failed to create profile: " + e.getMessage(), false)
                                         );
-                            }else {
-                                showMessage("Signup failed: " + task.getException().getMessage(), false);
+
+                            } else {
+                                handleSignupError(task.getException());
                             }
                         });
             }
         });
 
-        // ✅ ADDED CLICK LISTENER — takes user to Forgot Password screen
         forgotPasswordButton.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
@@ -194,7 +210,47 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+    private void handleSignupError(Exception e) {
+        if (e instanceof FirebaseAuthException) {
+            String code = ((FirebaseAuthException) e).getErrorCode();
 
+            switch (code) {
+
+                case "ERROR_EMAIL_ALREADY_IN_USE":
+                    showMessage("This email is already registered.", false);
+                    break;
+
+                case "ERROR_INVALID_EMAIL":
+                    showMessage("Invalid email format.", false);
+                    break;
+
+                case "ERROR_WEAK_PASSWORD":
+                    showMessage("Password must be at least 6 characters.", false);
+                    break;
+
+                case "ERROR_NETWORK_REQUEST_FAILED":
+                    showMessage("Network error. Check your connection.", false);
+                    break;
+
+                case "ERROR_TOO_MANY_REQUESTS":
+                    showMessage("Too many attempts. Try again later.", false);
+                    break;
+
+                case "ERROR_OPERATION_NOT_ALLOWED":
+                    showMessage("Email/password accounts are not enabled.", false);
+                    break;
+
+                default:
+                    showMessage("Signup failed: " + code, false);
+            }
+
+        } else if (e instanceof com.google.firebase.FirebaseNetworkException) {
+            showMessage("No internet connection.", false);
+
+        } else {
+            showMessage("Unexpected error: " + e.getMessage(), false);
+        }
+    }
     private void checkUserFirestore() {
 
         String uid = auth.getCurrentUser().getUid();

@@ -16,7 +16,7 @@ import okhttp3.Response;
 
 public class MealPlannerApi {
                                         //API url here
-    private static final String BASE_URL = "xxxxxxxx";
+    private static final String BASE_URL = "XXXXXXXXXXXX";
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     private static final OkHttpClient client = new OkHttpClient();
     private static final Gson gson = new Gson();

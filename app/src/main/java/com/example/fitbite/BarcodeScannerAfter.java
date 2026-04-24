@@ -66,10 +66,8 @@ public class BarcodeScannerAfter extends AppCompatActivity {
         });
     }
 
-    /**
-     * Step 1: Use barcode -> get food_id
-     * Step 2: Use food_id -> get full nutrition details
-     */
+    //Use barcode -> get food_id
+    //Step 2: Use food_id -> get full nutrition details
     private void fetchFoodData(String barcode) {
         new Thread(() -> {
             try {
@@ -86,7 +84,7 @@ public class BarcodeScannerAfter extends AppCompatActivity {
 
                 conn.setRequestMethod("GET");
 
-                // 🔥 IMPORTANT FIX (timeout)
+                //Timeout
                 conn.setConnectTimeout(30000);
                 conn.setReadTimeout(30000);
 
@@ -165,7 +163,6 @@ public class BarcodeScannerAfter extends AppCompatActivity {
 
                 conn.setRequestMethod("GET");
 
-                // 🔥 IMPORTANT FIX (timeout)
                 conn.setConnectTimeout(30000);
                 conn.setReadTimeout(30000);
 

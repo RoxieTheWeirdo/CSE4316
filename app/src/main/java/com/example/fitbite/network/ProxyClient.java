@@ -45,7 +45,7 @@ public class ProxyClient {
         return callFatsecret(fatsecretUrl);
     }
 
-    // 🔹 NEW: get food_id from barcode
+    // get food_id from barcode
     public String getFoodIdForBarcode(String barcode) throws Exception {
         String fatsecretUrl =
                 "https://platform.fatsecret.com/rest/server.api" +
@@ -56,7 +56,7 @@ public class ProxyClient {
         return callFatsecret(fatsecretUrl);
     }
 
-    // 🔹 NEW: get full nutrition details for a food_id
+    // get full nutrition details for a food_id
     public String getFoodDetails(String foodId) throws Exception {
         String fatsecretUrl =
                 "https://platform.fatsecret.com/rest/server.api" +

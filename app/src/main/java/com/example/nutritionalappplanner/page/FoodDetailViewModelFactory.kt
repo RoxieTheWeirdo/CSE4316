@@ -10,7 +10,7 @@ class FoodDetailViewModelFactory : ViewModelProvider.Factory {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(FoodDetailViewModel::class.java)) {
-            // Reuse your existing repository and keys from BuildConfig
+            // Reuse existing repository and keys from BuildConfig
             val repo = FatSecretRepository(
                 consumerKey = BuildConfig.FATSECRET_CONSUMER_KEY,
                 consumerSecret = BuildConfig.FATSECRET_CONSUMER_SECRET

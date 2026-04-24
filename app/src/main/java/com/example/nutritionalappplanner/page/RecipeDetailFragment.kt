@@ -56,7 +56,7 @@ class RecipeDetailFragment : Fragment(R.layout.fragment_recipe_detail) {
         val underlineIngredients = view.findViewById<View>(R.id.underlineIngredients)
         val underlineInstructions = view.findViewById<View>(R.id.underlineInstructions)
 
-        // -------- BASIC INFO --------
+        // Basic info
         tvTitle.text = title ?: "Recipe"
 
         val percent = if (total > 0) {
@@ -66,7 +66,7 @@ class RecipeDetailFragment : Fragment(R.layout.fragment_recipe_detail) {
         tvMatch.text = "$matched/$total matched ($percent%)"
         tvMatch.setTextColor(ContextCompat.getColor(requireContext(), R.color.textPrimary))
 
-        // -------- TAB LOGIC --------
+        // Tab logic
         layoutIngredients.visibility = View.VISIBLE
         layoutInstructions.visibility = View.GONE
 
@@ -96,7 +96,7 @@ class RecipeDetailFragment : Fragment(R.layout.fragment_recipe_detail) {
             underlineIngredients.visibility = View.INVISIBLE
         }
 
-        // -------- TOOLBAR (CHECKMARK) --------
+        // Toolbar (The checkmark)
         val toolbar = view.findViewById<MaterialToolbar>(R.id.topAppBar)
         (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
 
@@ -125,7 +125,7 @@ class RecipeDetailFragment : Fragment(R.layout.fragment_recipe_detail) {
 
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
-        // -------- FETCH DATA --------
+        // Fetch data
         recipeId?.let { id ->
             db.collection("recipes")
                 .document(id)
@@ -162,7 +162,7 @@ class RecipeDetailFragment : Fragment(R.layout.fragment_recipe_detail) {
         }
     }
 
-    // -------- HELPERS --------
+    // Helpers
     private fun extractQuantity(text: String): Double {
         val fractionRegex = Regex("(\\d+)/(\\d+)")
         val fractionMatch = fractionRegex.find(text)
@@ -176,7 +176,7 @@ class RecipeDetailFragment : Fragment(R.layout.fragment_recipe_detail) {
         return decimalRegex.find(text)?.value?.toDoubleOrNull() ?: 1.0
     }
 
-    // -------- COOK LOGIC --------
+    // Cook logic
     private fun cookRecipe() {
         val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
 

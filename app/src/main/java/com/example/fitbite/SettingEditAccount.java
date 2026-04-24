@@ -40,7 +40,7 @@ public class SettingEditAccount extends AppCompatActivity {
         RelativeLayout ChangeEmail = findViewById(R.id.btnChangeEmail);
         RelativeLayout ChangePassword = findViewById(R.id.btnChangePassword);
         RelativeLayout DeleteAccount = findViewById(R.id.btnDeleteAccount);
-        Button SignOut = findViewById(R.id.btnSignOut);
+        RelativeLayout SignOut = findViewById(R.id.btnSignOut);
         TextView curEmail = findViewById(R.id.curEmail);
         TextView curUser = findViewById(R.id.curUsername);
         ImageView btnBack = findViewById(R.id.btnBack);

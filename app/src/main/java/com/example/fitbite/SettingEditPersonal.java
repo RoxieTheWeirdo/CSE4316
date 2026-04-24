@@ -30,9 +30,6 @@ public class SettingEditPersonal extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         db = FirebaseFirestore.getInstance();
         localSettings = new LocalSettings(this);
-        // ----------------------------
-        // FIND VIEWS
-        // ----------------------------
         curBirthday = findViewById(R.id.curBirthday);
         curHeight   = findViewById(R.id.curHeight);
         curWeight   = findViewById(R.id.curWeight);

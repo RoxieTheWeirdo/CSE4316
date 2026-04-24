@@ -15,7 +15,7 @@ public class Food {
     private String mealType;   // breakfast, lunch, dinner
     private long eatenAt;      // timestamp
 
-    // 🔥 REQUIRED for Firebase
+    //Required for Firebase to work
     public Food() {}
 
     // Main constructor (used across app)

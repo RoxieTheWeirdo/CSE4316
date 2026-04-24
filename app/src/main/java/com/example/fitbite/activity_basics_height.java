@@ -43,7 +43,7 @@ public class activity_basics_height extends AppCompatActivity {
 
         setupFeetInches(); // default view
 
-        // ✅ Back
+        // Back
         findViewById(R.id.btnBack).setOnClickListener(v -> {
             finish();
             overridePendingTransition(0, 0);

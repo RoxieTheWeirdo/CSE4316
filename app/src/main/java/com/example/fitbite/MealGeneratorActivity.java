@@ -36,10 +36,7 @@ public class MealGeneratorActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
-    // =========================
-    // LOAD CSV
-    // =========================
+    //Load CSV
     private List<Food> loadFoodsFromCSV() {
 
         List<Food> foodList = new ArrayList<>();
@@ -74,9 +71,7 @@ public class MealGeneratorActivity extends AppCompatActivity {
         return foodList;
     }
 
-    // =========================
-    // GENERATE MEALS
-    // =========================
+    //Create Meals
     private List<Meal> generateMeals(List<Food> foods, int targetCalories) {
 
         List<Meal> mealList = new ArrayList<>();
@@ -130,9 +125,7 @@ public class MealGeneratorActivity extends AppCompatActivity {
         return mealList;
     }
 
-    // =========================
-    // BUILD SINGLE MEAL
-    // =========================
+    //Build single meal
     private MealData buildMeal(List<Food> proteins, List<Food> carbs, List<Food> fats,
                                int targetCalories, Random random) {
 
@@ -146,10 +139,7 @@ public class MealGeneratorActivity extends AppCompatActivity {
 
         return new MealData(description, totalCalories);
     }
-
-    // =========================
-    // HELPER CLASS
-
+    //Helper
     static class MealData {
         String description;
         int calories;

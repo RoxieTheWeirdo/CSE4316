@@ -92,7 +92,7 @@ class FoodDetailFragment : Fragment() {
 
         toolbar.setTitleTextColor(textColor)
         toolbar.overflowIcon?.setTint(textColor)
-        // CHECKMARK MENU (REPLACES BUTTON)
+        // CHECKMARK MENU
         requireActivity().addMenuProvider(object : MenuProvider {
 
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

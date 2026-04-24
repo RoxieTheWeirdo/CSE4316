@@ -52,10 +52,7 @@ public class SettingChangeAllergies extends AppCompatActivity {
             finish();
             return;
         }
-
-        // ----------------------------
-        // Load existing allergies
-        // ----------------------------
+        //Load existing allergies
         db.collection("users")
                 .document(user.getUid())
                 .get()
@@ -77,10 +74,7 @@ public class SettingChangeAllergies extends AppCompatActivity {
                     btnShellfish.setChecked(allergies.contains("Shellfish"));
                     btnTreeNut.setChecked(allergies.contains("Tree Nut"));
                 });
-
-        // ----------------------------
-        // Save on Done
-        // ----------------------------
+        //Save on done
         btnDone.setOnClickListener(v -> {
             ArrayList<String> allergies = new ArrayList<>();
 

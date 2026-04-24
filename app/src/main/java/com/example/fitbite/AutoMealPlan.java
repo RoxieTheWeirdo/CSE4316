@@ -100,7 +100,7 @@ public class AutoMealPlan extends AppCompatActivity {
             return;
         }
 
-        // 🔥 USE REAL USER CALORIES FROM PREVIOUS SCREEN
+        //Use real calories from previous screen
         int calorieTarget = getIntent().getIntExtra("CALORIE_TARGET", 2000);
         double targetPerMeal = calorieTarget / 3.0;
 
@@ -168,7 +168,7 @@ public class AutoMealPlan extends AppCompatActivity {
             ));
         }
 
-        // 🔥 SEND TO NEXT SCREEN
+        //Send to Next screen
         Intent intent = new Intent(AutoMealPlan.this, MealPlanActivity.class);
         intent.putExtra("mealList", new ArrayList<>(meals));
         startActivity(intent);
@@ -176,7 +176,7 @@ public class AutoMealPlan extends AppCompatActivity {
 
     private boolean isAllowed(double val, double min, double max, CheckBox cbNone) {
         if (cbNone == null) {
-            // No checkbox in UI → treat as normal constraint
+            // No checkbox in UI means treat as normal constraint
         } else if (cbNone.isChecked()) {
             return val <= 0.0;
         }
@@ -187,7 +187,7 @@ public class AutoMealPlan extends AppCompatActivity {
     }
 
     private double parse(EditText et) {
-        if (et == null) return -1;  // FIX
+        if (et == null) return -1;
 
         String s = et.getText().toString().trim();
         if (s.isEmpty()) return -1;

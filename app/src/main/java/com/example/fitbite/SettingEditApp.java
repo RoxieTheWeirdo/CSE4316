@@ -34,7 +34,7 @@ public class SettingEditApp extends AppCompatActivity {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         });
 
-        // ===== App Theme =====
+        //App Theme
         MaterialButtonToggleGroup themeGroup = findViewById(R.id.themeToggleGroup);
         MaterialButton btnLight = findViewById(R.id.btnLight);
         MaterialButton btnDark = findViewById(R.id.btnDark);
@@ -65,7 +65,7 @@ public class SettingEditApp extends AppCompatActivity {
             }
         });
 
-        // ===== Unit Preference =====
+        //Unit Preference
         MaterialButtonToggleGroup unitGroup = findViewById(R.id.unitToggleGroup);
         MaterialButton btnMetric = findViewById(R.id.btnMetric);
         MaterialButton btnImperial = findViewById(R.id.btnImperial);
@@ -79,7 +79,7 @@ public class SettingEditApp extends AppCompatActivity {
             localSettings.setUnitPreference(selected);
         });
 
-        // ===== Notification Preference =====
+        //Notification Preference
         MaterialButtonToggleGroup notifGroup = findViewById(R.id.notificationToggleGroup);
         MaterialButton btnOff = findViewById(R.id.btnNotifyOff);
         MaterialButton btnMinimal = findViewById(R.id.btnNotifyMinimal);

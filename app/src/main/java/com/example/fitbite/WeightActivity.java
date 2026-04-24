@@ -60,6 +60,7 @@ public class WeightActivity extends AppCompatActivity {
     private float goalWeight = 150f;
     private ArrayList<WeightEntry> historyList = new ArrayList<>();
     private WeightHistoryAdapter historyAdapter;
+
     private boolean hasGoal = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,44 +143,68 @@ public class WeightActivity extends AppCompatActivity {
     }
 
     private void showSetGoalDialogForced() {
-        View view = getLayoutInflater()
-                .inflate(R.layout.dialog_set_goal, null);
+
+        View view = getLayoutInflater().inflate(R.layout.dialog_set_goal, null);
 
         EditText etGoal = view.findViewById(R.id.etGoal);
+        TextView saveBtn = view.findViewById(R.id.btnSaveGoal);
+        TextView cancelBtn = view.findViewById(R.id.btnCancelGoal);
 
-        new AlertDialog.Builder(this)
+        etGoal.setText(formatWeight(goalWeight));
+        etGoal.setSelection(etGoal.getText().length());
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Set Your Goal Weight")
                 .setMessage("You need to set a goal before using this page.")
                 .setView(view)
-                .setCancelable(false) // cannot dismiss
-                .setPositiveButton("Save", (dialog, which) -> {
-                    String goalStr = etGoal.getText().toString().trim();
-
-                    if (goalStr.isEmpty()) {
-                        Toast.makeText(this, "Please enter a goal weight", Toast.LENGTH_SHORT).show();
-                        showSetGoalDialogForced(); // reopen
-                        return;
-                    }
-
-                    goalWeight = Float.parseFloat(goalStr);
-                    hasGoal = true;
-                    showUI();
-                    updateUI();
-
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if (user != null) {
-                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-                        Map<String, Object> data = new HashMap<>();
-                        data.put("goalWeight", goalWeight);
-
-                        db.collection("users")
-                                .document(user.getUid())
-                                .set(data, SetOptions.merge());
-                    }
-
-                    Toast.makeText(this, "Goal saved!", Toast.LENGTH_SHORT).show();
-                })
+                .setCancelable(false)
                 .show();
+
+        dialog.setCanceledOnTouchOutside(false);
+
+        cancelBtn.setOnClickListener(v -> {
+            // force them to stay
+            // or just do nothing
+            Toast.makeText(this, "You must set a goal to continue", Toast.LENGTH_SHORT).show();
+        });
+
+        saveBtn.setOnClickListener(v -> {
+
+            String goalStr = etGoal.getText().toString().trim();
+
+            if (goalStr.isEmpty()) {
+                Toast.makeText(this, "Please enter a goal weight", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+                goalWeight = Float.parseFloat(goalStr);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Invalid number", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            hasGoal = true;
+
+            updateUI();
+            showUI();
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                Map<String, Object> data = new HashMap<>();
+                data.put("goalWeight", goalWeight);
+
+                db.collection("users")
+                        .document(user.getUid())
+                        .set(data, SetOptions.merge());
+            }
+
+            Toast.makeText(this, "Goal saved!", Toast.LENGTH_SHORT).show();
+
+            dialog.dismiss();
+        });
     }
 
 
@@ -288,7 +313,7 @@ public class WeightActivity extends AppCompatActivity {
                 .set(data, SetOptions.merge());
     }
 
-    //DIALOG: LOG WEIGHT
+    //Log Weight
     private void showLogWeightDialog() {
         View dialogView = LayoutInflater.from(this)
                 .inflate(R.layout.log_weight, null);
@@ -416,47 +441,66 @@ public class WeightActivity extends AppCompatActivity {
     }
 
     private void showSetGoalDialog() {
-        View view = getLayoutInflater()
-                .inflate(R.layout.dialog_set_goal, null);
+
+        View view = getLayoutInflater().inflate(R.layout.dialog_set_goal, null);
 
         EditText etGoal = view.findViewById(R.id.etGoal);
+        TextView saveBtn = view.findViewById(R.id.btnSaveGoal);
+        TextView cancelBtn = view.findViewById(R.id.btnCancelGoal);
 
+        // Pre-fill current goal
         etGoal.setText(formatWeight(goalWeight));
         etGoal.setSelection(etGoal.getText().length());
 
-        new AlertDialog.Builder(this)
+        AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Set New Goal Weight")
                 .setView(view)
-                .setPositiveButton("Save", (dialog, which) -> {
-                    String goalStr = etGoal.getText().toString().trim();
-                    if (goalStr.isEmpty()) {
-                        Toast.makeText(this, "Enter a valid goal weight",
-                                Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-                    goalWeight = Float.parseFloat(goalStr);
-                    updateGoalText();
-                    updateGoalLine(goalWeight);
-
-                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    if (user != null) {
-                        FirebaseFirestore db = FirebaseFirestore.getInstance();
-                        Map<String, Object> data = new HashMap<>();
-                        data.put("goalWeight", goalWeight);
-                        db.collection("users")
-                                .document(user.getUid())
-                                .set(data, SetOptions.merge())
-                                .addOnSuccessListener(aVoid ->
-                                        Toast.makeText(this, "Goal Updated!", Toast.LENGTH_SHORT).show())
-                                .addOnFailureListener(e ->
-                                        Toast.makeText(this, "Failed to save goal", Toast.LENGTH_SHORT).show());
-                    } else {
-                        Toast.makeText(this, "Goal Updated!", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setNegativeButton("Cancel", null)
+                .setCancelable(true)
                 .show();
+
+        cancelBtn.setOnClickListener(v -> dialog.dismiss());
+
+        saveBtn.setOnClickListener(v -> {
+
+            String goalStr = etGoal.getText().toString().trim();
+
+            if (goalStr.isEmpty()) {
+                Toast.makeText(this, "Enter a valid goal weight",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            try {
+                goalWeight = Float.parseFloat(goalStr);
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Invalid number",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            updateGoalText();
+            updateGoalLine(goalWeight);
+
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user != null) {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                Map<String, Object> data = new HashMap<>();
+                data.put("goalWeight", goalWeight);
+
+                db.collection("users")
+                        .document(user.getUid())
+                        .set(data, SetOptions.merge())
+                        .addOnSuccessListener(aVoid ->
+                                Toast.makeText(this, "Goal Updated!", Toast.LENGTH_SHORT).show()
+                        )
+                        .addOnFailureListener(e ->
+                                Toast.makeText(this, "Failed to save goal", Toast.LENGTH_SHORT).show()
+                        );
+            }
+
+            dialog.dismiss();
+        });
     }
     private void loadHistoryFromFirebase(Runnable callback) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

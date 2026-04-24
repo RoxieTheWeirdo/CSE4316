@@ -467,24 +467,6 @@
 
             </LinearLayout>
 
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/bodyreconfiguration"
-                android:layout_width="match_parent"
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="12dp"
-                android:layout_height="90dp"
-                android:text="Body Transformation"
-                android:textColor="@color/textPrimary"
-                android:textSize="18sp"
-                app:cornerRadius="12dp"
-                app:elevation="3dp"
-                android:backgroundTint="@color/cardBackground"/>
-
-
-
-
-
         </LinearLayout>
 
     </ScrollView>

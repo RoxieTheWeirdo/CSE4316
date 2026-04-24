@@ -3,6 +3,7 @@ package com.example.fitbite;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -35,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
         }
         new Handler().postDelayed(this::checkLoginStatus, 1000);
     }
-
+    private static final String TAG = "MealPlanner";
     private void checkLoginStatus() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {

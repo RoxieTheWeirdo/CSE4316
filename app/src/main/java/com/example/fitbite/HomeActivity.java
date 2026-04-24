@@ -54,7 +54,7 @@ public class HomeActivity extends AppCompatActivity {
     private static final int ACTIVITY_RECOGNITION_REQUEST_CODE = 102;
     private static final int POST_NOTIFICATIONS_REQUEST_CODE = 100;
 
-    // Google Fit options (steps) — Fit API deprecated in favour of Health Connect
+    //Fit API is deprecated, use Google fit
     @SuppressWarnings("deprecation")
     private final FitnessOptions fitnessOptions = FitnessOptions.builder()
             .addDataType(DataType.TYPE_STEP_COUNT_DELTA, FitnessOptions.ACCESS_READ)
@@ -97,11 +97,11 @@ public class HomeActivity extends AppCompatActivity {
         setupFragmentBackStackListener();
 
         // -------------------- Steps via Google Fit --------------------
-        // For Android 10+ you need ACTIVITY_RECOGNITION runtime permission for step sensors.
+        // Android 10+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             requestActivityRecognitionPermissionIfNeeded();
         } else {
-            // Pre-Android 10: no ACTIVITY_RECOGNITION runtime permission needed
+            // Pre Android-10
             ensureGoogleFitPermissionsAndReadSteps();
         }
     }
