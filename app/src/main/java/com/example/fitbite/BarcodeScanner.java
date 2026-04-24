@@ -32,7 +32,7 @@ public class BarcodeScanner extends AppCompatActivity {
                     Log.d("BARCODE", "Scanned: " + barcode);
 
                     //  Send barcode to BarcodeMoreInfo
-                    Intent intent = new Intent(BarcodeScanner.this, BarcodeMoreInfo.class);
+                    Intent intent = new Intent(BarcodeScanner.this, BarcodeScannerAfter.class);
                     intent.putExtra("data", barcode);
 
                     startActivity(intent);
