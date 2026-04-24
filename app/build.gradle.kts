@@ -68,6 +68,8 @@ android {
     kotlin {
         jvmToolchain(21)
     }
+
+
 }
 
 dependencies {
@@ -90,7 +92,6 @@ dependencies {
 
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
 
     // Firebase
     implementation(platform("com.google.firebase:firebase-bom:34.5.0"))
@@ -127,19 +128,20 @@ dependencies {
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 
-// keep ONLY ONE material dependency (you already have libs.material above)
+    // keep ONLY ONE material dependency (you already have libs.material above)
     implementation("com.google.android.material:material:1.12.0")
 
     implementation("nl.dionsegijn:konfetti-xml:2.0.4")
     implementation("nl.dionsegijn:konfetti-compose:2.0.4")
     implementation("nl.dionsegijn:konfetti-core:2.0.4")
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
-// Testing
+
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-// New dependencies from main
+    // New dependencies from main
     implementation("com.github.haifengl:smile-core:2.6.0")
     implementation("com.google.android.gms:play-services-fitness:21.2.0")
     implementation("androidx.work:work-runtime:2.9.0")

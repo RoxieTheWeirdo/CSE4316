@@ -1,114 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="10dp">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="290dp"
-        android:layout_marginBottom="216dp"
-        android:background="@drawable/oval_button_background"
+        android:layout_height="85dp"
+        android:layout_marginBottom="444dp"
         android:gravity="center_horizontal"
-        android:text="Item Description"
+        android:text="Nutrition Facts"
+        android:textColor="@color/textPrimary"
         android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginBottom="473dp"
+        android:background="@color/cardBackground"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Calories -->
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="403dp"
+        android:background="@drawable/fact_container"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        android:text="Calories"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
         android:id="@+id/caloriesTextView"
-        android:layout_width="match_parent"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="350dp"
+        android:layout_marginBottom="414dp"
         android:gravity="center_horizontal"
+        android:textColor="@color/textPrimary"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- Sodium -->
-    <TextView
-        android:id="@+id/sodiumTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="260dp"
-        android:gravity="center_horizontal"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <!-- Fats -->
-    <TextView
-        android:id="@+id/fatsTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="290dp"
-        android:gravity="center_horizontal"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Carbs -->
     <TextView
-        android:id="@+id/carbsTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
-        android:gravity="center_horizontal"
+        android:layout_marginBottom="344dp"
+        android:background="@drawable/fact_container"
         android:textSize="30sp"
+        android:text="Carbs"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/carbsTextView"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="354dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Fats -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="285dp"
+        android:background="@drawable/fact_container"
+        android:textSize="30sp"
+        android:text="Fats"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/fatsTextView"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="294dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Sodium -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="226dp"
+        android:background="@drawable/fact_container"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/textPrimary"
+        android:text="Sodium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <TextView
+        android:id="@+id/sodiumTextView"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="235dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/textPrimary"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Vertical Line -->
+    <View
+        android:layout_width="3dp"
+        android:layout_height="237dp"
+        android:layout_marginBottom="226dp"
+        android:background="@color/cardBackground"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Product Name -->
+    <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="110dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="520dp"
-        android:background="@drawable/oval_button_background"
+        android:layout_marginBottom="535dp"
+        android:background="@drawable/barcode_container"
         android:gravity="center"
-        android:textSize="35sp"
+        android:textColor="@color/textPrimary"
+        android:textSize="33sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/scanAnotherButton"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/purple_200"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_white_bubble"
         android:text="Scan Another Barcode"
+        android:textAllCaps="false"
         android:textSize="21sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/moreInfo"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginBottom="100dp"
-        android:backgroundTint="@color/purple_200"
-        android:text="more info"
-        android:textSize="25sp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/rounded_white_bubble"
+        android:text="More Info"
+        android:textAllCaps="false"
+        android:textSize="21sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/addToDiaryButton"
-        android:layout_width="0dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/purple_200"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="160dp"
+        android:background="@drawable/rounded_white_bubble"
         android:text="Add to Food Diary"
+        android:textAllCaps="false"
         android:textSize="21sp"
-        app:layout_constraintBottom_toTopOf="@id/moreInfo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:tools="http://schemas.android.com/tools">
+
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -73,6 +75,7 @@
         <activity android:name=".SettingChangeBirthday" />
         <activity android:name=".SettingChangeHeight" />
         <activity android:name=".SettingChangeWeight" />
+
         <activity android:name=".SettingChangeSex" />
         <activity android:name=".SettingChangeExercise" />
         <activity android:name=".SettingChangeAllergies" />
